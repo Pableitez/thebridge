@@ -1,0 +1,163 @@
+/* Barra de paginación ultra compacta */
+.pagination {
+  padding: 0 0.2rem;
+  height: 32px;
+  min-height: 32px;
+  gap: 0.15rem;
+}
+
+.pagination button, .pagination .page-btn {
+  min-width: 28px;
+  height: 28px;
+  font-size: 0.92rem;
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+/* Tabla más compacta y sin márgenes */
+.table-container {
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.data-table th, .data-table td {
+  padding: 0.18rem 0.3rem;
+  font-size: 0.95rem;
+}
+
+/* Controles inferiores ultra compactos */
+.table-controls, .rows-per-page-control {
+  padding: 0 0.2rem;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+#rowsPerPageSelect {
+  height: 28px;
+  font-size: 0.95rem;
+  padding: 0 6px;
+  background: #fff;
+  color: var(--primary-dark);
+  border: none;
+}
+
+#rowsPerPageSelect:focus {
+  outline: none;
+  background: #e3f2fd;
+  color: var(--primary-dark);
+}
+
+.table-controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--primary-dark);
+  color: #fff;
+  padding: 0 0.75rem;
+  border-radius: var(--border-radius-lg);
+  margin-top: 0;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: var(--primary-dark);
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 2px 8px rgba(0,36,61,0.06);
+  padding: 0.3rem 1.2rem;
+  margin-bottom: 10px !important;
+  margin-top: 0.2rem;
+  color: #fff;
+}
+.toolbar-left, .toolbar-center, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #fff;
+}
+.toolbar-left { flex: 1 1 0; }
+.toolbar-center { flex: 1 1 0; justify-content: center; }
+.toolbar-right { flex: 1 1 0; justify-content: flex-end; }
+.toolbar-left label, .toolbar-left select, .toolbar-left option {
+  color: #fff;
+}
+.rows-per-page-control label, .rows-per-page-control {
+  color: #fff;
+}
+#recordCount {
+  color: #fff;
+  font-weight: 500;
+  margin-left: 1.2em;
+  letter-spacing: 0.01em;
+}
+.reset-filters-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+.reset-filters-btn:hover, .reset-filters-btn:focus {
+  background: #2563eb;
+  color: #fff;
+}
+.action-tabs {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 0.15rem 0.5rem;
+  box-shadow: 0 1px 2px rgba(0,36,61,0.04);
+}
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: none;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.98em;
+  padding: 0.35em 0.9em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.tab-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.1em;
+  fill: #fff;
+}
+.tab-btn:hover, .tab-btn:focus {
+  background: #2563eb;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(37,99,235,0.08);
+}
+@media (max-width: 900px) {
+  .table-toolbar { flex-direction: column; gap: 0.5rem; padding: 0.5rem; }
+  .toolbar-left, .toolbar-center, .toolbar-right { flex: 1 1 100%; justify-content: stretch; }
+  .action-tabs { flex-wrap: wrap; justify-content: center; }
+  .tab-btn { flex: 1 1 120px; min-width: 90px; }
+}
+#tableContainer {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #f0f8ff 0%, #80d8ff 100%);
+}
+.main-content, .container, .app-main, .content {
+  margin-bottom: 10px !important;
+  padding-bottom: 0 !important;
+} 
