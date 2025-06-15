@@ -1,0 +1,698 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="The Bridge - Data visualization and analysis tool" />
+    <title>The Bridge</title>
+  
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="src/styles/common.css" />
+  <link rel="stylesheet" href="src/styles/layout.css" />
+  <link rel="stylesheet" href="src/styles/table.css" />
+  <link rel="stylesheet" href="src/styles/filters.css" />
+  <link rel="stylesheet" href="src/styles/columns.css" />
+  <link rel="stylesheet" href="src/styles/modals.css" />
+  <link rel="stylesheet" href="src/styles/customColumns.css" />
+  <link rel="stylesheet" href="src/styles/custom-columns.css">
+  <link rel="stylesheet" href="src/styles/customSummary.css">
+  <link rel="stylesheet" href="src/styles/dashboard.css" />
+  
+  <!-- Dependencias externas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+  </head> 
+  <body>
+<div class="toolbar" style="padding:0;">
+  <div class="toolbar-logo">
+    <img src="thebridge_logo_refined_modern.svg" alt="The Bridge" class="toolbar-thebridge-logo" style="padding:0;margin:0;height:48px;vertical-align:middle;" />
+  </div>
+
+  <div class="toolbar-right" style="margin-left:1rem;">
+    <button id="showHiddenColumnsBtn" class="toolbar-button show-hidden-columns-btn" title="Show hidden columns" style="color:#10B981;display:none;">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <rect x="3" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+        <rect x="9" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+        <rect x="15" y="5" width="4" height="14" rx="1" fill="currentColor"/>
+        <path d="M2 2l20 20" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div id="dateTimeInfo" style="margin-right:2.2em; font-size:1.08em; color:#47B2E5; font-weight:400; cursor:pointer; position:relative; display:flex; align-items:center; gap:0.5em; border-radius:6px; padding:0.2em 0.7em;">
+      <span id="weekNumberDisplay">Week --</span>
+      <svg id="calendarIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;"><rect x="3" y="5" width="18" height="16" rx="2" stroke="#47B2E5" stroke-width="2"/><path d="M16 3v4M8 3v4M3 9h18" stroke="#47B2E5" stroke-width="2"/><path d="M9 13h6" stroke="#1976d2" stroke-width="2" stroke-linecap="round"/></svg>
+      <svg id="chevronIcon" width="18" height="18" viewBox="0 0 20 20" fill="none" style="vertical-align:middle;"><path d="M6 8l4 4 4-4" stroke="#47B2E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div id="calendarPopup" style="display:none; position:absolute; left:0; top:calc(100% + 6px); z-index:2000;"></div>
+    </div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        id="globalSearchInput" 
+        placeholder="Search..." 
+        class="search-input"
+        aria-label="Global search"
+      >
+    </div>
+    <div class="view-controls">
+      <select id="viewSelect" class="toolbar-select" aria-label="Select view" style="color:#47B2E5; border-color:#47B2E5;">
+        
+      </select>
+    </div>
+  </div>
+</div>
+
+  <div class="app-container">
+  <aside class="sidebar" id="sidebar">
+      <button 
+        id="toggleSidebarBtn" 
+        class="toggle-sidebar-btn" 
+        aria-label="Toggle sidebar" 
+        title="Toggle sidebar"
+      >
+      <svg viewBox="0 0 24 24">
+          <path d="M15 6L9 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="sidebar-content" style="padding: 0.6rem 0.4rem 0.2rem 0.4rem; gap: 0.2rem;">
+        <button id="toggleFiltersBtn" class="sidebar-button" aria-label="Open filters" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24">
+            <path d="M4 6H20M8 12H16M10 18H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Filters
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="dashboardToggleBtn" class="sidebar-button maersk-btn" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><rect x="3" y="3" width="6" height="6" fill="CurrentColor"/><rect x="15" y="3" width="6" height="6" fill="CurrentColor"/><rect x="3" y="15" width="6" height="6" fill="CurrentColor"/><rect x="15" y="15" width="6" height="6" fill="CurrentColor"/></svg>
+          Ops hub
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="columnsBtn" class="sidebar-button" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><rect x="4" y="4" width="3" height="16" fill="CurrentColor"/><rect x="10.5" y="4" width="3" height="16" fill="CurrentColor"/><rect x="17" y="4" width="3" height="16" fill="CurrentColor"/></svg>
+          Columns
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="addCustomColumnBtn" class="sidebar-button" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><path d="M12 5v14M5 12h14" stroke="CurrentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Add Column <span class="wip-badge" style="background:#1976d2;color:#fff;">WIP</span>
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="generateReportBtn" class="sidebar-button" aria-label="Generate report" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="CurrentColor" stroke-width="2"/><path d="M8 8h8M8 12h8M8 16h4" stroke="CurrentColor" stroke-width="2"/></svg>
+          Report
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="dataVersionBtn" class="sidebar-button" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><circle cx="12" cy="12" r="10" fill="none" stroke="CurrentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="CurrentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Data Version
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="compareCSVBtn" class="sidebar-button" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;">
+            <path d="M9 17l6-6-6-6" stroke="CurrentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 12h18" stroke="CurrentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          Data Comparison <span class="wip-badge" style="background:#1976d2;color:#fff;">WIP</span>
+        </button>
+        <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        <button id="openCustomSummaryBtn" class="sidebar-button" style="margin-bottom:0.2rem;">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><path d="M4 17h4v-6H4v6zm6 0h4V7h-4v10zm6 0h4v-3h-4v3z" fill="CurrentColor"/></svg>
+          Custom Summary
+        </button>
+        <div class="sidebar-separator" style="margin:0.5rem 0 0.3rem 0;"></div>
+        <div style="position:absolute;bottom:3.5rem;left:0;width:100%;padding:0 1rem;box-sizing:border-box;">
+          <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+          <input 
+            type="file" 
+            id="csvFileInput" 
+            accept=".csv" 
+            class="hidden"
+            aria-label="Select CSV file"
+          >
+          <label for="csvFileInput" class="sidebar-button" style="margin-bottom:0.3rem;color:#10B981;width:100%;">
+            <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><path d="M12 16v-8M8 12l4 4 4-4" stroke="CurrentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="4" y="4" width="16" height="16" rx="2" fill="none" stroke="CurrentColor" stroke-width="2"/></svg>
+            Select CSV File
+          </label>
+          <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+          <button id="userSetUpBtn" class="sidebar-button" style="margin-bottom:0.3rem;color:#10B981;width:100%;">
+            <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="CurrentColor"/></svg>
+            User Set Up
+          </button>
+          <div class="sidebar-separator" style="margin:0.3rem 0;"></div>
+        </div>
+        <div style="position:absolute;bottom:0.7rem;left:0;width:100%;text-align:center;font-size:0.92em;color:#4FC3F7;opacity:0.95;user-select:none;z-index:2000;">© 2025 | Pablo Beneitez</div>
+      </div>
+    
+    </aside>
+
+  <main class="main-content">
+
+    <div id="tableContainer" class="table-container"></div>
+    <div class="table-toolbar">
+      <div class="toolbar-left">
+      <label class="rows-per-page-control">
+          
+          <select id="rowsPerPageSelect" aria-label="Select number of rows per page">
+          <option value="20">20</option>
+          <option value="50" selected>50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+          <option value="-1">All</option>
+        </select>
+      </label>
+      <div id="pagination" class="pagination"></div>
+      </div>
+      <div class="toolbar-center">
+        <div class="action-tabs">
+          <button id="copyTableBtn" class="tab-btn" title="Copy Table">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/></svg>
+            <span>Copy</span>
+          </button>
+          <!-- <button id="removeDuplicatesBtn" class="tab-btn" title="Remove Duplicates">
+            <svg width="18" height="18" viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2zm-7-8c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="currentColor"/></svg>
+            <span>Deduplicate</span>
+          </button> -->
+        </div>
+      </div>
+      <div class="toolbar-right">
+        <button id="resetAllFiltersBtn" class="reset-filters-btn" title="Reset Filters">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6 0 1.3-.42 2.5-1.13 3.47l1.46 1.46C19.07 16.07 20 14.13 20 12c0-4.42-3.58-8-8-8zm-6.87 3.53L3.67 7.07C2.93 7.93 2 9.87 2 12c0 4.42 3.58 8 8 8v4l5-5-5-5v4c-3.31 0-6-2.69-6-6 0-1.3.42-2.5 1.13-3.47z" fill="currentColor"/></svg>
+        </button>
+      <span id="recordCount"></span>
+      </div>
+    </div>
+
+    <!-- Notification element -->
+    <div id="tableNotification" class="table-notification hidden">
+      <div class="notification-content">
+        <span id="notificationMessage"></span>
+        <button class="notification-close">×</button>
+      </div>
+    </div>
+  </main>
+  </div>
+
+<!-- Column Manager Modal -->
+<div id="columnManagerModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:900px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Manage Columns</h3>
+      <button id="closeColumnManagerBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <input type="text" id="columnSearchInput" class="input" placeholder="Search columns..." style="margin-bottom: 1rem; width: 100%;" />
+      <div id="columnList" class="column-list"></div>
+    </div>
+    <div class="modal-footer">
+      <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <button id="selectAllBtn" class="modal-btn secondary small uniform">Select All</button>
+        <button id="deselectAllBtn" class="modal-btn secondary small uniform">Deselect All</button>
+        <button id="saveViewBtn" class="modal-btn secondary small uniform">Save as View</button>
+        <button id="manageViewsBtn" class="modal-btn secondary small uniform manage-views-btn">Manage Views</button>
+      </div>
+      <div style="display: flex; gap: 0.5rem;">
+        <button id="saveBtn" class="modal-btn primary" style="flex:1;">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Manage Views Dialog -->
+  <div id="manageViewsDialog" class="modal-overlay hidden">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h3>Manage Saved Views</h3>
+        <button class="close-btn" id="closeManageViewsBtn">×</button>
+      </div>
+    <div class="modal-content">
+      <div class="saved-views-list" id="savedViewsList"></div>
+        </div>
+      </div>
+    </div>
+
+<!-- Overlays -->
+<div id="overlay" class="overlay hidden"></div>
+<div id="rightOverlay" class="right-overlay hidden"></div>
+
+<!-- Filter Modal -->
+<div id="filterModal" class="hidden">
+  <div class="modal-header">
+    <h2>Filters</h2>
+    <button id="closeFilterModalBtn" class="close-btn">×</button>
+  </div>
+  
+  <!-- Filter Tabs -->
+  <div class="filter-tabs">
+    <button class="filter-tab" data-target="active">Active Filters</button>
+    <button class="filter-tab" data-target="myfilters">My Filters</button>
+    <button class="filter-tab" data-target="generic">By Ref/Status</button>
+    <button class="filter-tab" data-target="reference">Reference</button>
+    <button class="filter-tab" data-target="date">Dates</button>
+  </div>
+  <div id="activeFiltersSummary" class="active-filters-summary" style="margin: 0.5rem 0 0.5rem 0;"></div>
+
+  <!-- Filter Panels -->
+  <div class="filter-panels">
+    <div id="activeFilterPanel" class="filter-panel"></div>
+    <div id="myfiltersFilterPanel" class="filter-panel"></div>
+    <div id="genericFilterPanel" class="filter-panel"></div>
+    <div id="referenceFilterPanel" class="filter-panel"></div>
+    <div id="dateFilterPanel" class="filter-panel"></div>
+  </div>
+  
+  <!-- Filter Actions -->
+  <div class="filter-actions">
+    <button id="resetFiltersBtn" class="btn btn-secondary">Reset</button>
+    <button id="applyFiltersBtn" class="btn btn-primary">Apply Filters</button>
+  </div>
+</div>
+
+<div id="filterModalOverlay" class="hidden"></div>
+
+<!-- Filter Block Template -->
+<template id="filterBlockTemplate">
+  <div class="filter-block">
+    <div class="filter-header">
+      <div class="filter-title"></div>
+      <button class="filter-reset-btn">✕</button>
+    </div>
+    <div class="filter-content"></div>
+  </div>
+</template>
+
+<!-- Date Filter Template -->
+<template id="dateFilterTemplate">
+  <div class="date-filter-group">
+    <div class="date-filter-input">
+      <label class="date-filter-label">From</label>
+      <input type="date" class="filter-input date-start">
+    </div>
+    <div class="date-filter-input">
+      <label class="date-filter-label">To</label>
+      <input type="date" class="filter-input date-end">
+    </div>
+  </div>
+  <div class="filter-input-group">
+    <button class="filter-btn secondary empty-toggle">Empty</button>
+    <button class="filter-btn secondary today-toggle">From Today</button>
+  </div>
+</template>
+
+<!-- Reference Filter Template -->
+<template id="referenceFilterTemplate">
+  <div class="filter-input-group">
+    <input type="text" class="filter-input reference-input" placeholder="Search...">
+  </div>
+  <div class="filter-suggestions hidden"></div>
+  <div class="filter-tags"></div>
+</template>
+
+<!-- Report Options Modal -->
+<div id="reportOptionsModal" class="modal-overlay hidden">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Generate Report</h3>
+      <button id="closeReportOptionsBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="report-options">
+        <div class="report-option" data-type="pdf">
+          <div class="option-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="option-details">
+            <h4>PDF Report</h4>
+            <p>Complete report with tables and charts</p>
+          </div>
+        </div>
+        <div class="report-option" data-type="excel">
+          <div class="option-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="option-details">
+            <h4>Excel Export</h4>
+            <p>Raw data in Excel format</p>
+          </div>
+        </div>
+      </div>
+      <div class="dedupe-section" style="margin-top:1.5rem;">
+        <label style="font-weight:600;">Remove duplicates by column:</label>
+        <select id="dedupeColumnsSelect" multiple class="dedupe-columns-select" style="width:100%; min-width:200px;"></select>
+        <div style="font-size:12px; color:#888; margin-top:0.25rem;">Only one row will be included for each unique combination of the selected columns.</div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="confirmGenerateReportBtn" class="modal-btn primary">Generate</button>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard Panel -->
+<div id="dashboardPanel" class="dashboard-panel hidden">
+  <button id="dashboardCloseBtn" aria-label="Close dashboard">&times;</button>
+  <div class="dashboard-header">
+    <h3 class="dashboard-title">Ops Hub</h3>
+  </div>
+  <div class="dashboard-body">
+    <!-- Botones de urgencia -->
+    <div class="ops-hub-chips" id="opsHubFilterChipsBar">
+      <button class="ops-hub-chip" data-urgency="Urgente">Urgent</button>
+      <button class="ops-hub-chip" data-urgency="Media">Medium</button>
+      <button class="ops-hub-chip" data-urgency="Baja">Low</button>
+    </div>
+    
+    <!-- Contenedores de filtros -->
+    <div class="dashboard-quickfilters">
+    <div class="quickfilters-grid">
+        <!-- Los contenedores de filtros se generan dinámicamente -->
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dashboard-overlay"></div>
+
+<!-- Modal Remove Duplicates -->
+<div id="removeDuplicatesModal" class="modal-overlay hidden">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h3>Remove Duplicates</h3>
+      <button id="closeRemoveDuplicatesModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <p>Select columns to use as key for removing duplicates:</p>
+      <input id="removeDuplicatesSearch" type="text" placeholder="Search columns..." style="margin-bottom:0.5rem; width:100%; padding:0.4em; border-radius:4px; border:1px solid #ccc;" />
+      <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+        <button type="button" id="removeDuplicatesSelectAllBtn" class="modal-btn secondary" style="flex:1;">Select All</button>
+        <button type="button" id="removeDuplicatesDeselectAllBtn" class="modal-btn secondary" style="flex:1;">Deselect All</button>
+      </div>
+      <form id="removeDuplicatesForm" style="display:flex; flex-direction:column; gap:0.5rem;"></form>
+    </div>
+    <div class="modal-footer">
+      <button id="confirmRemoveDuplicatesBtn" class="modal-btn primary">Remove</button>
+    </div>
+  </div>
+</div>
+
+<!-- Backup Modal -->
+<div id="backupModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:1200px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">User Settings</h3>
+      <button id="closeBackupModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="backup-options">
+        <div class="backup-section">
+          <h4>Dashboard Configuration</h4>
+          <div class="backup-actions">
+            <button id="saveDashboardConfigBtn" class="modal-btn primary">Save Dashboard Config</button>
+            <button id="manageDashboardConfigBtn" class="modal-btn secondary">Manage Dashboard Config</button>
+            <button id="saveToFolderBtn" class="modal-btn primary">Save to Folder</button>
+            <button id="loadFromFolderBtn" class="modal-btn secondary">Load from Folder</button>
+          </div>
+        </div>
+        <div id="userSetUpStatus" style="margin-top:1rem; font-size:0.95em; color:#1976d2;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Snapshot Manager Modal -->
+<div id="snapshotManagerModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:600px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Snapshot Manager</h3>
+      <button id="closeSnapshotManagerModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div style="margin-bottom:1.2rem;">Save or restore a complete snapshot of your workspace, including filters, views, favorites, table data, and dashboard configuration.</div>
+      <div class="backup-actions" style="margin-bottom:1.2rem;">
+        <button id="saveSnapshotBtn" class="modal-btn primary">Save Snapshot</button>
+        <button id="restoreSnapshotBtn" class="modal-btn secondary">Restore Snapshot</button>
+      </div>
+      <div id="snapshotStatus" style="margin-top:1rem; font-size:0.95em; color:#1976d2;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Data Version Modal -->
+<div id="dataVersionModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:1200px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Data Version</h3>
+      <button id="closeDataVersionModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div style="margin-bottom:1.2rem;">Save, search, load or delete versions of your table data (CSV snapshots). Only table data is included in these versions.</div>
+      <div class="backup-actions" style="margin-bottom:1.2rem;">
+        <button id="saveDataVersionBtn" class="modal-btn primary">Save Data Version</button>
+      </div>
+      <input id="dataVersionsSearch" type="text" placeholder="Search by file or date..." style="width:100%;margin-bottom:0.5rem;padding:0.4em; border-radius:4px; border:1px solid #ccc;" />
+      <div id="dataVersionsList" style="max-height:260px;overflow-y:auto;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- User Set Up Modal -->
+<div id="userSetUpModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:600px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">User Set Up</h3>
+      <button id="closeUserSetUpModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="backup-section">
+        <h4>Dashboard Configuration</h4>
+        <div class="backup-actions">
+          <button id="saveDashboardConfigBtn" class="modal-btn primary">Save Dashboard Config</button>
+          <button id="manageDashboardConfigBtn" class="modal-btn secondary">Manage Dashboard Config</button>
+          <button id="saveToFolderBtn_user" class="modal-btn primary">Save to Folder</button>
+          <button id="loadFromFolderBtn_user" class="modal-btn secondary">Load from Folder</button>
+        </div>
+      </div>
+      <div id="userSetUpStatus_user" style="margin-top:1rem; font-size:0.95em; color:#1976d2;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Summary Modal -->
+<div id="summaryModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:1200px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Custom Summary</h3>
+      <button id="closeSummaryModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="summary-actions" style="justify-content: flex-start; margin-bottom:1.2em; gap:0.7em;">
+        <button id="saveSummaryBtn" class="secondary">Save Summary</button>
+        <button id="manageSummariesBtn" class="secondary">Manage Summaries</button>
+      </div>
+      <div class="pivot-section">
+        <h3>Rows</h3>
+        <select id="pivotRowsSelect" multiple size="5"></select>
+        <div class="pivot-help">Select one or more fields to group your rows.</div>
+      </div>
+      <div class="pivot-section">
+        <h3>Columns</h3>
+        <select id="pivotColumnsSelect"></select>
+        <div class="pivot-help">Select a field to create dynamic columns (optional).</div>
+      </div>
+      <div class="pivot-section">
+        <h3>Remove duplicates by</h3>
+        <select id="removeDuplicatesSelect" multiple size="3"></select>
+        <div class="pivot-help">Select fields to remove duplicate rows (default: same as Group by).</div>
+      </div>
+      <div class="pivot-section">
+        <h3>Order By</h3>
+        <select id="orderBySelect"></select>
+        <div class="pivot-help">Select a field to order the results (optional).</div>
+      </div>
+      <div class="pivot-section">
+        <h3>Values</h3>
+        <div id="metricsList"></div>
+        <button id="addMetricBtn" type="button" class="add-metric-btn">+ Add metric</button>
+        <div class="pivot-help">Choose which metrics to calculate and for which field.</div>
+      </div>
+      <div id="pivotPreviewContainer"></div>
+    </div>
+    <div class="modal-footer">
+      <button id="generateSummaryBtn" class="modal-btn primary">Generate PDF</button>
+      <button id="exportSummaryExcelBtn" class="modal-btn secondary">Export to Excel</button>
+      <button id="viewSummaryBtn" class="modal-btn secondary">View summary</button>
+    </div>
+  </div>
+</div>
+
+<!-- Manage Summaries Modal -->
+<div id="manageSummariesModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:520px;">
+    <div class="modal-header">
+      <h3>Manage Saved Summaries</h3>
+      <button class="close-btn" id="closeManageSummariesBtn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="saved-summaries-list" id="savedSummariesList"></div>
+      <div id="summaryRenameSection" style="display:none; margin-top:1em;">
+        <input id="renameSummaryInput" type="text" class="input" style="width:70%;margin-right:0.5em;" />
+        <button id="confirmRenameSummaryBtn" class="modal-btn primary small">Rename</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para copiar resumen -->
+<div id="copySummaryModal" class="modal-overlay hidden" style="z-index:12001;">
+  <div class="modal-panel" style="max-width:900px;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">View summary</h3>
+      <button id="closeCopySummaryModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div id="copySummaryContent" style="overflow-x:auto;"></div>
+      <button id="copySummaryToClipboardBtn" class="modal-btn primary" style="margin-top:1em;">Copy to clipboard</button>
+    </div>
+  </div>
+</div>
+
+<!-- Manage Dashboard Config Modal -->
+<div id="manageDashboardConfigModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:500px;">
+    <div class="modal-header">
+      <h3>Manage Dashboard Configs</h3>
+      <button id="closeManageDashboardConfigBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content" id="dashboardConfigsList"></div>
+    <div class="modal-footer">
+      <input id="newDashboardConfigName" class="input" placeholder="New config name" style="width:60%;" />
+      <button id="saveNewDashboardConfigBtn" class="modal-btn primary">Save Current as New</button>
+    </div>
+  </div>
+</div>
+
+<!-- CSV Comparison Modal -->
+<div id="csvComparisonModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:1100px; min-height:600px; max-height:96vh;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Data Comparison</h3>
+      <button id="closeCSVComparisonBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div class="csv-comparison-section">
+        <div class="file-input-section">
+          <div class="file-input-group">
+            <label>Original CSV:</label>
+            <input type="file" id="originalCSVInput" accept=".csv" class="file-input">
+          </div>
+          <div class="file-input-group">
+            <label>New CSV:</label>
+            <input type="file" id="newCSVInput" accept=".csv" class="file-input">
+          </div>
+        </div>
+        <div class="comparison-config-section" style="gap:2.5rem;">
+          <fieldset class="config-group" style="background:#f8fafc; border-radius:10px; border:1px solid #e0e7ef; padding:1.2em 1em 1em 1em; min-width:260px;">
+            <legend style="font-size:1.08em;font-weight:600;color:#1976d2;margin-bottom:0.5em;">Key Columns <span title='Used to match rows between files' style='color:#888;font-size:0.9em;'>(for matching rows)</span></legend>
+            <div style="font-size:0.97em;color:#555;margin-bottom:0.5em;">Select one or more columns that uniquely identify each row (e.g. Order Number, ID, Date).</div>
+            <div style="display:flex;gap:0.5em;margin-bottom:0.5em;">
+              <button type="button" id="selectAllKeyBtn" class="modal-btn secondary small" style="font-size:0.95em;">Select All</button>
+              <button type="button" id="deselectAllKeyBtn" class="modal-btn secondary small" style="font-size:0.95em;">Deselect All</button>
+            </div>
+            <select id="keyColumnsSelect" multiple class="column-select"></select>
+          </fieldset>
+          <fieldset class="config-group" style="background:#f8fafc; border-radius:10px; border:1px solid #e0e7ef; padding:1.2em 1em 1em 1em; min-width:260px;">
+            <legend style="font-size:1.08em;font-weight:600;color:#1976d2;margin-bottom:0.5em;">Columns to Compare</legend>
+            <div style="font-size:0.97em;color:#555;margin-bottom:0.5em;">Select columns whose values you want to compare between files.</div>
+            <div style="display:flex;gap:0.5em;margin-bottom:0.5em;">
+              <button type="button" id="selectAllCompareBtn" class="modal-btn secondary small" style="font-size:0.95em;">Select All</button>
+              <button type="button" id="deselectAllCompareBtn" class="modal-btn secondary small" style="font-size:0.95em;">Deselect All</button>
+            </div>
+            <select id="compareColumnsSelect" multiple class="column-select"></select>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="startComparisonBtn" class="modal-btn primary" disabled>Compare Files</button>
+      <button id="exportComparisonBtn" class="modal-btn secondary" style="display:none;">Export Results</button>
+    </div>
+  </div>
+</div>
+
+<!-- Comparison Results Modal -->
+<div id="comparisonResultsModal" class="modal-overlay hidden">
+  <div class="modal-panel" style="max-width:1400px; min-height:700px; max-height:96vh;">
+    <div class="modal-header">
+      <h3 class="panel-header-title">Comparison Results</h3>
+      <button id="closeResultsModalBtn" class="close-btn">×</button>
+    </div>
+    <div class="modal-content">
+      <div id="comparisonSummary" class="comparison-summary" style="margin-bottom:1.2em;"></div>
+      <div class="results-summary">
+        <div class="summary-item unchanged">Unchanged: <span id="unchangedCount">0</span></div>
+        <div class="summary-item changed">Changed: <span id="changedCount">0</span></div>
+        <div class="summary-item new">New: <span id="newCount">0</span></div>
+        <div class="summary-item deleted">Deleted: <span id="deletedCount">0</span></div>
+      </div>
+      <div class="results-table-container">
+        <table id="comparisonResultsTable" class="comparison-table">
+          <thead>
+            <tr>
+              <th>Status</th>
+              <th>Key Values</th>
+              <th>Changes</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <div class="export-options">
+        <button id="backToConfigBtn" class="modal-btn secondary" style="margin-right:1em;">
+          ← Back
+        </button>
+        <button id="exportToExcelBtn" class="modal-btn secondary">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;margin-right:0.5em;">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1z" fill="currentColor"/>
+          </svg>
+          Export to Excel
+        </button>
+        <button id="exportToPdfBtn" class="modal-btn secondary">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;margin-right:0.5em;">
+            <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" fill="currentColor"/>
+          </svg>
+          Generate PDF
+        </button>
+        <button id="copyResultsBtn" class="modal-btn secondary">
+          <svg viewBox="0 0 24 24" style="width:1.2em;height:1.2em;margin-right:0.5em;">
+            <path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"/>
+          </svg>
+          Copy Results
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="src/main.js"></script>
+  <script>
+  // Cierre del modal de Custom Summary
+  const summaryModal = document.getElementById('summaryModal');
+  const closeSummaryModalBtn = document.getElementById('closeSummaryModalBtn');
+  const closeSummaryModalFooterBtn = document.getElementById('closeSummaryModalFooterBtn');
+  if (closeSummaryModalBtn) {
+    closeSummaryModalBtn.onclick = () => summaryModal.classList.add('hidden');
+  }
+  if (closeSummaryModalFooterBtn) {
+    closeSummaryModalFooterBtn.onclick = () => summaryModal.classList.add('hidden');
+  }
+  </script>
+  </body>
+  </html>
