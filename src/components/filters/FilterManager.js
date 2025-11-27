@@ -2540,14 +2540,36 @@ function generateFilterSidebar(headers) {
   const headers = Object.keys(getOriginalData()[0] || {});
   const headerHash = getHeaderHash(headers);
   const filters = loadMyFilters();
+  
+  // Guardar todos los estados: valores, exclude y comparaciones
+  const filterExclude = { ...getModuleFilterExclude() };
+  const fieldComparisons = { ...getModuleFieldComparisons() };
+  
+  // Asegurar que se guardan correctamente (crear copias profundas)
+  const savedExclude = {};
+  Object.keys(filterExclude).forEach(key => {
+    savedExclude[key] = filterExclude[key];
+  });
+  
+  const savedComparisons = {};
+  Object.keys(fieldComparisons).forEach(key => {
+    savedComparisons[key] = { ...fieldComparisons[key] };
+  });
+  
   filters[name] = { 
     filterValues: { ...getModuleFilterValues() }, 
-    filterExclude: { ...getModuleFilterExclude() },
-    fieldComparisons: { ...getModuleFieldComparisons() },
+    filterExclude: savedExclude,
+    fieldComparisons: savedComparisons,
     headerHash, 
     headers, 
     linkedUrgencyCard: urgencyCard 
   };
+  
+  console.log('💾 Saving filter:', name);
+  console.log('📋 Filter values:', filters[name].filterValues);
+  console.log('🚫 Filter exclude:', filters[name].filterExclude);
+  console.log('🔄 Field comparisons:', filters[name].fieldComparisons);
+  
   localStorage.setItem('myFilters', JSON.stringify(filters));
   
   // Trigger auto-save
@@ -2632,8 +2654,9 @@ function generateFilterSidebar(headers) {
         setModuleActiveFilters(newActiveFilters);
         generateFilterSidebar(headers);
         
-        // Restaurar comparaciones en la UI después de regenerar el sidebar
+        // Restaurar estados visuales después de regenerar el sidebar
         setTimeout(() => {
+          // Restaurar comparaciones de campos
           if (filterObj.fieldComparisons) {
             Object.entries(filterObj.fieldComparisons).forEach(([column, comparison]) => {
               const filterDiv = document.querySelector(`[data-column="${column}"]`);
@@ -2656,7 +2679,103 @@ function generateFilterSidebar(headers) {
               }
             });
           }
-        }, 100);
+          
+          // Restaurar estados visuales de exclude y empty/no empty
+          if (filterObj.filterExclude) {
+            Object.entries(filterObj.filterExclude).forEach(([column, isExcluded]) => {
+              if (isExcluded) {
+                const filterDiv = document.querySelector(`[data-column="${column}"]`);
+                if (filterDiv) {
+                  // Restaurar botón de exclude
+                  const excludeBtn = filterDiv.querySelector('.exclude-toggle-btn');
+                  if (excludeBtn) {
+                    excludeBtn.classList.add('active');
+                    const checkIndicator = excludeBtn.querySelector('.check-indicator');
+                    if (checkIndicator) {
+                      checkIndicator.style.display = 'inline-block';
+                      checkIndicator.style.background = '#47B2E5';
+                      checkIndicator.style.borderColor = '#47B2E5';
+                    }
+                    excludeBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                    excludeBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                    excludeBtn.style.color = '#1a202c';
+                  }
+                  
+                  // Actualizar el input con el prefijo "Exclude: " si es un filtro categórico
+                  const input = filterDiv.querySelector('.filter-input');
+                  if (input) {
+                    const filterValues = getModuleFilterValues();
+                    const columnValue = filterValues[column];
+                    if (Array.isArray(columnValue)) {
+                      const selected = columnValue.filter(v => v !== '__EMPTY__' && v !== '__NO_EMPTY__');
+                      let summary = '';
+                      if (columnValue.includes('__EMPTY__') && columnValue.includes('__NO_EMPTY__')) {
+                        summary = '(Empty), (No Empty)';
+                      } else if (columnValue.includes('__EMPTY__')) {
+                        summary = '(Empty)';
+                      } else if (columnValue.includes('__NO_EMPTY__')) {
+                        summary = '(No Empty)';
+                      } else if (selected.length === 0) {
+                        summary = '';
+                      } else if (selected.length <= 2) {
+                        summary = selected.join(', ');
+                      } else {
+                        summary = `${selected.length} selected`;
+                      }
+                      input.value = summary ? `Exclude: ${summary}` : '';
+                    } else if (columnValue && !input.value.startsWith('Exclude: ')) {
+                      input.value = 'Exclude: ' + (input.value || columnValue);
+                    }
+                  }
+                }
+              }
+            });
+          }
+          
+          // Restaurar estados de Empty/No Empty
+          Object.entries(filterObj.filterValues).forEach(([key, value]) => {
+            if (Array.isArray(value)) {
+              const column = key;
+              const filterDiv = document.querySelector(`[data-column="${column}"]`);
+              if (filterDiv) {
+                const hasEmpty = value.includes('__EMPTY__');
+                const hasNoEmpty = value.includes('__NO_EMPTY__');
+                
+                if (hasEmpty) {
+                  const emptyBtn = filterDiv.querySelector('.empty-toggle-btn');
+                  if (emptyBtn && emptyBtn.textContent.includes('Empty')) {
+                    emptyBtn.classList.add('active');
+                    const checkIndicator = emptyBtn.querySelector('.check-indicator');
+                    if (checkIndicator) {
+                      checkIndicator.style.display = 'inline-block';
+                      checkIndicator.style.background = '#47B2E5';
+                      checkIndicator.style.borderColor = '#47B2E5';
+                    }
+                    emptyBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                    emptyBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                    emptyBtn.style.color = '#1a202c';
+                  }
+                }
+                
+                if (hasNoEmpty) {
+                  const noEmptyBtn = filterDiv.querySelector('.empty-toggle-btn');
+                  if (noEmptyBtn && noEmptyBtn.textContent.includes('No Empty')) {
+                    noEmptyBtn.classList.add('active');
+                    const checkIndicator = noEmptyBtn.querySelector('.check-indicator');
+                    if (checkIndicator) {
+                      checkIndicator.style.display = 'inline-block';
+                      checkIndicator.style.background = '#47B2E5';
+                      checkIndicator.style.borderColor = '#47B2E5';
+                    }
+                    noEmptyBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                    noEmptyBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                    noEmptyBtn.style.color = '#1a202c';
+                  }
+                }
+              }
+            }
+          });
+        }, 150);
         
         // Forzar que la pestaña y panel de My Filters estén activos
         const myFiltersTab = document.querySelector('.filter-tab[data-target="myfilters"]');
@@ -2988,11 +3107,17 @@ function generateFilterSidebar(headers) {
           const quickFilters = loadQuickFilters();
           const filterObj = quickFilters[name];
           if (filterObj) {
+            const headers = Object.keys(getOriginalData()[0] || {});
             setModuleFilterValues({ ...filterObj.filterValues });
-            // Restaurar estado de exclusión si existe
+            // Restaurar estado de exclusión si existe (aunque no debería haber exclude en quick filters)
             if (filterObj.filterExclude) {
               setModuleFilterExclude({ ...filterObj.filterExclude });
+            } else {
+              setModuleFilterExclude({});
             }
+            // Limpiar comparaciones de campos (quick filters no deberían tener comparaciones)
+            setModuleFieldComparisons({});
+            
             // Reconstruir activeFilters
             const newActiveFilters = {};
             for (const key of Object.keys(filterObj.filterValues)) {
@@ -3006,6 +3131,106 @@ function generateFilterSidebar(headers) {
               }
             }
             setModuleActiveFilters(newActiveFilters);
+            generateFilterSidebar(headers);
+            
+            // Restaurar estados visuales después de regenerar el sidebar
+            setTimeout(() => {
+              // Restaurar estados visuales de exclude y empty/no empty si existen
+              if (filterObj.filterExclude) {
+                Object.entries(filterObj.filterExclude).forEach(([column, isExcluded]) => {
+                  if (isExcluded) {
+                    const filterDiv = document.querySelector(`[data-column="${column}"]`);
+                    if (filterDiv) {
+                      const excludeBtn = filterDiv.querySelector('.exclude-toggle-btn');
+                      if (excludeBtn) {
+                        excludeBtn.classList.add('active');
+                        const checkIndicator = excludeBtn.querySelector('.check-indicator');
+                        if (checkIndicator) {
+                          checkIndicator.style.display = 'inline-block';
+                          checkIndicator.style.background = '#47B2E5';
+                          checkIndicator.style.borderColor = '#47B2E5';
+                        }
+                        excludeBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                        excludeBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                        excludeBtn.style.color = '#1a202c';
+                      }
+                      
+                      // Actualizar el input con el prefijo "Exclude: " si es un filtro categórico
+                      const input = filterDiv.querySelector('.filter-input');
+                      if (input) {
+                        const filterValues = getModuleFilterValues();
+                        const columnValue = filterValues[column];
+                        if (Array.isArray(columnValue)) {
+                          const selected = columnValue.filter(v => v !== '__EMPTY__' && v !== '__NO_EMPTY__');
+                          let summary = '';
+                          if (columnValue.includes('__EMPTY__') && columnValue.includes('__NO_EMPTY__')) {
+                            summary = '(Empty), (No Empty)';
+                          } else if (columnValue.includes('__EMPTY__')) {
+                            summary = '(Empty)';
+                          } else if (columnValue.includes('__NO_EMPTY__')) {
+                            summary = '(No Empty)';
+                          } else if (selected.length === 0) {
+                            summary = '';
+                          } else if (selected.length <= 2) {
+                            summary = selected.join(', ');
+                          } else {
+                            summary = `${selected.length} selected`;
+                          }
+                          input.value = summary ? `Exclude: ${summary}` : '';
+                        } else if (columnValue && !input.value.startsWith('Exclude: ')) {
+                          input.value = 'Exclude: ' + (input.value || columnValue);
+                        }
+                      }
+                    }
+                  }
+                });
+              }
+              
+              // Restaurar estados de Empty/No Empty
+              Object.entries(filterObj.filterValues).forEach(([key, value]) => {
+                if (Array.isArray(value)) {
+                  const column = key;
+                  const filterDiv = document.querySelector(`[data-column="${column}"]`);
+                  if (filterDiv) {
+                    const hasEmpty = value.includes('__EMPTY__');
+                    const hasNoEmpty = value.includes('__NO_EMPTY__');
+                    
+                    if (hasEmpty) {
+                      const emptyBtn = filterDiv.querySelector('.empty-toggle-btn');
+                      if (emptyBtn && emptyBtn.textContent.includes('Empty')) {
+                        emptyBtn.classList.add('active');
+                        const checkIndicator = emptyBtn.querySelector('.check-indicator');
+                        if (checkIndicator) {
+                          checkIndicator.style.display = 'inline-block';
+                          checkIndicator.style.background = '#47B2E5';
+                          checkIndicator.style.borderColor = '#47B2E5';
+                        }
+                        emptyBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                        emptyBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                        emptyBtn.style.color = '#1a202c';
+                      }
+                    }
+                    
+                    if (hasNoEmpty) {
+                      const noEmptyBtn = filterDiv.querySelector('.empty-toggle-btn');
+                      if (noEmptyBtn && noEmptyBtn.textContent.includes('No Empty')) {
+                        noEmptyBtn.classList.add('active');
+                        const checkIndicator = noEmptyBtn.querySelector('.check-indicator');
+                        if (checkIndicator) {
+                          checkIndicator.style.display = 'inline-block';
+                          checkIndicator.style.background = '#47B2E5';
+                          checkIndicator.style.borderColor = '#47B2E5';
+                        }
+                        noEmptyBtn.style.background = 'rgba(71, 178, 229, 0.3)';
+                        noEmptyBtn.style.borderColor = 'rgba(71, 178, 229, 0.5)';
+                        noEmptyBtn.style.color = '#1a202c';
+                      }
+                    }
+                  }
+                }
+              });
+            }, 150);
+            
             applyFilters();
             renderActiveFiltersSummaryChips();
             // Cierra el modal de filtros si está abierto
@@ -3786,12 +4011,16 @@ function saveQuickFilter(name, urgencyCard, container, containerTitle, hubType =
   const headers = Object.keys(getOriginalData()[0] || {});
   const filterValues = { ...getModuleFilterValues() };
   const activeFilters = { ...getModuleActiveFilters() };
-  const filterExclude = { ...getModuleFilterExclude() }; // Guardar estado de exclusión
+  
+  // Quick filters NO deben guardar exclude ni comparaciones
+  // Limpiar cualquier estado de exclude o comparación antes de guardar
+  const filterExclude = {}; // Siempre vacío para quick filters
   
   // Debug: Verificar que se están guardando todos los valores, incluyendo __NO_EMPTY__ y valores personalizados
   console.log('💾 Saving quick filter:', name);
   console.log('📋 Filter values:', filterValues);
   console.log('🔍 Active filters:', activeFilters);
+  console.log('⚠️ Exclude and comparisons cleared for quick filter');
   
   // Asegurar que se guardan arrays vacíos y valores especiales correctamente
   // No filtrar ningún valor, guardar todo tal cual está
