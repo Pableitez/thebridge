@@ -1,0 +1,612 @@
+/* DQ Hub Styles */
+#dqDashboardModal {
+    z-index: 1000;
+}
+
+/* Override modal overlay background - MUST BE TRANSPARENT */
+#dqDashboardModal.modal-overlay,
+div#dqDashboardModal.modal-overlay,
+#dqDashboardModal.modal-overlay[style],
+div#dqDashboardModal.modal-overlay[style] {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+#dqDashboardModal.modal-overlay .modal-panel,
+div#dqDashboardModal .modal-panel,
+div#dqDashboardModal.modal-overlay div.modal-panel {
+    background: #1a2332 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    max-width: 1400px !important;
+    width: 95vw !important;
+    max-height: 85vh !important;
+    height: auto !important;
+    margin: 7.5vh auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* DQ Hub specific styles */
+#dqDashboardModal *,
+#dqDashboardModal .modal-panel *,
+#dqDashboardModal .modal-content *,
+#dqDashboardModal .dashboard-body *,
+#dqDashboardModal .dashboard-section *,
+#dqDashboardModal .quickfilter-container *,
+#dqDashboardModal .quickfilters-grid *,
+#dqDashboardModal .dashboard-quickfilters * {
+    box-sizing: border-box;
+}
+
+/* DQ Hub chips (similar to ops-hub-chips but for DQ) */
+#dqDashboardModal .dq-hub-chip,
+#dqDashboardModal .dashboard-body .dq-hub-chip,
+#dqDashboardModal .dq-hub-chips .dq-hub-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #E8F4F8;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* DQ Hub chip states */
+#dqDashboardModal .dq-hub-chip[data-quality="Critical"],
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Critical"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Critical"] {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+    color: #ff6b6b;
+}
+
+#dqDashboardModal .dq-hub-chip[data-quality="Critical"]:hover,
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Critical"]:hover,
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Critical"]:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+#dqDashboardModal .dq-hub-chip[data-quality="Warning"],
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Warning"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Warning"] {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #ffd93d;
+}
+
+#dqDashboardModal .dq-hub-chip[data-quality="Warning"]:hover,
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Warning"]:hover,
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Warning"]:hover {
+    background: rgba(255, 193, 7, 0.3);
+    border-color: rgba(255, 193, 7, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+#dqDashboardModal .dq-hub-chip[data-quality="Good"],
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Good"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Good"] {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #51cf66;
+}
+
+#dqDashboardModal .dq-hub-chip[data-quality="Good"]:hover,
+#dqDashboardModal .dashboard-body .dq-hub-chip[data-quality="Good"]:hover,
+#dqDashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Good"]:hover {
+    background: rgba(40, 167, 69, 0.3);
+    border-color: rgba(40, 167, 69, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Active states */
+#dqDashboardModal .dq-hub-chip.active[data-quality="Critical"],
+#dqDashboardModal .dashboard-body .dq-hub-chip.active[data-quality="Critical"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip.active[data-quality="Critical"] {
+    background: rgba(220, 53, 69, 0.4);
+    border-color: rgba(220, 53, 69, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+}
+
+#dqDashboardModal .dq-hub-chip.active[data-quality="Warning"],
+#dqDashboardModal .dashboard-body .dq-hub-chip.active[data-quality="Warning"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip.active[data-quality="Warning"] {
+    background: rgba(255, 193, 7, 0.4);
+    border-color: rgba(255, 193, 7, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+}
+
+#dqDashboardModal .dq-hub-chip.active[data-quality="Good"],
+#dqDashboardModal .dashboard-body .dq-hub-chip.active[data-quality="Good"],
+#dqDashboardModal .dq-hub-chips .dq-hub-chip.active[data-quality="Good"] {
+    background: rgba(40, 167, 69, 0.4);
+    border-color: rgba(40, 167, 69, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.3);
+}
+
+/* DQ Hub quick filter buttons */
+#dqDashboardModal .quickfilter-btn {
+    background: rgba(71, 178, 229, 0.1);
+    border: 1px solid rgba(71, 178, 229, 0.3);
+    color: #47B2E5;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+}
+
+#dqDashboardModal .quickfilter-btn:hover {
+    background: rgba(71, 178, 229, 0.2);
+    border-color: rgba(71, 178, 229, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.2);
+}
+
+#dqDashboardModal .quickfilter-btn.active {
+    background: rgba(71, 178, 229, 0.3);
+    border-color: rgba(71, 178, 229, 0.7);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.3);
+}
+
+/* DQ Hub quick filter containers */
+#dqDashboardModal .quickfilter-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#dqDashboardModal .quickfilter-container:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#dqDashboardModal .quickfilter-container h4 {
+    margin: 0 0 0.5rem 0;
+    color: #E8F4F8;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* DQ Hub KPI cards */
+#dqDashboardModal .kpi-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+
+#dqDashboardModal .kpi-card:hover {
+    /* Hover effect disabled */
+}
+
+#dqDashboardModal .kpi-card.active {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 3px solid rgba(71, 178, 229, 0.85) !important;
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+#dqDashboardModal .kpi-card *,
+#dqDashboardModal .kpi-card .kpi-title,
+#dqDashboardModal .kpi-card .kpi-value {
+    color: #E8F4F8;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+#dqDashboardModal .kpi-card .kpi-value {
+    font-weight: 600;
+    color: #47B2E5;
+}
+
+/* DQ Hub dashboard sections */
+#dqDashboardModal .dashboard-section {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+#dqDashboardModal .dashboard-section-title {
+    color: #E8F4F8;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* DQ Hub modal header */
+#dqDashboardModal .modal-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#dqDashboardModal .dashboard-title {
+    color: #E8F4F8;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* DQ Hub modal content */
+#dqDashboardModal .modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* DQ Hub modal footer */
+#dqDashboardModal .dashboard-footer {
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#dqDashboardModal .dashboard-action-btn {
+    background: rgba(71, 178, 229, 0.2) !important;
+    border: 1px solid rgba(71, 178, 229, 0.4) !important;
+    color: #47B2E5 !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    letter-spacing: 0.03em !important;
+    box-shadow: none !important;
+}
+
+#dqDashboardModal .dashboard-action-btn:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    border-color: rgba(71, 178, 229, 0.6) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(71, 178, 229, 0.2);
+}
+
+/* DQ Hub summary modal specific styles - CONSISTENT WITH OPS HUB */
+#dqSummaryModal {
+    z-index: 10000 !important;
+}
+
+/* Override modal overlay background */
+#dqSummaryModal.modal-overlay {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: 10000 !important;
+}
+
+/* Override global modal panel styles with higher specificity */
+#dqSummaryModal.modal-overlay .modal-panel,
+#dqSummaryModal .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    max-width: 1600px !important;
+    width: 90vw !important;
+    min-width: 900px !important;
+    max-height: 90vh !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+#dqSummaryModal .modal-header {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #000000 !important;
+    min-height: 48px !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 1.5rem 2rem !important;
+}
+
+#dqSummaryModal .modal-header .header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex: 1 !important;
+}
+
+#dqSummaryModal .modal-header .modal-logo {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+}
+
+#dqSummaryModal .modal-header .panel-header-title {
+    color: #15364A !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1.4em !important;
+    margin: 0 !important;
+    letter-spacing: 0.03em !important;
+    text-shadow: none !important;
+    text-transform: none !important;
+}
+
+#dqSummaryModal .close-btn,
+#dqDashboardModal .close-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+    border-radius: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    box-shadow: none !important;
+    color: #15364A !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+#dqSummaryModal .close-btn:hover,
+#dqSummaryModal .close-btn:focus,
+#dqSummaryModal .close-btn:active,
+#dqDashboardModal .close-btn:hover,
+#dqDashboardModal .close-btn:focus,
+#dqDashboardModal .close-btn:active {
+    background: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #15364A !important;
+    border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+    border-radius: 10px !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#dqSummaryModal .modal-content {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    color: #000000 !important;
+}
+
+#dqSummaryModal .modal-footer {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* DQ Hub Quick Filters Grid */
+#dqDashboardModal .quickfilters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+/* DQ Hub Quick Filter Cards Container */
+#dqDashboardModal .quickfilter-cards-container {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#dqDashboardModal .quickfilter-cards-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#dqDashboardModal .quickfilter-cards-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#dqDashboardModal .quickfilter-cards-container::-webkit-scrollbar-thumb {
+    background: rgba(71, 178, 229, 0.3);
+    border-radius: 3px;
+}
+
+#dqDashboardModal .quickfilter-cards-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 178, 229, 0.5);
+}
+
+/* DQ Hub urgency cards */
+#dqDashboardModal .urgency-cards-container .dq-hub-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #E8F4F8;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    backdrop-filter: blur(20px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+}
+
+/* Urgency card states based on data-urgency attribute */
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"] {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+    color: #ff6b6b;
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"]:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"].active {
+    background: rgba(239, 68, 68, 0.4) !important;
+    background-color: rgba(239, 68, 68, 0.4) !important;
+    border: 2px solid rgba(239, 68, 68, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.7), 0 0 20px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"] {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #ffd93d;
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"]:hover {
+    background: rgba(255, 193, 7, 0.3);
+    border-color: rgba(255, 193, 7, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"].active {
+    background: rgba(251, 191, 36, 0.4) !important;
+    background-color: rgba(251, 191, 36, 0.4) !important;
+    border: 2px solid rgba(251, 191, 36, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.7), 0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"] {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #51cf66;
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"]:hover {
+    background: rgba(40, 167, 69, 0.3);
+    border-color: rgba(40, 167, 69, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+}
+
+#dqDashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"].active {
+    background: rgba(34, 197, 94, 0.4) !important;
+    background-color: rgba(34, 197, 94, 0.4) !important;
+    border: 2px solid rgba(34, 197, 94, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.7), 0 0 20px rgba(34, 197, 94, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #dqDashboardModal .modal-panel {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        margin: 1vh auto !important;
+    }
+    
+    #dqDashboardModal .dq-hub-chips {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    #dqDashboardModal .quickfilters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* DQ Summary Modal Responsive Styles */
+@media (max-width: 900px) {
+    #dqSummaryModal .modal-panel {
+        min-width: 0 !important;
+        width: 99vw !important;
+        max-width: 99vw !important;
+        border-radius: 10px !important;
+    }
+    
+    #dqSummaryModal .modal-content {
+        padding: 1rem 0.5rem 1.5rem 0.5rem !important;
+    }
+    
+    .summary-config-section {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+    }
+    
+    .cards-selection-section, .summary-preview-section {
+        min-width: 0 !important;
+        max-width: 100vw !important;
+        padding: 0.7rem 0.2rem !important;
+    }
+    
+    .summary-preview {
+        min-width: 0 !important;
+        padding: 1rem 0.5rem !important;
+        max-height: 350px !important;
+    }
+} 

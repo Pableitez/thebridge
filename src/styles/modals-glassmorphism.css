@@ -1,0 +1,2160 @@
+/* Global Glassmorphism Modal Styles */
+/* Applied to all modals in the application for consistent modern look */
+
+/* ULTIMATE OVERRIDE FOR ALL MODAL OVERLAYS */
+html body .modal-overlay,
+html body div.modal-overlay {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 1rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ULTIMATE OVERRIDE FOR ALL MODAL PANELS */
+html body .modal-overlay .modal-panel,
+html body div.modal-overlay .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow: hidden !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  opacity: 1 !important;
+  /* Ensure border-radius is applied correctly */
+  -webkit-border-radius: 20px !important;
+  -moz-border-radius: 20px !important;
+}
+
+/* RESPONSIVE WIDTHS FOR DIFFERENT MODAL TYPES */
+/* Small modals (confirmations, simple forms) */
+html body .modal-overlay .modal-panel {
+  max-width: 600px !important;
+  width: 90% !important;
+}
+
+/* Medium modals (forms, settings) */
+html body #columnManagerModal .modal-panel,
+html body #reportOptionsModal .modal-panel,
+html body #userSetUpModal .modal-panel,
+html body #backupModal .modal-panel,
+html body #dataVersionModal .modal-panel,
+html body #removeDuplicatesModal .modal-panel,
+html body #snapshotManagerModal .modal-panel,
+html body #manageSummariesModal .modal-panel,
+html body #manageDashboardConfigModal .modal-panel,
+html body #legalNoticeModal .modal-panel,
+html body #showDuplicatesModal .modal-panel {
+  max-width: 900px !important;
+  width: 92% !important;
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  opacity: 1 !important;
+}
+
+/* Large modals (data tables, comparisons) */
+html body #csvComparisonModal .modal-panel,
+html body #comparisonResultsModal .modal-panel,
+html body #summaryModal .modal-panel,
+html body #copySummaryModal .modal-panel {
+  max-width: 1400px !important;
+  width: 95% !important;
+}
+
+/* Special modal (version selection) */
+html body #selectVersionModal .modal-panel {
+  max-width: 700px !important;
+  width: 90% !important;
+}
+
+/* Extra large modals (dashboard-like) */
+html body #dashboardModal .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ULTIMATE OVERRIDE FOR ALL MODAL HEADERS */
+html body .modal-overlay .modal-header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  border-top-left-radius: 20px !important;
+  border-top-right-radius: 20px !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  padding: 1.5rem 2rem !important;
+  color: #000000 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  backdrop-filter: none !important;
+  /* Ensure border-radius is applied correctly */
+  -webkit-border-radius: 20px 20px 0 0 !important;
+  -moz-border-radius: 20px 20px 0 0 !important;
+  overflow: hidden !important;
+}
+
+/* ULTIMATE OVERRIDE FOR ALL MODAL CONTENT */
+html body .modal-overlay .modal-content {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 2rem !important;
+  color: #000000 !important;
+  flex: 1 !important;
+  overflow-y: auto !important;
+}
+
+/* ULTIMATE OVERRIDE FOR ALL MODAL FOOTERS */
+html body .modal-overlay .modal-footer {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 0 0 20px 20px !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  padding: 1.5rem 2rem !important;
+  color: #000000 !important;
+  backdrop-filter: none !important;
+  /* Ensure border-radius is applied correctly */
+  -webkit-border-radius: 0 0 20px 20px !important;
+  -moz-border-radius: 0 0 20px 20px !important;
+  overflow: hidden !important;
+}
+
+/* ULTIMATE OVERRIDE FOR CLOSE BUTTONS */
+html body .modal-overlay .close-btn {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-family: inherit !important;
+  box-shadow: none !important;
+}
+
+html body .modal-overlay .close-btn:hover,
+html body .modal-overlay .close-btn:focus,
+html body .modal-overlay .close-btn:active {
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+  border-radius: 50% !important;
+  outline: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* ULTIMATE OVERRIDE FOR MODAL TITLES - Matching Data Comparison style */
+html body .modal-overlay .modal-header h3,
+html body .modal-overlay .modal-header .panel-header-title {
+  color: #15364A !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.5rem !important;
+  margin: 0 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  text-transform: none !important;
+}
+
+/* REMOVE ALL WHITE BACKGROUNDS FROM MODAL ELEMENTS */
+html body .modal-overlay *:not(.btn):not(.modal-btn):not(button):not(input):not(select):not(textarea) {
+  background-color: transparent !important;
+}
+
+/* ENSURE MODAL PANEL AND ITS DIRECT CHILDREN ARE OPAQUE */
+html body .modal-overlay .modal-panel,
+html body .modal-overlay .modal-panel * {
+  opacity: 1 !important;
+}
+
+/* SPECIFIC RULE FOR SHOW DUPLICATES MODAL - BLUE BACKGROUND */
+html body #showDuplicatesModal .modal-panel,
+html body #showDuplicatesModal.modal-overlay .modal-panel {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  opacity: 1 !important;
+}
+
+/* SPECIFIC RULE FOR SAVE DUPLICATE QUICK FILTER MODAL - OPAQUE */
+html body #saveDuplicateQuickFilterModal .modal-panel,
+html body #saveDuplicateQuickFilterModal.modal-overlay .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  opacity: 1 !important;
+}
+
+/* BUTTONS STYLING */
+html body .modal-overlay .btn,
+html body .modal-overlay .modal-btn,
+html body .modal-overlay button {
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  color: #000000 !important;
+  border-radius: 10px !important;
+  padding: 0.75rem 1.5rem !important;
+  transition: all 0.3s ease !important;
+}
+
+html body .modal-overlay .btn:hover,
+html body .modal-overlay .modal-btn:hover,
+html body .modal-overlay button:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+}
+
+html body .modal-overlay .btn.primary,
+html body .modal-overlay .modal-btn.primary {
+  background: #1976d2 !important;
+  border-color: #1976d2 !important;
+}
+
+html body .modal-overlay .btn.primary:hover,
+html body .modal-overlay .modal-btn.primary:hover {
+  background: #1565c0 !important;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.3) !important;
+}
+
+/* INPUT FIELDS STYLING */
+html body .modal-overlay input,
+html body .modal-overlay select,
+html body .modal-overlay textarea {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 10px !important;
+  padding: 0.75rem 1rem !important;
+  color: #000000 !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  backdrop-filter: none !important;
+}
+
+html body .modal-overlay input::placeholder,
+html body .modal-overlay textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+html body .modal-overlay input:focus,
+html body .modal-overlay select:focus,
+html body .modal-overlay textarea:focus {
+  outline: none !important;
+  border-color: #47B2E5 !important;
+  box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.2) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* SCROLLBAR STYLING */
+html body .modal-overlay .modal-content::-webkit-scrollbar,
+html body .modal-overlay .panel-content::-webkit-scrollbar,
+html body .modal-overlay .column-list::-webkit-scrollbar,
+html body .modal-overlay .saved-views-list::-webkit-scrollbar,
+html body .modal-overlay #dataVersionsList::-webkit-scrollbar {
+  width: 8px !important;
+  background: transparent !important;
+}
+
+html body .modal-overlay .modal-content::-webkit-scrollbar-track,
+html body .modal-overlay .panel-content::-webkit-scrollbar-track,
+html body .modal-overlay .column-list::-webkit-scrollbar-track,
+html body .modal-overlay .saved-views-list::-webkit-scrollbar-track,
+html body .modal-overlay #dataVersionsList::-webkit-scrollbar-track {
+  background: #E3F2FD !important;
+  border-radius: 10px !important;
+}
+
+html body .modal-overlay .modal-content::-webkit-scrollbar-thumb,
+html body .modal-overlay .panel-content::-webkit-scrollbar-thumb,
+html body .modal-overlay .column-list::-webkit-scrollbar-thumb,
+html body .modal-overlay .saved-views-list::-webkit-scrollbar-thumb,
+html body .modal-overlay #dataVersionsList::-webkit-scrollbar-thumb {
+  background: #47B2E5 !important;
+  border-radius: 10px !important;
+  min-height: 40px !important;
+}
+
+html body .modal-overlay .modal-content::-webkit-scrollbar-thumb:hover,
+html body .modal-overlay .panel-content::-webkit-scrollbar-thumb:hover,
+html body .modal-overlay .column-list::-webkit-scrollbar-thumb:hover,
+html body .modal-overlay .saved-views-list::-webkit-scrollbar-thumb:hover,
+html body .modal-overlay #dataVersionsList::-webkit-scrollbar-thumb:hover {
+  background: #3b9bd1 !important;
+}
+
+/* SPECIAL HANDLING FOR FILTER MODAL (different structure) */
+html body #filterModal, html body #filterModal {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+  color: #000000 !important;
+  max-width: 98vw !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  backdrop-filter: none !important;
+}
+
+html body #filterModal .filter-header,
+#filterModal .filter-header,
+div#filterModal .filter-header {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+html body #filterModal .filter-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  z-index: -1;
+  border-radius: 0 !important;
+  pointer-events: none;
+}
+
+html body #filterModal .filter-actions {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-top: 1.5px solid #ffffff55 !important;
+  box-shadow: 0 -1px 0 #ffffff55 !important;
+  border-radius: 0 0 20px 20px !important;
+  padding: 1.5rem 2rem !important;
+  display: flex !important;
+  gap: 1rem !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (min-width: 1920px) {
+  html body .modal-overlay .modal-panel {
+    max-width: 700px !important;
+  }
+  
+  html body #columnManagerModal .modal-panel,
+  html body #reportOptionsModal .modal-panel,
+  html body #userSetUpModal .modal-panel,
+  html body #backupModal .modal-panel,
+  html body #dataVersionModal .modal-panel {
+    max-width: 1000px !important;
+  }
+  
+  html body #csvComparisonModal .modal-panel,
+  html body #comparisonResultsModal .modal-panel,
+  html body #summaryModal .modal-panel {
+    max-width: 1600px !important;
+  }
+  
+  html body #dashboardModal .modal-panel {
+    max-width: 1800px !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  html body .modal-overlay .modal-panel {
+    max-width: 800px !important;
+  }
+  
+  html body #columnManagerModal .modal-panel,
+  html body #reportOptionsModal .modal-panel,
+  html body #userSetUpModal .modal-panel,
+  html body #backupModal .modal-panel,
+  html body #dataVersionModal .modal-panel {
+    max-width: 1200px !important;
+  }
+  
+  html body #csvComparisonModal .modal-panel,
+  html body #comparisonResultsModal .modal-panel,
+  html body #summaryModal .modal-panel {
+    max-width: 1800px !important;
+  }
+  
+  html body #dashboardModal .modal-panel {
+    max-width: 2200px !important;
+  }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  html body .modal-overlay .modal-panel {
+    width: 95% !important;
+    margin: 0.5rem auto !important;
+    border-radius: 16px !important;
+  }
+  
+  html body .modal-overlay .modal-header {
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 16px 16px 0 0 !important;
+  }
+  
+  html body .modal-overlay .modal-content {
+    padding: 1.5rem !important;
+  }
+  
+  html body .modal-overlay .modal-footer {
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 0 0 16px 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body .modal-overlay .modal-panel {
+    width: 98% !important;
+    margin: 0.25rem auto !important;
+    border-radius: 12px !important;
+  }
+  
+  html body .modal-overlay .modal-header {
+    padding: 1rem 1.2rem !important;
+    border-radius: 12px 12px 0 0 !important;
+  }
+  
+  html body .modal-overlay .modal-content {
+    padding: 1rem !important;
+  }
+  
+  html body .modal-overlay .modal-footer {
+    padding: 1rem 1.2rem !important;
+    border-radius: 0 0 12px 12px !important;
+  }
+}
+
+/* ============================================
+   FILTER MODAL SPECIFIC STYLES
+   ============================================ */
+
+/* Filter Modal Overlay */
+#filterModalOverlay, html body #filterModalOverlay {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Filter Modal Main Container */
+html body #filterModal {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+    width: 95% !important;
+    max-width: 1600px !important;
+    height: 90vh !important;
+    max-height: 90vh !important;
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    backdrop-filter: none !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    z-index: 1001 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease !important;
+}
+
+html body #filterModal.hidden {
+    display: none !important;
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) scale(0.9) !important;
+    visibility: hidden !important;
+}
+
+/* Filter Modal Header */
+html body #filterModal .modal-header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 10 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+    padding: 1.5rem 2rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-radius: 20px 20px 0 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+}
+
+html body #filterModal .modal-header h2 {
+    color: #000000 !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
+    font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+html body #filterModal .close-btn,
+html body #filterModal #closeFilterModalBtn,
+html body #filterModal .modal-header .close-btn,
+html body #filterModal .modal-header #closeFilterModalBtn,
+html body div#filterModal .close-btn,
+html body div#filterModal #closeFilterModalBtn,
+html body div#filterModal .modal-header .close-btn,
+html body div#filterModal .modal-header #closeFilterModalBtn {
+  color: #15364A !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+.quickfilter-close-btn, .ops-filter-popup-close {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  font-size: 2.2em !important;
+  font-weight: 400 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  transition: transform 0.12s cubic-bezier(0.4,0,0.2,1), color 0.12s !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+}
+
+/* Modal filter tag remove - Diseño moderno */
+.modal-filter-tag-remove {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  margin-left: 0.25rem !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  color: #FFFFFF !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  font-size: 0 !important;
+}
+
+.modal-filter-tag-remove svg {
+  width: 10px !important;
+  height: 10px !important;
+  stroke: currentColor !important;
+  transition: transform 0.2s ease !important;
+}
+
+.modal-filter-tag-remove:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  transform: scale(1.1) rotate(90deg) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.modal-filter-tag-remove:active {
+  transform: scale(0.95) rotate(90deg) !important;
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+html body #filterModal .close-btn:hover,
+html body #filterModal .close-btn:focus,
+html body #filterModal .close-btn:active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  color: #15364A !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+.quickfilter-close-btn:hover, .modal-filter-tag-remove:hover, .ops-filter-popup-close:hover,
+.quickfilter-close-btn:active, .modal-filter-tag-remove:active, .ops-filter-popup-close:active,
+.quickfilter-close-btn:focus, .modal-filter-tag-remove:focus, .ops-filter-popup-close:focus {
+  background: none !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Filter Tabs */
+html body #filterModal .filter-tabs {
+    display: flex !important;
+    padding: 0 2rem !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin: 0 !important;
+}
+
+html body #filterModal .filter-tab {
+    padding: 1rem 1.5rem !important;
+    border: none !important;
+    background: none !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    cursor: pointer !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+    border-radius: 0 !important;
+    font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+html body #filterModal .filter-tab:hover {
+    color: #000000 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html body #filterModal .filter-tab.active {
+    color: #47B2E5 !important;
+    font-weight: 600 !important;
+}
+
+html body #filterModal .filter-tab.active::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 2px !important;
+    background: #47B2E5 !important;
+}
+
+/* Filter Panels */
+html body #filterModal .filter-panels,
+html body #filterModal .filter-panel,
+html body #filterModal .filter-content,
+html body #filterModal .filter-block,
+html body #filterModal .my-filters-section,
+html body #filterModal .active-filters-summary {
+  background: #1a2332 !important;
+  backdrop-filter: none !important;
+}
+
+html body #filterModal .filter-panel,
+html body #filterModal .filter-panel.active {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    min-height: auto !important;
+}
+
+/* Active Filters Summary */
+html body #filterModal .active-filters-summary {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    margin: 1rem 2rem !important;
+    color: #000000 !important;
+}
+
+/* Hide active filters summary when empty */
+html body #filterModal .active-filters-summary:empty,
+html body #filterModal .active-filters-summary:not(:has(*)) {
+    display: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+}
+
+/* Also hide if it only contains whitespace */
+html body #filterModal .active-filters-summary[style*="display: none"] {
+    display: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 0 !important;
+    min-height: 0 !important;
+}
+
+/* Filter Blocks */
+html body #filterModal .filter-block {
+    background: rgba(255, 255, 255, 0.4) !important;
+    background-color: rgba(255, 255, 255, 0.4) !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    margin-bottom: 1rem !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Ensure all text in filter blocks is white */
+html body #filterModal .filter-block * {
+    color: #000000 !important;
+}
+
+html body #filterModal .filter-block label,
+html body #filterModal .filter-block span,
+html body #filterModal .filter-block p,
+html body #filterModal .filter-block div {
+    color: #000000 !important;
+}
+
+html body #filterModal .filter-block:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html body #filterModal .filter-header {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+html body #filterModal .filter-title {
+    color: #000000 !important;
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    margin: 0 !important;
+}
+
+html body #filterModal .filter-content {
+    padding: 1.5rem !important;
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    overflow-y: visible !important;
+    max-height: none !important;
+}
+
+/* Filter Inputs */
+html body #filterModal .filter-input,
+html body #filterModal .filter-select,
+html body #filterModal .filter-search-input {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+}
+
+html body #filterModal .filter-input:focus,
+html body #filterModal .filter-select:focus,
+html body #filterModal .filter-search-input:focus {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border-color: #47B2E5 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+html body #filterModal .filter-input::placeholder,
+html body #filterModal .filter-search-input::placeholder {
+    color: rgba(0, 0, 0, 0.5) !important;
+    opacity: 1 !important;
+}
+
+/* Filter Tags */
+html body #filterModal .filter-tag {
+    background: rgba(71, 178, 229, 0.2) !important;
+    border: 1px solid rgba(71, 178, 229, 0.3) !important;
+    color: #47B2E5 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 20px !important;
+    font-size: 0.85rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    margin: 0.25rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: none !important;
+}
+
+html body #filterModal .filter-tag:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: none !important;
+}
+
+html body #filterModal .filter-tag button,
+html body #filterModal .filter-tag-remove {
+    background: none !important;
+    border: none !important;
+    color: #47B2E5 !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    font-size: 1rem !important;
+    width: 16px !important;
+    height: 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    transition: all 0.2s ease !important;
+}
+
+html body #filterModal .filter-tag button:hover,
+html body #filterModal .filter-tag-remove:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.2) !important;
+}
+
+/* Filter Actions */
+html body #filterModal .filter-actions {
+    padding: 1.5rem 2rem !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 1rem !important;
+    border-radius: 0 0 20px 20px !important;
+    margin: 0 !important;
+}
+
+html body #filterModal .btn,
+html body #filterModal .btn-primary,
+html body #filterModal .btn-secondary {
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 10px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    min-height: auto !important;
+    font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+html body #filterModal .btn-primary {
+    background: #47B2E5 !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+}
+
+html body #filterModal .btn-primary:hover {
+    background: #3b9bd1 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    color: #000000 !important;
+}
+
+html body #filterModal .btn-secondary {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #000000 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+html body #filterModal .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.9) !important;
+    transform: translateY(-2px) !important;
+    color: #000000 !important;
+}
+
+/* Custom Scrollbar for Filter Modal */
+html body #filterModal .filter-panels::-webkit-scrollbar {
+    width: 8px !important;
+    background: transparent !important;
+}
+
+html body #filterModal .filter-panels::-webkit-scrollbar-track {
+    background: #E3F2FD !important;
+    border-radius: 10px !important;
+}
+
+html body #filterModal .filter-panels::-webkit-scrollbar-thumb {
+    background: #47B2E5 !important;
+    border-radius: 10px !important;
+    min-height: 40px !important;
+}
+
+html body #filterModal .filter-panels::-webkit-scrollbar-thumb:hover {
+    background: #3b9bd1 !important;
+}
+
+/* My Filters Section */
+html body #filterModal .my-filters-section {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+html body #filterModal .my-filters-title {
+    color: #000000 !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 1rem !important;
+}
+
+html body #filterModal .my-filter-item {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin-bottom: 0.5rem !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    transition: all 0.3s ease !important;
+}
+
+html body #filterModal .my-filter-item:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+html body #filterModal .my-filter-name {
+    color: #000000 !important;
+    font-weight: 500 !important;
+}
+
+html body #filterModal .my-filter-apply-btn,
+html body #filterModal .my-filter-delete-btn {
+    padding: 0.5rem 1rem !important;
+    border-radius: 6px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+}
+
+html body #filterModal .my-filter-apply-btn {
+    background: rgba(71, 178, 229, 0.2) !important;
+    color: #47B2E5 !important;
+    margin-right: 0.5rem !important;
+}
+
+html body #filterModal .my-filter-apply-btn:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+html body #filterModal .my-filter-delete-btn {
+  background: rgba(71, 178, 229, 0.2) !important;
+  color: #47B2E5 !important;
+}
+
+html body #filterModal .my-filter-delete-btn:hover {
+  background: rgba(71, 178, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Excel Dropdown Styles */
+html body #filterModal .excel-dropdown-wrapper {
+    position: relative !important;
+}
+
+html body #filterModal .excel-dropdown {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 1rem !important;
+    margin-top: 0.5rem !important;
+}
+
+html body #filterModal .excel-dropdown-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #000000 !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    text-align: left !important;
+    transition: all 0.3s ease !important;
+}
+
+html body #filterModal .excel-dropdown-btn:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #47B2E5 !important;
+}
+
+html body #filterModal .excel-checkbox-list {
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    margin-top: 0.5rem !important;
+}
+
+html body #filterModal .excel-checkbox-list label {
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
+    color: #000000 !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+html body #filterModal .excel-checkbox-list label:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html body #filterModal .excel-checkbox-list input[type="checkbox"] {
+    margin-right: 0.75rem !important;
+    accent-color: #47B2E5 !important;
+}
+
+/* Fix text colors for all filter elements */
+html body #filterModal .excel-checkbox-list span,
+html body #filterModal .excel-checkbox-list label span,
+html body #filterModal .excel-checkbox-list * {
+    color: #000000 !important;
+    text-shadow: none !important;
+}
+
+/* Ensure dropdown text is visible */
+html body #filterModal .excel-dropdown * {
+    color: #000000 !important;
+}
+
+/* Fix option text in selects */
+html body #filterModal select option {
+    background: #1a2332 !important;
+    color: #000000 !important;
+}
+
+/* Fix all labels and text elements */
+html body #filterModal label,
+html body #filterModal span:not(.filter-tag),
+html body #filterModal div:not(.filter-tag),
+html body #filterModal p {
+    color: #000000 !important;
+}
+
+/* Date Filter Styles */
+html body #filterModal .date-filter-group {
+    display: flex !important;
+  flex-direction: column !important;
+    gap: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  padding: 1.25rem !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  backdrop-filter: none !important;
+}
+
+html body #filterModal .date-filter-input {
+    flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+html body #filterModal .date-filter-label {
+    display: block !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  margin-bottom: 0.25rem !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+}
+
+html body #filterModal .date-start,
+html body #filterModal .date-end {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 10px !important;
+    color: #000000 !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+html body #filterModal .date-start:focus,
+html body #filterModal .date-end:focus {
+  background: rgba(255, 255, 255, 0.12) !important;
+    border-color: #47B2E5 !important;
+    outline: none !important;
+  box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+html body #filterModal .date-start:hover,
+html body #filterModal .date-end:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+html body #filterModal .filter-input-group {
+    display: flex !important;
+  gap: 0.75rem !important;
+    margin-top: 1rem !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  flex-wrap: wrap !important;
+}
+
+html body #filterModal .filter-btn {
+  padding: 0.6rem 1.2rem !important;
+  border-radius: 8px !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+    cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    border: none !important;
+  min-width: 80px !important;
+  text-align: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+html body #filterModal .filter-btn.secondary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: none !important;
+}
+
+html body #filterModal .filter-btn.secondary:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+html body #filterModal .filter-btn.secondary.active {
+  background: linear-gradient(135deg, rgba(71, 178, 229, 0.3) 0%, rgba(71, 178, 229, 0.2) 100%) !important;
+    color: #47B2E5 !important;
+  border-color: rgba(71, 178, 229, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Estilos específicos para botones de fecha */
+html body #filterModal .filter-btn.empty-toggle {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.1) 100%) !important;
+  color: #ff6b6b !important;
+  border-color: rgba(239, 68, 68, 0.3) !important;
+}
+
+html body #filterModal .filter-btn.empty-toggle:hover {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.3) 0%, rgba(239, 68, 68, 0.2) 100%) !important;
+  border-color: rgba(239, 68, 68, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;
+}
+
+html body #filterModal .filter-btn.empty-toggle.active {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.3) 100%) !important;
+  color: #ff5252 !important;
+  border-color: rgba(239, 68, 68, 0.6) !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4) !important;
+}
+
+html body #filterModal .filter-btn.today-toggle {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%) !important;
+  color: #10B981 !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+}
+
+html body #filterModal .filter-btn.today-toggle:hover {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0.2) 100%) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3) !important;
+}
+
+html body #filterModal .filter-btn.today-toggle.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0.3) 100%) !important;
+  color: #059669 !important;
+  border-color: rgba(16, 185, 129, 0.6) !important;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Additional text color fixes for specific elements */
+html body #filterModal .filter-reset-btn {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  width: auto !important;
+  height: auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-width: none !important;
+  max-height: none !important;
+  padding: 0 !important;
+  color: #000000 !important;
+  cursor: pointer !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  opacity: 0.7 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: none !important;
+}
+
+html body #filterModal .filter-reset-btn:hover {
+  background: none !important;
+  box-shadow: none !important;
+  color: #000000 !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Fix any remaining black text */
+html body #filterModal *:not(.filter-tag):not(.btn):not(button) {
+    color: #000000 !important;
+}
+
+/* Override any inherited dark colors */
+html body #filterModal .filter-content *,
+html body #filterModal .filter-panel * {
+    color: #000000 !important;
+}
+
+/* Make sure filter suggestions are visible */
+html body #filterModal .filter-suggestions {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+}
+
+html body #filterModal .filter-suggestions li {
+    color: #000000 !important;
+    padding: 0.5rem !important;
+    cursor: pointer !important;
+}
+
+html body #filterModal .filter-suggestions li:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ULTRA SPECIFIC OVERRIDE - NO BLACK TEXT ANYWHERE */
+html body #filterModal,
+html body #filterModal *,
+html body #filterModal * *,
+html body #filterModal * * *,
+html body #filterModal * * * *,
+html body #filterModal * * * * * {
+    color: #000000 !important;
+}
+
+/* Override specific dark colors that might be set inline */
+html body #filterModal *[style*="color: #333"],
+html body #filterModal *[style*="color:#333"],
+html body #filterModal *[style*="color: #000"],
+html body #filterModal *[style*="color:#000"],
+html body #filterModal *[style*="color: black"],
+html body #filterModal *[style*="color:black"] {
+    color: #000000 !important;
+}
+
+/* Exceptions for specific colored elements */
+html body #filterModal .filter-tag,
+html body #filterModal .filter-tag * {
+    color: #47B2E5 !important;
+}
+
+html body #filterModal .btn-primary,
+html body #filterModal .btn-primary * {
+    color: #000000 !important;
+}
+
+html body #filterModal .btn-secondary,
+html body #filterModal .btn-secondary * {
+    color: #000000 !important;
+}
+
+html body #filterModal .filter-tab.active {
+    color: #47B2E5 !important;
+}
+
+/* Force black text on ALL elements */
+html body #filterModal input[type="text"],
+html body #filterModal input[type="date"],
+html body #filterModal input[type="search"],
+html body #filterModal input[type="number"],
+html body #filterModal textarea,
+html body #filterModal select {
+    color: #000000 !important;
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Specific styles for filter elements */
+html body #filterModal .modal-filter-input {
+    color: #000000 !important;
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1rem !important;
+}
+
+html body #filterModal .modal-filter-dropdown {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+}
+
+html body #filterModal .modal-filter-dropdown-btn {
+    background: rgba(71, 178, 229, 0.2) !important;
+    color: #47B2E5 !important;
+    border: 1px solid rgba(71, 178, 229, 0.3) !important;
+    border-radius: 6px !important;
+    padding: 0.5rem 1rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+html body #filterModal .modal-filter-dropdown-btn:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+    border-radius: 6px !important;
+}
+
+html body #filterModal .empty-toggle-btn {
+    border-radius: 6px !important;
+}
+
+html body #filterModal .modal-filter-checkbox-list {
+    background: transparent !important;
+    color: #000000 !important;
+}
+
+html body #filterModal .modal-filter-checkbox-list label {
+    color: #000000 !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0.5rem !important;
+    cursor: pointer !important;
+    border-radius: 4px !important;
+    transition: all 0.2s ease !important;
+}
+
+html body #filterModal .modal-filter-checkbox-list label:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+html body #filterModal .modal-filter-checkbox-list input[type="checkbox"] {
+    margin-right: 0.75rem !important;
+    accent-color: #47B2E5 !important;
+}
+
+/* Filter grid items */
+html body #filterModal .filter-grid {
+    display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1rem !important;
+    margin-top: 1rem !important;
+}
+
+html body #filterModal .filter-item {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    transition: all 0.3s ease !important;
+    color: #000000 !important;
+}
+
+html body #filterModal .filter-item:hover {
+    background: rgba(71, 178, 229, 0.1) !important;
+    border-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+html body #filterModal .filter-item.active {
+    border-color: #47B2E5 !important;
+    background: rgba(71, 178, 229, 0.1) !important;
+}
+
+/* Date input controls */
+html body #filterModal .date-input-group {
+    margin-bottom: 1rem !important;
+}
+
+html body #filterModal .date-input-group label {
+    display: block !important;
+    color: #000000 !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+html body #filterModal .date-input-controls {
+    display: flex !important;
+    gap: 0.5rem !important;
+    margin-top: 0.5rem !important;
+    flex-wrap: wrap !important;
+}
+
+html body #filterModal .date-today-btn,
+html body #filterModal .date-offset-btn {
+    background: rgba(71, 178, 229, 0.2) !important;
+    color: #47B2E5 !important;
+    border: 1px solid rgba(71, 178, 229, 0.3) !important;
+    border-radius: 6px !important;
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+html body #filterModal .date-today-btn:hover,
+html body #filterModal .date-offset-btn:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    transform: translateY(-1px) !important;
+}
+
+html body #filterModal .days-offset-input {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 6px !important;
+    color: #000000 !important;
+    padding: 0.4rem 0.6rem !important;
+    width: 60px !important;
+    font-size: 0.8rem !important;
+}
+
+/* Column selector */
+html body #filterModal .column-selector {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.3) !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+    padding: 0.75rem 1rem !important;
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+}
+
+html body #filterModal .column-selector:focus {
+    background: #E3F2FD !important;
+    background-color: #E3F2FD !important;
+    border-color: #47B2E5 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+html body #filterModal .column-selector::placeholder {
+    color: rgba(0, 0, 0, 0.5) !important;
+    opacity: 1 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    html body #filterModal {
+        width: 98% !important;
+        max-width: 1400px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    html body #filterModal {
+        width: 95% !important;
+        height: 95vh !important;
+        max-height: 95vh !important;
+        border-radius: 15px !important;
+    }
+    
+    html body #filterModal .modal-header {
+        padding: 1rem 1.5rem !important;
+    }
+    
+    html body #filterModal .filter-panels {
+        padding: 1rem !important;
+    }
+    
+    html body #filterModal .filter-actions {
+        padding: 1rem 1.5rem !important;
+        flex-direction: column !important;
+    }
+    
+    html body #filterModal .btn {
+        width: 100% !important;
+    }
+  
+  html body #filterModal .date-filter-group {
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+  }
+  
+  html body #filterModal .filter-input-group {
+    gap: 0.5rem !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  
+  html body #filterModal .filter-btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 0.85rem !important;
+    min-width: auto !important;
+    width: 100% !important;
+  }
+  
+  html body #filterModal .date-start,
+  html body #filterModal .date-end {
+    padding: 0.8rem 1rem !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Grid responsivo para tablets */
+  html body #filterModal .filter-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body #filterModal {
+    width: 98% !important;
+    max-width: 1400px !important;
+  }
+  
+  html body #filterModal .date-filter-group {
+    padding: 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  html body #filterModal .filter-btn {
+    padding: 0.7rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  html body #filterModal .date-filter-label {
+    font-size: 0.85rem !important;
+  }
+  
+  html body #filterModal .date-start,
+  html body #filterModal .date-end {
+    padding: 0.7rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  /* Grid responsivo para móviles */
+  html body #filterModal .filter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    }
+}
+
+/* Modal Glassmorphism Styles - Professional Headers with Logo */
+
+/* Modal Overlay - Much Lighter */
+.modal-overlay {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  overflow-y: auto !important;
+  padding: 1rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Modal Panel */
+.modal-overlay .modal-panel {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow: hidden !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Professional Modal Header with Logo */
+.modal-overlay .modal-header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem 2rem !important;
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  position: relative !important;
+}
+
+/* Header Left Side - Logo and Title */
+.modal-overlay .modal-header .header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex: 1 !important;
+}
+
+/* Logo in Header */
+.modal-overlay .modal-header .modal-logo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  border: none !important;
+  background: none !important;
+  flex-shrink: 0 !important;
+}
+
+/* Professional Title - Matching The Bridge toolbar title style */
+.modal-overlay .modal-header .panel-header-title {
+  color: #15364A !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.4em !important;
+  margin: 0 !important;
+  letter-spacing: 0.03em !important;
+  text-shadow: none !important;
+  text-transform: none !important;
+}
+
+/* Close Button */
+.modal-overlay .modal-header .close-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  box-shadow: none !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+}
+
+.modal-overlay .modal-header .close-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Modal Content */
+.modal-overlay .modal-content {
+  background: transparent !important;
+  padding: 2rem !important;
+  color: #000000 !important;
+  flex: 1 !important;
+  overflow-y: auto !important;
+}
+
+/* Modal Footer */
+.modal-overlay .modal-footer {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 0 0 20px 20px !important;
+  padding: 1.5rem 2rem !important;
+  display: flex !important;
+  gap: 1rem !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+}
+
+/* Modal Buttons */
+.modal-overlay .modal-btn {
+  background: #47B2E5 !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 10px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+}
+
+.modal-overlay .modal-btn:hover {
+  background: #3b9bd1 !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(71, 178, 229, 0.4) !important;
+  color: #000000 !important;
+}
+
+.modal-overlay .modal-btn.secondary {
+  background: rgba(255,255,255,0.7) !important;
+  color: #000000 !important;
+  border: 1.5px solid rgba(0,0,0,0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.7em 1.5em !important;
+  font-size: 1em !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  transition: all 0.18s;
+}
+
+.modal-overlay .modal-btn.secondary:hover {
+  background: rgba(255,255,255,0.9) !important;
+  border-color: #47B2E5 !important;
+  color: #000000 !important;
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: none !important;
+}
+
+/* Ensure all text is white */
+.modal-overlay,
+.modal-overlay *,
+.modal-overlay .modal-panel,
+.modal-overlay .modal-panel * {
+  color: #000000 !important;
+}
+
+/* Scrollbar styling */
+.modal-overlay .modal-content::-webkit-scrollbar {
+  width: 8px !important;
+}
+
+.modal-overlay .modal-content::-webkit-scrollbar-track {
+  background: #E3F2FD !important;
+  border-radius: 10px !important;
+}
+
+.modal-overlay .modal-content::-webkit-scrollbar-thumb {
+  background: #47B2E5 !important;
+  border-radius: 10px !important;
+}
+
+.modal-overlay .modal-content::-webkit-scrollbar-thumb:hover {
+  background: #3b9bd1 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .modal-overlay .modal-header {
+    padding: 1.2rem 1.5rem !important;
+  }
+  
+  .modal-overlay .modal-header .modal-logo {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .modal-overlay .modal-header .panel-header-title {
+    font-size: 1.3rem !important;
+  }
+  
+  .modal-overlay .modal-content {
+    padding: 1.5rem !important;
+  }
+  
+  .modal-overlay .modal-footer {
+    padding: 1.2rem 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-overlay .modal-header {
+    padding: 1rem 1.2rem !important;
+  }
+  
+  .modal-overlay .modal-header .modal-logo {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .modal-overlay .modal-header .panel-header-title {
+    font-size: 1.2rem !important;
+  }
+  
+  .modal-overlay .modal-content {
+    padding: 1.2rem !important;
+  }
+  
+  .modal-overlay .modal-footer {
+    padding: 1rem 1.2rem !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+  }
+  
+  .modal-overlay .modal-btn {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+html body #filterModal .filter-header,
+html body #filterModal .filter-actions {
+  background: #1a2332 !important;
+  backdrop-filter: none !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* ULTIMATE DASHBOARD MODAL OVERRIDE - FINAL OVERRIDE */
+html body #dashboardModal {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body #dashboardModal .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+html body #dashboardModal .modal-content {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+html body #dashboardModal .dashboard-section {
+  background: rgba(255, 255, 255, 0.05) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: none !important;
+}
+
+html body .modal-overlay .filter-select {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+}
+
+html body .modal-overlay .filter-select:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: #47B2E5 !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.2) !important;
+}
+
+html body .modal-overlay select.filter-select {
+    background: rgba(30, 41, 59, 0.92) !important;
+    border: 1.5px solid #47B2E5 !important;
+    border-radius: 8px !important;
+    color: #000000 !important;
+    padding: 0.4rem 1rem !important;
+    font-size: 1rem !important;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+    box-shadow: 0 2px 8px rgba(71,178,229,0.08) !important;
+    width: 100% !important;
+    appearance: none !important;
+    transition: all 0.2s !important;
+    line-height: 1.4 !important;
+    min-height: 2.2em !important;
+}
+
+html body .modal-overlay select.filter-select:focus {
+    border-color: #47B2E5 !important;
+    box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.18) !important;
+    outline: none !important;
+    background: rgba(30, 41, 59, 1) !important;
+}
+
+html body .modal-overlay select.filter-select option {
+    background: #1e293b !important;
+    color: #000000 !important;
+}
+
+#saveQuickFilterModal.modal-overlay {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#saveQuickFilterModal .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  border-radius: 18px !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18) !important;
+  color: #000000 !important;
+}
+
+html body #filterModal .modal-btn.primary,
+html body #filterModal .btn-primary,
+html body .modal-btn.primary,
+html body .btn-primary {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+  background-image: none !important;
+}
+
+html body .save-my-filter-btn,
+html body .filter-save-btn,
+html body .btn,
+html body .btn-primary,
+html body .modal-btn.primary {
+  background: linear-gradient(135deg, #47B2E5 0%, #3b9bd1 100%) !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+
+html body .btn-secondary,
+html body .modal-btn.secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+html body .btn-secondary:hover,
+html body .modal-btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* REGLAS FINALES ULTRA-ESPECÍFICAS PARA BOTONES DE FILTROS - Borde gris, sin cambio en hover */
+html body #filterModal #applyFiltersBtn,
+html body #filterModal #resetFiltersBtn {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 4px rgba(71, 178, 229, 0.3) !important;
+  outline: none !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 0.5rem 1.2rem !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+html body #filterModal #applyFiltersBtn:hover,
+html body #filterModal #resetFiltersBtn:hover {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 6px rgba(71, 178, 229, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+html body #filterModal #saveMyFilterBtn,
+html body #filterModal #saveQuickFilterBtn,
+html body #filterModal #saveMyFilterBtn,
+html body #filterModal .save-my-filter-btn,
+html body #filterModal .filter-save-btn {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  color: #FFFFFF !important;
+  border: 1px solid #47B2E5 !important;
+  box-shadow: 0 2px 4px rgba(71, 178, 229, 0.3) !important;
+  outline: none !important;
+  font-weight: 600 !important;
+}
+
+html body #filterModal #saveMyFilterBtn:hover,
+html body #filterModal #saveQuickFilterBtn:hover,
+html body #filterModal .save-my-filter-btn:hover,
+html body #filterModal .filter-save-btn:hover {
+  background: #3A9BD4 !important;
+  background-color: #3A9BD4 !important;
+  border-color: #3A9BD4 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(71, 178, 229, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+/* FORZAR LOGO CUADRADO EN MODALES */
+html body .modal-overlay .modal-header .modal-logo {
+  border-radius: 16px !important;
+}
+
+/* FORZAR FONDO OSCURO IGUAL QUE OTROS MODALES PRINCIPALES PARA DUPLICADOS */
+html body #showDuplicatesModal .modal-panel,
+html body #showDuplicatesModal.modal-overlay .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3) !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+
+/* Ops Summary Preferences Modal Styles */
+#opsPreferencesModal .modal-panel, #opsSavePreferencesModal .modal-panel { 
+  background: #1a2332 !important; 
+  box-shadow: 0 25px 80px rgba(0,0,0,0.95) !important; 
+  border: 2px solid rgba(255,255,255,0.2) !important; 
+  opacity: 1 !important; 
+}
+#opsPreferencesModal .preference-item, #opsSavePreferencesModal .preference-item { 
+  background: rgba(255,255,255,0.2) !important; 
+  border: 2px solid rgba(255,255,255,0.3) !important; 
+  opacity: 1 !important; 
+}
+#opsPreferencesModal .preference-item:hover, #opsSavePreferencesModal .preference-item:hover { 
+  background: rgba(255,255,255,0.3) !important; 
+  border-color: rgba(255,255,255,0.4) !important; 
+}
+/* Force opacity on all Ops modal elements */
+#opsPreferencesModal *, #opsSavePreferencesModal * { opacity: 1 !important; }
+#opsPreferencesModal .modal-content, #opsSavePreferencesModal .modal-content { background: transparent !important; }
+#opsPreferencesModal .modal-header, #opsSavePreferencesModal .modal-header { background: rgba(255,255,255,0.05) !important; border-bottom: 1px solid rgba(255,255,255,0.2) !important; }
+#opsPreferencesModal .modal-footer, #opsSavePreferencesModal .modal-footer { background: rgba(255,255,255,0.05) !important; border-top: 1px solid rgba(255,255,255,0.2) !important; }
+
+/* ULTIMATE LOGO OVERRIDE - MUST BE LAST */
+html body .modal-overlay .modal-header .modal-logo,
+html body .modal-overlay .modal-header img[src*="LOGOTAB_rounded.png"],
+html body #opsSummaryModal .modal-header .modal-logo,
+html body #dqSummaryModal .modal-header .modal-logo,
+html body #comparisonResultsModal .modal-header .modal-logo,
+html body #opsDashboardModal .modal-header .modal-logo,
+html body #dqDashboardModal .modal-header .modal-logo,
+html body .modal-logo,
+html body img[src*="LOGOTAB_rounded.png"] {
+  border-radius: 8px !important;
+  border-radius: 8px !important;
+  border-radius: 8px !important;
+}
+
+/* Force rounded corners on all modal logos */
+.modal-overlay .modal-header .modal-logo,
+.modal-overlay .modal-header img[src*="LOGOTAB_rounded.png"],
+#opsPreferencesModal img[src*="LOGOTAB_rounded.png"],
+#opsSavePreferencesModal img[src*="LOGOTAB_rounded.png"],
+#dqPreferencesModal img[src*="LOGOTAB_rounded.png"],
+#dqSavePreferencesModal img[src*="LOGOTAB_rounded.png"],
+#opsSummaryModal .modal-header .modal-logo,
+#dqSummaryModal .modal-header .modal-logo,
+#comparisonResultsModal .modal-header .modal-logo,
+#opsDashboardModal .modal-header .modal-logo,
+#dqDashboardModal .modal-header .modal-logo,
+#opsSummaryModal .modal-header img[src*="LOGOTAB_rounded.png"],
+#dqSummaryModal .modal-header img[src*="LOGOTAB_rounded.png"],
+#comparisonResultsModal .modal-header img[src*="LOGOTAB_rounded.png"],
+#opsDashboardModal .modal-header img[src*="LOGOTAB_rounded.png"],
+#dqDashboardModal .modal-header img[src*="LOGOTAB_rounded.png"] {
+  border-radius: 8px !important;
+}
+
+/* ULTIMATE OVERRIDE - Force rounded corners on ALL logos */
+img[src*="LOGOTAB_rounded.png"],
+.modal-logo,
+.modal-header img,
+.modal-header .modal-logo {
+    border-radius: 8px !important;
+  }
+

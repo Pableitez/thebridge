@@ -1,0 +1,384 @@
+/* ========================================
+   SIDEBAR CON SCROLL - ESTRUCTURA COMPLETA
+   ======================================== */
+
+/* Estructura principal de la sidebar */
+.sidebar {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  width: 280px !important;
+  overflow: hidden !important;
+  position: relative !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+/* Contenido principal con 3 secciones */
+.sidebar-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100vh !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important; /* Evitar scroll en el contenedor principal */
+  max-height: 100vh !important; /* Limitar altura máxima */
+}
+
+/* ========================================
+   HEADER FIXO - Perfil de usuario
+   ======================================== */
+.sidebar-header {
+  display: none !important; /* Ocultar header para que los botones empiecen a la altura de la tabla */
+  flex-shrink: 0 !important;
+  padding: 1rem 0.8rem 0.5rem 0.8rem !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+  position: sticky !important;
+  top: 0 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+}
+
+/* FORZAR VISUALIZACIÓN DEL PERFIL DE USUARIO */
+#teamInfo {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  margin-bottom: 0.3rem !important;
+  padding: 0.6rem !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ========================================
+   CONTENIDO SCROLLABLE - Botones de navegación
+   ======================================== */
+.sidebar-scrollable {
+  flex: 1 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 25px 0.8rem 0.5rem 0.8rem !important; /* padding-top: 25px para alinear con la altura de la toolbar/tabla */
+  scrollbar-width: thin !important;
+  scrollbar-color: #47B2E5 #E3F2FD !important;
+  min-height: 0 !important;
+  max-height: calc(100vh - 260px) !important; /* Reducir altura para dejar espacio al footer fijo */
+  position: relative !important;
+  margin-bottom: 60px !important; /* Espacio para el footer fijo */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important; /* Sin gap - el espaciado se controla con márgenes inline */
+}
+
+/* Scrollbar personalizado para WebKit */
+.sidebar-scrollable::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-track {
+  background: #E3F2FD !important;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-thumb {
+  background: #47B2E5 !important;
+  border-radius: 3px !important;
+  transition: background 0.2s ease !important;
+}
+
+.sidebar-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #3b9bd1 !important;
+}
+
+/* ========================================
+   FOOTER FIXO - Copyright
+   ======================================== */
+.sidebar-footer {
+  flex-shrink: 0 !important;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  z-index: 10 !important;
+  position: fixed !important; /* Cambiar de sticky a fixed */
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 280px !important; /* Ancho fijo igual al sidebar */
+  box-sizing: border-box !important;
+  min-height: 50px !important; /* Altura mínima reducida */
+  max-height: 60px !important; /* Altura máxima reducida */
+  overflow: hidden !important; /* Evitar scroll interno */
+}
+
+/* FORZAR VISUALIZACIÓN DEL COPYRIGHT */
+#legalNoticeTrigger {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  font-size: 0.92em !important;
+  color: #000000 !important;
+  opacity: 0.95 !important;
+  user-select: none !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 11 !important;
+  margin: 0 !important;
+  padding: 0.5rem 0 !important;
+  white-space: nowrap !important; /* Evitar que el texto se rompa */
+  overflow: hidden !important; /* Ocultar texto que se desborde */
+  text-overflow: ellipsis !important; /* Mostrar ... si el texto es muy largo */
+}
+
+/* ========================================
+   SIDEBAR COLAPSADA
+   ======================================== */
+.sidebar.collapsed {
+  width: 0px !important;
+  min-width: 0px !important;
+  overflow: hidden !important;
+}
+
+.sidebar.collapsed .sidebar-content {
+  display: none !important;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+  
+  .sidebar-scrollable {
+    max-height: calc(100vh - 180px) !important;
+  }
+}
+
+/* ========================================
+   ANIMACIONES Y TRANSICIONES
+   ======================================== */
+.sidebar-header,
+.sidebar-footer {
+  transition: all 0.3s ease !important;
+}
+
+.sidebar-scrollable {
+  transition: padding 0.3s ease !important;
+}
+
+/* ========================================
+   ESTADOS ESPECIALES
+   ======================================== */
+.sidebar.collapsed .sidebar-header,
+.sidebar.collapsed .sidebar-footer {
+  padding: 0.3rem 0.4rem !important;
+}
+
+.sidebar.collapsed .sidebar-scrollable {
+  padding: 0.2rem 0.4rem !important;
+}
+
+/* ========================================
+   MEJORAS DE ACCESIBILIDAD
+   ======================================== */
+.sidebar-scrollable:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.3) !important;
+  outline-offset: -2px !important;
+}
+
+/* ========================================
+   COMPATIBILIDAD CON NAVEGADORES
+   ======================================== */
+@supports not (scrollbar-width: thin) {
+  .sidebar-scrollable {
+    scrollbar-width: auto !important;
+  }
+}
+
+/* Firefox específico */
+@-moz-document url-prefix() {
+  .sidebar-scrollable {
+    scrollbar-width: thin !important;
+    scrollbar-color: #47B2E5 #E3F2FD !important;
+  }
+}
+
+/* ========================================
+   FORZAR FOOTER FIXO - OVERRIDE ABSOLUTO
+   ======================================== */
+
+/* Override absoluto para el footer */
+.sidebar-footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 280px !important;
+  height: 60px !important;
+  max-height: 60px !important;
+  min-height: 50px !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  z-index: 9999 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  padding: 0.5rem 0.8rem 0.5rem 0.8rem !important;
+  flex-shrink: 0 !important;
+}
+
+/* Override absoluto para el copyright */
+#legalNoticeTrigger {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  text-align: center !important;
+  font-size: 0.92em !important;
+  color: #000000 !important;
+  opacity: 0.95 !important;
+  user-select: none !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  position: relative !important;
+  z-index: 10000 !important;
+  margin: 0 !important;
+  padding: 0.5rem 0 !important;
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-overflow: ellipsis !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Cuando la sidebar está colapsada */
+.sidebar.collapsed .sidebar-footer {
+  display: none !important;
+  left: -280px !important;
+  width: 0 !important;
+}
+
+/* Asegurar que el contenido scrollable no se superponga */
+.sidebar-scrollable {
+  margin-bottom: 80px !important;
+  max-height: calc(100vh - 280px) !important;
+  padding-bottom: 0 !important;
+}
+
+/* Override para cualquier conflicto de layout.css */
+.sidebar-footer[style*="position: sticky"] {
+  position: fixed !important;
+}
+
+.sidebar-footer[style*="position: relative"] {
+  position: fixed !important;
+}
+
+/* Asegurar que el footer esté siempre visible */
+.sidebar:not(.collapsed) .sidebar-footer {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Responsive para el footer fijo */
+@media (max-width: 768px) {
+  .sidebar-footer {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+  
+  .sidebar.collapsed .sidebar-footer {
+    left: -100% !important;
+  }
+}
+
+/* ========================================
+   FORZAR VISIBILIDAD DEL BOTÓN USER SET UP
+   ======================================== */
+
+/* Override absoluto para el botón User Set Up */
+#userSetUpBtn {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Asegurar que el botón esté siempre visible independientemente del estado de login */
+#userSetUpBtn[style*="display: none"] {
+  display: flex !important;
+}
+
+#userSetUpBtn[style*="visibility: hidden"] {
+  visibility: visible !important;
+}
+
+#userSetUpBtn[style*="opacity: 0"] {
+  opacity: 1 !important;
+} 
+ 
+/* ========================================
+   INDICADOR DE ÚLTIMO CSV EN SIDEBAR
+   ======================================== */
+
+/* Estilos para el indicador de último CSV en la sidebar */
+#sidebarLastCsvInfo {
+  transition: all 0.3s ease !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+}
+
+#sidebarLastCsvInfo:hover {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(16, 185, 129, 0.5) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.2) !important;
+}
+
+#sidebarLastCsvInfo:active {
+  transform: translateY(0) !important;
+  background: rgba(16, 185, 129, 0.3) !important;
+}
+
+/* Animación de entrada */
+#sidebarLastCsvInfo[style*="display: block"] {
+  animation: slideInCsvInfo 0.3s ease-out !important;
+}
+
+@keyframes slideInCsvInfo {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive para el indicador */
+@media (max-width: 768px) {
+  #sidebarLastCsvInfo {
+    font-size: 0.75rem !important;
+    padding: 0.15rem 0.3rem !important;
+  }
+  
+  #sidebarLastCsvText {
+    font-size: 0.7rem !important;
+  }
+} 
+ 
+ 

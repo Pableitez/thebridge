@@ -1,0 +1,964 @@
+/* Barra de paginación ultra compacta */
+.pagination {
+  padding: 0 0.2rem;
+  height: 32px;
+  min-height: 32px;
+  gap: 0.1rem !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  flex-shrink: 1 !important;
+}
+
+.pagination button, .pagination .page-btn {
+  min-width: 26px !important;
+  max-width: 32px !important;
+  height: 28px !important;
+  font-size: 0.85rem !important;
+  padding: 0 4px !important;
+  border-radius: 4px !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Tabla más compacta y sin márgenes */
+.table-container {
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  border: none !important;
+}
+
+.data-table th, .data-table td {
+  padding: 0.18rem 0.3rem;
+  font-size: 0.95rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Controles inferiores ultra compactos */
+.table-controls, .rows-per-page-control {
+  padding: 0 0.2rem;
+  margin-bottom: 0;
+  font-size: 0.95rem;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+#rowsPerPageSelect {
+  margin-left: 0;
+  margin-right: 12px;
+  height: 36px;
+  padding: 0 var(--spacing-md);
+  background: #E3F2FD;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 6px !important;
+  color: #000000;
+  font-size: 0.875rem;
+  min-width: 80px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+#rowsPerPageSelect:hover {
+  background: #BBDEFB;
+  border-color: rgba(0,0,0,0.3);
+}
+
+#rowsPerPageSelect:focus {
+  outline: none;
+  background: #BBDEFB;
+  border-color: #47B2E5;
+  /* box-shadow removed */
+}
+
+#rowsPerPageSelect option {
+  background: #E3F2FD;
+  color: #000000;
+  padding: var(--spacing-sm);
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: #E3F2FD !important;
+  border-radius: 0 0 12px 12px;
+  /* box-shadow removed */
+  padding: 0.5rem 1.2rem;
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+  color: #000000;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  flex-wrap: nowrap !important;
+  min-height: 48px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+.toolbar-left, .toolbar-center, .toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #000000;
+  flex-wrap: nowrap !important;
+  flex-shrink: 0 !important;
+}
+.toolbar-left { 
+  flex: 0 1 auto !important; 
+  min-width: 0 !important;
+  overflow: visible !important;
+  max-width: 100% !important;
+}
+.toolbar-center { 
+  flex: 0 0 auto !important; 
+  justify-content: center; 
+  min-width: 0 !important;
+  display: none !important; /* Ocultar toolbar-center si está vacío */
+}
+.toolbar-right { 
+  flex: 0 0 auto !important; 
+  justify-content: flex-end !important; 
+  align-items: center !important;
+  margin-left: auto !important;
+  min-width: fit-content !important;
+}
+.toolbar-left label, .toolbar-left select, .toolbar-left option {
+  color: #000000;
+}
+.rows-per-page-control label, .rows-per-page-control {
+  color: #000000;
+  flex-shrink: 0 !important;
+  min-width: fit-content !important;
+  white-space: nowrap !important;
+}
+
+.action-tabs {
+  display: flex !important;
+  gap: 0.4rem !important;
+  background: rgba(255,255,255,0.7) !important;
+  border-radius: 8px !important;
+  padding: 0.15rem 0.4rem !important;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+}
+
+.tab-btn {
+  padding: 0.35em 0.7em !important;
+  font-size: 0.9em !important;
+  min-width: fit-content !important;
+}
+
+.tab-btn span {
+  white-space: nowrap !important;
+}
+
+/* Responsive pagination - ocultar algunos botones en pantallas pequeñas */
+@media (max-width: 1200px) {
+  .pagination-btn:nth-last-child(n+8) {
+    display: none !important;
+  }
+  
+  .pagination-btn:first-child,
+  .pagination-btn:nth-child(2),
+  .pagination-btn.active,
+  .pagination-btn:nth-last-child(2),
+  .pagination-btn:last-child {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .table-toolbar {
+    flex-wrap: wrap !important;
+    gap: 0.75rem !important;
+    padding: 0.5rem !important;
+  }
+  
+  .toolbar-left {
+    flex: 1 1 100% !important;
+    order: 1 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .toolbar-right {
+    flex: 1 1 100% !important;
+    order: 2 !important;
+    justify-content: center !important;
+    margin-left: 0 !important;
+  }
+  
+  .action-tabs {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+  }
+  
+  .pagination-btn:nth-last-child(n+6) {
+    display: none !important;
+  }
+  
+  .pagination-btn:first-child,
+  .pagination-btn:nth-child(2),
+  .pagination-btn.active,
+  .pagination-btn:nth-last-child(2),
+  .pagination-btn:last-child {
+    display: flex !important;
+  }
+}
+#recordCount {
+  color: #000000;
+  font-weight: 400;
+  margin-left: 1.2em;
+  letter-spacing: 0.01em;
+}
+.reset-filters-btn,
+#resetAllFiltersBtn.tab-btn {
+  background: none !important;
+  border: none !important;
+  color: #000000 !important;
+  padding: 0.35em 0.9em !important;
+  border-radius: 6px !important;
+  font-size: 0.98em !important;
+  font-weight: 600 !important;
+  margin-right: 0 !important;
+  cursor: pointer !important;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4em !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  box-shadow: none !important;
+}
+#resetAllFiltersBtn.tab-btn span,
+#resetAllFiltersBtn.tab-btn * {
+  font-weight: 600 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+.reset-filters-btn:hover, 
+.reset-filters-btn:focus,
+#resetAllFiltersBtn.tab-btn:hover,
+#resetAllFiltersBtn.tab-btn:focus {
+  background: none !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+}
+/* .action-tabs styles moved above to responsive section */
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  background: none;
+  border: none;
+  color: #000000;
+  font-weight: 600;
+  font-size: 0.98em;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  padding: 0.35em 0.9em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.tab-btn svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.1em;
+  fill: #000000;
+}
+.tab-btn:hover, .tab-btn:focus {
+  background: #47B2E5;
+  color: #000000;
+  box-shadow: none;
+}
+.tab-btn.active {
+  background: #47B2E5;
+  color: #000000;
+  box-shadow: none;
+}
+#copySummaryBtnToolbar {
+  display: none !important;
+  visibility: hidden !important;
+}
+@media (max-width: 900px) {
+  .table-toolbar { flex-direction: column; gap: 0.5rem; padding: 0.5rem; }
+  .toolbar-left, .toolbar-center, .toolbar-right { flex: 1 1 100%; justify-content: stretch; }
+  .action-tabs { flex-wrap: wrap; justify-content: center; }
+  .tab-btn { flex: 1 1 120px; min-width: 90px; }
+}
+#tableContainer {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  border: none !important;
+}
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  background: linear-gradient(180deg, #f0f8ff 0%, #80d8ff 100%);
+}
+.main-content, .container, .app-main, .content {
+  margin-bottom: 10px !important;
+  padding-bottom: 0 !important;
+} 
+
+/* Table Notification */
+.table-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  width: auto;
+  min-width: 320px;
+  max-width: 90vw;
+}
+
+.table-notification.hidden {
+  display: none;
+  opacity: 0;
+}
+
+.table-notification.success {
+  background: #10B981;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  /* box-shadow removed */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.table-notification.error {
+  background: #EF4444;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  /* box-shadow removed */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.table-notification.warning {
+  background: #F59E0B;
+  color: #222;
+  text-shadow: 0 1px 2px #fff8, 0 0 1px #fff8;
+  padding: 12px 20px;
+  border-radius: 8px;
+  /* box-shadow removed */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.table-notification.info {
+  background: #3B82F6;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  /* box-shadow removed */
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* Excel Filter Styles */
+.excel-filter-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.excel-filter-icon.excel-filter-active {
+  background: transparent !important;
+  color: #10B981 !important;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+  position: relative;
+}
+.excel-filter-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+th .excel-filter-icon.excel-filter-active,
+.data-table th .excel-filter-icon.excel-filter-active {
+  background: transparent !important;
+  color: #10B981 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+th .excel-filter-icon.excel-filter-active svg,
+.data-table th .excel-filter-icon.excel-filter-active svg {
+  width: 18px !important;
+  height: 18px !important;
+  display: block !important;
+}
+
+.excel-filter-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: transparent !important;
+  color: #10B981;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.reset-filters-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0.3em 0.7em;
+  border-radius: 6px;
+  font-size: 1em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  opacity: 0.6;
+}
+
+.reset-filters-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Estado activo cuando hay filtros */
+.reset-filters-btn.has-active-filters {
+  background: #10B981;
+  border: 1px solid #10B981;
+  color: #fff;
+  opacity: 1;
+}
+
+.reset-filters-btn.has-active-filters:hover {
+  background: #059669;
+  border-color: #059669;
+  color: #fff;
+} 
+
+.active-filters-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.filter-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: rgba(71, 178, 229, 0.2);
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.filter-input-active {
+  border-color: #47B2E5 !important;
+  /* box-shadow removed */
+}
+
+.hide-column-btn, .show-column-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  padding: 0.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.9rem;
+}
+
+.hide-column-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.show-column-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.column-title-text {
+  position: relative;
+  display: inline-block;
+}
+
+.hide-column-x-btn {
+  position: absolute;
+  top: 50%;
+  right: 4px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 50%;
+  color: #10B981;
+  padding: 2px;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  min-height: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 15;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+}
+
+.hide-column-x-btn svg {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+}
+
+.data-table th:hover .hide-column-x-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.hide-column-x-btn:hover {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: #10B981 !important;
+  color: #059669 !important;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 3px 8px rgba(16, 185, 129, 0.3) !important;
+}
+
+.hide-column-x-btn:active {
+  transform: translateY(-50%) scale(0.95);
+  background: rgba(16, 185, 129, 0.25) !important;
+}
+
+th .hide-column-x-btn,
+th .hide-column-x-btn:focus,
+th .hide-column-x-btn:active {
+  position: absolute !important;
+  top: 50% !important;
+  right: 4px !important;
+  transform: translateY(-50%) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(16, 185, 129, 0.4) !important;
+  border-radius: 50% !important;
+  color: #10B981 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15) !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  padding: 2px !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  z-index: 15 !important;
+  pointer-events: auto !important;
+}
+
+th:hover .hide-column-x-btn {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.pagination,
+.pagination-btn,
+.pagination button,
+.pagination .page-btn {
+  color: #000000 !important;
+  fill: #000000 !important;
+  background: #E3F2FD !important;
+}
+
+.pagination-btn:disabled,
+.pagination button:disabled,
+.pagination .page-btn:disabled {
+  color: #666666 !important;
+  fill: #666666 !important;
+  opacity: 0.5;
+}
+
+.pagination-btn.active,
+.pagination button.active,
+.pagination .page-btn.active {
+  color: #000000 !important;
+  font-weight: 600;
+  background: #47B2E5 !important;
+  border-radius: 6px;
+}
+
+/* Hidden Columns Dropdown Styles - Glassmorphism Design */
+.hidden-columns-dropdown {
+  position: absolute;
+  background: #E3F2FD !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: none;
+  z-index: 1000;
+  min-width: 240px;
+  max-width: 320px;
+  animation: fadeInDropdown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+}
+
+.hidden-columns-title {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000000;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.9rem 1.25rem;
+  border-bottom: 1px solid rgba(71, 178, 229, 0.25);
+  margin: 0;
+}
+
+.hidden-columns-list {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+.hidden-column-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem 1.25rem;
+  transition: all 0.2s ease;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
+.hidden-column-item:hover {
+  background: rgba(71, 178, 229, 0.15);
+  transform: translateX(2px);
+}
+
+.hidden-column-name {
+  color: #000000;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  flex: 1;
+  margin-right: 0.75rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.show-column-btn {
+  background: #10B981;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.875rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 60px;
+  text-align: center;
+  box-shadow: none;
+}
+
+.show-column-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.show-all-btn {
+  height: auto !important;
+  min-height: auto !important;
+  max-height: none !important;
+  padding: 0.5em 0.8em !important;
+  font-size: 0.9em !important;
+  line-height: 1.4 !important;
+  border-radius: 6px !important;
+  background: #47B2E5 !important;
+  color: #000000 !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+  margin: 0.5em auto !important;
+  transition: all 0.2s ease !important;
+  width: calc(100% - 2.5rem) !important;
+  text-align: center !important;
+  display: block !important;
+  font-family: 'Roboto', sans-serif !important;
+  border: 1px solid rgba(71, 178, 229, 0.3) !important;
+}
+
+.show-all-btn:hover {
+  background: rgba(71, 178, 229, 0.8) !important;
+  color: #000000 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Scrollbar personalizado para la lista */
+.hidden-columns-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hidden-columns-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.hidden-columns-list::-webkit-scrollbar-thumb {
+  background: rgba(71, 178, 229, 0.5);
+  border-radius: 10px;
+}
+
+.hidden-columns-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 178, 229, 0.7);
+}
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Estilos específicos para dropdown de filtros Excel en tabla */
+.data-table .excel-dropdown,
+.data-table .excel-dropdown *,
+th .excel-dropdown,
+th .excel-dropdown * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.data-table .excel-checkbox-list label,
+.data-table .excel-checkbox-list label *,
+th .excel-checkbox-list label,
+th .excel-checkbox-list label * {
+  color: #333 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+.data-table .excel-dropdown input,
+th .excel-dropdown input {
+  color: #333 !important;
+  background: #fff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.data-table .excel-dropdown button,
+th .excel-dropdown button {
+  color: #333 !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+.data-table .excel-dropdown .apply-btn,
+.data-table .excel-dropdown .apply-btn *,
+th .excel-dropdown .apply-btn,
+th .excel-dropdown .apply-btn * {
+  color: #fff !important;
+  background: #10B981 !important;
+} 
+
+/* Máxima especificidad para texto del dropdown de filtros */
+table th .excel-dropdown,
+table th .excel-dropdown *,
+table th .excel-checkbox-list,
+table th .excel-checkbox-list *,
+.data-table th .excel-dropdown,
+.data-table th .excel-dropdown *,
+.data-table th .excel-checkbox-list,
+.data-table th .excel-checkbox-list *,
+.table-container th .excel-dropdown,
+.table-container th .excel-dropdown *,
+.table-container th .excel-checkbox-list,
+.table-container th .excel-checkbox-list * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+table th .excel-dropdown label,
+table th .excel-dropdown label *,
+table th .excel-checkbox-list label,
+table th .excel-checkbox-list label *,
+.data-table th .excel-dropdown label,
+.data-table th .excel-dropdown label *,
+.data-table th .excel-checkbox-list label,
+.data-table th .excel-checkbox-list label *,
+.table-container th .excel-dropdown label,
+.table-container th .excel-dropdown label *,
+.table-container th .excel-checkbox-list label,
+.table-container th .excel-checkbox-list label * {
+  color: #333 !important;
+  background: transparent !important;
+  text-shadow: none !important;
+}
+
+/* Excepciones para botones Apply */
+table th .excel-dropdown .apply-btn,
+table th .excel-dropdown .apply-btn *,
+.data-table th .excel-dropdown .apply-btn,
+.data-table th .excel-dropdown .apply-btn *,
+.table-container th .excel-dropdown .apply-btn,
+.table-container th .excel-dropdown .apply-btn * {
+  color: #fff !important;
+  background: #10B981 !important;
+} 
+
+.btn, .tab-btn, .modal-btn, .filter-btn, .close-btn, .pagination-btn, button {
+  box-shadow: none !important;
+} 
+
+/* Oculta las flechas de los scrollbars de la tabla principal (forzado) */
+.table-container::-webkit-scrollbar-button,
+.table-container *::-webkit-scrollbar-button,
+.data-table::-webkit-scrollbar-button,
+.data-table *::-webkit-scrollbar-button {
+  display: none !important;
+  height: 0 !important;
+  width: 0 !important;
+} 
+
+/* Oculta la esquina/flecha del cruce de scrollbars en la tabla principal */
+.table-container::-webkit-scrollbar-corner,
+.data-table::-webkit-scrollbar-corner,
+.table-container *::-webkit-scrollbar-corner,
+.data-table *::-webkit-scrollbar-corner {
+  background: transparent !important;
+  display: none !important;
+} 
+
+/* Ultra override: botón reset/refresh flotante verde si hay filtros activos */
+#resetAllFiltersBtn.has-active-filters {
+  background: #10B981 !important;
+  border: 1px solid #10B981 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+#resetAllFiltersBtn.has-active-filters:hover {
+  background: #059669 !important;
+  border-color: #059669 !important;
+  color: #fff !important;
+} 
+
+/* Estilos para celdas de duplicados - MÁXIMA ESPECIFICIDAD */
+.data-table td.duplicate-different-value,
+.data-table tr td.duplicate-different-value,
+table td.duplicate-different-value,
+td.duplicate-different-value {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+  font-weight: bold !important;
+  border-left: 3px solid #c62828 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.data-table td.duplicate-column-cell,
+.data-table tr td.duplicate-column-cell,
+table td.duplicate-column-cell,
+td.duplicate-column-cell {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* Asegurar que los estilos se apliquen incluso con hover */
+.data-table tr:hover .duplicate-different-value {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+  font-weight: bold !important;
+  border-left: 3px solid #c62828 !important;
+}
+
+.data-table tr:hover .duplicate-column-cell {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+}
+
+/* Estilos para headers de duplicados */
+.duplicate-column {
+  background: #fff3cd !important;
+  color: #856404 !important;
+  font-weight: 600 !important;
+}
+
+.duplicate-column.different-value {
+  background: #ffebee !important;
+  color: #c62828 !important;
+  border-left: 3px solid #c62828 !important;
+}
+
+/* ULTRA ESPECÍFICO: Forzar colores de headers de duplicados SOLO en pestañas de análisis */
+.data-table th[style*="background-color: #fff3cd"],
+.data-table th[style*="background-color:#fff3cd"] {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+  font-weight: 600 !important;
+}
+
+.data-table th[style*="background-color: #ffebee"],
+.data-table th[style*="background-color:#ffebee"] {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+  border-left: 3px solid #c62828 !important;
+  font-weight: 600 !important;
+}
+
+/* Override máximo para cualquier conflicto de CSS - SOLO en análisis */
+html body .data-table th[style*="background-color: #fff3cd"],
+html body .data-table th[style*="background-color:#fff3cd"] {
+  background-color: #fff3cd !important;
+  color: #856404 !important;
+}
+
+html body .data-table th[style*="background-color: #ffebee"],
+html body .data-table th[style*="background-color:#ffebee"] {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+  border-left: 3px solid #c62828 !important;
+} 

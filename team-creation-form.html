@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Nuevo Equipo - The Bridge</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .storage-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .storage-options {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .storage-option {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .storage-option input[type="radio"] {
+            display: none;
+        }
+        
+        .storage-option label {
+            display: block;
+            padding: 15px;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .storage-option input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .folder-selector {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+        }
+        
+        .folder-path {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin: 5px;
+        }
+        
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-select-folder {
+            background: #17a2b8;
+            color: white;
+        }
+        
+        .btn-select-folder:hover {
+            background: #138496;
+        }
+        
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Crear Nuevo Equipo</h1>
+        
+        <form id="teamForm">
+            <div class="form-group">
+                <label for="teamName">Nombre del Equipo *</label>
+                <input type="text" id="teamName" name="teamName" required 
+                       placeholder="Ej: Equipo Marketing 2024">
+            </div>
+            
+            <div class="form-group">
+                <label for="teamCode">Código del Equipo (opcional)</label>
+                <input type="text" id="teamCode" name="teamCode" 
+                       placeholder="Ej: MKT2024">
+            </div>
+            
+            <div class="form-group">
+                <label for="description">Descripción</label>
+                <textarea id="description" name="description" 
+                          placeholder="Describe el propósito del equipo..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="adminEmail">Email del Administrador</label>
+                <input type="email" id="adminEmail" name="adminEmail" 
+                       placeholder="admin@empresa.com">
+            </div>
+            
+            <div class="storage-section">
+                <h3>📁 Ubicación de Almacenamiento</h3>
+                <p>Selecciona dónde quieres guardar los datos del equipo:</p>
+                
+                <div class="storage-options">
+                    <div class="storage-option">
+                        <input type="radio" id="onedrive" name="storageType" value="onedrive">
+                        <label for="onedrive">
+                            <strong>OneDrive</strong><br>
+                            <small>Nube de Microsoft</small>
+                        </label>
+                    </div>
+                    
+                    <div class="storage-option">
+                        <input type="radio" id="googledrive" name="storageType" value="googledrive">
+                        <label for="googledrive">
+                            <strong>Google Drive</strong><br>
+                            <small>Nube de Google</small>
+                        </label>
+                    </div>
+                    
+                    <div class="storage-option">
+                        <input type="radio" id="local" name="storageType" value="local">
+                        <label for="local">
+                            <strong>Local</strong><br>
+                            <small>En este equipo</small>
+                        </label>
+                    </div>
+                    
+                    <div class="storage-option">
+                        <input type="radio" id="custom" name="storageType" value="custom" checked>
+                        <label for="custom">
+                            <strong>Personalizada</strong><br>
+                            <small>Elegir carpeta</small>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="folder-selector">
+                    <h4>📂 Carpeta de Destino</h4>
+                    <button type="button" class="btn btn-select-folder" id="selectFolderBtn">
+                        Select Folder
+                    </button>
+                    <div class="folder-path" id="selectedPath">
+                        <strong>Carpeta seleccionada:</strong> <span id="pathDisplay">No seleccionada</span>
+                    </div>
+                    <small>💡 El equipo se creará en: [Carpeta seleccionada]/TheBridge/teams/</small>
+                </div>
+            </div>
+            
+            <div class="status" id="statusMessage"></div>
+            
+            <div class="loading" id="loadingMessage">
+                <div class="spinner"></div>
+                <p>Creando equipo...</p>
+            </div>
+            
+            <div class="actions">
+                <button type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    ← Cancelar
+                </button>
+                <button type="submit" class="btn btn-success">
+                    ✅ Crear Equipo
+                </button>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        let selectedFolderPath = null;
+        
+        // Elementos del DOM
+        const teamForm = document.getElementById('teamForm');
+        const selectFolderBtn = document.getElementById('selectFolderBtn');
+        const pathDisplay = document.getElementById('pathDisplay');
+        const statusMessage = document.getElementById('statusMessage');
+        const loadingMessage = document.getElementById('loadingMessage');
+        
+        // Evento para seleccionar carpeta
+        selectFolderBtn.addEventListener('click', async () => {
+            try {
+                showStatus('Opening folder selector...', 'info');
+                
+                const response = await fetch(`${API_BASE}/api/teams/select-folder`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        defaultPath: selectedFolderPath
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success && result.selectedPath) {
+                    selectedFolderPath = result.selectedPath;
+                    pathDisplay.textContent = selectedFolderPath;
+                    showStatus('✅ Folder selected successfully', 'success');
+                } else {
+                    showStatus('⚠️ ' + (result.error || 'No folder was selected'), 'error');
+                    if (result.defaultPath) {
+                        selectedFolderPath = result.defaultPath;
+                        pathDisplay.textContent = selectedFolderPath + ' (por defecto)';
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Error selecting folder:', error);
+                showStatus('❌ Error opening folder selector', 'error');
+            }
+        });
+        
+        // Evento para crear equipo
+        teamForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(teamForm);
+            const teamData = {
+                teamName: formData.get('teamName'),
+                teamCode: formData.get('teamCode'),
+                description: formData.get('description'),
+                adminEmail: formData.get('adminEmail'),
+                location: formData.get('storageType'),
+                storagePath: selectedFolderPath
+            };
+            
+            if (!teamData.teamName) {
+                showStatus('❌ El nombre del equipo es requerido', 'error');
+                return;
+            }
+            
+            try {
+                showLoading(true);
+                showStatus('Creando equipo...', 'info');
+                
+                const response = await fetch(`${API_BASE}/api/teams/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(teamData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`✅ Equipo "${teamData.teamName}" creado exitosamente!\n📁 Ubicación: ${result.teamPath}`, 'success');
+                    console.log('Team created:', result);
+                    
+                    // Opcional: redirigir o limpiar formulario
+                    setTimeout(() => {
+                        if (confirm('¿Quieres crear otro equipo?')) {
+                            teamForm.reset();
+                            selectedFolderPath = null;
+                            pathDisplay.textContent = 'No seleccionada';
+                            hideStatus();
+                        }
+                    }, 3000);
+                } else {
+                    showStatus(`❌ Error al crear equipo: ${result.error}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error creating team:', error);
+                showStatus('❌ Error de conexión al crear equipo', 'error');
+            } finally {
+                showLoading(false);
+            }
+        });
+        
+        // Funciones auxiliares
+        function showStatus(message, type) {
+            statusMessage.textContent = message;
+            statusMessage.className = `status ${type}`;
+            statusMessage.style.display = 'block';
+        }
+        
+        function hideStatus() {
+            statusMessage.style.display = 'none';
+        }
+        
+        function showLoading(show) {
+            loadingMessage.style.display = show ? 'block' : 'none';
+        }
+        
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('📋 Formulario de creación de equipo cargado');
+            console.log('🔗 API Base:', API_BASE);
+        });
+    </script>
+</body>
+</html> 

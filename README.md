@@ -2,8 +2,6 @@
 
 ## 🚀 Latest Update: 2025-01-XX - Backend Remote Configuration Complete
 
-> **Test commit** - Verificación del sistema de control de versiones
-
 ### ✅ New Features:
 - **Remote Backend Support**: Works from any computer via GitHub Pages
 - **Automatic Environment Detection**: Switches between local and remote backends

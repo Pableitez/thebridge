@@ -1,0 +1,329 @@
+/* ========================================
+   SISTEMA DE DISEÑO UNIFICADO - THE BRIDGE
+   ========================================
+   Este archivo DEBE cargarse PRIMERO
+   Define todas las variables CSS centralizadas
+   NUEVA PALETA DESDE CERO - UNIFICADA
+   ======================================== */
+
+:root {
+  /* ========================================
+     PALETA DE COLORES PRINCIPAL
+     ======================================== */
+  
+  /* Fondos - Azul clarito unificado */
+  --tb-bg-primary: #E3F2FD;              /* Fondo principal */
+  --tb-bg-secondary: #BBDEFB;            /* Fondo secundario */
+  --tb-bg-tertiary: #90CAF9;             /* Fondo terciario */
+  --tb-bg-hover: rgba(255, 255, 255, 0.5);    /* Fondo hover */
+  --tb-bg-active: rgba(255, 255, 255, 0.7);   /* Fondo activo */
+  --tb-bg-overlay: rgba(255, 255, 255, 0.95); /* Fondo overlay/modal */
+  --tb-bg-filter-block: rgba(255, 255, 255, 0.4); /* Fondo bloques filtros */
+  --tb-bg-input: rgba(255, 255, 255, 0.7);     /* Fondo inputs */
+  --tb-bg-input-focus: rgba(255, 255, 255, 0.9); /* Fondo inputs focus */
+  --tb-bg-button: rgba(255, 255, 255, 0.5);    /* Fondo botones */
+  --tb-bg-button-hover: rgba(255, 255, 255, 0.7); /* Fondo botones hover */
+  --tb-bg-close-btn: rgba(255, 255, 255, 0.5); /* Fondo botón cerrar */
+  --tb-bg-close-btn-hover: rgba(255, 255, 255, 0.7); /* Fondo botón cerrar hover */
+  
+  /* Textos - Siempre negro/gris oscuro */
+  --tb-text-primary: #000000;           /* Texto principal */
+  --tb-text-secondary: #333333;        /* Texto secundario */
+  --tb-text-muted: #666666;            /* Texto muted */
+  --tb-text-disabled: #999999;         /* Texto deshabilitado */
+  --tb-text-placeholder: rgba(0, 0, 0, 0.5); /* Texto placeholder */
+  
+  /* Bordes */
+  --tb-border-color: rgba(0, 0, 0, 0.2);      /* Borde principal */
+  --tb-border-hover: rgba(0, 0, 0, 0.3);      /* Borde hover */
+  --tb-border-active: rgba(0, 0, 0, 0.4);     /* Borde activo */
+  --tb-border-table: rgba(0, 0, 0, 0.3);        /* Borde tabla */
+  --tb-border-input: rgba(0, 0, 0, 0.2);       /* Borde input */
+  --tb-border-input-focus: rgba(0, 0, 0, 0.4); /* Borde input focus */
+  --tb-border-button: rgba(0, 0, 0, 0.2);      /* Borde botón */
+  --tb-border-close-btn: rgba(0, 0, 0, 0.2); /* Borde botón cerrar */
+  
+  /* ========================================
+     COMPONENTES - BOTONES
+     ======================================== */
+  --tb-btn-bg: rgba(255, 255, 255, 0.5);      /* Fondo botón */
+  --tb-btn-bg-hover: rgba(255, 255, 255, 0.7); /* Fondo botón hover */
+  --tb-btn-text: #000000;                     /* Texto botón */
+  --tb-btn-border: rgba(0, 0, 0, 0.2);        /* Borde botón */
+  
+  /* Botones de bienvenida - Azul especial */
+  --tb-btn-welcome-bg: #47B2E5;               /* Fondo botón bienvenida */
+  --tb-btn-welcome-bg-hover: #1976d2;         /* Fondo botón bienvenida hover */
+  --tb-btn-welcome-text: #000000;             /* Texto botón bienvenida */
+  --tb-btn-welcome-inner: rgba(255, 255, 255, 0.95); /* Fondo interior blanco */
+  
+  /* ========================================
+     COMPONENTES - INPUTS
+     ======================================== */
+  --tb-input-bg: rgba(255, 255, 255, 0.7);   /* Fondo input */
+  --tb-input-text: #000000;                  /* Texto input */
+  --tb-input-border: rgba(0, 0, 0, 0.2);     /* Borde input */
+  --tb-input-focus: rgba(0, 0, 0, 0.4);      /* Borde input focus */
+  --tb-input-placeholder: rgba(0, 0, 0, 0.5); /* Placeholder input */
+  
+  /* ========================================
+     COMPONENTES - MODALES
+     ======================================== */
+  --tb-modal-bg: #E3F2FD;                    /* Fondo modal */
+  --tb-modal-panel-bg: rgba(255, 255, 255, 0.95); /* Fondo panel modal */
+  --tb-modal-text: #000000;                  /* Texto modal */
+  --tb-modal-border: rgba(0, 0, 0, 0.1);     /* Borde modal */
+  
+  /* Botón cerrar modal */
+  --tb-modal-close-bg: rgba(255, 255, 255, 0.5); /* Fondo botón cerrar */
+  --tb-modal-close-text: #000000;            /* Texto botón cerrar */
+  --tb-modal-close-border: rgba(0, 0, 0, 0.2); /* Borde botón cerrar */
+  
+  /* ========================================
+     COMPONENTES - SIDEBAR
+     ======================================== */
+  --tb-sidebar-bg: #E3F2FD;                 /* Fondo sidebar */
+  --tb-sidebar-btn-bg: rgba(255, 255, 255, 0.5); /* Fondo botón sidebar */
+  --tb-sidebar-btn-text: #000000;            /* Texto botón sidebar */
+  --tb-sidebar-btn-border: rgba(0, 0, 0, 0.2); /* Borde botón sidebar */
+  --tb-sidebar-btn-hover: rgba(255, 255, 255, 0.7); /* Hover botón sidebar */
+  
+  /* ========================================
+     COMPONENTES - TABLA
+     ======================================== */
+  --tb-table-bg: #E3F2FD;                    /* Fondo tabla */
+  --tb-table-border: rgba(0, 0, 0, 0.3);     /* Borde tabla */
+  --tb-table-header-bg: rgba(255, 255, 255, 0.5); /* Fondo header tabla */
+  --tb-table-row-hover: rgba(255, 255, 255, 0.3); /* Hover fila */
+  
+  /* ========================================
+     COMPONENTES - FILTROS
+     ======================================== */
+  --tb-filter-block-bg: rgba(255, 255, 255, 0.4); /* Fondo bloque filtro */
+  --tb-filter-block-border: rgba(0, 0, 0, 0.2); /* Borde bloque filtro */
+  --tb-filter-header-bg: transparent;        /* Fondo header filtro */
+  --tb-filter-header-border: rgba(0, 0, 0, 0.2); /* Borde header filtro */
+  
+  /* ========================================
+     ESPACIADO Y TAMAÑOS
+     ======================================== */
+  --tb-spacing-xs: 0.25rem;
+  --tb-spacing-sm: 0.5rem;
+  --tb-spacing-md: 1rem;
+  --tb-spacing-lg: 1.5rem;
+  --tb-spacing-xl: 2rem;
+  --tb-spacing-xxl: 3rem;
+  
+  --tb-radius-sm: 4px;
+  --tb-radius-md: 8px;
+  --tb-radius-lg: 12px;
+  --tb-radius-xl: 16px;
+  --tb-radius-round: 50%;
+  
+  /* ========================================
+     SOMBRAS
+     ======================================== */
+  --tb-shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --tb-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --tb-shadow-lg: 0 8px 25px rgba(0, 0, 0, 0.2);
+  --tb-shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --tb-shadow-focus: 0 0 0 2px rgba(0, 0, 0, 0.1);
+  
+  /* ========================================
+     TRANSICIONES
+     ======================================== */
+  --tb-transition-fast: 0.15s ease;
+  --tb-transition-normal: 0.3s ease;
+  --tb-transition-slow: 0.5s ease;
+  
+  /* ========================================
+     Z-INDEX (Capas)
+     ======================================== */
+  --tb-z-base: 1;
+  --tb-z-dropdown: 100;
+  --tb-z-sticky: 200;
+  --tb-z-modal: 1000;
+  --tb-z-tooltip: 2000;
+  --tb-z-welcome: 9999;
+}
+
+/* ========================================
+   VARIABLES COMPATIBILIDAD (Legacy)
+   Mapeo de variables antiguas a nuevas
+   ======================================== */
+:root {
+  /* Fondos */
+  --unified-bg-primary: var(--tb-bg-primary);
+  --unified-bg-secondary: var(--tb-bg-secondary);
+  --unified-bg-tertiary: var(--tb-bg-tertiary);
+  --unified-bg-hover: var(--tb-bg-hover);
+  --unified-bg-active: var(--tb-bg-active);
+  
+  /* Textos */
+  --unified-text-primary: var(--tb-text-primary);
+  --unified-text-secondary: var(--tb-text-secondary);
+  --unified-text-muted: var(--tb-text-muted);
+  --unified-text-disabled: var(--tb-text-disabled);
+  
+  /* Bordes */
+  --unified-border-color: var(--tb-border-color);
+  --unified-border-hover: var(--tb-border-hover);
+  --unified-border-active: var(--tb-border-active);
+  
+  /* Botones */
+  --unified-btn-bg: var(--tb-btn-bg);
+  --unified-btn-bg-hover: var(--tb-btn-bg-hover);
+  --unified-btn-text: var(--tb-btn-text);
+  --unified-btn-border: var(--tb-btn-border);
+  
+  /* Inputs */
+  --unified-input-bg: var(--tb-input-bg);
+  --unified-input-text: var(--tb-input-text);
+  --unified-input-border: var(--tb-input-border);
+  --unified-input-focus: var(--tb-input-focus);
+  
+  /* Variables legacy adicionales */
+  --primary-color: var(--tb-bg-primary);
+  --secondary-color: var(--tb-bg-secondary);
+  --accent-color: #47B2E5;
+  --background-color: var(--tb-bg-primary);
+  --background-light: var(--tb-bg-secondary);
+  --text-color: var(--tb-text-primary);
+  --text-light: var(--tb-text-primary);
+  --text-primary: var(--tb-text-primary);
+  --text-secondary: var(--tb-text-secondary);
+  --text-muted: var(--tb-text-muted);
+  --border-color: var(--tb-border-color);
+  --button-bg: var(--tb-btn-bg);
+  --button-hover-bg: var(--tb-btn-bg-hover);
+  --button-border: var(--tb-btn-border);
+  --input-bg: var(--tb-input-bg);
+  --dropdown-bg: var(--tb-input-bg);
+  --hover-bg: var(--tb-bg-hover);
+  --selected-bg: var(--tb-bg-active);
+  --brand-blue: var(--tb-bg-primary);
+  --brand-light-blue: var(--tb-bg-secondary);
+  --brand-sky-blue: #47B2E5;
+  --brand-cyan: var(--tb-bg-primary);
+}
+
+/* ========================================
+   CLASES UTILITARIAS PARA REEMPLAZAR ESTILOS INLINE
+   ======================================== */
+
+/* Fondos */
+.tb-bg-primary { background: var(--tb-bg-primary) !important; }
+.tb-bg-secondary { background: var(--tb-bg-secondary) !important; }
+.tb-bg-filter-block { background: var(--tb-bg-filter-block) !important; }
+.tb-bg-input { background: var(--tb-bg-input) !important; }
+.tb-bg-button { background: var(--tb-bg-button) !important; }
+.tb-bg-transparent { background: transparent !important; }
+
+/* Textos */
+.tb-text-primary { color: var(--tb-text-primary) !important; }
+.tb-text-secondary { color: var(--tb-text-secondary) !important; }
+.tb-text-muted { color: var(--tb-text-muted) !important; }
+
+/* Bordes */
+.tb-border { border: 1px solid var(--tb-border-color) !important; }
+.tb-border-input { border: 1px solid var(--tb-border-input) !important; }
+.tb-border-button { border: 1px solid var(--tb-border-button) !important; }
+.tb-border-none { border: none !important; }
+
+/* Inputs */
+.tb-input {
+  background: var(--tb-input-bg) !important;
+  color: var(--tb-input-text) !important;
+  border: 1px solid var(--tb-input-border) !important;
+  border-radius: var(--tb-radius-md) !important;
+  padding: var(--tb-spacing-sm) var(--tb-spacing-md) !important;
+}
+
+.tb-input:focus {
+  border-color: var(--tb-input-focus) !important;
+  background: var(--tb-input-focus) !important;
+  box-shadow: var(--tb-shadow-focus) !important;
+  outline: none !important;
+}
+
+.tb-input::placeholder {
+  color: var(--tb-text-placeholder) !important;
+}
+
+/* Botones */
+.tb-button {
+  background: var(--tb-btn-bg) !important;
+  color: var(--tb-btn-text) !important;
+  border: 1px solid var(--tb-btn-border) !important;
+  border-radius: var(--tb-radius-md) !important;
+  padding: var(--tb-spacing-sm) var(--tb-spacing-md) !important;
+  cursor: pointer !important;
+  transition: all var(--tb-transition-normal) !important;
+}
+
+.tb-button:hover {
+  background: var(--tb-btn-bg-hover) !important;
+  border-color: var(--tb-border-hover) !important;
+}
+
+.tb-button-transparent {
+  background: transparent !important;
+  color: var(--tb-text-primary) !important;
+  border: none !important;
+}
+
+/* Bloques de filtros */
+.tb-filter-block {
+  background: var(--tb-filter-block-bg) !important;
+  border: 1px solid var(--tb-filter-block-border) !important;
+  border-radius: var(--tb-radius-md) !important;
+  padding: var(--tb-spacing-md) !important;
+  margin-bottom: var(--tb-spacing-md) !important;
+}
+
+.tb-filter-header {
+  background: var(--tb-filter-header-bg) !important;
+  border-bottom: 1px solid var(--tb-filter-header-border) !important;
+  padding: var(--tb-spacing-sm) var(--tb-spacing-md) !important;
+}
+
+/* Botón cerrar */
+.tb-close-btn {
+  background: var(--tb-modal-close-bg) !important;
+  color: var(--tb-modal-close-text) !important;
+  border: 1px solid var(--tb-modal-close-border) !important;
+  border-radius: var(--tb-radius-round) !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all var(--tb-transition-normal) !important;
+}
+
+.tb-close-btn:hover {
+  background: var(--tb-bg-close-btn-hover) !important;
+  border-color: var(--tb-border-hover) !important;
+  transform: scale(1.05) !important;
+  box-shadow: var(--tb-shadow-sm) !important;
+}
+
+/* Espaciado */
+.tb-p-xs { padding: var(--tb-spacing-xs) !important; }
+.tb-p-sm { padding: var(--tb-spacing-sm) !important; }
+.tb-p-md { padding: var(--tb-spacing-md) !important; }
+.tb-p-lg { padding: var(--tb-spacing-lg) !important; }
+.tb-p-xl { padding: var(--tb-spacing-xl) !important; }
+
+.tb-m-xs { margin: var(--tb-spacing-xs) !important; }
+.tb-m-sm { margin: var(--tb-spacing-sm) !important; }
+.tb-m-md { margin: var(--tb-spacing-md) !important; }
+.tb-m-lg { margin: var(--tb-spacing-lg) !important; }
+.tb-m-xl { margin: var(--tb-spacing-xl) !important; }
+
+/* Display */
+.tb-hidden { display: none !important; }
+.tb-flex { display: flex !important; }
+.tb-block { display: block !important; }
+.tb-inline-block { display: inline-block !important; }

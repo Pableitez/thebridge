@@ -1,0 +1,2086 @@
+/* ========================================
+   MASTER OVERRIDE - MÁXIMA PRIORIDAD
+   ========================================
+   Este archivo DEBE cargarse ÚLTIMO
+   Fuerza la aplicación del sistema de diseño
+   en TODOS los elementos de la aplicación
+   ======================================== */
+
+/* ========================================
+   OCULTAR BOTONES DE SUMMARY MODAL
+   ======================================== */
+/* Ocultar Save Preferences, Load Preferences y Export PDF en todos los modales de summary */
+html body #dqSavePreferencesBtn,
+html body #dqLoadPreferencesBtn,
+html body #dqExportSummaryPdfBtn,
+html body #opsSavePreferencesBtn,
+html body #opsLoadPreferencesBtn,
+html body #opsExportSummaryPdfBtn,
+html body #bookingSavePreferencesBtn,
+html body #bookingLoadPreferencesBtn,
+html body #bookingExportSummaryPdfBtn,
+html body #ordersSavePreferencesBtn,
+html body #ordersLoadPreferencesBtn,
+html body #ordersExportSummaryPdfBtn,
+html body #closingsSavePreferencesBtn,
+html body #closingsLoadPreferencesBtn,
+html body #closingsExportSummaryPdfBtn,
+html body button[id*="SavePreferencesBtn"],
+html body button[id*="LoadPreferencesBtn"],
+html body button[id*="ExportSummaryPdfBtn"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Ocultar botón Common Fields en todos los modales de summary */
+html body #dqSelectCommonFieldsBtn,
+html body #opsSelectCommonFieldsBtn,
+html body #bookingSelectCommonFieldsBtn,
+html body #ordersSelectCommonFieldsBtn,
+html body #closingsSelectCommonFieldsBtn,
+html body button[id*="SelectCommonFieldsBtn"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Ocultar botones Ops Hub Manager y Operations Hub del sidebar */
+html body #opsDashboardToggleBtn,
+html body button[id*="opsDashboardToggleBtn"],
+html body button[id*="Operations Hub"],
+html body button[id*="Ops Hub Manager"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* ========================================
+   RESET GLOBAL - FORZAR PALETA
+   ======================================== */
+html,
+html body,
+html body[style],
+html body[style*="background"],
+html body[style*="color"] {
+  background: var(--tb-bg-primary) !important;
+  background-color: var(--tb-bg-primary) !important;
+  background-image: none !important;
+  color: var(--tb-text-primary) !important;
+}
+
+/* ========================================
+   TOOLBAR - FORZAR ESTILOS
+   ======================================== */
+html body .toolbar,
+html body .toolbar[style],
+html body header.toolbar,
+html body header.toolbar[style] {
+  background: var(--tb-bg-primary) !important;
+  background-color: var(--tb-bg-primary) !important;
+  color: var(--tb-text-primary) !important;
+  border-bottom: 1px solid var(--tb-border-color) !important;
+}
+
+html body .toolbar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-left *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-right *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-center *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-title *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-button *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--tb-text-primary) !important;
+}
+
+/* ========================================
+   SIDEBAR - FORZAR ESTILOS
+   ======================================== */
+html body .sidebar,
+html body .sidebar[style],
+html body .sidebar-header,
+html body .sidebar-header[style],
+html body .sidebar-footer,
+html body .sidebar-footer[style] {
+  background: var(--tb-sidebar-bg) !important;
+  background-color: var(--tb-sidebar-bg) !important;
+  color: var(--tb-text-primary) !important;
+}
+
+/* Botones de sidebar - UNIFICADOS - TODOS IGUALES */
+html body .sidebar-button,
+html body .sidebar .sidebar-button,
+html body .sidebar .brand-btn,
+html body button.sidebar-button,
+html body button.brand-btn,
+html body label.sidebar-button,
+html body label[for="csvFileInput"],
+html body .sidebar label[for="csvFileInput"],
+html body label.sidebar-button[for="csvFileInput"] {
+  background: rgba(255, 255, 255, 0.6) !important;
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 0.75rem !important;
+  transition: all 0.25s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  text-align: left !important;
+  opacity: 1 !important;
+}
+
+html body .sidebar-button:hover,
+html body .sidebar .sidebar-button:hover,
+html body .sidebar .brand-btn:hover,
+html body button.sidebar-button:hover,
+html body button.brand-btn:hover,
+html body label.sidebar-button:hover,
+html body label[for="csvFileInput"]:hover,
+html body .sidebar label[for="csvFileInput"]:hover,
+html body label.sidebar-button[for="csvFileInput"]:hover {
+  background: rgba(255, 255, 255, 0.75) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  opacity: 1 !important;
+}
+
+html body .sidebar-button:active,
+html body .sidebar .sidebar-button:active,
+html body .sidebar .brand-btn:active,
+html body button.sidebar-button:active,
+html body button.brand-btn:active,
+html body label.sidebar-button:active {
+  transform: translateY(0) !important;
+}
+
+html body .sidebar-button svg,
+html body .sidebar .brand-btn svg,
+html body button.sidebar-button svg,
+html body label.sidebar-button svg,
+html body #userSetUpBtn svg,
+html body #dashboardToggleBtn svg,
+html body #dqDashboardToggleBtn svg,
+html body #ordersDashboardToggleBtn svg,
+html body #bookingDashboardToggleBtn svg,
+html body #teamManagementBtn svg {
+  width: 1.2em !important;
+  height: 1.2em !important;
+  min-width: 1.2em !important;
+  min-height: 1.2em !important;
+  max-width: 1.2em !important;
+  max-height: 1.2em !important;
+  fill: #000000 !important;
+  color: #000000 !important;
+  flex-shrink: 0 !important;
+}
+
+/* Forzar estilos específicos para botones con IDs - MÁXIMA ESPECIFICIDAD */
+html body .sidebar #userSetUpBtn,
+html body .sidebar #dashboardToggleBtn,
+html body .sidebar #dqDashboardToggleBtn,
+html body .sidebar #ordersDashboardToggleBtn,
+html body .sidebar #bookingDashboardToggleBtn,
+html body .sidebar #teamManagementBtn,
+html body .sidebar-button#userSetUpBtn,
+html body .sidebar-button#dashboardToggleBtn,
+html body .sidebar-button#dqDashboardToggleBtn,
+html body .sidebar-button#ordersDashboardToggleBtn,
+html body .sidebar-button#bookingDashboardToggleBtn,
+html body .sidebar-button#teamManagementBtn,
+html body button#userSetUpBtn,
+html body button#dashboardToggleBtn,
+html body button#dqDashboardToggleBtn,
+html body button#ordersDashboardToggleBtn,
+html body button#bookingDashboardToggleBtn,
+html body button#teamManagementBtn {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 0.75rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* Override para separadores del sidebar - espaciado uniforme */
+html body .sidebar .sidebar-separator,
+html body .sidebar-scrollable .sidebar-separator {
+  margin: 0.1rem 0.5rem !important;
+}
+
+html body .sidebar #userSetUpBtn:hover,
+html body .sidebar #dashboardToggleBtn:hover,
+html body .sidebar #dqDashboardToggleBtn:hover,
+html body .sidebar #ordersDashboardToggleBtn:hover,
+html body .sidebar #bookingDashboardToggleBtn:hover,
+html body .sidebar #teamManagementBtn:hover,
+html body .sidebar-button#userSetUpBtn:hover,
+html body .sidebar-button#dashboardToggleBtn:hover,
+html body .sidebar-button#dqDashboardToggleBtn:hover,
+html body .sidebar-button#ordersDashboardToggleBtn:hover,
+html body .sidebar-button#bookingDashboardToggleBtn:hover,
+html body .sidebar-button#teamManagementBtn:hover,
+html body button#userSetUpBtn:hover,
+html body button#dashboardToggleBtn:hover,
+html body button#dqDashboardToggleBtn:hover,
+html body button#ordersDashboardToggleBtn:hover,
+html body button#bookingDashboardToggleBtn:hover,
+html body button#teamManagementBtn:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+}
+
+/* Eliminar cualquier elemento adicional como checkmarks */
+html body #dashboardToggleBtn::before,
+html body #dashboardToggleBtn::after,
+html body #dqDashboardToggleBtn::before,
+html body #dqDashboardToggleBtn::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Asegurar que no haya elementos hijos adicionales con estilos diferentes */
+html body #dashboardToggleBtn > *:not(svg):not(:last-child),
+html body #dqDashboardToggleBtn > *:not(svg):not(:last-child) {
+  display: none !important;
+}
+
+/* Forzar estilos incluso si tienen clases adicionales o estados */
+html body #dashboardToggleBtn.active,
+html body #dashboardToggleBtn.selected,
+html body #dashboardToggleBtn[class*="active"],
+html body #dashboardToggleBtn[class*="selected"],
+html body #dqDashboardToggleBtn.active,
+html body #dqDashboardToggleBtn.selected,
+html body #dqDashboardToggleBtn[class*="active"],
+html body #dqDashboardToggleBtn[class*="selected"] {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body #dashboardToggleBtn.active:hover,
+html body #dashboardToggleBtn.selected:hover,
+html body #dashboardToggleBtn[class*="active"]:hover,
+html body #dashboardToggleBtn[class*="selected"]:hover,
+html body #dqDashboardToggleBtn.active:hover,
+html body #dqDashboardToggleBtn.selected:hover,
+html body #dqDashboardToggleBtn[class*="active"]:hover,
+html body #dqDashboardToggleBtn[class*="selected"]:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========================================
+   TABLA - FORZAR ESTILOS
+   ======================================== */
+html body #tableContainer,
+html body #tableContainer[style],
+html body .table-container,
+html body .table-container[style] {
+  background: var(--tb-table-bg) !important;
+  background-color: var(--tb-table-bg) !important;
+  border: 1px solid var(--tb-table-border) !important;
+  border-radius: var(--tb-radius-md) !important;
+}
+
+/* ========================================
+   MODALES - FORZAR ESTILOS (MÁXIMA ESPECIFICIDAD)
+   ======================================== */
+/* FORZAR OVERLAY TRANSPARENTE - MÁXIMA PRIORIDAD */
+html body .modal-overlay,
+html body .modal-overlay[style],
+html body .modal-overlay[style*="background"],
+html body div.modal-overlay,
+html body div.modal-overlay[style],
+html body .modal-overlay[style*="background-color"],
+html body div.modal-overlay[style*="background-color"],
+html body .modal-overlay[style*="background-color: rgba"],
+html body div.modal-overlay[style*="background-color: rgba"],
+html body .modal-overlay[style*="background: rgba"],
+html body div.modal-overlay[style*="background: rgba"],
+html body #userSetUpModal,
+html body #userSetUpModal[style],
+html body #userSetUpModal[style*="background"],
+html body #summaryModal,
+html body #summaryModal[style],
+html body #summaryModal[style*="background"],
+html body #manageSummariesModal,
+html body #manageSummariesModal[style],
+html body #manageSummariesModal[style*="background"],
+html body #csvComparisonModal,
+html body #csvComparisonModal[style],
+html body #csvComparisonModal[style*="background"],
+html body #comparisonResultsModal,
+html body #comparisonResultsModal[style],
+html body #comparisonResultsModal[style*="background"],
+html body #reportOptionsModal,
+html body #reportOptionsModal[style],
+html body #reportOptionsModal[style*="background"],
+html body #bookingDashboardModal,
+html body #bookingDashboardModal[style],
+html body #bookingDashboardModal[style*="background"],
+html body #ordersDashboardModal,
+html body #ordersDashboardModal[style],
+html body #ordersDashboardModal[style*="background"],
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body #dqDashboardModal[style*="background"],
+html body #filterModalOverlay,
+html body #filterModalOverlay[style],
+html body #filterModalOverlay[style*="background"],
+html body #filterModalOverlay[style*="transparent"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body .modal-overlay,
+html body .modal-overlay[style],
+html body .modal-overlay[style*="background"],
+html body div.modal-overlay,
+html body div.modal-overlay[style],
+html body .modal-panel,
+html body .modal-panel[style],
+html body .modal-panel[style*="background"],
+html body .modal-header,
+html body .modal-header[style],
+html body .modal-header[style*="background"],
+html body .modal-content,
+html body .modal-content[style],
+html body .modal-content[style*="background"],
+html body .modal-footer,
+html body .modal-footer[style],
+html body .modal-footer[style*="background"],
+html body #dashboardModal,
+html body #dashboardModal .modal-panel,
+html body #dashboardModal .modal-header,
+html body #dashboardModal .modal-content,
+html body #dashboardModal .modal-footer,
+html body #dqDashboardModal,
+html body #dqDashboardModal .modal-panel,
+html body #dqDashboardModal .modal-header,
+html body #dqDashboardModal .modal-content,
+html body #dqDashboardModal .modal-footer,
+html body #filterModal {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+}
+
+html body #filterModal[style],
+html body #filterModal[style*="background"],
+html body #filterModal .modal-panel,
+html body #filterModal .modal-panel[style],
+html body #filterModal .modal-header,
+html body #filterModal .modal-header[style],
+html body #filterModal .modal-header[style*="background"],
+html body #filterModal .modal-content,
+html body #filterModal .modal-content[style],
+html body #filterModal .modal-content[style*="background"],
+html body #filterModal .modal-footer,
+html body #filterModal .modal-footer[style],
+html body #filterModal .modal-footer[style*="background"],
+html body #filterModal .filter-actions,
+html body #filterModal .filter-actions[style],
+html body #filterModal .filter-actions[style*="background"],
+html body #filterModal .filter-panels,
+html body #filterModal .filter-panels[style],
+html body #filterModal .filter-panels[style*="background"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+}
+
+html body #filterModal .filter-panel,
+html body #filterModal .filter-panel[style],
+html body #filterModal .filter-panel[style*="background"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+}
+
+html body #filterModal .filter-content,
+html body #filterModal .filter-content[style],
+html body #filterModal .filter-content[style*="background"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+}
+html body #filterModal .filter-block,
+html body #filterModal .filter-block[style],
+html body #filterModal .filter-block[style*="background"],
+html body #filterModal .filter-block[style*="border"],
+html body #filterModal .filter-wrapper,
+html body #filterModal .filter-wrapper[style],
+html body #filterModal .filter-wrapper[style*="border"],
+html body #filterModal .filter-item,
+html body #filterModal .filter-item[style],
+html body #filterModal .filter-item[style*="border"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* EXCLUIR OVERLAY DE FONDOS - DEBE SER TRANSPARENTE */
+html body .modal-overlay,
+html body .modal-overlay[style],
+html body .modal-overlay[style*="background"],
+html body div.modal-overlay,
+html body div.modal-overlay[style],
+html body #userSetUpModal,
+html body #userSetUpModal[style],
+html body #userSetUpModal[style*="background"],
+html body #summaryModal,
+html body #summaryModal[style],
+html body #summaryModal[style*="background"],
+html body #manageSummariesModal,
+html body #manageSummariesModal[style],
+html body #manageSummariesModal[style*="background"],
+html body #csvComparisonModal,
+html body #csvComparisonModal[style],
+html body #csvComparisonModal[style*="background"],
+html body #comparisonResultsModal,
+html body #comparisonResultsModal[style],
+html body #comparisonResultsModal[style*="background"],
+html body #reportOptionsModal,
+html body #reportOptionsModal[style],
+html body #reportOptionsModal[style*="background"],
+html body #bookingDashboardModal,
+html body #bookingDashboardModal[style],
+html body #bookingDashboardModal[style*="background"],
+html body #ordersDashboardModal,
+html body #ordersDashboardModal[style],
+html body #ordersDashboardModal[style*="background"],
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body #dqDashboardModal[style*="background"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body #filterModal .filter-header,
+html body #filterModal .filter-header[style],
+html body #filterModal .filter-header[style*="background"],
+html body #filterModal .filter-header[style*="border"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+html body #filterModal .filter-header,
+html body #filterModal .filter-header[style],
+html body #filterModal .filter-header[style*="background"],
+html body #filterModal .filter-header[style*="border"],
+html body #filterModal .filter-tabs,
+html body #filterModal .filter-tabs[style],
+html body #filterModal .filter-tabs[style*="background"],
+html body #filterModal button,
+html body #filterModal button[style],
+html body #filterModal button[style*="background"],
+html body #filterModal .btn,
+html body #filterModal .btn[style],
+html body #filterModal .btn[style*="background"],
+html body #filterModal .filter-btn,
+html body #filterModal .filter-btn[style],
+html body #filterModal .filter-btn[style*="background"],
+html body #filterModal .btn-primary,
+html body #filterModal .btn-primary[style],
+html body #filterModal .btn-primary[style*="background"],
+html body #filterModal .btn-secondary,
+html body #filterModal .btn-secondary[style],
+html body #filterModal .btn-secondary[style*="background"],
+html body #filterModal #applyFiltersBtn,
+html body #filterModal #applyFiltersBtn[style],
+html body #filterModal #applyFiltersBtn[style*="background"],
+html body #filterModal #resetFiltersBtn,
+html body #filterModal #resetFiltersBtn[style],
+html body #filterModal #resetFiltersBtn[style*="background"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  color: #000000 !important;
+}
+
+/* FORZAR FONDOS TRANSPARENTES EN TODOS LOS BOTONES DEL MODAL DE FILTROS */
+html body #filterModal button:not(.close-btn),
+html body #filterModal button:not(.close-btn)[style],
+html body #filterModal button:not(.close-btn)[style*="background"],
+html body #filterModal .btn:not(.close-btn),
+html body #filterModal .btn:not(.close-btn)[style],
+html body #filterModal .btn:not(.close-btn)[style*="background"],
+html body #filterModal .filter-btn:not(.close-btn),
+html body #filterModal .filter-btn:not(.close-btn)[style],
+html body #filterModal .filter-btn:not(.close-btn)[style*="background"],
+html body #filterModal .btn-primary:not(.close-btn),
+html body #filterModal .btn-primary:not(.close-btn)[style],
+html body #filterModal .btn-primary:not(.close-btn)[style*="background"],
+html body #filterModal .btn-secondary:not(.close-btn),
+html body #filterModal .btn-secondary:not(.close-btn)[style],
+html body #filterModal .btn-secondary:not(.close-btn)[style*="background"],
+html body #filterModal #applyFiltersBtn:not(.close-btn),
+html body #filterModal #applyFiltersBtn:not(.close-btn)[style],
+html body #filterModal #applyFiltersBtn:not(.close-btn)[style*="background"],
+html body #filterModal #resetFiltersBtn:not(.close-btn),
+html body #filterModal #resetFiltersBtn:not(.close-btn)[style],
+html body #filterModal #resetFiltersBtn:not(.close-btn)[style*="background"],
+html body #filterModal .filter-input-group button:not(.close-btn),
+html body #filterModal .filter-input-group button:not(.close-btn)[style],
+html body #filterModal .filter-input-group button:not(.close-btn)[style*="background"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #000000 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html body .modal-panel,
+html body .modal-overlay .modal-panel,
+html body #dashboardModal .modal-panel,
+html body #dqDashboardModal .modal-panel,
+html body #filterModal .modal-panel {
+  background: var(--tb-modal-panel-bg) !important;
+  background-color: var(--tb-modal-panel-bg) !important;
+  border: 1px solid var(--tb-modal-border) !important;
+  border-radius: var(--tb-radius-xl) !important;
+  box-shadow: var(--tb-shadow-xl) !important;
+}
+
+/* Todo el contenido de modales - texto negro */
+html body .modal-overlay *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *):not(.close-btn):not(button):not(input):not(select):not(textarea),
+html body .modal-panel *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *):not(.close-btn):not(button):not(input):not(select):not(textarea),
+html body .modal-header *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(.close-btn):not(button):not(input):not(select):not(textarea),
+html body .modal-content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(.close-btn):not(button):not(input):not(select):not(textarea),
+html body .modal-footer *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(.close-btn):not(button):not(input):not(select):not(textarea) {
+  color: var(--tb-modal-text) !important;
+}
+
+/* FORCE ROBOTO FONT EVERYWHERE */
+html,
+html body,
+html body *:not(script):not(style):not(noscript),
+html body input,
+html body select,
+html body textarea,
+html body button,
+html body .modal-overlay,
+html body .modal-overlay *:not(script):not(style),
+html body .sidebar,
+html body .sidebar *:not(script):not(style),
+html body .toolbar,
+html body .toolbar *:not(script):not(style),
+html body .data-table,
+html body .data-table *:not(script):not(style) {
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Títulos de modales - Matching Data Comparison style */
+html body .modal-header h1,
+html body .modal-header h2,
+html body .modal-header h3,
+html body .modal-header h4,
+html body .modal-header h5,
+html body .modal-header h6,
+html body .panel-header-title,
+html body .modal-header .panel-header-title,
+html body #filterModal .filter-title,
+html body #filterModal h2,
+html body .modal-header .filter-title {
+  color: #15364A !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-size: 1.1rem !important;
+  margin: 0 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  text-transform: none !important;
+}
+
+/* Botón cerrar modal - UNIFICADO CON MÁXIMA ESPECIFICIDAD */
+/* ========================================
+   UNIFICACIÓN TOTAL DE BOTONES DE CIERRE
+   ======================================== */
+html body .close-btn,
+html body .close-btn[style],
+html body .close-btn[style*="background"],
+html body .close-btn[style*="position"],
+html body .modal-header .close-btn,
+html body .modal-header .close-btn[style],
+html body .modal-header .close-btn[style*="background"],
+html body .modal-header .close-btn[style*="position"],
+html body .modal-overlay .close-btn,
+html body .modal-overlay .close-btn[style],
+html body .modal-overlay .close-btn[style*="background"],
+html body .modal-overlay .close-btn[style*="position"],
+html body .modal-overlay .modal-header .close-btn,
+html body .modal-overlay .modal-header .close-btn[style],
+html body .modal-overlay .modal-header .close-btn[style*="background"],
+html body .modal-overlay .modal-header .close-btn[style*="position"],
+html body button.close-btn,
+html body button[class*="close"],
+html body button[class*="close"][style],
+html body button[class*="close"][style*="background"],
+html body button[class*="close"][style*="position"],
+html body [class*="close-btn"],
+html body [class*="close-btn"][style],
+html body [class*="close-btn"][style*="background"],
+html body [class*="close-btn"][style*="position"],
+html body [id*="close"],
+html body [id*="close"][style],
+html body [id*="close"][style*="background"],
+html body [id*="close"][style*="position"],
+html body #closeFilterModalBtn,
+html body #closeFilterModalBtn[style],
+html body #closeFilterModalBtn[style*="background"],
+html body #closeFilterModalBtn[style*="position"],
+html body #filterModal #closeFilterModalBtn,
+html body #filterModal #closeFilterModalBtn[style],
+html body #filterModal .close-btn,
+html body #filterModal #closeFilterModalBtn,
+html body #filterModal .modal-header .close-btn,
+html body #filterModal .modal-header #closeFilterModalBtn,
+html body div#filterModal .close-btn,
+html body div#filterModal #closeFilterModalBtn,
+html body div#filterModal .modal-header .close-btn,
+html body div#filterModal .modal-header #closeFilterModalBtn {
+  border-radius: 10px !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  color: #15364A !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+html body #filterModal #closeFilterModalBtn:hover,
+html body #filterModal .close-btn:hover,
+html body #filterModal #closeFilterModalBtn:focus,
+html body #filterModal .close-btn:focus,
+html body #filterModal #closeFilterModalBtn:active,
+html body #filterModal .close-btn:active,
+html body #filterModal .modal-header #closeFilterModalBtn:hover,
+html body #filterModal .modal-header .close-btn:hover,
+html body div#filterModal #closeFilterModalBtn:hover,
+html body div#filterModal .close-btn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  color: #15364A !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+}
+html body #dashboardCloseBtn,
+html body #dashboardCloseBtn[style],
+html body #dashboardCloseBtn[style*="background"],
+html body #dashboardCloseBtn[style*="position"],
+html body #dashboardCloseBtn[style*="static"],
+html body #dashboardModal #dashboardCloseBtn,
+html body #dashboardModal #dashboardCloseBtn[style],
+html body #dashboardModal .close-btn,
+html body #dashboardModal .modal-header .close-btn,
+html body #dashboardModal.modal-overlay .close-btn,
+html body #dqDashboardCloseBtn,
+html body #dqDashboardCloseBtn[style],
+html body #dqDashboardCloseBtn[style*="background"],
+html body #dqDashboardCloseBtn[style*="position"],
+html body #dqDashboardCloseBtn[style*="static"],
+html body #dqDashboardModal #dqDashboardCloseBtn,
+html body #dqDashboardModal #dqDashboardCloseBtn[style],
+html body #dqDashboardModal .close-btn,
+html body #dqDashboardModal .modal-header .close-btn,
+html body #dqDashboardModal.modal-overlay .close-btn,
+html body #ordersDashboardCloseBtn,
+html body #ordersDashboardCloseBtn[style],
+html body #ordersDashboardCloseBtn[style*="background"],
+html body #ordersDashboardCloseBtn[style*="position"],
+html body #ordersDashboardCloseBtn[style*="static"],
+html body #ordersDashboardModal #ordersDashboardCloseBtn,
+html body #ordersDashboardModal #ordersDashboardCloseBtn[style],
+html body #ordersDashboardModal .close-btn,
+html body #ordersDashboardModal .modal-header .close-btn,
+html body #ordersDashboardModal.modal-overlay .close-btn,
+html body #bookingDashboardCloseBtn,
+html body #bookingDashboardCloseBtn[style],
+html body #bookingDashboardCloseBtn[style*="background"],
+html body #bookingDashboardCloseBtn[style*="position"],
+html body #bookingDashboardCloseBtn[style*="static"],
+html body #bookingDashboardModal #bookingDashboardCloseBtn,
+html body #bookingDashboardModal #bookingDashboardCloseBtn[style],
+html body #bookingDashboardModal .close-btn,
+html body #bookingDashboardModal .modal-header .close-btn,
+html body #bookingDashboardModal.modal-overlay .close-btn,
+html body #closeColumnManagerBtn,
+html body #closeColumnManagerBtn[style],
+html body #closeColumnManagerBtn[style*="background"],
+html body #closeColumnManagerBtn[style*="position"],
+html body #closeReportOptionsBtn,
+html body #closeReportOptionsBtn[style],
+html body #closeReportOptionsBtn[style*="background"],
+html body #closeReportOptionsBtn[style*="position"],
+html body #closeManageViewsBtn,
+html body #closeManageViewsBtn[style],
+html body #closeManageViewsBtn[style*="background"],
+html body #closeManageViewsBtn[style*="position"],
+html body #closeOpsSummaryBtn,
+html body #closeOpsSummaryBtn[style],
+html body #closeOpsSummaryBtn[style*="background"],
+html body #closeOpsSummaryBtn[style*="position"],
+html body #closeDqSummaryBtn,
+html body #closeDqSummaryBtn[style],
+html body #closeDqSummaryBtn[style*="background"],
+html body #closeDqSummaryBtn[style*="position"],
+html body #closeSelectVersionBtn,
+html body #closeSelectVersionBtn[style],
+html body #closeSelectVersionBtn[style*="background"],
+html body #closeSelectVersionBtn[style*="position"],
+html body #closeSelectVersionBtn[style*="absolute"],
+html body .quickfilter-close-btn,
+html body .quickfilter-close-btn[style],
+html body .quickfilter-close-btn[style*="background"],
+html body .quickfilter-close-btn[style*="position"],
+html body .modal-filter-tag-remove,
+html body .modal-filter-tag-remove[style],
+html body .modal-filter-tag-remove[style*="background"],
+html body .modal-filter-tag-remove[style*="position"],
+html body .ops-filter-popup-close,
+html body .ops-filter-popup-close[style],
+html body .ops-filter-popup-close[style*="background"],
+html body .ops-filter-popup-close[style*="position"],
+html body .analytics-close-btn,
+html body .analytics-close-btn[style],
+html body .analytics-close-btn[style*="background"],
+html body .analytics-close-btn[style*="position"],
+html body #analyticsDashboardCloseBtn,
+html body #analyticsDashboardCloseBtn[style],
+html body #analyticsDashboardCloseBtn[style*="background"],
+html body #analyticsDashboardCloseBtn[style*="position"],
+html body #closeRemoveDuplicatesModalBtn,
+html body #closeRemoveDuplicatesModalBtn[style],
+html body #closeShowDuplicatesModalBtn,
+html body #closeShowDuplicatesModalBtn[style],
+html body #closeBackupModalBtn,
+html body #closeBackupModalBtn[style],
+html body #closeSnapshotManagerModalBtn,
+html body #closeSnapshotManagerModalBtn[style],
+html body #closeDataVersionModalBtn,
+html body #closeDataVersionModalBtn[style],
+html body #closeUserSetUpModalBtn,
+html body #closeUserSetUpModalBtn[style],
+html body #closeSummaryModalBtn,
+html body #closeSummaryModalBtn[style],
+html body #closeManageSummariesBtn,
+html body #closeManageSummariesBtn[style],
+html body #closeCopySummaryModalBtn,
+html body #closeCopySummaryModalBtn[style],
+html body #closeManageDashboardConfigBtn,
+html body #closeManageDashboardConfigBtn[style],
+html body #closeCSVComparisonBtn,
+html body #closeCSVComparisonBtn[style],
+html body #closeResultsModalBtn,
+html body #closeResultsModalBtn[style],
+html body #closeLegalNoticeBtn,
+html body #closeLegalNoticeBtn[style] {
+  /* ESTILO UNIFICADO PARA TODOS LOS BOTONES DE CIERRE */
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  /* Permitir position pero forzar otros estilos */
+  position: relative !important;
+}
+
+/* FORZAR ESTILOS INLINE - SOBRESCRIBIR CUALQUIER ESTILO INLINE Y EVENTOS */
+html body .close-btn[style],
+html body .close-btn[style*="background"],
+html body .close-btn[style*="background-color"],
+html body .close-btn[style*="color"],
+html body .close-btn[style*="border"],
+html body .close-btn[style*="border-radius"],
+html body [id*="close"][style],
+html body [id*="close"][style*="background"],
+html body [id*="close"][style*="background-color"],
+html body [id*="close"][style*="color"],
+html body [id*="close"][style*="border"],
+html body [id*="close"][style*="border-radius"],
+html body [class*="close-btn"][style],
+html body [class*="close-btn"][style*="background"],
+html body [class*="close-btn"][style*="background-color"],
+html body [class*="close-btn"][style*="color"],
+html body [class*="close-btn"][style*="border"],
+html body [class*="close-btn"][style*="border-radius"],
+html body #closeTeamProfileBtn[style],
+html body #closeTeamLoginBtn[style],
+html body #closeTeamProfileBtn[style*="background"],
+html body #closeTeamLoginBtn[style*="background"],
+html body #closeTeamProfileBtn[style*="color"],
+html body #closeTeamLoginBtn[style*="color"] {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  padding: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  line-height: 1 !important;
+}
+
+/* SOBRESCRIBIR EVENTOS ONMOUSEOVER/ONMOUSEOUT - SIN CAMBIOS EN HOVER */
+html body .close-btn:hover,
+html body .close-btn:active,
+html body .close-btn:focus,
+html body [id*="close"]:hover,
+html body [id*="close"]:active,
+html body [id*="close"]:focus,
+html body [class*="close-btn"]:hover,
+html body [class*="close-btn"]:active,
+html body [class*="close-btn"]:focus,
+html body #closeTeamProfileBtn:hover,
+html body #closeTeamProfileBtn:active,
+html body #closeTeamProfileBtn:focus,
+html body #closeTeamLoginBtn:hover,
+html body #closeTeamLoginBtn:active,
+html body #closeTeamLoginBtn:focus {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+}
+
+/* HOVER Y ACTIVE - DISEÑO MEJORADO CON BORDE CUADRADO */
+html body .close-btn:hover,
+html body .close-btn:focus,
+html body .close-btn:active,
+html body .modal-header .close-btn:hover,
+html body .modal-header .close-btn:focus,
+html body .modal-header .close-btn:active,
+html body .modal-overlay .close-btn:hover,
+html body .modal-overlay .close-btn:focus,
+html body .modal-overlay .close-btn:active,
+html body .modal-overlay .modal-header .close-btn:hover,
+html body .modal-overlay .modal-header .close-btn:focus,
+html body .modal-overlay .modal-header .close-btn:active,
+html body button.close-btn:hover,
+html body button.close-btn:focus,
+html body button.close-btn:active,
+html body button[class*="close"]:hover,
+html body button[class*="close"]:focus,
+html body button[class*="close"]:active,
+html body [class*="close-btn"]:hover,
+html body [class*="close-btn"]:focus,
+html body [class*="close-btn"]:active,
+html body [id*="close"]:hover,
+html body [id*="close"]:focus,
+html body [id*="close"]:active,
+html body .quickfilter-close-btn:hover,
+html body .quickfilter-close-btn:focus,
+html body .quickfilter-close-btn:active,
+html body .modal-filter-tag-remove:hover,
+html body .modal-filter-tag-remove:focus,
+html body .modal-filter-tag-remove:active,
+html body .ops-filter-popup-close:hover,
+html body .ops-filter-popup-close:focus,
+html body .ops-filter-popup-close:active,
+html body .analytics-close-btn:hover,
+html body .analytics-close-btn:focus,
+html body .analytics-close-btn:active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-image: none !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+  opacity: 1 !important;
+}
+
+/* ========================================
+   BOTONES DE BIENVENIDA - FORZAR ESTILOS
+   ======================================== */
+html body .welcome-option-btn,
+html body .welcome-option-btn.primary,
+html body .welcome-option-btn.secondary,
+html body #onedriveLoginBtn,
+html body #onedriveLoginBtn.primary,
+html body #guestLoginBtn,
+html body #guestLoginBtn.primary,
+html body button.welcome-option-btn,
+html body button.welcome-option-btn.primary,
+html body button.welcome-option-btn.secondary,
+html body button#onedriveLoginBtn,
+html body button#guestLoginBtn {
+  background: var(--tb-btn-welcome-bg) !important;
+  background-color: var(--tb-btn-welcome-bg) !important;
+  color: var(--tb-btn-welcome-text) !important;
+  border: 2px solid var(--tb-btn-welcome-bg) !important;
+  border-radius: var(--tb-radius-lg) !important;
+  padding: var(--tb-spacing-lg) var(--tb-spacing-xl) !important;
+  width: 100% !important;
+  box-shadow: var(--tb-shadow-md) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all var(--tb-transition-normal) !important;
+}
+
+html body .welcome-option-btn:hover,
+html body .welcome-option-btn.primary:hover,
+html body .welcome-option-btn.secondary:hover,
+html body #onedriveLoginBtn:hover,
+html body #guestLoginBtn:hover,
+html body button.welcome-option-btn:hover {
+  background: var(--tb-btn-welcome-bg-hover) !important;
+  background-color: var(--tb-btn-welcome-bg-hover) !important;
+  border-color: var(--tb-btn-welcome-bg-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--tb-shadow-lg) !important;
+}
+
+/* Área interior blanca de botones de bienvenida */
+html body .welcome-option-btn .option-text,
+html body .welcome-option-btn.primary .option-text,
+html body .welcome-option-btn.secondary .option-text,
+html body #onedriveLoginBtn .option-text,
+html body #guestLoginBtn .option-text,
+html body button.welcome-option-btn .option-text {
+  background: var(--tb-btn-welcome-inner) !important;
+  background-color: var(--tb-btn-welcome-inner) !important;
+  border-radius: var(--tb-radius-md) !important;
+  padding: var(--tb-spacing-md) var(--tb-spacing-lg) !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-left: var(--tb-spacing-md) !important;
+}
+
+html body .welcome-option-btn .option-title,
+html body .welcome-option-btn.primary .option-title,
+html body .welcome-option-btn.secondary .option-title,
+html body .welcome-option-btn svg,
+html body .welcome-option-btn.primary svg,
+html body .welcome-option-btn.secondary svg {
+  color: var(--tb-text-primary) !important;
+  fill: var(--tb-text-primary) !important;
+}
+
+/* ========================================
+   ELIMINAR FONDOS OSCUROS Y TEXTOS BLANCOS
+   ======================================== */
+/* Forzar eliminación de fondos oscuros */
+html body [style*="#1a2332"],
+html body [style*="#0A1929"],
+html body [style*="background: #1a2332"],
+html body [style*="background: #0A1929"],
+html body [style*="background-color: #1a2332"],
+html body [style*="background-color: #0A1929"] {
+  background: var(--tb-bg-primary) !important;
+  background-color: var(--tb-bg-primary) !important;
+}
+
+/* Forzar eliminación de bordes blancos - REGLAS ULTRA ESPECÍFICAS */
+html body *[style*="border"][style*="rgba(255"],
+html body *[style*="border"][style*="rgba(255, 255, 255"],
+html body *[style*="border"][style*="white"],
+html body *[style*="border"][style*="#fff"],
+html body *[style*="border-top"][style*="rgba(255"],
+html body *[style*="border-bottom"][style*="rgba(255"],
+html body *[style*="border-left"][style*="rgba(255"],
+html body *[style*="border-right"][style*="rgba(255"],
+html body *[style*="border:1px solid rgba(255"],
+html body *[style*="border: 1px solid rgba(255"],
+html body *[style*="border-top:1px solid rgba(255"],
+html body *[style*="border-top: 1px solid rgba(255"],
+html body *[style*="border-bottom:1px solid rgba(255"],
+html body *[style*="border-bottom: 1px solid rgba(255"],
+html body *[style*="border-left:1px solid rgba(255"],
+html body *[style*="border-left: 1px solid rgba(255"],
+html body *[style*="border-right:1px solid rgba(255"],
+html body *[style*="border-right: 1px solid rgba(255"],
+html body #filterModal *[style*="border"][style*="rgba(255"],
+html body .modal-overlay *[style*="border"][style*="rgba(255"],
+html body .sidebar *[style*="border"][style*="rgba(255"],
+html body #dashboardModal *[style*="border"][style*="rgba(255"],
+html body #dqDashboardModal *[style*="border"][style*="rgba(255"] {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  border-top-color: rgba(0, 0, 0, 0.2) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.2) !important;
+  border-left-color: rgba(0, 0, 0, 0.2) !important;
+  border-right-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Forzar eliminación de textos blancos - REGLAS ULTRA ESPECÍFICAS */
+html body *[style*="color: white"],
+html body *[style*="color: #fff"],
+html body *[style*="color: #ffffff"],
+html body *[style*="color: #FFF"],
+html body *[style*="color: #FFFFFF"],
+html body *[style*="color: #E8F4F8"],
+html body *[style*="color:white"],
+html body *[style*="color:#fff"],
+html body *[style*="color:#ffffff"],
+html body *[style*="color:#FFF"],
+html body *[style*="color:#FFFFFF"],
+html body *[style*="color:#E8F4F8"],
+html body .sidebar-button[style*="color"],
+html body .brand-btn[style*="color"],
+html body .filter-tab[style*="color"],
+html body #filterModal *[style*="color"],
+html body button[style*="color: white"],
+html body button[style*="color: #fff"],
+html body button[style*="color: #ffffff"] {
+  color: #000000 !important;
+}
+
+/* Forzar texto negro en todos los botones de sidebar */
+html body .sidebar-button,
+html body .sidebar-button *,
+html body .sidebar .brand-btn,
+html body .sidebar .brand-btn *,
+html body .sidebar button,
+html body .sidebar button *,
+html body .sidebar * {
+  color: #000000 !important;
+}
+
+/* Forzar texto negro en modal de filters - REGLAS ULTRA ESPECÍFICAS */
+html body #filterModal,
+html body #filterModal *,
+html body #filterModal button,
+html body #filterModal .btn,
+html body #filterModal .filter-btn,
+html body #filterModal .filter-tab,
+html body #filterModal .filter-tab *,
+html body #filterModal .btn-primary,
+html body #filterModal .btn-secondary,
+html body #filterModal .filter-actions *,
+html body #filterModal .filter-panel *,
+html body #filterModal .filter-content *,
+html body #filterModal .filter-block *,
+html body #filterModal .filter-header *,
+html body #filterModal .filter-input-group *,
+html body #filterModal .filter-tag *,
+html body #filterModal label,
+html body #filterModal span,
+html body #filterModal div,
+html body #filterModal p,
+html body #filterModal h1,
+html body #filterModal h2,
+html body #filterModal h3,
+html body #filterModal h4,
+html body #filterModal h5,
+html body #filterModal h6,
+html body #filterModal .modal-filter-add-custom-btn,
+html body #filterModal .modal-filter-add-custom-btn[style],
+html body #filterModal .modal-filter-custom-input,
+html body #filterModal .modal-filter-custom-input[style] {
+  color: #000000 !important;
+}
+
+/* Forzar estilos en botones Add y inputs del modal de filters */
+html body #filterModal .modal-filter-add-custom-btn,
+html body #filterModal .modal-filter-add-custom-btn[style],
+html body #filterModal button[class*="add"],
+html body #filterModal button[class*="Add"] {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  border: 1px solid #47B2E5 !important;
+  border-radius: 6px !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  padding: 0.5rem 1.2rem !important;
+  box-shadow: 0 2px 4px rgba(71, 178, 229, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+html body #filterModal .modal-filter-add-custom-btn:hover,
+html body #filterModal .modal-filter-add-custom-btn[style]:hover,
+html body #filterModal button[class*="add"]:hover,
+html body #filterModal button[class*="Add"]:hover {
+  background: #3A9BD4 !important;
+  background-color: #3A9BD4 !important;
+  border-color: #3A9BD4 !important;
+  color: #FFFFFF !important;
+  box-shadow: 0 3px 6px rgba(71, 178, 229, 0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+html body #filterModal .modal-filter-custom-input,
+html body #filterModal .modal-filter-custom-input[style],
+html body #filterModal input[class*="filter"],
+html body #filterModal input[class*="custom"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  color: #000000 !important;
+}
+
+/* Forzar texto negro en TODOS los modales */
+html body .modal-overlay,
+html body .modal-overlay *,
+html body .modal-panel,
+html body .modal-panel *,
+html body .modal-header,
+html body .modal-header *,
+html body .modal-content,
+html body .modal-content *,
+html body .modal-footer,
+html body .modal-footer *,
+html body .modal-btn,
+html body .modal-btn * {
+  color: #000000 !important;
+}
+
+/* ========================================
+   DESPLEGABLES Y SELECTS - FORZAR ESTILOS
+   ======================================== */
+html body select,
+html body select[style],
+html body select[style*="background"],
+html body select[style*="#1a2332"],
+html body select[style*="#0A1929"],
+html body select[style*="color: #E8F4F8"],
+html body select[style*="color:#E8F4F8"],
+html body select[style*="color: white"],
+html body select,
+html body select[class],
+html body select[id],
+html body select[style*="color:white"],
+html body select[style*="color: #fff"],
+html body select[style*="color:#fff"],
+html body select[id*="team"],
+html body select[id*="Team"],
+html body #teamLoginSelect,
+html body #teamStorageLocationSelect,
+html body .team-select,
+html body .filter-select,
+html body .toolbar-select,
+html body .toolbar-select[style],
+html body #rowsPerPageSelect,
+html body #rowsPerPageSelect[style],
+html body #viewSelect,
+html body #viewSelect[style],
+html body .view-controls select,
+html body .rows-per-page-control select,
+html body .table-toolbar select,
+html body .toolbar-left select,
+html body #dedupeColumnsSelect,
+html body .dedupe-columns-select,
+html body option,
+html body option[style],
+html body option[style*="background"],
+html body option[style*="#1a2332"],
+html body option[style*="#0A1929"] {
+  background: var(--tb-input-bg) !important;
+  background-color: var(--tb-input-bg) !important;
+  background-image: none !important;
+  color: var(--tb-input-text) !important;
+  border: 1px solid var(--tb-input-border) !important;
+  border-radius: 6px !important;
+  padding: var(--tb-spacing-sm) var(--tb-spacing-md) !important;
+}
+
+html body select:hover,
+html body select:focus {
+  background: var(--tb-bg-hover) !important;
+  background-color: var(--tb-bg-hover) !important;
+  border-color: var(--tb-input-focus) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+html body option {
+  background: var(--tb-input-bg) !important;
+  background-color: var(--tb-input-bg) !important;
+  color: var(--tb-input-text) !important;
+}
+
+/* Choices.js dropdowns */
+html body .choices,
+html body .choices[style],
+html body .choices__inner,
+html body .choices__inner[style],
+html body .choices__list--dropdown,
+html body .choices__list--dropdown[style],
+html body .choices__item,
+html body .choices__item[style],
+html body .choices__item--selectable,
+html body .choices__item--selectable[style] {
+  background: var(--tb-input-bg) !important;
+  background-color: var(--tb-input-bg) !important;
+  color: var(--tb-input-text) !important;
+  border: 1px solid var(--tb-input-border) !important;
+  border-radius: 6px !important;
+}
+
+html body .choices__item--selectable.is-highlighted,
+html body .choices__item--selectable.is-highlighted[style] {
+  background: var(--tb-bg-hover) !important;
+  background-color: var(--tb-bg-hover) !important;
+  color: var(--tb-input-text) !important;
+}
+
+/* Dropdowns y popups generales */
+html body .dropdown,
+html body .dropdown[style],
+html body .dropdown-menu,
+html body .dropdown-menu[style],
+html body .popup,
+html body .popup[style],
+html body .popover,
+html body .popover[style],
+html body .tooltip,
+html body .tooltip[style] {
+  background: var(--tb-input-bg) !important;
+  background-color: var(--tb-input-bg) !important;
+  color: var(--tb-input-text) !important;
+  border: 1px solid var(--tb-input-border) !important;
+  border-radius: var(--tb-radius-md) !important;
+  box-shadow: var(--tb-shadow-md) !important;
+}
+
+html body .dropdown *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(button):not(input):not(select):not(textarea),
+html body .dropdown-menu *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(button):not(input):not(select):not(textarea),
+html body .popup *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(button):not(input):not(select):not(textarea) {
+  color: var(--tb-input-text) !important;
+}
+
+/* ========================================
+   BADGES Y FILTROS - SIN FONDO VERDE
+   ======================================== */
+html body .excel-filter-badge,
+html body [class*="badge"],
+html body [class*="filter-badge"],
+html body [class*="badge"][style],
+html body [class*="filter-badge"][style] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  border: none !important;
+  color: var(--tb-text-primary) !important;
+}
+
+/* ========================================
+    BUSCADOR - FORZAR BORDES VISIBLES
+    ======================================== */
+html body .search-input,
+html body .search-input[style],
+html body .search-input[style*="border"],
+html body #globalSearchInput,
+html body #globalSearchInput[style],
+html body #globalSearchInput[style*="border"],
+html body input.search-input,
+html body input[type="search"],
+html body input[type="text"][id*="search"],
+html body input[class*="search"],
+html body #columnSearchInput,
+html body #columnSearchInput[style],
+html body input.input,
+html body input.input[style] {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-color: rgba(0, 0, 0, 0.2) !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  color: #000000 !important;
+}
+
+html body .search-input::placeholder,
+html body #globalSearchInput::placeholder,
+html body input.search-input::placeholder,
+html body input[type="search"]::placeholder,
+html body #columnSearchInput::placeholder,
+html body input.input::placeholder,
+html body input[type="text"][id*="search"]::placeholder {
+  color: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+}
+
+html body .search-input:hover,
+html body #globalSearchInput:hover,
+html body input.search-input:hover {
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  background: rgba(255, 255, 255, 0.8) !important;
+}
+
+html body .search-input:focus,
+html body #globalSearchInput:focus,
+html body input.search-input:focus {
+  border-color: rgba(0, 0, 0, 0.4) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ========================================
+    OCULTAR NOTIFICACIÓN OFFLINE MODE
+    ======================================== */
+html body #offlineModeNotification,
+html body #offline-notification,
+html body [id*="offlineMode"],
+html body [id*="offline-notification"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  top: -9999px !important;
+}
+
+/* ========================================
+   SCROLLBARS DE TABLA - MÁXIMA PRIORIDAD
+   ======================================== */
+html body #tableContainer::-webkit-scrollbar,
+html body .table-scroll-container::-webkit-scrollbar,
+html body #tableContainer *::-webkit-scrollbar,
+html body .table-scroll-container *::-webkit-scrollbar {
+  width: 18px !important;
+  height: 18px !important;
+}
+
+html body #tableContainer {
+  scrollbar-width: auto !important;
+  scrollbar-color: #47B2E5 #E3F2FD !important;
+}
+
+html body .table-scroll-container {
+  scrollbar-width: auto !important;
+  scrollbar-color: #47B2E5 #E3F2FD !important;
+}
+
+/* FORZAR QUE LOS BOTONES DE CIERRE NO CAMBIEN EN HOVER - MÁXIMA PRIORIDAD */
+html body .close-btn:hover,
+html body .close-btn:focus,
+html body .close-btn:active,
+html body button.close-btn:hover,
+html body button.close-btn:focus,
+html body button.close-btn:active,
+html body [class*="close-btn"]:hover,
+html body [class*="close-btn"]:focus,
+html body [class*="close-btn"]:active,
+html body [id*="close"]:hover,
+html body [id*="close"]:focus,
+html body [id*="close"]:active,
+html body .quickfilter-close-btn:hover,
+html body .quickfilter-close-btn:focus,
+html body .quickfilter-close-btn:active,
+html body .modal-filter-tag-remove:hover,
+html body .modal-filter-tag-remove:focus,
+html body .modal-filter-tag-remove:active,
+html body .ops-filter-popup-close:hover,
+html body .ops-filter-popup-close:focus,
+html body .ops-filter-popup-close:active,
+html body .analytics-close-btn:hover,
+html body .analytics-close-btn:focus,
+html body .analytics-close-btn:active,
+html body .modal-overlay .close-btn:hover,
+html body .modal-overlay .close-btn:focus,
+html body .modal-overlay .close-btn:active,
+html body .modal-header .close-btn:hover,
+html body .modal-header .close-btn:focus,
+html body .modal-header .close-btn:active,
+html body .modal-overlay .modal-header .close-btn:hover,
+html body .modal-overlay .modal-header .close-btn:focus,
+html body .modal-overlay .modal-header .close-btn:active {
+  background: inherit !important;
+  background-color: inherit !important;
+  color: inherit !important;
+  border: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+  opacity: inherit !important;
+}
+
+/* Column Manager Modal - Adjusted margins */
+html body #columnManagerModal .modal-content {
+  padding: 1.5rem !important;
+}
+
+html body #columnManagerModal .modal-footer {
+  padding: 1rem 1.5rem !important;
+  gap: 0.75rem !important;
+}
+
+/* Main Tab Button - Hover effects similar to filter chips */
+html body .main-tab-btn:hover:not(.active),
+html body button.main-tab-btn:hover:not(.active) {
+  border-color: #BDBDBD !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-1px) !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+}
+
+html body .main-tab-btn.active:hover,
+html body button.main-tab-btn.active:hover {
+  border-color: #47B2E5 !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 2px 6px rgba(71, 178, 229, 0.2), 0 1px 3px rgba(71, 178, 229, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Row Color Picker - Mantener colores originales */
+html body .row-color-picker-menu {
+  background: #fff !important;
+  background-color: #fff !important;
+}
+
+html body .row-color-picker-menu button.row-color-swatch,
+html body .row-color-picker-menu button[data-color],
+html body button.row-color-swatch[data-color] {
+  background-image: none !important;
+  border: 2px solid #eee !important;
+  border-radius: 6px !important;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0 !important;
+  margin: 0 2px !important;
+  cursor: pointer !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+}
+
+/* Preservar el color del data attribute usando JavaScript inline style que ya tiene !important */
+html body .row-color-picker-menu button.row-color-swatch[style*="background"]:not([style*="background:"]),
+html body .row-color-picker-menu button[data-color][style*="background"] {
+  /* El color ya está en el style inline con !important, solo necesitamos asegurar que no se sobrescriba */
+}
+
+/* Filter Modal Overlay - Fondo transparente - MÁXIMA PRIORIDAD */
+html body #filterModalOverlay,
+html body #filterModalOverlay[style],
+html body #filterModalOverlay[style*="background"],
+html body #filterModalOverlay[style*="transparent"],
+html body div#filterModalOverlay,
+html body div#filterModalOverlay[style],
+html body div#filterModalOverlay[style*="background"],
+html body div#filterModalOverlay[style*="transparent"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Filter Modal Container - Fondo azul claro - MÁXIMA PRIORIDAD */
+html body #filterModal,
+html body #filterModal[style],
+html body #filterModal[style*="background"],
+html body div#filterModal,
+html body div#filterModal[style],
+html body div#filterModal[style*="background"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+}
+
+/* Eliminar sombras blancas de campos de entrada del filtro */
+html body #filterModal .filter-input,
+html body #filterModal .filter-select,
+html body #filterModal .filter-search-input,
+html body #filterModal .modal-filter-custom-input,
+html body #filterModal input.filter-input,
+html body #filterModal input.filter-select,
+html body #filterModal input.filter-search-input,
+html body #filterModal input.modal-filter-custom-input {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+html body #filterModal .filter-input:focus,
+html body #filterModal .filter-select:focus,
+html body #filterModal .filter-search-input:focus,
+html body #filterModal .modal-filter-custom-input:focus,
+html body #filterModal input.filter-input:focus,
+html body #filterModal input.filter-select:focus,
+html body #filterModal input.filter-search-input:focus,
+html body #filterModal input.modal-filter-custom-input:focus {
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Modal filter input - Igualar tono azul con el fondo - TODOS LOS CAMPOS */
+html body #filterModal .modal-filter-input,
+html body #filterModal input.modal-filter-input,
+html body #filterModal .modal-filter-dropdown-wrapper .modal-filter-input,
+html body #filterModal .modal-filter-dropdown-wrapper input.modal-filter-input,
+html body #filterModal .filter-input,
+html body #filterModal input.filter-input,
+html body #filterModal .filter-select,
+html body #filterModal select.filter-select,
+html body #filterModal .filter-search-input,
+html body #filterModal input.filter-search-input,
+html body #filterModal .modal-filter-custom-input,
+html body #filterModal input.modal-filter-custom-input {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;
+}
+
+html body #filterModal .modal-filter-input:focus,
+html body #filterModal input.modal-filter-input:focus,
+html body #filterModal .modal-filter-dropdown-wrapper .modal-filter-input:focus,
+html body #filterModal .modal-filter-dropdown-wrapper input.modal-filter-input:focus,
+html body #filterModal .filter-input:focus,
+html body #filterModal input.filter-input:focus,
+html body #filterModal .filter-select:focus,
+html body #filterModal select.filter-select:focus,
+html body #filterModal .filter-search-input:focus,
+html body #filterModal input.filter-search-input:focus,
+html body #filterModal .modal-filter-custom-input:focus,
+html body #filterModal input.modal-filter-custom-input:focus {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  background-image: none !important;
+  border-color: #47B2E5 !important;
+  box-shadow: none !important;
+}
+
+/* Filter Modal Buttons - Texto negro y bordes visibles */
+html body #filterModal button:not(#applyFiltersBtn):not(#resetFiltersBtn):not(.filter-reset-btn):not(.filter-tab),
+html body #filterModal .btn:not(#applyFiltersBtn):not(#resetFiltersBtn):not(.filter-reset-btn):not(.filter-tab),
+html body #filterModal .modal-btn:not(#applyFiltersBtn):not(#resetFiltersBtn):not(.filter-reset-btn):not(.filter-tab),
+html body #filterModal .filter-btn:not(#applyFiltersBtn):not(#resetFiltersBtn):not(.filter-reset-btn):not(.filter-tab),
+html body #filterModal .date-today-btn,
+html body #filterModal .date-offset-btn,
+html body #filterModal .modal-filter-dropdown-btn {
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Filter tabs - Sin borde */
+html body #filterModal .filter-tab,
+html body #filterModal button.filter-tab,
+html body #filterModal .filter-tab[style],
+html body #filterModal .filter-tab[style*="border"] {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none !important;
+}
+
+html body #filterModal .filter-tab:hover,
+html body #filterModal button.filter-tab:hover {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none !important;
+}
+
+/* Botones de reset de filtros individuales - Sin borde - MÁXIMA PRIORIDAD */
+html body #filterModal .filter-reset-btn,
+html body #filterModal .filter-reset-btn[style],
+html body #filterModal .filter-reset-btn[style*="border"],
+html body #filterModal button.filter-reset-btn,
+html body #filterModal button.filter-reset-btn[style],
+html body #filterModal button.filter-reset-btn[style*="border"] {
+  color: #000000 !important;
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none !important;
+}
+
+html body #filterModal .filter-reset-btn:hover,
+html body #filterModal button.filter-reset-btn:hover {
+  border: none !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none !important;
+}
+
+html body #filterModal button:not(.filter-reset-btn):not(.date-today-btn):not(.date-offset-btn):not(.modal-filter-dropdown-btn):not(#applyFiltersBtn):not(#resetFiltersBtn) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+html body #filterModal .date-today-btn,
+html body #filterModal .date-offset-btn,
+html body #filterModal .modal-filter-dropdown-btn {
+  background: rgba(71, 178, 229, 0.2) !important;
+  background-color: rgba(71, 178, 229, 0.2) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(71, 178, 229, 0.4) !important;
+}
+
+html body #filterModal .date-today-btn:hover,
+html body #filterModal .date-offset-btn:hover,
+html body #filterModal .modal-filter-dropdown-btn:hover {
+  background: rgba(71, 178, 229, 0.3) !important;
+  background-color: rgba(71, 178, 229, 0.3) !important;
+  border-color: rgba(71, 178, 229, 0.5) !important;
+}
+
+/* Column selector - Buscador de filtros */
+html body #filterModal .column-selector,
+html body #filterModal input.column-selector {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  color: #000000 !important;
+}
+
+html body #filterModal .column-selector::placeholder,
+html body #filterModal input.column-selector::placeholder {
+  color: rgba(0, 0, 0, 0.5) !important;
+  opacity: 1 !important;
+}
+
+/* Botones Apply y Reset Filters - Borde gris, sin cambio en hover - MÁXIMA PRIORIDAD */
+html body #filterModal #applyFiltersBtn,
+html body #filterModal #applyFiltersBtn[style],
+html body #filterModal #applyFiltersBtn[style*="background"],
+html body #filterModal #applyFiltersBtn[style*="border"],
+html body #filterModal button#applyFiltersBtn,
+html body #filterModal button#applyFiltersBtn[style],
+html body #filterModal #resetFiltersBtn,
+html body #filterModal #resetFiltersBtn[style],
+html body #filterModal #resetFiltersBtn[style*="background"],
+html body #filterModal #resetFiltersBtn[style*="border"],
+html body #filterModal button#resetFiltersBtn,
+html body #filterModal button#resetFiltersBtn[style] {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  border-radius: 6px !important;
+  box-shadow: 0 2px 4px rgba(71, 178, 229, 0.3) !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 0.5rem 1.2rem !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+html body #filterModal #applyFiltersBtn:hover,
+html body #filterModal #applyFiltersBtn:hover[style],
+html body #filterModal button#applyFiltersBtn:hover,
+html body #filterModal #resetFiltersBtn:hover,
+html body #filterModal #resetFiltersBtn:hover[style],
+html body #filterModal button#resetFiltersBtn:hover {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  border-color: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 6px rgba(71, 178, 229, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+/* Filter Chips - Diseño nuevo desde cero - MÁXIMA PRIORIDAD */
+html body .filter-chip-new,
+html body div.filter-chip-new {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.625rem !important;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem !important;
+  margin: 0.375rem 0.375rem 0.375rem 0 !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E0E0E0 !important;
+  border-radius: 8px !important;
+  font-size: 0.8125rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: default !important;
+  position: relative !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+
+html body .filter-chip-new:hover {
+  border-color: #BDBDBD !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+html body .filter-chip-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+html body .filter-chip-label {
+  color: #666666 !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+html body .filter-chip-label::after {
+  content: ':' !important;
+  margin-left: 0.125rem !important;
+  color: #999999 !important;
+}
+
+html body .filter-chip-value {
+  color: #1A1A1A !important;
+  font-weight: 600 !important;
+  letter-spacing: 0 !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+html body .filter-chip-close {
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #9E9E9E !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  opacity: 0.7 !important;
+  display: inline-block !important;
+}
+
+html body .filter-chip-close path {
+  stroke: currentColor !important;
+  transition: all 0.15s ease !important;
+}
+
+html body .filter-chip-close:hover {
+  color: #616161 !important;
+  opacity: 1 !important;
+  transform: scale(1.1) !important;
+}
+
+html body .filter-chip-close:active {
+  transform: scale(0.9) !important;
+  opacity: 1 !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude {
+  background: #FFF3E0 !important;
+  background-color: #FFF3E0 !important;
+  border-color: #FFB74D !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude .filter-chip-label {
+  color: #E65100 !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude .filter-chip-value {
+  color: #BF360C !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude:hover {
+  border-color: #FF9800 !important;
+  background: #FFE0B2 !important;
+  background-color: #FFE0B2 !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude .filter-chip-close {
+  color: #E65100 !important;
+}
+
+html body .filter-chip-new.filter-chip-exclude .filter-chip-close:hover {
+  background: #FFE0B2 !important;
+  color: #BF360C !important;
+}
+
+/* Main Tab Button Active - Fondo visible */
+html body .main-tab-btn.active,
+html body button.main-tab-btn.active,
+html body .main-tab-btn.active[style],
+html body button.main-tab-btn.active[style],
+html body .main-tabs-bar .main-tab-btn.active,
+html body .main-tabs-bar button.main-tab-btn.active,
+html body #mainTabsBar .main-tab-btn.active,
+html body #mainTabsBar button.main-tab-btn.active {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #47B2E5 !important;
+  border: 1.5px solid #47B2E5 !important;
+  border-bottom: 1.5px solid #47B2E5 !important;
+  font-weight: 500 !important;
+  box-shadow: 0 1px 3px rgba(71, 178, 229, 0.15), 0 1px 2px rgba(71, 178, 229, 0.1) !important;
+  border-radius: 8px !important;
+}
+
+/* Ocultar botón Custom Summary del sidebar */
+html body #openCustomSummaryBtn,
+html body button#openCustomSummaryBtn,
+html body .sidebar #openCustomSummaryBtn,
+html body .sidebar-button#openCustomSummaryBtn {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Ocultar separador antes del botón Custom Summary si existe */
+html body .sidebar-separator:has(+ #openCustomSummaryBtn),
+html body .sidebar-separator:has(+ button#openCustomSummaryBtn) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ========================================
+   DASHBOARD ACTION BUTTONS - UNIFICAR ESTILOS
+   ======================================== */
+/* Forzar estilo unificado para todos los botones Generate Summary Report */
+html body #dqDashboardModal .dashboard-action-btn,
+html body #dqDashboardModal button.dashboard-action-btn,
+html body #dqDashboardModal #generateDqSummaryBtn,
+html body #dqDashboardModal button#generateDqSummaryBtn,
+html body #ordersDashboardModal .dashboard-action-btn,
+html body #ordersDashboardModal button.dashboard-action-btn,
+html body #ordersDashboardModal #generateOrdersSummaryBtn,
+html body #ordersDashboardModal button#generateOrdersSummaryBtn,
+html body #bookingDashboardModal .dashboard-action-btn,
+html body #bookingDashboardModal button.dashboard-action-btn,
+html body #bookingDashboardModal #generateBookingSummaryBtn,
+html body #bookingDashboardModal button#generateBookingSummaryBtn {
+  background: rgba(71, 178, 229, 0.2) !important;
+  background-color: rgba(71, 178, 229, 0.2) !important;
+  background-image: none !important;
+  border: 1px solid rgba(71, 178, 229, 0.4) !important;
+  border-color: rgba(71, 178, 229, 0.4) !important;
+  color: #47B2E5 !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0.03em !important;
+  box-shadow: none !important;
+}
+
+html body #dqDashboardModal .dashboard-action-btn:hover,
+html body #dqDashboardModal button.dashboard-action-btn:hover,
+html body #dqDashboardModal #generateDqSummaryBtn:hover,
+html body #dqDashboardModal button#generateDqSummaryBtn:hover,
+html body #ordersDashboardModal .dashboard-action-btn:hover,
+html body #ordersDashboardModal button.dashboard-action-btn:hover,
+html body #ordersDashboardModal #generateOrdersSummaryBtn:hover,
+html body #ordersDashboardModal button#generateOrdersSummaryBtn:hover,
+html body #bookingDashboardModal .dashboard-action-btn:hover,
+html body #bookingDashboardModal button.dashboard-action-btn:hover,
+html body #bookingDashboardModal #generateBookingSummaryBtn:hover,
+html body #bookingDashboardModal button#generateBookingSummaryBtn:hover {
+  background: rgba(71, 178, 229, 0.3) !important;
+  background-color: rgba(71, 178, 229, 0.3) !important;
+  background-image: none !important;
+  border-color: rgba(71, 178, 229, 0.6) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 15px rgba(71, 178, 229, 0.2) !important;
+  color: #47B2E5 !important;
+}
+
+/* ========================================
+   FORZAR ESTILOS DE BOTONES DE CIERRE - MÁXIMA ESPECIFICIDAD
+   ======================================== */
+html body div#filterModal button#closeFilterModalBtn.close-btn,
+html body div#filterModal div.modal-header button#closeFilterModalBtn.close-btn,
+html body div#filterModal div.modal-header button.close-btn#closeFilterModalBtn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+}
+
+html body div#filterModal button#closeFilterModalBtn.close-btn:hover,
+html body div#filterModal div.modal-header button#closeFilterModalBtn.close-btn:hover,
+html body div#filterModal div.modal-header button.close-btn#closeFilterModalBtn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  color: #15364A !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+}
+
+html body div#dashboardModal button#dashboardCloseBtn.close-btn,
+html body div#dqDashboardModal button#dqDashboardCloseBtn.close-btn,
+html body div#ordersDashboardModal button#ordersDashboardCloseBtn.close-btn,
+html body div#bookingDashboardModal button#bookingDashboardCloseBtn.close-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  background-image: none !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  max-width: 36px !important;
+  max-height: 36px !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: none !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+}
+

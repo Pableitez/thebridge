@@ -1,0 +1,1199 @@
+/* Modern Glassmorphism Dashboard Styles - Similar to Welcome Modal */
+
+/* Override generic modal styles for dashboard */
+#dashboardModal {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Ultra-specific override for dashboard modal panel */
+#dashboardModal.modal-overlay .modal-panel,
+div#dashboardModal .modal-panel,
+div#dashboardModal.modal-overlay div.modal-panel {
+  background: rgba(255, 255, 255, 0.02) !important;
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  color: white !important;
+  max-width: 1600px !important;
+  width: 95% !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  animation: slideUp 0.3s ease-out;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* Ultra-specific override for all dashboard internal elements */
+#dashboardModal *,
+#dashboardModal .modal-panel *,
+#dashboardModal .modal-content *,
+#dashboardModal .dashboard-body *,
+#dashboardModal .dashboard-section *,
+#dashboardModal .quickfilter-container *,
+#dashboardModal .quickfilters-grid *,
+#dashboardModal .dashboard-quickfilters * {
+  background-color: transparent !important;
+}
+
+/* Re-apply specific backgrounds where needed */
+#dashboardModal .kpi-card,
+#dashboardModal .dq-hub-chip,
+#dashboardModal .quickfilter-btn,
+#dashboardModal .quickfilter-container,
+#dashboardModal .dashboard-section {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Dashboard Modal using standard modal system */
+#dashboardModal {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 1rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+#dashboardModal.hidden {
+  display: none;
+}
+
+#dashboardModal .modal-panel,
+#dashboardModal.modal-overlay .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px !important;
+  color: #000000 !important;
+  max-width: 1600px !important;
+  width: 95% !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  animation: slideUp 0.3s ease-out;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* For compatibility with existing code */
+.dashboard-panel {
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  color: white !important;
+  max-width: 1200px !important;
+  width: 90% !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  position: relative !important;
+}
+
+/* Dashboard Header */
+.dashboard-header,
+#dashboardModal .modal-header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem 2rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.dashboard-title {
+  color: white;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Close Button */
+#dashboardCloseBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #15364A !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+  box-shadow: none !important;
+}
+
+#dashboardCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+}
+
+/* Dashboard Body */
+.dashboard-body,
+#dashboardModal .modal-content {
+  padding: 2rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background: transparent !important;
+  color: white !important;
+}
+
+/* Dashboard Sections */
+.dashboard-section {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 0;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.dashboard-section + .dashboard-section {
+  margin-top: 0;
+}
+
+.dashboard-section-title {
+  margin-bottom: 0.3rem;
+  font-size: 1.08rem;
+}
+
+.urgency-cards-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  gap: 0.3rem;
+  margin-bottom: 0.2rem;
+  margin-top: 0.1rem;
+}
+
+.dq-hub-chip,
+.dq-hub-chip:active,
+.dq-hub-chip:focus,
+.dq-hub-chip:hover {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+}
+
+.dq-hub-chip[data-urgency="Urgente"] {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #ff6b6b !important;
+}
+
+.dq-hub-chip[data-urgency="Urgente"]:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+  color: #ff5252 !important;
+}
+
+.dq-hub-chip[data-urgency="Media"] {
+  background: rgba(251, 191, 36, 0.15) !important;
+  border: 1px solid rgba(251, 191, 36, 0.3) !important;
+  color: #ffc107 !important;
+}
+
+.dq-hub-chip[data-urgency="Media"]:hover {
+  background: rgba(251, 191, 36, 0.25) !important;
+  border: 1px solid rgba(251, 191, 36, 0.5) !important;
+  color: #ffb300 !important;
+}
+
+.dq-hub-chip[data-urgency="Baja"] {
+  background: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #4caf50 !important;
+}
+
+.dq-hub-chip[data-urgency="Baja"]:hover {
+  background: rgba(34, 197, 94, 0.25) !important;
+  border: 1px solid rgba(34, 197, 94, 0.5) !important;
+  color: #43a047 !important;
+}
+
+@media (max-width: 768px) {
+  .dq-hub-chip {
+    box-shadow: none !important;
+    filter: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ops-hub-chip {
+    box-shadow: none !important;
+    filter: none !important;
+    background: rgba(255,255,255,0.08) !important;
+    border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+    color: #fff !important;
+  }
+}
+
+/* KPIs Enhanced */
+.dashboard-kpis-enhanced {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.kpi-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.kpi-card:hover {
+  /* Hover effect disabled */
+}
+
+.kpi-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #47B2E5;
+  margin-bottom: 0.5rem;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+.kpi-title {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+.kpi-change {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  font-weight: 600;
+}
+
+.kpi-change.positive {
+  color: #10B981;
+}
+
+.kpi-change.negative {
+  color: #EF4444;
+}
+
+.kpi-change.neutral {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Quick Filters Grid */
+.dashboard-quickfilters {
+  margin-top: 0;
+}
+
+.quickfilters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.quickfilter-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 16px !important;
+  padding: 1.5rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: none !important;
+  position: relative !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  min-height: 100px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: none !important;
+}
+
+.quickfilter-btn:hover {
+  background: rgba(71, 178, 229, 0.12);
+  border-color: rgba(71, 178, 229, 0.25);
+  transform: translateY(-4px);
+  box-shadow: none;
+  color: white;
+}
+
+.quickfilter-btn.active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.8) 0%, rgba(5, 150, 105, 0.9) 100%);
+  border-color: rgba(16, 185, 129, 0.6);
+  color: white;
+  box-shadow: none;
+  transform: translateY(-2px);
+}
+
+.quickfilter-btn.active:hover {
+  background: linear-gradient(135deg, rgba(5, 150, 105, 0.9) 0%, rgba(4, 120, 87, 1) 100%);
+  box-shadow: none;
+  transform: translateY(-4px);
+}
+
+.quickfilter-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #47B2E5;
+}
+
+.quickfilter-btn.active .quickfilter-name {
+  color: white;
+}
+
+.quickfilter-count {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+}
+
+.quickfilter-btn.active .quickfilter-count {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Quick Filter Cards (kpi-card dentro de quickfilter-container) */
+#dashboardModal .quickfilter-container .kpi-card,
+.dashboard-panel .quickfilter-container .kpi-card,
+.quickfilter-container .kpi-card {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 1rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  backdrop-filter: none !important;
+  position: relative !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  min-height: 60px !important;
+  height: auto !important;
+  max-height: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+#dashboardModal .quickfilter-container .kpi-card:hover,
+.dashboard-panel .quickfilter-container .kpi-card:hover,
+.quickfilter-container .kpi-card:hover {
+  /* Hover effect disabled */
+}
+
+#dashboardModal .quickfilter-container .kpi-card.active,
+.dashboard-panel .quickfilter-container .kpi-card.active,
+.quickfilter-container .kpi-card.active {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 3px solid rgba(71, 178, 229, 0.85) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+}
+
+#dashboardModal .quickfilter-container .kpi-card.active:hover,
+.dashboard-panel .quickfilter-container .kpi-card.active:hover,
+.quickfilter-container .kpi-card.active:hover {
+  /* Hover effect disabled for active cards */
+}
+
+#dashboardModal .quickfilter-container .kpi-card *, 
+#dashboardModal .quickfilter-container .kpi-card .kpi-title,
+#dashboardModal .quickfilter-container .kpi-card .kpi-value,
+.dashboard-panel .quickfilter-container .kpi-card *, 
+.dashboard-panel .quickfilter-container .kpi-card .kpi-title,
+.dashboard-panel .quickfilter-container .kpi-card .kpi-value,
+.quickfilter-container .kpi-card *, 
+.quickfilter-container .kpi-card .kpi-title,
+.quickfilter-container .kpi-card .kpi-value {
+  color: inherit !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Estilos limpios sin conflictos de inline styles */
+
+/* Quick Filter Container - Glassmorphism Style */
+#dashboardModal .quickfilter-container,
+.dashboard-panel .quickfilter-container,
+.quickfilter-container {
+  flex: 1 1 0 !important;
+  width: calc(20% - 1rem) !important;
+  min-width: 160px !important;
+  height: 100% !important;
+  min-height: 220px !important;
+  margin-bottom: 0.8rem !important;
+  padding: 1rem !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+#dashboardModal .quickfilter-container:hover,
+.dashboard-panel .quickfilter-container:hover,
+.quickfilter-container:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Quick Filter Container Headers */
+#dashboardModal .quickfilter-container h4,
+.dashboard-panel .quickfilter-container h4,
+.quickfilter-container h4 {
+  font-size: 0.95rem !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin: 0 0 0.8rem 0 !important;
+  padding-bottom: 0.4rem !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  font-weight: 600 !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+}
+
+/* Close button for quickfilters */
+.quickfilter-close-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.8rem;
+  opacity: 0;
+}
+
+.quickfilter-btn:hover .quickfilter-close-btn {
+  opacity: 1;
+}
+
+.quickfilter-close-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #EF4444;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+  opacity: 0;
+    transform: translateY(20px) scale(0.98);
+}
+  to {
+  opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Scrollbar styling */
+.dashboard-panel::-webkit-scrollbar,
+#dashboardModal .modal-panel::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+.dashboard-panel::-webkit-scrollbar-track,
+#dashboardModal .modal-panel::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.08);
+  border-radius: 10px;
+}
+
+.dashboard-panel::-webkit-scrollbar-thumb,
+#dashboardModal .modal-panel::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #47B2E5 0%, #1976d2 100%);
+  border-radius: 10px;
+  min-height: 40px;
+}
+
+.dashboard-panel::-webkit-scrollbar-thumb:hover,
+#dashboardModal .modal-panel::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1976d2 0%, #47B2E5 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .dashboard-panel {
+    width: 95%;
+    max-width: none;
+  }
+  
+  .dashboard-body {
+    padding: 1.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-panel {
+    width: 98%;
+    margin: 1rem;
+    border-radius: 16px;
+  }
+  
+.dashboard-header {
+    padding: 1.2rem 1rem;
+}
+
+.dashboard-title {
+    font-size: 1.4rem;
+}
+
+.dashboard-body {
+    padding: 1rem;
+    gap: 1.5rem;
+  }
+  
+  .dashboard-section {
+    padding: 1rem;
+  }
+  
+  .dashboard-kpis-enhanced {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  
+  .kpi-card {
+    padding: 1rem;
+  }
+  
+  .kpi-value {
+    font-size: 1.5rem;
+  }
+  
+  .kpi-title {
+    font-size: 0.8rem;
+  }
+  
+.urgency-cards-container {
+    gap: 0.4rem;
+}
+
+.dq-hub-chip {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .quickfilters-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .quickfilter-btn {
+    padding: 1rem;
+    min-height: 80px;
+  }
+  
+  .quickfilter-name {
+    font-size: 1rem;
+  }
+  
+  .quickfilter-count {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-panel {
+    width: 100%;
+    margin: 0.5rem;
+    border-radius: 12px;
+  }
+  
+  .dashboard-header {
+    padding: 1rem 0.75rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.2rem;
+  }
+  
+  .dashboard-body {
+    padding: 0.75rem;
+    gap: 1rem;
+  }
+  
+  .dashboard-section {
+    padding: 0.75rem;
+  }
+  
+  .dashboard-kpis-enhanced {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  
+  .kpi-card {
+    padding: 0.75rem;
+  }
+  
+  .kpi-value {
+    font-size: 1.2rem;
+  }
+  
+  .kpi-title {
+    font-size: 0.7rem;
+  }
+  
+  .dq-hub-chip {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.65rem;
+  }
+  
+  .urgency-cards-container {
+    gap: 0.3rem;
+  }
+  
+  .quickfilter-btn {
+    padding: 0.75rem;
+    min-height: 70px;
+  }
+  
+  .quickfilter-name {
+    font-size: 0.9rem;
+  }
+  
+  .quickfilter-count {
+    font-size: 0.75rem;
+  }
+  
+#dashboardCloseBtn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+/* High Zoom / Accessibility Support */
+@media (min-height: 1px) and (max-height: 700px) {
+  .dashboard-overlay {
+    align-items: flex-start;
+    padding: 0.5rem 0;
+  }
+  
+  .dashboard-panel {
+    margin: 0.5rem auto;
+    max-height: calc(100vh - 1rem);
+  }
+  
+  .dashboard-header {
+    padding: 1rem 1.5rem;
+  }
+  
+  .dashboard-title {
+    font-size: 1.4rem;
+  }
+  
+  .dashboard-body {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    gap: 1rem;
+  }
+  
+  .dashboard-section {
+    padding: 1rem;
+  }
+  
+  .kpi-card {
+    padding: 1rem;
+  }
+  
+  .kpi-value {
+    font-size: 1.5rem;
+  }
+  
+  .quickfilter-btn {
+    padding: 1rem;
+    min-height: 80px;
+  }
+}
+
+/* ULTRA-FORCE TRANSPARENCY OVERRIDE */
+html body #dashboardModal,
+html body div#dashboardModal,
+html body div#dashboardModal.modal-overlay {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body #dashboardModal .modal-panel,
+html body #dashboardModal.modal-overlay .modal-panel,
+html body div#dashboardModal .modal-panel,
+html body div#dashboardModal.modal-overlay div.modal-panel,
+html body .dashboard-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px !important;
+  color: #000000 !important;
+}
+
+/* Force all dashboard elements to be transparent */
+html body #dashboardModal *,
+html body #dashboardModal .modal-panel *,
+html body #dashboardModal .modal-content *,
+html body #dashboardModal .dashboard-body *,
+html body #dashboardModal .dashboard-section * {
+  background-color: transparent !important;
+}
+
+/* Only apply backgrounds to specific interactive elements */
+html body #dashboardModal .kpi-card,
+html body #dashboardModal .dq-hub-chip,
+html body #dashboardModal .quickfilter-btn,
+html body #dashboardModal .quickfilter-container,
+html body #dashboardModal .dashboard-section {
+  background: rgba(0, 0, 0, 0.03) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+/* Unificación borde caja principal OpsHub */
+html body #dashboardModal .dashboard-section {
+  border: 1.5px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Fuerza border-color gris claro en cualquier borde azul del dashboard */
+html body #dashboardModal *,
+html body #dashboardModal .dashboard-section,
+html body #dashboardModal .dashboard-panel,
+html body #dashboardModal .modal-panel {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+#dashboardModal .table-container {
+  border: none !important;
+}
+
+/* Report Options Section */
+.report-options-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.report-option {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #E8F4F8;
+  font-weight: 500;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 18px;
+  height: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+  background: rgba(71, 178, 229, 0.1);
+  border-color: #47B2E5;
+  border-width: 3px;
+  box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.3), 0 2px 4px rgba(71, 178, 229, 0.2);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #47B2E5;
+  font-size: 16px;
+  font-weight: 900;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.checkbox-label:hover .checkmark {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.option-help {
+  font-size: 0.85rem;
+  color: rgba(232, 244, 248, 0.7);
+  margin-left: 2.25rem;
+  font-style: italic;
+}
+
+/* Additional Report Options Styles */
+.option-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #E8F4F8;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.report-select {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #E8F4F8;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.report-select:focus {
+  outline: none;
+  border-color: #47B2E5;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.report-select option {
+  background: #E3F2FD;
+  color: #000000;
+}
+
+.duplicate-columns-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.small-btn {
+  padding: 0.3rem 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  color: #E8F4F8;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.small-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.columns-list {
+  max-height: 150px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  margin-bottom: 0.5rem;
+}
+
+.column-checkbox-item {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  padding: 0.5rem 0.3rem !important;
+  font-size: 0.85rem !important;
+  color: #E8F4F8 !important;
+  cursor: pointer !important;
+}
+
+.column-checkbox-item .checkbox-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  cursor: pointer !important;
+}
+
+.column-checkbox-item input[type="checkbox"] {
+  display: none;
+}
+
+.column-checkbox-item .checkmark {
+  width: 18px !important;
+  height: 18px !important;
+  min-width: 18px !important;
+  min-height: 18px !important;
+  background: rgba(71, 178, 229, 0.2) !important;
+  border: 2px solid #47B2E5 !important;
+  border-radius: 4px !important;
+  position: relative !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+  margin-right: 0.5rem !important;
+}
+
+.column-checkbox-item input[type="checkbox"]:checked + .checkmark {
+  background: rgba(71, 178, 229, 0.1) !important;
+  border-color: #47B2E5 !important;
+  border-width: 3px !important;
+  box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.3), 0 2px 4px rgba(71, 178, 229, 0.2) !important;
+}
+
+.column-checkbox-item input[type="checkbox"]:checked + .checkmark::after {
+  content: '✓' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #47B2E5 !important;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  z-index: 10 !important;
+  display: block !important;
+  opacity: 1 !important;
+}
+
+.column-checkbox-item:hover .checkmark {
+  background: rgba(71, 178, 229, 0.3) !important;
+  border-color: #47B2E5 !important;
+  box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.2) !important;
+}
+
+/* Enhanced Duplicate Removal Styles */
+.duplicate-info {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  background: rgba(71, 178, 229, 0.1);
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 6px;
+}
+
+.info-text {
+  font-size: 0.9rem;
+  color: #E8F4F8;
+  line-height: 1.4;
+}
+
+.duplicate-columns-search {
+  margin-bottom: 0.75rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #E8F4F8;
+  font-size: 0.9rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #47B2E5;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.search-input::placeholder {
+  color: rgba(232, 244, 248, 0.6);
+}
+
+.duplicate-summary {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #E8F4F8;
+}
+
+.duplicate-summary.warning {
+  background: rgba(255, 152, 0, 0.1);
+  border-color: rgba(255, 152, 0, 0.3);
+}
+
+.column-checkbox-item.hidden {
+  display: none;
+}
+
+.column-checkbox-item.highlighted {
+  background: rgba(71, 178, 229, 0.1);
+  border-radius: 4px;
+  padding: 0.25rem;
+  margin: 0.1rem 0;
+}
+#dashboardModal .data-table,
+#dashboardModal .dashboard-panel,
+#dashboardModal .modal-panel,
+#dashboardModal .table-container::before,
+#dashboardModal .table-container::after,
+#dashboardModal .data-table::before,
+#dashboardModal .data-table::after,
+#dashboardModal .dashboard-panel::before,
+#dashboardModal .dashboard-panel::after,
+#dashboardModal .modal-panel::before,
+#dashboardModal .modal-panel::after {
+  box-shadow: none !important;
+  filter: none !important;
+} 
+
+/* Ops Hub urgency cards - Same style as DQ Hub (HIGH PRIORITY) */
+html body #dashboardModal .urgency-cards-container .dq-hub-chip {
+    background: rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: #E8F4F8 !important;
+    padding: 0.75rem 1.5rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+    backdrop-filter: blur(20px) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    position: relative !important;
+}
+
+/* Urgency card states based on data-urgency attribute (HIGH PRIORITY) */
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"] {
+    background: rgba(220, 53, 69, 0.2) !important;
+    border-color: rgba(220, 53, 69, 0.4) !important;
+    color: #ff6b6b !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"]:hover {
+    background: rgba(220, 53, 69, 0.3) !important;
+    border-color: rgba(220, 53, 69, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3) !important;
+    border-radius: 8px !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"].active {
+    background: rgba(220, 53, 69, 0.4) !important;
+    border-color: rgba(220, 53, 69, 0.8) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.3) !important;
+    border-radius: 8px !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"] {
+    background: rgba(255, 193, 7, 0.2) !important;
+    border-color: rgba(255, 193, 7, 0.4) !important;
+    color: #ffd93d !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"]:hover {
+    background: rgba(255, 193, 7, 0.3) !important;
+    border-color: rgba(255, 193, 7, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3) !important;
+    border-radius: 8px !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"].active {
+    background: rgba(255, 193, 7, 0.4) !important;
+    border-color: rgba(255, 193, 7, 0.8) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(255, 193, 7, 0.3) !important;
+    border-radius: 8px !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"] {
+    background: rgba(40, 167, 69, 0.2) !important;
+    border-color: rgba(40, 167, 69, 0.4) !important;
+    color: #51cf66 !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"]:hover {
+    background: rgba(40, 167, 69, 0.3) !important;
+    border-color: rgba(40, 167, 69, 0.6) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3) !important;
+    border-radius: 8px !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"].active {
+    background: rgba(40, 167, 69, 0.4) !important;
+    border-color: rgba(40, 167, 69, 0.8) !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.3) !important;

@@ -1,0 +1,1030 @@
+/* Variables CSS */
+:root {
+  /* Brand Colors */
+  --brand-blue: #00243D;
+  --brand-light-blue: #0B77DE;
+  --brand-sky-blue: #47B2E5;
+  --brand-cyan: #DBF3FD;
+  
+  /* Functional Colors */
+  --primary-color: var(--brand-blue);
+  --secondary-color: var(--brand-light-blue);
+  --accent-color: var(--brand-sky-blue);
+  --background-light: var(--brand-cyan);
+  --text-color: #2C3E50;
+  --text-light: #FFFFFF;
+  --border-color: #E5E7EB;
+  --background-color: #FFFFFF;
+  --hover-color: #F3F4F6;
+  --error-color: #EF4444;
+  --success-color: #10B981;
+  --warning-color: #F59E0B;
+
+  /* Typography */
+  --font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 2.5rem;
+
+  /* Border radius */
+  --border-radius-sm: 4px;
+  --border-radius-md: 6px;
+  --border-radius-lg: 8px;
+  --border-radius-xl: 12px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Texto */
+  --text-muted: #6c757d;
+  
+  /* Fondos */
+  --input-bg: white;
+  --dropdown-bg: white;
+  --hover-bg: #f0f0f0;
+  --selected-bg: #e8f4f9;
+  
+  /* Bordes */
+  --focus-border: #47b2e5;
+  
+  /* Tags */
+  --tag-bg: #e8f4f9;
+  --tag-border: #b8e2f4;
+  --tag-text: #2c3e50;
+  --tag-remove: #666;
+  --tag-remove-hover: #ff4444;
+  --tag-remove-hover-bg: rgba(255, 68, 68, 0.1);
+  
+  /* Sombras */
+  --focus-shadow: 0 0 0 2px rgba(71, 178, 229, 0.2);
+  
+  /* Espaciado */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  
+  /* Bordes redondeados */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  
+  /* Fuentes */
+  --font-size-sm: 12px;
+  --font-size-base: 14px;
+  --font-size-lg: 16px;
+  
+  /* Z-index */
+  --z-dropdown: 1000;
+  --z-modal: 1050;
+  --z-tooltip: 1060;
+  --z-overlay: 1040;
+}
+
+/* Reset y estilos base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  line-height: 1.5;
+  background-color: var(--background-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+body.modal-open, html.modal-open {
+  overflow: hidden !important;
+}
+
+/* Utilidades comunes */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+.selectable {
+  user-select: text !important;
+}
+
+.offscreen {
+  position: fixed !important;
+  left: -9999px !important;
+}
+
+/* Layout base */
+.main-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Botones base */
+.btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn-secondary {
+  background: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Inputs base */
+.input {
+  height: 36px;
+  padding: 0 var(--spacing-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  background: var(--input-bg);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: var(--focus-shadow);
+}
+
+/* Base button styles */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+  font-size: var(--font-size-base);
+  transition: all var(--transition-fast);
+}
+
+/* Form elements */
+input, select {
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  transition: all var(--transition-fast);
+  background-color: var(--background-color);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(11, 119, 222, 0.1);
+}
+
+/* Utility classes */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 36, 61, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+/* Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.toolbar-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius-md);
+  color: var(--text-light);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.toolbar-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.toolbar-button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.toolbar-button#generateReportBtn {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.toolbar-button#generateReportBtn:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 36, 61, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity var(--transition-normal);
+}
+
+.modal-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Modal Panel */
+.modal-panel {
+  background-color: var(--background-color);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+  transition: transform var(--transition-normal);
+  overflow: visible !important;
+}
+
+.modal-overlay.hidden .modal-panel {
+  transform: translateY(20px);
+}
+
+/* Modal Header */
+.modal-header {
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--font-size-lg);
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  line-height: 1;
+  transition: color var(--transition-fast);
+}
+
+.close-btn:hover,
+.close-btn:focus,
+.close-btn:active {
+  color: var(--text-color);
+  background: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Modal Content */
+.modal-content {
+  padding: var(--spacing-md);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Report Options */
+.report-options {
+  display: grid;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+}
+
+.report-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background-color: var(--background-color);
+  min-height: 90px;
+}
+
+.report-option:hover {
+  border-color: var(--accent-color);
+  background-color: var(--background-light);
+  transform: translateY(-2px);
+}
+
+.report-option.selected {
+  border-color: var(--accent-color);
+  background-color: var(--background-light);
+}
+
+.option-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-light);
+  border-radius: var(--border-radius-md);
+  flex-shrink: 0;
+}
+
+.option-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent-color);
+}
+
+.option-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  text-align: center;
+}
+
+.option-details h4 {
+  margin: 0;
+  color: var(--text-color);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+.option-details p {
+  margin: var(--spacing-xs) 0 0;
+  color: var(--text-muted);
+  font-size: var(--font-size-sm);
+}
+
+/* Modal Footer */
+.modal-footer {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-sm);
+}
+
+.modal-btn {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: var(--font-size-base);
+}
+
+.modal-btn.primary {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+}
+
+.modal-btn.primary:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-1px);
+}
+
+.modal-btn.primary:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.modal-btn.secondary {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.modal-btn.secondary:hover {
+  background-color: var(--background-light);
+  border-color: var(--accent-color);
+}
+
+/* Eliminar CSS de depuración */
+/* DEBUG: Forzar visibilidad y z-index del modal de reportes */
+#reportOptionsModal {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+  z-index: var(--z-modal);
+  background: rgba(0,36,61,0.5);
+  transition: opacity var(--transition-normal);
+}
+#reportOptionsModal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+#reportOptionsModal .modal-panel {
+  display: flex;
+  opacity: 1;
+  z-index: calc(var(--z-modal) + 1);
+}
+
+.brand-btn {
+  font-size: 0.9rem;
+  padding: 0.05em 1.3em;
+  border-radius: 6px;
+  background: #10a6db;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(16,166,219,0.08);
+  margin: 0 0.15em 0 0;
+}
+
+.brand-btn:hover {
+  background: #0e8ec2;
+}
+
+/* Espacio extra entre los botones de la tabla */
+#copyTableBtn, #removeDuplicatesBtn {
+  margin-right: 0.5em;
+}
+
+/* Login/Register Tabs Styles */
+.login-tabs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-bottom: 0;
+  border-bottom: 1.5px solid #e0e0e0;
+  gap: 0.5em;
+  background: transparent;
+}
+
+.login-tab-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.08em;
+  font-weight: 500;
+  padding: 0.5em 1.2em 0.3em 1.2em;
+  cursor: pointer;
+  color: #1976d2;
+  border-bottom: 2.5px solid transparent;
+  border-radius: 0;
+  margin-bottom: -1.5px;
+  transition: border 0.2s, background 0.2s, color 0.2s;
+}
+
+.login-tab-btn.active {
+  border-bottom: 2.5px solid #1976d2;
+  background: transparent;
+  color: #0d355a;
+  font-weight: 600;
+}
+
+/* Estilos simples y limpios para Choices.js en el modal de reportes */
+#reportOptionsModal .choices {
+  position: relative;
+  width: 100%;
+}
+
+#reportOptionsModal .choices__inner {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 45px;
+  backdrop-filter: blur(10px);
+}
+
+#reportOptionsModal .choices__list--dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #1a2332 0%, #1a2332 50%, #1a2332 100%) !important;
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 999999;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+#reportOptionsModal .choices__item {
+  padding: 10px 16px;
+  color: #ffffff !important;
+  background: transparent !important;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(71, 178, 229, 0.2);
+  opacity: 1 !important;
+  transition: all 0.2s ease;
+}
+
+#reportOptionsModal .choices__item:hover {
+  background: rgba(71, 178, 229, 0.2) !important;
+  color: #ffffff !important;
+  transform: translateX(4px);
+}
+
+#reportOptionsModal .choices__item.is-highlighted {
+  background: rgba(71, 178, 229, 0.3) !important;
+  color: #ffffff !important;
+}
+
+#reportOptionsModal .choices__input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff !important;
+  font-size: 14px;
+}
+
+#reportOptionsModal .choices__placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+#dedupeColumnsSelect {
+  width: 100%;
+}
+
+/* Estilos globales para Choices.js en todos los modales */
+.modal-overlay .choices__list--dropdown,
+.modal-panel .choices__list--dropdown {
+  background: linear-gradient(135deg, #1a2332 0%, #1a2332 50%, #1a2332 100%) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4) !important;
+  z-index: 999999 !important;
+  border: 1px solid rgba(71, 178, 229, 0.3) !important;
+  backdrop-filter: blur(10px) !important;
+  border-radius: 0 0 8px 8px !important;
+}
+
+.modal-overlay .choices__item,
+.modal-panel .choices__item {
+  background: transparent !important;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  border-bottom: 1px solid rgba(71, 178, 229, 0.2);
+  transition: all 0.2s ease;
+  padding: 10px 16px;
+}
+
+.modal-overlay .choices__item:hover,
+.modal-panel .choices__item:hover,
+.modal-overlay .choices__item.is-highlighted,
+.modal-panel .choices__item.is-highlighted {
+  background: rgba(71, 178, 229, 0.2) !important;
+  color: #ffffff !important;
+  transform: translateX(4px);
+}
+
+.wip-badge {
+  display: inline-block;
+  background: #ff9800;
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 2px 7px;
+  border-radius: 8px;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* .sidebar-button styles consolidated in layout.css and theme files */
+
+#copyTableBtn {
+  box-shadow: none !important;
+}
+
+/* OVERRIDE GLOBAL - FORZAR TEXTO VISIBLE EN DROPDOWNS DE FILTROS */
+* .excel-dropdown,
+* .excel-dropdown *,
+* .excel-checkbox-list,
+* .excel-checkbox-list *,
+html .excel-dropdown,
+html .excel-dropdown *,
+html .excel-checkbox-list,
+html .excel-checkbox-list *,
+body .excel-dropdown,
+body .excel-dropdown *,
+body .excel-checkbox-list,
+body .excel-checkbox-list * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* Forzar fondo blanco en dropdown */
+* .excel-dropdown,
+html .excel-dropdown,
+body .excel-dropdown {
+  background-color: #fff !important;
+}
+
+/* Forzar botones visibles */
+* .excel-dropdown button,
+html .excel-dropdown button,
+body .excel-dropdown button {
+  color: #333 !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Botón Apply verde */
+* .excel-dropdown .apply-btn,
+* .excel-dropdown .filter-apply-btn {
+  color: #fff !important;
+  background: #10B981 !important;
+}
+
+/* ===== MODAL DE GESTIÓN DE RESÚMENES ===== */
+
+#manageSummariesModal.modal-overlay {
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 36, 61, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 16000 !important;
+}
+
+#manageSummariesModal .modal-panel {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
+  max-width: 520px !important;
+  width: 90% !important;
+  max-height: 80vh !important;
+}
+
+#manageSummariesModal .modal-header {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+#manageSummariesModal .modal-header h3 {
+  color: white !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+#manageSummariesModal .close-btn {
+  color: rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+#manageSummariesModal .close-btn:hover,
+#manageSummariesModal .close-btn:focus,
+#manageSummariesModal .close-btn:active {
+  background: inherit !important;
+  color: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+#manageSummariesModal .modal-content {
+  padding: 2rem !important;
+  overflow-y: auto !important;
+  max-height: 400px !important;
+}
+
+#savedSummariesList {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.5rem !important;
+}
+
+#savedSummariesList > div {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(71, 178, 229, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 1rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  transition: all 0.3s ease !important;
+}
+
+#savedSummariesList > div:hover {
+  background: rgba(71, 178, 229, 0.1) !important;
+  border-color: rgba(71, 178, 229, 0.4) !important;
+  transform: translateX(4px) !important;
+}
+
+#savedSummariesList button {
+  background: rgba(71, 178, 229, 0.2) !important;
+  color: #47B2E5 !important;
+  border: 1px solid rgba(71, 178, 229, 0.3) !important;
+  border-radius: 6px !important;
+  padding: 0.5rem 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  margin-left: 0.5rem !important;
+}
+
+#savedSummariesList button:hover {
+  background: rgba(71, 178, 229, 0.3) !important;
+  color: white !important;
+  transform: scale(1.05) !important;
+}
+
+#summaryRenameSection input {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(71, 178, 229, 0.3) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem !important;
+  color: white !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+}
+
+#summaryRenameSection button {
+  background: linear-gradient(135deg, #47B2E5 0%, #3A9BD1 100%) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1rem !important;
+  cursor: pointer !important;
+  font-weight: 600 !important;
+}
+
+#summaryRenameSection button:hover {
+  background-color: #1976d2;
+}
+
+/* Data Comparison Source Tabs */
+.input-source-tabs {
+  display: flex;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e0e7ef;
+  background: #f8fafc;
+}
+
+.source-tab {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+.source-tab:hover {
+  background: rgba(71, 178, 229, 0.1);
+  color: #47B2E5;
+}
+
+.source-tab.active {
+  background: #47B2E5;
+  color: white;
+  font-weight: 600;
+}
+
+.source-content {
+  position: relative;
+}
+
+.source-file,
+.source-version {
+  transition: all 0.3s ease;
+}
+
+.source-version {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.source-version.hidden {
+  display: none;
+}
+
+.version-select {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  background: white;
+  color: #333;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+.version-select:focus {
+  outline: none;
+  border-color: #47B2E5;
+  box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.2);
+}
+
+.load-version-btn {
+  padding: 0.5rem 1rem;
+  background: #47B2E5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+.load-version-btn:hover:not(:disabled) {
+  background: #1976d2;
+  transform: translateY(-1px);
+}
+
+.load-version-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.file-input-group {
+  margin-bottom: 1.5rem;
+}
+
+.file-input-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+/* Version selection status indicator */
+.version-status {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: none;
+}
+
+.version-status.success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  display: block;
+}
+
+.version-status.error {
+  background: rgba(239, 68, 68, 0.1);
+  color: #EF4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .input-source-tabs {
+    flex-direction: column;
+  }
+  
+  .source-tab {
+    border-bottom: 1px solid #e0e7ef;
+  }
+  
+  .source-tab:last-child {
+    border-bottom: none;
+  }
+}
+
+.modal-panel select, .modal-panel input[type="text"] {
+  background: rgba(30, 41, 59, 0.45) !important;
+  color: #fff !important;
+  border: 1.5px solid rgba(71, 178, 229, 0.25) !important;
+  box-shadow: 0 2px 8px rgba(71,178,229,0.08);
+  border-radius: 8px !important;
+  font-size: 1em;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  transition: all 0.2s;
+}
+
+.modal-panel select:focus, .modal-panel input[type="text"]:focus {
+  border-color: #47B2E5 !important;
+  box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.18) !important;
+  outline: none !important;
+}
+
+.modal-panel select option {
+  background: #1e293b !important;
+  color: #fff !important;
+}
+
+/* Ocultar siempre el popup de filtros aplicado */
+.ops-hub-filter-popup {
+  display: none !important;
+}
+
+/* Fondo opaco para el modal de copiar (copyOptionsModal) */
+#copyOptionsModal .modal-panel {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45) !important;
+} 

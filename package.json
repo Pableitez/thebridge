@@ -1,0 +1,16 @@
+{
+  "name": "the-bridge-root",
+  "version": "1.0.0",
+  "description": "The Bridge - Root package for deployment",
+  "scripts": {
+    "start": "cd backend && npm start",
+    "install": "cd backend && npm install",
+    "build": "cd backend && npm run build"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {
+    "node-fetch": "^3.3.2"
+  }
+}

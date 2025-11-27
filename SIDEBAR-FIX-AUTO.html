@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Fix - Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .test-container {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Estilos de la sidebar */
+        .sidebar {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100vh !important;
+            width: 280px !important;
+            overflow: hidden !important;
+            position: relative !important;
+            background-color: #1a2332 !important;
+        }
+        
+        .sidebar-content {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+            width: 100% !important;
+            position: relative !important;
+        }
+        
+        .sidebar-header {
+            flex-shrink: 0 !important;
+            padding: 1rem 0.8rem 0.5rem 0.8rem !important;
+            background-color: #1a2332 !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            z-index: 10 !important;
+            position: sticky !important;
+            top: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+        
+        .sidebar-scrollable {
+            flex: 1 !important;
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            padding: 0.5rem 0.8rem !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: rgba(255, 255, 255, 0.3) transparent !important;
+            min-height: 0 !important;
+            max-height: calc(100vh - 200px) !important;
+            position: relative !important;
+        }
+        
+        .sidebar-footer {
+            flex-shrink: 0 !important;
+            padding: 0.5rem 0.8rem 1rem 0.8rem !important;
+            background-color: #1a2332 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            z-index: 10 !important;
+            position: sticky !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            min-height: 60px !important;
+        }
+        
+        .sidebar-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffffff;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            background: none;
+            border: none;
+        }
+        
+        .sidebar-button:hover {
+            background-color: rgba(255,255,255,0.08);
+        }
+        
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            background: white;
+        }
+        
+        .test-button {
+            background: #47B2E5;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+        
+        .test-button:hover {
+            background: #3a9bd4;
+        }
+        
+        .status {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <!-- HEADER FIXO - Perfil de usuario -->
+                <div class="sidebar-header">
+                    <div id="teamInfo" style="display:block; margin-bottom:0.3rem; padding:0.6rem; background:rgba(255, 255, 255, 0.08); border-radius:6px; border:1px solid rgba(255, 255, 255, 0.15); box-shadow:0 2px 8px rgba(0, 0, 0, 0.1);">
+                        <div style="color:#ffffff; font-weight:600; font-size:0.95rem; margin-bottom:0.3rem;">Team Name</div>
+                        <div style="color:#B0BEC5; font-size:0.8rem; margin-bottom:0.3rem;">User Role</div>
+                        <div style="display:flex; align-items:center; gap:0.4rem; font-size:0.75rem;">
+                            <div style="width:8px; height:8px; border-radius:50%; background:#4caf50;" title="Backend connected"></div>
+                            <span style="color:#B0BEC5;">Backend connected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENIDO SCROLLABLE - Botones de navegación -->
+                <div class="sidebar-scrollable">
+                    <button class="sidebar-button">Filters</button>
+                    <button class="sidebar-button">Operations Hub</button>
+                    <button class="sidebar-button">Data Quality Hub</button>
+                    <button class="sidebar-button">Columns</button>
+                    <button class="sidebar-button">Report</button>
+                    <button class="sidebar-button">Data Version</button>
+                    <button class="sidebar-button">Data Comparison</button>
+                    <button class="sidebar-button">Custom Summary</button>
+                    <button class="sidebar-button">Show Duplicates</button>
+                    <button class="sidebar-button">Select CSV File</button>
+                    <button class="sidebar-button">User Set Up</button>
+                    <button class="sidebar-button">Create Team</button>
+                    <button class="sidebar-button">Backend Settings</button>
+                    
+                    <!-- Botones adicionales para probar el scroll -->
+                    <button class="sidebar-button">Extra Button 1</button>
+                    <button class="sidebar-button">Extra Button 2</button>
+                    <button class="sidebar-button">Extra Button 3</button>
+                    <button class="sidebar-button">Extra Button 4</button>
+                    <button class="sidebar-button">Extra Button 5</button>
+                    <button class="sidebar-button">Extra Button 6</button>
+                    <button class="sidebar-button">Extra Button 7</button>
+                    <button class="sidebar-button">Extra Button 8</button>
+                    <button class="sidebar-button">Extra Button 9</button>
+                    <button class="sidebar-button">Extra Button 10</button>
+                </div>
+
+                <!-- FOOTER FIXO - Copyright -->
+                <div class="sidebar-footer">
+                    <div style="text-align:center;font-size:0.92em;color:#4FC3F7;opacity:0.95;user-select:none;cursor:pointer;" id="legalNoticeTrigger">© 2025 | Pablo Beneitez | Valencia</div>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Sidebar Fix - Test</h1>
+            
+            <div class="status">
+                <h3>Estado de la Sidebar:</h3>
+                <div id="statusInfo">Cargando...</div>
+            </div>
+            
+            <div>
+                <button class="test-button" onclick="checkSidebarStatus()">Verificar Estado</button>
+                <button class="test-button" onclick="forceShowSidebarElements()">Forzar Elementos</button>
+                <button class="test-button" onclick="forceCollapseSidebar()">Colapsar Sidebar</button>
+                <button class="test-button" onclick="forceExpandSidebar()">Expandir Sidebar</button>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <h3>Instrucciones:</h3>
+                <ol>
+                    <li>Verifica que el copyright esté fijo en la parte inferior</li>
+                    <li>Haz scroll en los botones para ver si el copyright permanece visible</li>
+                    <li>Prueba los botones de colapsar/expandir</li>
+                    <li>Verifica que la sidebar se cierre completamente</li>
+                </ol>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Funciones de fix
+        function forceShowSidebarElements() {
+            const teamInfo = document.getElementById('teamInfo');
+            const legalNotice = document.getElementById('legalNoticeTrigger');
+            const sidebarFooter = document.querySelector('.sidebar-footer');
+            const sidebarScrollable = document.querySelector('.sidebar-scrollable');
+            
+            if (teamInfo) {
+                teamInfo.style.display = 'block';
+                teamInfo.style.visibility = 'visible';
+                teamInfo.style.opacity = '1';
+            }
+            
+            if (legalNotice) {
+                legalNotice.style.display = 'block';
+                legalNotice.style.visibility = 'visible';
+                legalNotice.style.opacity = '1';
+                legalNotice.style.position = 'relative';
+                legalNotice.style.zIndex = '11';
+            }
+            
+            if (sidebarFooter) {
+                sidebarFooter.style.position = 'sticky';
+                sidebarFooter.style.bottom = '0';
+                sidebarFooter.style.zIndex = '10';
+                sidebarFooter.style.width = '100%';
+                sidebarFooter.style.boxSizing = 'border-box';
+                sidebarFooter.style.minHeight = '60px';
+            }
+            
+            if (sidebarScrollable) {
+                sidebarScrollable.style.flex = '1';
+                sidebarScrollable.style.overflowY = 'auto';
+                sidebarScrollable.style.maxHeight = 'calc(100vh - 200px)';
+                sidebarScrollable.style.minHeight = '0';
+            }
+            
+            console.log('🔧 Elementos de sidebar forzados a mostrar');
+            updateStatus();
+        }
+        
+        function forceCollapseSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.classList.add('collapsed');
+                sidebar.style.width = '0px';
+                sidebar.style.minWidth = '0px';
+                sidebar.style.overflow = 'hidden';
+                console.log('🔧 Sidebar forzada a cerrar completamente');
+            }
+            updateStatus();
+        }
+        
+        function forceExpandSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            if (sidebar) {
+                sidebar.classList.remove('collapsed');
+                sidebar.style.width = '280px';
+                sidebar.style.minWidth = '280px';
+                sidebar.style.overflow = 'hidden';
+                console.log('🔧 Sidebar forzada a expandir');
+            }
+            updateStatus();
+        }
+        
+        function checkSidebarStatus() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarContent = document.querySelector('.sidebar-content');
+            const sidebarScrollable = document.querySelector('.sidebar-scrollable');
+            const sidebarFooter = document.querySelector('.sidebar-footer');
+            
+            const status = {
+                collapsed: sidebar?.classList.contains('collapsed'),
+                width: sidebar?.style.width || '280px',
+                contentHeight: sidebarContent?.scrollHeight + 'px',
+                windowHeight: window.innerHeight + 'px',
+                footerVisible: sidebarFooter?.style.display !== 'none',
+                scrollableMaxHeight: sidebarScrollable?.style.maxHeight
+            };
+            
+            console.log('📊 Estado de la sidebar:', status);
+            updateStatus(status);
+            return status;
+        }
+        
+        function updateStatus(status = null) {
+            const statusInfo = document.getElementById('statusInfo');
+            if (!status) {
+                status = checkSidebarStatus();
+            }
+            
+            statusInfo.innerHTML = `
+                <p><strong>Colapsada:</strong> ${status.collapsed ? 'Sí' : 'No'}</p>
+                <p><strong>Ancho:</strong> ${status.width}</p>
+                <p><strong>Altura del contenido:</strong> ${status.contentHeight}</p>
+                <p><strong>Altura de la ventana:</strong> ${status.windowHeight}</p>
+                <p><strong>Footer visible:</strong> ${status.footerVisible ? 'Sí' : 'No'}</p>
+                <p><strong>Scrollable max-height:</strong> ${status.scrollableMaxHeight}</p>
+            `;
+        }
+        
+        // Inicializar al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔧 Sidebar Fix Test: Inicializando...');
+            forceShowSidebarElements();
+            updateStatus();
+        });
+    </script>
+</body>
+</html> 
+ 
+ 

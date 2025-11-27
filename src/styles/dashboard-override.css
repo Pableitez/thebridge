@@ -1,0 +1,554 @@
+/* Dashboard Override CSS - Maximum Priority */
+/* This file ensures dashboard glassmorphism works by overriding all conflicting styles */
+
+/* ULTIMATE OVERRIDE FOR DASHBOARD MODAL */
+html body #dashboardModal,
+html body div#dashboardModal.modal-overlay,
+html body div#dashboardModal {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  z-index: 10000 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  padding: 1rem 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* ULTIMATE OVERRIDE FOR MODAL PANEL */
+html body #dashboardModal .modal-panel,
+html body #dashboardModal.modal-overlay .modal-panel,
+html body div#dashboardModal .modal-panel,
+html body div#dashboardModal.modal-overlay div.modal-panel,
+html body .dashboard-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+  max-width: 2000px !important;
+  width: 98% !important;
+  max-height: calc(100vh - 2rem) !important;
+  overflow: hidden !important;
+  margin: 0 auto !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* ULTIMATE OVERRIDE FOR MODAL HEADER - FIXED POSITION */
+html body #dashboardModal .modal-header,
+html body #dashboardModal .dashboard-header {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem 2rem !important;
+  color: #000000 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 10 !important;
+  backdrop-filter: none !important;
+}
+
+/* ULTIMATE OVERRIDE FOR MODAL CONTENT */
+html body #dashboardModal .modal-content,
+html body #dashboardModal .dashboard-body {
+  background: transparent !important;
+  background-color: transparent !important;
+  padding: 2rem !important;
+  color: #000000 !important;
+  flex: 1 !important;
+  overflow-y: auto !important;
+}
+
+/* ULTIMATE OVERRIDE FOR DASHBOARD SECTIONS */
+html body #dashboardModal .dashboard-section {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+}
+
+/* ULTIMATE OVERRIDE FOR DASHBOARD SECTION TITLES */
+html body #dashboardModal .dashboard-section-title {
+  color: #ffffff !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  margin: 0 0 1rem 0 !important;
+  padding: 0 0 0.8rem 0 !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ULTIMATE OVERRIDE FOR KPI CARDS */
+html body #dashboardModal .kpi-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 12px !important;
+  backdrop-filter: none !important;
+  color: white !important;
+}
+
+/* ULTIMATE OVERRIDE FOR OPS HUB CHIPS */
+html body #dashboardModal .urgency-cards-container .dq-hub-chip {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: none !important;
+  transition: all 0.3s ease !important;
+}
+
+/* SEMÁFORO COLORS FOR URGENCY CHIPS - ULTRA SPECIFIC */
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"] {
+  background: rgba(239, 68, 68, 0.15) !important;
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  color: #ff6b6b !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  backdrop-filter: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Urgente"]:hover {
+  background: rgba(239, 68, 68, 0.25) !important;
+  background-color: rgba(239, 68, 68, 0.25) !important;
+  border: 1px solid rgba(239, 68, 68, 0.5) !important;
+  color: #ff5252 !important;
+  transform: translateY(-2px) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"] {
+  background: rgba(251, 191, 36, 0.15) !important;
+  background-color: rgba(251, 191, 36, 0.15) !important;
+  border: 1px solid rgba(251, 191, 36, 0.3) !important;
+  color: #ffc107 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  backdrop-filter: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Media"]:hover {
+  background: rgba(251, 191, 36, 0.25) !important;
+  background-color: rgba(251, 191, 36, 0.25) !important;
+  border: 1px solid rgba(251, 191, 36, 0.5) !important;
+  color: #ffb300 !important;
+  transform: translateY(-2px) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"] {
+  background: rgba(34, 197, 94, 0.15) !important;
+  background-color: rgba(34, 197, 94, 0.15) !important;
+  border: 1px solid rgba(34, 197, 94, 0.3) !important;
+  color: #4caf50 !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.9rem !important;
+  backdrop-filter: none !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip[data-urgency="Baja"]:hover {
+  background: rgba(34, 197, 94, 0.25) !important;
+  background-color: rgba(34, 197, 94, 0.25) !important;
+  border: 1px solid rgba(34, 197, 94, 0.5) !important;
+  color: #43a047 !important;
+  transform: translateY(-2px) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+}
+
+/* ACTIVE STATE FOR URGENCY CHIPS - ULTRA SPECIFIC */
+html body #dashboardModal .urgency-cards-container .dq-hub-chip.active[data-urgency="Urgente"] {
+  background: rgba(239, 68, 68, 0.4) !important;
+  background-color: rgba(239, 68, 68, 0.4) !important;
+  border: 2px solid rgba(239, 68, 68, 0.8) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 40px rgba(239, 68, 68, 0.7), 0 0 20px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  transform: scale(1.05) !important;
+  font-weight: 600 !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip.active[data-urgency="Media"] {
+  background: rgba(251, 191, 36, 0.4) !important;
+  background-color: rgba(251, 191, 36, 0.4) !important;
+  border: 2px solid rgba(251, 191, 36, 0.8) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 40px rgba(251, 191, 36, 0.7), 0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  transform: scale(1.05) !important;
+  font-weight: 600 !important;
+}
+
+html body #dashboardModal .urgency-cards-container .dq-hub-chip.active[data-urgency="Baja"] {
+  background: rgba(34, 197, 94, 0.4) !important;
+  background-color: rgba(34, 197, 94, 0.4) !important;
+  border: 2px solid rgba(34, 197, 94, 0.8) !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 40px rgba(34, 197, 94, 0.7), 0 0 20px rgba(34, 197, 94, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+  border-radius: 8px !important;
+  padding: 0.75rem 1.5rem !important;
+  transform: scale(1.05) !important;
+  font-weight: 600 !important;
+}
+
+/* ULTIMATE OVERRIDE FOR QUICKFILTER BUTTONS */
+html body #dashboardModal .quickfilter-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: none !important;
+}
+
+/* ULTIMATE OVERRIDE FOR QUICKFILTER CONTAINERS */
+html body #dashboardModal .quickfilter-container {
+  background: rgba(255, 255, 255, 0.08) !important;
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: none !important;
+  color: white !important;
+}
+
+/* REMOVE ALL WHITE BACKGROUNDS */
+html body #dashboardModal *:not(.kpi-card):not(.dq-hub-chip):not(.quickfilter-btn):not(.quickfilter-container):not(.dashboard-section) {
+  background-color: transparent !important;
+}
+
+/* ENSURE WHITE TEXT */
+html body #dashboardModal,
+html body #dashboardModal *,
+html body #dashboardModal .modal-panel,
+html body #dashboardModal .modal-panel * {
+  color: white !important;
+}
+
+/* UNIFICACIÓN FINAL SCROLLBAR OPS HUB */
+html body #dashboardModal .modal-content::-webkit-scrollbar,
+html body #dashboardModal .dashboard-body::-webkit-scrollbar {
+  width: 8px !important;
+  background: transparent !important;
+}
+html body #dashboardModal .modal-content::-webkit-scrollbar-track,
+html body #dashboardModal .dashboard-body::-webkit-scrollbar-track {
+  background: #E3F2FD !important;
+  border-radius: 10px !important;
+}
+html body #dashboardModal .modal-content::-webkit-scrollbar-thumb,
+html body #dashboardModal .dashboard-body::-webkit-scrollbar-thumb {
+  background: #47B2E5 !important;
+  border-radius: 10px !important;
+  min-height: 40px !important;
+}
+html body #dashboardModal .modal-content::-webkit-scrollbar-thumb:hover,
+html body #dashboardModal .dashboard-body::-webkit-scrollbar-thumb:hover {
+  background: #3b9bd1 !important;
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR WIDER MODAL */
+@media (min-width: 1920px) {
+  html body #dashboardModal .modal-panel,
+  html body #dashboardModal.modal-overlay .modal-panel,
+  html body div#dashboardModal .modal-panel,
+  html body div#dashboardModal.modal-overlay div.modal-panel {
+    max-width: 2200px !important;
+    width: 95% !important;
+  }
+}
+
+@media (min-width: 2560px) {
+  html body #dashboardModal .modal-panel,
+  html body #dashboardModal.modal-overlay .modal-panel,
+  html body div#dashboardModal .modal-panel,
+  html body div#dashboardModal.modal-overlay div.modal-panel {
+    max-width: 2600px !important;
+    width: 92% !important;
+  }
+}
+
+#dashboardModal .dashboard-body,
+#dashboardModal .dashboard-content {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ULTRA-SPECIFIC OVERRIDE: Elimina cualquier sombra alrededor de la tabla principal del dashboard */
+#dashboardModal .modal-panel,
+#dashboardModal .dashboard-panel,
+#dashboardModal .modal-content,
+#dashboardModal .dashboard-body,
+#dashboardModal .main-content,
+#dashboardModal .table-container,
+#dashboardModal table,
+#dashboardModal .data-table,
+#dashboardModal .modal-panel::before,
+#dashboardModal .modal-panel::after,
+#dashboardModal .dashboard-panel::before,
+#dashboardModal .dashboard-panel::after,
+#dashboardModal .table-container::before,
+#dashboardModal .table-container::after,
+#dashboardModal table::before,
+#dashboardModal table::after,
+#dashboardModal .data-table::before,
+#dashboardModal .data-table::after {
+  box-shadow: none !important;
+  filter: none !important;
+  outline: none !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+/* Forzar estilo oscuro para los dropdowns Choices.js en el modal de Ops Summary */
+#opsSummaryModal .choices,
+#opsSummaryModal .choices__inner,
+#opsSummaryModal .choices__list--dropdown,
+#opsSummaryModal .choices__item,
+#opsSummaryModal .choices__list--dropdown .choices__item {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  color: #47B2E5 !important;
+  border-color: #47B2E5 !important;
+}
+
+#opsSummaryModal .choices__list--dropdown {
+  box-shadow: 0 8px 32px rgba(71,178,229,0.25) !important;
+  border-radius: 8px !important;
+}
+
+#opsSummaryModal .choices__item--selectable.is-highlighted,
+#opsSummaryModal .choices__item--selectable:hover {
+  background: #1976d2 !important;
+  color: #000000 !important;
+}
+
+#opsSummaryModal .choices__placeholder {
+  color: #47B2E5 !important;
+  opacity: 0.7 !important;
+}
+
+/* --- FORZAR NOTIFICACIÓN SIEMPRE VISIBLE SOBRE MODALES --- */
+.table-notification {
+  z-index: 99999 !important;
+  position: fixed !important;
+  top: 32px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  pointer-events: auto !important;
+}
+
+.modal-overlay,
+#opsSummaryModal,
+#dashboardModal,
+#filterModal,
+#csvComparisonModal,
+#summaryModal {
+  z-index: 10000 !important;
+}
+
+/* --- OPS SUMMARY MODAL STYLING - CONSISTENT WITH OTHER MODALS --- */
+#opsSummaryModal {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#opsSummaryModal .modal-header {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+  min-height: 48px !important;
+  align-items: center !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 1.5rem 2rem !important;
+}
+
+#opsSummaryModal .modal-header .header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex: 1 !important;
+}
+
+#opsSummaryModal .modal-header .modal-logo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+}
+
+#opsSummaryModal .modal-header .panel-header-title {
+  color: white !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.5rem !important;
+  margin: 0 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#opsSummaryModal .close-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  box-shadow: none !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+#opsSummaryModal .close-btn:hover,
+#opsSummaryModal .close-btn:focus,
+#opsSummaryModal .close-btn:active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+  outline: none !important;
+}
+
+#opsSummaryModal .modal-content {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  color: #000000 !important;
+}
+
+#opsSummaryModal .modal-footer {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* --- COMPARISON RESULTS MODAL STYLING - CONSISTENT WITH OTHER MODALS --- */
+#comparisonResultsModal {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+#comparisonResultsModal .modal-header {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+  min-height: 48px !important;
+  align-items: center !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  padding: 1.5rem 2rem !important;
+}
+
+#comparisonResultsModal .modal-header .header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  flex: 1 !important;
+}
+
+#comparisonResultsModal .modal-header .modal-logo {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+}
+
+#comparisonResultsModal .modal-header .panel-header-title {
+  color: #15364A !important;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 1.5rem !important;
+  margin: 0 !important;
+  letter-spacing: 0.02em !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+#comparisonResultsModal .close-btn {
+  color: rgba(255, 255, 255, 0.7) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 1.5rem !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  font-family: Arial, sans-serif !important;
+}
+
+#comparisonResultsModal .close-btn:hover,
+#comparisonResultsModal .close-btn:focus,
+#comparisonResultsModal .close-btn:active {
+  background: inherit !important;
+  color: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+  transform: scale(1.1) !important;
+}
+
+#comparisonResultsModal .modal-content {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  color: #000000 !important;
+}
+
+#comparisonResultsModal .modal-footer {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+#dashboardModal .table-container {
+  border: none !important;
+} 

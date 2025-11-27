@@ -1,0 +1,611 @@
+/* Orders Hub Styles */
+#ordersDashboardModal {
+    z-index: 1000;
+}
+
+/* Override modal overlay background - MUST BE TRANSPARENT */
+#ordersDashboardModal.modal-overlay,
+div#ordersDashboardModal.modal-overlay,
+#ordersDashboardModal.modal-overlay[style],
+div#ordersDashboardModal.modal-overlay[style] {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+#ordersDashboardModal.modal-overlay .modal-panel,
+div#ordersDashboardModal .modal-panel,
+div#ordersDashboardModal.modal-overlay div.modal-panel {
+    background: #1a2332 !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    max-width: 1400px !important;
+    width: 95vw !important;
+    max-height: 85vh !important;
+    height: auto !important;
+    margin: 7.5vh auto !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Orders Hub specific styles */
+#ordersDashboardModal *,
+#ordersDashboardModal .modal-panel *,
+#ordersDashboardModal .modal-content *,
+#ordersDashboardModal .dashboard-body *,
+#ordersDashboardModal .dashboard-section *,
+#ordersDashboardModal .quickfilter-container *,
+#ordersDashboardModal .quickfilters-grid *,
+#ordersDashboardModal .dashboard-quickfilters * {
+    box-sizing: border-box;
+}
+
+/* Orders Hub chips (similar to ops-hub-chips but for Orders) */
+#ordersDashboardModal .orders-hub-chip,
+#ordersDashboardModal .dashboard-body .orders-hub-chip,
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #E8F4F8;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 500;
+    min-width: 80px;
+    text-align: center;
+}
+
+/* Orders Hub chip states */
+#ordersDashboardModal .orders-hub-chip[data-quality="Critical"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Critical"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Critical"] {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+    color: #ff6b6b;
+}
+
+#ordersDashboardModal .orders-hub-chip[data-quality="Critical"]:hover,
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Critical"]:hover,
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Critical"]:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+#ordersDashboardModal .orders-hub-chip[data-quality="Warning"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Warning"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Warning"] {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #ffd93d;
+}
+
+#ordersDashboardModal .orders-hub-chip[data-quality="Warning"]:hover,
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Warning"]:hover,
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Warning"]:hover {
+    background: rgba(255, 193, 7, 0.3);
+    border-color: rgba(255, 193, 7, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+#ordersDashboardModal .orders-hub-chip[data-quality="Good"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Good"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Good"] {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #51cf66;
+}
+
+#ordersDashboardModal .orders-hub-chip[data-quality="Good"]:hover,
+#ordersDashboardModal .dashboard-body .orders-hub-chip[data-quality="Good"]:hover,
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip[data-quality="Good"]:hover {
+    background: rgba(40, 167, 69, 0.3);
+    border-color: rgba(40, 167, 69, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+/* Active states */
+#ordersDashboardModal .orders-hub-chip.active[data-quality="Critical"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip.active[data-quality="Critical"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip.active[data-quality="Critical"] {
+    background: rgba(220, 53, 69, 0.4);
+    border-color: rgba(220, 53, 69, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.3);
+}
+
+#ordersDashboardModal .orders-hub-chip.active[data-quality="Warning"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip.active[data-quality="Warning"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip.active[data-quality="Warning"] {
+    background: rgba(255, 193, 7, 0.4);
+    border-color: rgba(255, 193, 7, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.3);
+}
+
+#ordersDashboardModal .orders-hub-chip.active[data-quality="Good"],
+#ordersDashboardModal .dashboard-body .orders-hub-chip.active[data-quality="Good"],
+#ordersDashboardModal .orders-hub-chips .orders-hub-chip.active[data-quality="Good"] {
+    background: rgba(40, 167, 69, 0.4);
+    border-color: rgba(40, 167, 69, 0.8);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.3);
+}
+
+/* Orders Hub quick filter buttons */
+#ordersDashboardModal .quickfilter-btn {
+    background: rgba(71, 178, 229, 0.1);
+    border: 1px solid rgba(71, 178, 229, 0.3);
+    color: #47B2E5;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.85rem;
+    font-weight: 500;
+    min-width: 120px;
+    text-align: center;
+}
+
+#ordersDashboardModal .quickfilter-btn:hover {
+    background: rgba(71, 178, 229, 0.2);
+    border-color: rgba(71, 178, 229, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.2);
+}
+
+#ordersDashboardModal .quickfilter-btn.active {
+    background: rgba(71, 178, 229, 0.3);
+    border-color: rgba(71, 178, 229, 0.7);
+    color: #000000;
+    box-shadow: 0 0 0 2px rgba(71, 178, 229, 0.3);
+}
+
+/* Orders Hub quick filter containers */
+#ordersDashboardModal .quickfilter-container {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#ordersDashboardModal .quickfilter-container:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#ordersDashboardModal .quickfilter-container h4 {
+    margin: 0 0 0.5rem 0;
+    color: #E8F4F8;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Orders Hub KPI cards */
+#ordersDashboardModal .kpi-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin: 0.3rem 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+
+#ordersDashboardModal .kpi-card:hover {
+    /* Hover effect disabled */
+}
+
+#ordersDashboardModal .kpi-card.active {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 3px solid rgba(71, 178, 229, 0.85) !important;
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3), 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+    transform: translateY(-1px) !important;
+}
+
+#ordersDashboardModal .kpi-card *,
+#ordersDashboardModal .kpi-card .kpi-title,
+#ordersDashboardModal .kpi-card .kpi-value {
+    color: #E8F4F8;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+#ordersDashboardModal .kpi-card .kpi-value {
+    font-weight: 600;
+    color: #47B2E5;
+}
+
+/* Orders Hub dashboard sections */
+#ordersDashboardModal .dashboard-section {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+#ordersDashboardModal .dashboard-section-title {
+    color: #E8F4F8;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Orders Hub modal header */
+#ordersDashboardModal .modal-header {
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#ordersDashboardModal .dashboard-title {
+    color: #E8F4F8;
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Orders Hub modal content */
+#ordersDashboardModal .modal-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Orders Hub modal footer */
+#ordersDashboardModal .dashboard-footer {
+    background: rgba(255, 255, 255, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#ordersDashboardModal .dashboard-action-btn {
+    background: rgba(71, 178, 229, 0.2) !important;
+    border: 1px solid rgba(71, 178, 229, 0.4) !important;
+    color: #47B2E5 !important;
+    padding: 0.8rem 1.5rem !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+    letter-spacing: 0.03em !important;
+    box-shadow: none !important;
+}
+
+#ordersDashboardModal .dashboard-action-btn:hover {
+    background: rgba(71, 178, 229, 0.3) !important;
+    border-color: rgba(71, 178, 229, 0.6) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(71, 178, 229, 0.2);
+}
+
+/* Orders Hub summary modal specific styles - CONSISTENT WITH OPS HUB */
+#ordersSummaryModal {
+    z-index: 10000 !important;
+}
+
+/* Override modal overlay background */
+#ordersSummaryModal.modal-overlay {
+    background: transparent !important;
+    background-color: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    z-index: 10000 !important;
+}
+
+/* Override global modal panel styles with higher specificity */
+#ordersSummaryModal.modal-overlay .modal-panel,
+#ordersSummaryModal .modal-panel {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    max-width: 1600px !important;
+    width: 90vw !important;
+    min-width: 900px !important;
+    max-height: 90vh !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+#ordersSummaryModal .modal-header {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #000000 !important;
+    min-height: 48px !important;
+    align-items: center !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    padding: 1.5rem 2rem !important;
+}
+
+#ordersSummaryModal .modal-header .header-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    flex: 1 !important;
+}
+
+#ordersSummaryModal .modal-header .modal-logo {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3) !important;
+}
+
+#ordersSummaryModal .modal-header .panel-header-title {
+    color: #000000 !important;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 1.5rem !important;
+    margin: 0 !important;
+    letter-spacing: 0.02em !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+#ordersSummaryModal .close-btn,
+#ordersDashboardModal .close-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+    border-radius: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+    box-shadow: none !important;
+    color: #15364A !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+#ordersSummaryModal .close-btn:hover,
+#ordersSummaryModal .close-btn:focus,
+#ordersSummaryModal .close-btn:active,
+#ordersDashboardModal .close-btn:hover,
+#ordersDashboardModal .close-btn:focus,
+#ordersDashboardModal .close-btn:active {
+    background: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    color: #15364A !important;
+    border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+    border-radius: 10px !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+#ordersSummaryModal .modal-content {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+    color: #000000 !important;
+}
+
+#ordersSummaryModal .modal-footer {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Orders Hub Quick Filters Grid */
+#ordersDashboardModal .quickfilters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Orders Hub Quick Filter Cards Container */
+#ordersDashboardModal .quickfilter-cards-container {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#ordersDashboardModal .quickfilter-cards-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#ordersDashboardModal .quickfilter-cards-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#ordersDashboardModal .quickfilter-cards-container::-webkit-scrollbar-thumb {
+    background: rgba(71, 178, 229, 0.3);
+    border-radius: 3px;
+}
+
+#ordersDashboardModal .quickfilter-cards-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(71, 178, 229, 0.5);
+}
+
+/* Orders Hub urgency cards */
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    color: #E8F4F8;
+    padding: 0.75rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+    backdrop-filter: blur(20px);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    min-width: 100px;
+    text-align: center;
+    position: relative;
+}
+
+/* Urgency card states based on data-urgency attribute */
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Urgente"] {
+    background: rgba(220, 53, 69, 0.2);
+    border-color: rgba(220, 53, 69, 0.4);
+    color: #ff6b6b;
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Urgente"]:hover {
+    background: rgba(220, 53, 69, 0.3);
+    border-color: rgba(220, 53, 69, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Urgente"].active {
+    background: rgba(239, 68, 68, 0.4) !important;
+    background-color: rgba(239, 68, 68, 0.4) !important;
+    border: 2px solid rgba(239, 68, 68, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(239, 68, 68, 0.7), 0 0 20px rgba(239, 68, 68, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Media"] {
+    background: rgba(255, 193, 7, 0.2);
+    border-color: rgba(255, 193, 7, 0.4);
+    color: #ffd93d;
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Media"]:hover {
+    background: rgba(255, 193, 7, 0.3);
+    border-color: rgba(255, 193, 7, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 193, 7, 0.3);
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Media"].active {
+    background: rgba(251, 191, 36, 0.4) !important;
+    background-color: rgba(251, 191, 36, 0.4) !important;
+    border: 2px solid rgba(251, 191, 36, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(251, 191, 36, 0.7), 0 0 20px rgba(251, 191, 36, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Baja"] {
+    background: rgba(40, 167, 69, 0.2);
+    border-color: rgba(40, 167, 69, 0.4);
+    color: #51cf66;
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Baja"]:hover {
+    background: rgba(40, 167, 69, 0.3);
+    border-color: rgba(40, 167, 69, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+}
+
+#ordersDashboardModal .urgency-cards-container .orders-hub-chip[data-urgency="Baja"].active {
+    background: rgba(34, 197, 94, 0.4) !important;
+    background-color: rgba(34, 197, 94, 0.4) !important;
+    border: 2px solid rgba(34, 197, 94, 0.8) !important;
+    color: #000000 !important;
+    box-shadow: 0 0 40px rgba(34, 197, 94, 0.7), 0 0 20px rgba(34, 197, 94, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    border-radius: 8px !important;
+    padding: 0.75rem 1.5rem !important;
+    transform: scale(1.05) !important;
+    font-weight: 600 !important;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #ordersDashboardModal .modal-panel {
+        width: 98vw !important;
+        max-width: 98vw !important;
+        margin: 1vh auto !important;
+    }
+    
+    #ordersDashboardModal .orders-hub-chips {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    #ordersDashboardModal .quickfilters-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Orders Summary Modal Responsive Styles */
+@media (max-width: 900px) {
+    #ordersSummaryModal .modal-panel {
+        min-width: 0 !important;
+        width: 99vw !important;
+        max-width: 99vw !important;
+        border-radius: 10px !important;
+    }
+    
+    #ordersSummaryModal .modal-content {
+        padding: 1rem 0.5rem 1.5rem 0.5rem !important;
+    }
+    
+    .summary-config-section {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.2rem !important;
+    }
+    
+    .cards-selection-section, .summary-preview-section {
+        min-width: 0 !important;
+        max-width: 100vw !important;
+        padding: 0.7rem 0.2rem !important;
+    }
+    
+    .summary-preview {
+        min-width: 0 !important;
+        padding: 1rem 0.5rem !important;
+        max-height: 350px !important;
+    }
+} 

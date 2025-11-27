@@ -1,0 +1,731 @@
+/* ===== CUSTOM SUMMARY MODAL - DISEÑO LIMPIO Y FUNCIONAL ===== */
+
+/* Modal Principal */
+#summaryModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  background: linear-gradient(135deg, #1a2332 0%, #1a2332 50%, #1a2332 100%);
+  backdrop-filter: blur(20px);
+  z-index: 15000;
+  margin: 0;
+  padding: 0;
+}
+
+#summaryModal .modal-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  color: white;
+  max-width: 1200px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  z-index: 15001;
+}
+
+/* Header del Modal */
+#summaryModal .modal-header {
+  background: rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2) !important;
+  border-radius: 20px 20px 0 0;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#summaryModal .panel-header-title {
+  color: white;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+#summaryModal .close-btn {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  box-shadow: none !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  transition: all 0.3s ease !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+}
+
+#summaryModal .close-btn:hover,
+#summaryModal .close-btn:focus,
+#summaryModal .close-btn:active {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  opacity: 1 !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Contenido del Modal */
+#summaryModal .modal-content {
+  padding: 2rem;
+  overflow: visible;
+}
+
+/* Remove emojis/emoticons from buttons in summary modal */
+#summaryModal button::before,
+#summaryModal button::after {
+  content: none !important;
+}
+
+#summaryModal button {
+  /* Remove any emoji characters */
+  font-variant-emoji: none;
+}
+
+/* Remove emojis from button text content */
+#summaryModal #saveSummaryBtn,
+#summaryModal #manageSummariesBtn,
+#summaryModal #generateSummaryBtn,
+#summaryModal #exportSummaryExcelBtn,
+#summaryModal #viewSummaryBtn,
+#summaryModal #addMetricBtn,
+#summaryModal #resetSummaryBtn {
+  /* Ensure no emoji content */
+  font-variant-emoji: none;
+}
+
+/* Botones de Acción */
+#summaryModal .summary-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-start;
+}
+
+#summaryModal .summary-actions .secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 10px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#summaryModal .summary-actions .secondary:hover {
+  background: rgba(71, 178, 229, 0.2);
+  border-color: rgba(71, 178, 229, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Secciones del Formulario */
+.pivot-section {
+  margin-bottom: 1.8rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(71, 178, 229, 0.2);
+  backdrop-filter: blur(5px);
+  overflow: visible;
+  position: relative;
+}
+
+.pivot-section h3 {
+  color: #47B2E5;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pivot-help {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Selectores Básicos */
+#summaryModal select,
+#summaryModal input[type="text"] {
+  width: 100%;
+  min-width: 260px;
+  max-width: 480px;
+  margin-bottom: 0.7rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(71, 178, 229, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+#summaryModal select:focus,
+#summaryModal input[type="text"]:focus {
+  outline: none;
+  border-color: #47B2E5;
+  box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.2);
+}
+
+#summaryModal select:hover,
+#summaryModal input[type="text"]:hover {
+  border-color: rgba(71, 178, 229, 0.6);
+}
+
+/* ===== CHOICES.JS DROPDOWNS - SISTEMA LIMPIO ===== */
+
+/* Contenedor Principal de Choices */
+#summaryModal .choices {
+  position: relative;
+  z-index: 100;
+}
+
+/* Input/Display Area */
+#summaryModal .choices__inner {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 1px solid rgba(71, 178, 229, 0.4) !important;
+  border-radius: 10px !important;
+  color: #ffffff !important;
+  min-height: 48px !important;
+  padding: 0.75rem 1rem !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+#summaryModal .choices__inner:hover {
+  border-color: rgba(71, 178, 229, 0.6) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+#summaryModal .choices__inner.is-focused {
+  border-color: #47B2E5 !important;
+  box-shadow: 0 0 0 3px rgba(71, 178, 229, 0.2) !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+#summaryModal .choices__input {
+  color: #ffffff !important;
+  background: transparent !important;
+  font-size: 1rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Items seleccionados */
+#summaryModal .choices__item {
+  background: rgba(71, 178, 229, 0.3) !important;
+  border: 1px solid rgba(71, 178, 229, 0.5) !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  padding: 0.4rem 0.8rem !important;
+  margin: 0.2rem !important;
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+}
+
+/* Placeholder */
+#summaryModal .choices__placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-style: italic !important;
+  opacity: 1 !important;
+}
+
+/* Flecha del dropdown */
+#summaryModal .choices__list--dropdown .choices__item--selectable::after {
+  content: none !important;
+}
+
+/* Lista Desplegable - MÁXIMA PRIORIDAD */
+#summaryModal .choices__list--dropdown,
+#summaryModal .choices__list--dropdown[style] {
+  max-height: 320px !important;
+  min-height: 120px !important;
+  height: auto !important;
+  overflow-y: auto !important;
+  z-index: 999999 !important;
+}
+
+/* Items del Dropdown */
+#summaryModal .choices__item--choice {
+  color: #eaf6ff !important;
+  background: transparent !important;
+  padding: 0.45rem 1rem !important;
+  font-size: 1rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  transition: none !important;
+  box-shadow: none !important;
+}
+
+#summaryModal .choices__item--choice:hover,
+#summaryModal .choices__item--choice.is-highlighted {
+  background: #1a2332 !important;
+  color: #fff !important;
+  transition: none !important;
+}
+
+/* Botones X de Remove */
+#summaryModal .choices__list--multiple .choices__item .choices__button,
+#summaryModal .choices__button {
+  background-color: transparent !important;
+  background: transparent !important;
+  color: #b6d7f3 !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 700 !important;
+  font-size: 1.1rem !important;
+  width: 22px !important;
+  height: 22px !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 0.7 !important;
+  margin-left: 0.2rem !important;
+  transition: background 0.18s, color 0.18s !important;
+}
+
+#summaryModal .choices__list--multiple .choices__item .choices__button:hover,
+#summaryModal .choices__button:hover {
+  background-color: #47B2E5 !important;
+  background: #47B2E5 !important;
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* ===== SECCIÓN DE MÉTRICAS ===== */
+
+#metricsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 80px;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(71, 178, 229, 0.15);
+}
+
+#metricsList:empty::before {
+  content: "Click '+ Add metric' to add calculation metrics";
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* Filas de Métricas */
+.metric-row,
+.metric-row-flex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid rgba(71, 178, 229, 0.2);
+  backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 1;
+}
+
+.metric-row label,
+.metric-row-flex label {
+  flex: 1;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.metric-row .metric-field-select,
+.metric-row-flex .metric-field-select {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(71, 178, 229, 0.4);
+  border-radius: 10px;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+/* Botón Remove de Métricas */
+.metric-row .remove-metric-btn {
+  background: #dc3545;
+  color: #ffffff;
+  border: 2px solid #dc3545;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 6px;
+  font-weight: 700;
+  min-width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+  z-index: 1000;
+}
+
+.metric-row .remove-metric-btn:hover {
+  background: #b02a37;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.5);
+}
+
+/* Botón Add Metric */
+.add-metric-btn {
+  background: rgba(16, 185, 129, 0.25);
+  color: #10B981;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-metric-btn:hover {
+  background: rgba(16, 185, 129, 0.35);
+  color: #ffffff;
+  border-color: rgba(16, 185, 129, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.3);
+}
+
+/* ===== ÁREA DE PREVIEW ===== */
+
+#pivotPreviewContainer {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  min-height: 120px;
+  overflow-x: auto;
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+  color: #ffffff;
+}
+
+/* Tabla de Preview */
+.pivot-preview-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.pivot-preview-table th,
+.pivot-preview-table td {
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border: 1px solid rgba(71, 178, 229, 0.2);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.pivot-preview-table th {
+  background: rgba(71, 178, 229, 0.15);
+  color: #47B2E5;
+  font-weight: 600;
+}
+
+.pivot-preview-table tr:hover {
+  background: rgba(71, 178, 229, 0.08);
+}
+
+/* ===== FOOTER DEL MODAL ===== */
+
+#summaryModal .modal-footer {
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0 0 20px 20px;
+}
+
+#summaryModal .modal-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+#summaryModal .modal-btn.primary {
+  background: linear-gradient(135deg, #47B2E5 0%, #3A9BD1 100%);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(71, 178, 229, 0.3);
+}
+
+#summaryModal .modal-btn.primary:hover {
+  background: linear-gradient(135deg, #3A9BD1 0%, #2E8BC0 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(71, 178, 229, 0.4);
+}
+
+#summaryModal .modal-btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+#summaryModal .modal-btn.secondary:hover {
+  background: rgba(71, 178, 229, 0.2);
+  border-color: rgba(71, 178, 229, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ===== MODAL DE GESTIÓN DE RESÚMENES ===== */
+
+#manageSummariesModal.modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0;
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 16000;
+}
+
+#manageSummariesModal .modal-panel {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  color: white !important;
+  max-width: 520px !important;
+  width: 90% !important;
+  max-height: 80vh !important;
+}
+
+#manageSummariesModal .modal-header {
+  background: #1a2332 !important;
+  background-color: #1a2332 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px 20px 0 0 !important;
+  padding: 1.5rem 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+#manageSummariesModal .modal-header h3 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+#manageSummariesModal .close-btn {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-size: 1.8rem !important;
+  font-weight: 400 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  opacity: 1 !important;
+  transition: none !important;
+  text-transform: uppercase !important;
+}
+
+#manageSummariesModal .close-btn:hover,
+#manageSummariesModal .close-btn:focus,
+#manageSummariesModal .close-btn:active {
+  background: inherit !important;
+  color: inherit !important;
+  opacity: inherit !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transform: scale(0.9) !important;
+}
+
+#manageSummariesModal .modal-content {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+#savedSummariesList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+#savedSummariesList > div {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(71, 178, 229, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+#savedSummariesList > div:hover {
+  background: rgba(71, 178, 229, 0.1);
+  border-color: rgba(71, 178, 229, 0.4);
+  transform: translateX(4px);
+}
+
+#savedSummariesList button {
+  background: rgba(71, 178, 229, 0.2);
+  color: #47B2E5;
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+#savedSummariesList button:hover {
+  background: rgba(71, 178, 229, 0.3);
+  color: white;
+  transform: scale(1.05);
+}
+
+#summaryRenameSection input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(71, 178, 229, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem;
+  color: white;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+}
+
+#summaryRenameSection button {
+  background: linear-gradient(135deg, #47B2E5 0%, #3A9BD1 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+#summaryRenameSection button:hover {
+  background: linear-gradient(135deg, #3A9BD1 0%, #2E8BC0 100%);
+  transform: translateY(-2px);
+}
+
+/* Elimina el estilo especial minimalista de los selects de métricas */
+.metric-row .choices__inner,
+.metric-row-flex .choices__inner {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  min-height: unset !important;
+  color: #eaf6ff !important;
+}
+
+.metric-row .choices__item,
+.metric-row-flex .choices__item {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #eaf6ff !important;
+  font-weight: 600 !important;
+  font-size: 1.05rem !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+#summaryModal .choices__list--multiple .choices__item,
+#summaryModal .choices__list--single .choices__item {
+  background: rgba(71, 178, 229, 0.18) !important;
+  color: #fff !important;
+  border-radius: 7px !important;
+  border: none !important;
+  box-shadow: none !important;
+  margin: 0 0.2rem 0 0 !important;
+  padding: 0.3rem 0.8rem !important;
+  font-size: 0.97rem !important;
+  font-weight: 500 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+
+#summaryModal .choices__list--multiple .choices__item[data-deletable],
+#summaryModal .choices__list--single .choices__item[data-deletable] {
+  background: rgba(71, 178, 229, 0.22) !important;
+  color: #fff !important;
+}
+
+.metric-row .choices__item,
+.metric-row-flex .choices__item,
+#summaryModal .choices__item {
+  box-shadow: none !important;
+}
+
+/* Estilos de close-btn movidos a 99-master-override.css para unificación total */ 

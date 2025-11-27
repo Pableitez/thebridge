@@ -1,0 +1,181 @@
+/* ========================================
+   FILTER CHIPS - DISEÑO NUEVO DESDE CERO
+   ======================================== */
+
+/* Chip principal - Diseño minimalista moderno */
+.filter-chip-new {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 0.625rem !important;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem !important;
+  margin: 0.375rem 0.375rem 0.375rem 0 !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E0E0E0 !important;
+  border-radius: 8px !important;
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06) !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  cursor: default !important;
+  position: relative !important;
+  overflow: hidden !important;
+  max-width: 100% !important;
+}
+
+/* Contenedor del contenido del chip */
+.filter-chip-content {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Label (nombre de la columna) */
+.filter-chip-label {
+  color: #666666 !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+/* Separador visual entre label y value */
+.filter-chip-label::after {
+  content: ':' !important;
+  margin-left: 0.125rem !important;
+  color: #999999 !important;
+}
+
+/* Value (valores del filtro) */
+.filter-chip-value {
+  color: #1A1A1A !important;
+  font-weight: 400 !important;
+  font-size: 0.8125rem !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Icono de cerrar - solo la X */
+.filter-chip-close {
+  width: 10px !important;
+  height: 10px !important;
+  min-width: 10px !important;
+  min-height: 10px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: #9E9E9E !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  opacity: 0.7 !important;
+  display: inline-block !important;
+}
+
+.filter-chip-close path {
+  stroke: currentColor !important;
+  transition: all 0.15s ease !important;
+}
+
+/* Hover en el icono de cerrar */
+.filter-chip-close:hover {
+  color: #616161 !important;
+  opacity: 1 !important;
+}
+
+.filter-chip-close:hover {
+  transform: scale(1.1) !important;
+}
+
+.filter-chip-close:active {
+  transform: scale(0.9) !important;
+  opacity: 1 !important;
+}
+
+/* Hover en el chip completo */
+.filter-chip-new:hover {
+  border-color: #BDBDBD !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Chip en modo exclusión */
+.filter-chip-new.filter-chip-exclude {
+  background: #FFF3E0 !important;
+  background-color: #FFF3E0 !important;
+  border-color: #FFB74D !important;
+}
+
+.filter-chip-new.filter-chip-exclude .filter-chip-label {
+  color: #E65100 !important;
+}
+
+.filter-chip-new.filter-chip-exclude .filter-chip-value {
+  color: #BF360C !important;
+}
+
+.filter-chip-new.filter-chip-exclude:hover {
+  border-color: #FF9800 !important;
+  background: #FFE0B2 !important;
+  background-color: #FFE0B2 !important;
+}
+
+.filter-chip-new.filter-chip-exclude .filter-chip-close {
+  color: #E65100 !important;
+}
+
+.filter-chip-new.filter-chip-exclude .filter-chip-close:hover {
+  color: #BF360C !important;
+}
+
+/* Animación de entrada */
+@keyframes chipSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.filter-chip-new {
+  animation: chipSlideIn 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filter-chip-new {
+    font-size: 0.75rem !important;
+    padding: 0.3125rem 0.4375rem 0.3125rem 0.625rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .filter-chip-label,
+  .filter-chip-value {
+    font-size: 0.75rem !important;
+  }
+  
+  .filter-chip-close {
+    width: 9px !important;
+    height: 9px !important;
+    min-width: 9px !important;
+    min-height: 9px !important;
+  }
+}
+
+
+
+
+
+
+

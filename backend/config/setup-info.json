@@ -1,0 +1,10 @@
+{
+  "configuredAt": "2025-07-18T07:21:58.883Z",
+  "provider": "onedrive",
+  "folderPath": "C:\\Users\\pable\\OneDrive\\TheBridge\\Versions",
+  "instructions": {
+    "webApp": "1. Abre index.html en tu navegador",
+    "backend": "2. Ejecuta: node server.js o start.bat/start.sh",
+    "connect": "3. Haz clic en \"Connect to Backend\" en la app"
+  }
+}

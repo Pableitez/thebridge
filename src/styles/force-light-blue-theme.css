@@ -1,0 +1,824 @@
+/* ========================================
+   FORCE LIGHT BLUE THEME - ULTRA SPECIFIC OVERRIDES
+   ======================================== */
+/* Este archivo fuerza el tema azul clarito con texto negro
+   usando selectores de máxima especificidad para sobrescribir
+   cualquier estilo inline o forzado */
+
+/* ========================================
+   MODALES - FORCE LIGHT BLUE BACKGROUND
+   ======================================== */
+html body .modal-overlay,
+html body div.modal-overlay,
+html body #filterModal,
+html body #filterModalOverlay,
+html body #reportOptionsModal,
+html body #dashboardModal,
+html body #removeDuplicatesModal,
+html body #manageViewsDialog,
+html body #backupModal,
+html body #snapshotManagerModal,
+html body #dataVersionModal,
+html body #userSetUpModal,
+html body #summaryModal,
+html body #manageSummariesModal,
+html body #copySummaryModal,
+html body #manageDashboardConfigModal,
+html body #csvComparisonModal,
+html body #comparisonResultsModal,
+html body #legalNoticeModal,
+html body #selectVersionModal,
+html body #bookingDashboardModal,
+html body #ordersDashboardModal,
+html body #dqDashboardModal {
+  background: transparent !important;
+  background-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+html body .modal-overlay .modal-panel,
+html body div.modal-overlay .modal-panel,
+html body .modal-overlay .modal-panel[style],
+html body #filterModal,
+html body #filterModal[style],
+html body #reportOptionsModal .modal-panel,
+html body #reportOptionsModal .modal-panel[style],
+html body #dashboardModal .modal-panel,
+html body #dashboardModal .modal-panel[style],
+html body #removeDuplicatesModal .modal-panel,
+html body #removeDuplicatesModal .modal-panel[style],
+html body #manageViewsDialog .modal-panel,
+html body #manageViewsDialog .modal-panel[style],
+html body #backupModal .modal-panel,
+html body #backupModal .modal-panel[style],
+html body #snapshotManagerModal .modal-panel,
+html body #snapshotManagerModal .modal-panel[style],
+html body #dataVersionModal .modal-panel,
+html body #dataVersionModal .modal-panel[style],
+html body #userSetUpModal .modal-panel,
+html body #userSetUpModal .modal-panel[style],
+html body #summaryModal .modal-panel,
+html body #summaryModal .modal-panel[style],
+html body #manageSummariesModal .modal-panel,
+html body #manageSummariesModal .modal-panel[style],
+html body #copySummaryModal .modal-panel,
+html body #copySummaryModal .modal-panel[style],
+html body #manageDashboardConfigModal .modal-panel,
+html body #manageDashboardConfigModal .modal-panel[style],
+html body #csvComparisonModal .modal-panel,
+html body #csvComparisonModal .modal-panel[style],
+html body #comparisonResultsModal .modal-panel,
+html body #comparisonResultsModal .modal-panel[style],
+html body #legalNoticeModal .modal-panel,
+html body #legalNoticeModal .modal-panel[style],
+html body #selectVersionModal .modal-panel,
+html body #selectVersionModal .modal-panel[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+/* Force text color in modals - exclude table elements */
+html body .modal-overlay .modal-panel *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Modal headers */
+html body .modal-overlay .modal-header,
+html body .modal-overlay .modal-header[style],
+html body .modal-overlay .panel-header,
+html body .modal-overlay .panel-header[style],
+html body #filterModal .modal-header,
+html body #filterModal .modal-header[style],
+html body #filterModal .modal-header *,
+html body .modal-panel .modal-header,
+html body .modal-panel .modal-header[style],
+html body .modal-panel .panel-header,
+html body .modal-panel .panel-header[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body .modal-overlay .modal-header h1,
+html body .modal-overlay .modal-header h2,
+html body .modal-overlay .modal-header h3,
+html body .modal-overlay .modal-header h4,
+html body .modal-overlay .modal-header h5,
+html body .modal-overlay .modal-header h6,
+html body .modal-overlay .panel-header-title,
+html body .modal-overlay .panel-header h1,
+html body .modal-overlay .panel-header h2,
+html body .modal-overlay .panel-header h3,
+html body .modal-overlay .panel-header h4,
+html body .modal-overlay .panel-header h5,
+html body .modal-overlay .panel-header h6,
+html body #filterModal .modal-header h2,
+html body #filterModal .modal-header h2[style] {
+  color: #000000 !important;
+}
+
+/* Modal content */
+html body .modal-overlay .modal-content,
+html body .modal-overlay .modal-content[style],
+html body .modal-overlay .panel-content,
+html body .modal-overlay .panel-content[style] {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #000000 !important;
+}
+
+/* Modal footer */
+html body .modal-overlay .modal-footer,
+html body .modal-overlay .modal-footer[style] {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  color: #000000 !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Close buttons */
+html body .modal-overlay .close-btn,
+html body .modal-overlay .close-btn[style],
+html body .modal-overlay button.close-btn,
+html body .modal-overlay button.close-btn[style],
+html body #filterModal .close-btn,
+html body #filterModal .close-btn[style] {
+  color: #15364A !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+html body .modal-overlay .close-btn:hover,
+html body .modal-overlay .close-btn:focus,
+html body .modal-overlay .close-btn:active {
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Buttons in modals */
+html body .modal-overlay .btn,
+html body .modal-overlay .btn[style],
+html body .modal-overlay .modal-btn,
+html body .modal-overlay .modal-btn[style],
+html body .modal-overlay button:not(.close-btn),
+html body .modal-overlay button:not(.close-btn)[style] {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+html body .modal-overlay .btn:hover,
+html body .modal-overlay .modal-btn:hover,
+html body .modal-overlay button:not(.close-btn):hover {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ========================================
+   TOOLBAR - FORCE LIGHT BLUE BACKGROUND
+   ======================================== */
+html body .toolbar,
+html body .toolbar[style],
+html body header.toolbar,
+html body header.toolbar[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body .toolbar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar button,
+html body .toolbar button[style],
+html body .toolbar select,
+html body .toolbar select[style],
+html body .toolbar input,
+html body .toolbar input[style],
+html body .toolbar label,
+html body .toolbar label[style],
+html body .toolbar span,
+html body .toolbar span[style],
+html body .toolbar div,
+html body .toolbar div[style],
+html body .toolbar a,
+html body .toolbar a[style] {
+  color: #000000 !important;
+}
+
+html body .toolbar .toolbar-button,
+html body .toolbar .toolbar-button[style] {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+html body .toolbar .toolbar-button:hover {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ========================================
+   SIDEBAR - FORCE LIGHT BLUE BACKGROUND
+   ======================================== */
+html body .sidebar,
+html body .sidebar[style],
+html body nav.sidebar,
+html body nav.sidebar[style],
+html body aside.sidebar,
+html body aside.sidebar[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+  border-right: 1.5px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body .sidebar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *),
+html body .sidebar-content,
+html body .sidebar-content[style],
+html body .sidebar-header,
+html body .sidebar-header[style],
+html body .sidebar-footer,
+html body .sidebar-footer[style],
+html body .sidebar-scrollable,
+html body .sidebar-scrollable[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body .sidebar-header,
+html body .sidebar-header[style] {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body .sidebar-footer,
+html body .sidebar-footer[style] {
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body .sidebar-button,
+html body .sidebar-button[style],
+html body .sidebar button,
+html body .sidebar button[style],
+html body .sidebar .brand-btn,
+html body .sidebar .brand-btn[style],
+html body .sidebar .sidebar-button.brand-btn,
+html body .sidebar button.sidebar-button.brand-btn {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body .sidebar-button:hover,
+html body .sidebar button:hover,
+html body .sidebar .brand-btn:hover,
+html body .sidebar .sidebar-button.brand-btn:hover,
+html body .sidebar button.sidebar-button.brand-btn:hover {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+html body .sidebar-button svg,
+html body .sidebar button svg,
+html body .sidebar .brand-btn svg,
+html body .sidebar .sidebar-button.brand-btn svg,
+html body .sidebar button.sidebar-button.brand-btn svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+html body .sidebar-button:hover svg,
+html body .sidebar button:hover svg,
+html body .sidebar .brand-btn:hover svg,
+html body .sidebar .sidebar-button.brand-btn:hover svg,
+html body .sidebar button.sidebar-button.brand-btn:hover svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+html body .sidebar-select,
+html body .sidebar-select[style],
+html body .sidebar select,
+html body .sidebar select[style] {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border: 1.5px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+html body .sidebar-select option,
+html body .sidebar select option {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body #teamInfo,
+html body #teamInfo[style] {
+  background: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+html body #legalNoticeTrigger,
+html body #legalNoticeTrigger[style] {
+  color: #000000 !important;
+}
+
+html body #userSetUpBtn,
+html body #userSetUpBtn[style] {
+  color: #000000 !important;
+}
+
+html body #userSetUpBtn:hover {
+  color: #000000 !important;
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ========================================
+   OVERRIDE INLINE STYLES - MAXIMUM SPECIFICITY
+   ======================================== */
+/* Override any inline background styles in modals */
+html body .modal-overlay [style*="background"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-panel [style*="background"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal [style*="background"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+/* Override any inline background styles in toolbar */
+html body .toolbar [style*="background"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+/* Override any inline background styles in sidebar */
+html body .sidebar [style*="background"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+/* Override any inline color styles in modals, toolbar, sidebar */
+html body .modal-overlay [style*="color"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-panel [style*="color"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal [style*="color"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar [style*="color"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar [style*="color"]:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force text color for all text elements */
+html body .modal-overlay p:not(.table):not(.table *),
+html body .modal-overlay span:not(.table):not(.table *),
+html body .modal-overlay div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay label:not(.table):not(.table *),
+html body .toolbar p:not(.table):not(.table *),
+html body .toolbar span:not(.table):not(.table *),
+html body .toolbar div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar label:not(.table):not(.table *),
+html body .sidebar p:not(.table):not(.table *),
+html body .sidebar span:not(.table):not(.table *),
+html body .sidebar div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar label:not(.table):not(.table *) {
+  color: #000000 !important;
+}
+
+/* ========================================
+   SPECIFIC ELEMENT OVERRIDES
+   ======================================== */
+/* Filter modal specific */
+html body #filterModal,
+html body #filterModal[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body #filterModal .modal-header,
+html body #filterModal .modal-header[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body #filterModal .modal-header h2,
+html body #filterModal .modal-header h2[style] {
+  color: #000000 !important;
+}
+
+/* Dashboard modals */
+html body #dashboardModal,
+html body #dashboardModal[style],
+html body #dashboardModal .modal-panel,
+html body #dashboardModal .modal-panel[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body #dqDashboardModal .modal-panel,
+html body #dqDashboardModal .modal-panel[style] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+/* ========================================
+   ADDITIONAL FORCE RULES FOR ALL TEXT ELEMENTS
+   ======================================== */
+/* Force all text in modals to be black */
+html body .modal-overlay,
+html body .modal-overlay *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-panel,
+html body .modal-panel *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force all text in toolbar to be black */
+html body .toolbar,
+html body .toolbar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force all text in sidebar to be black */
+html body .sidebar,
+html body .sidebar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Override any style attribute with background or color - ULTIMATE OVERRIDE */
+html body .modal-overlay [style*="background-color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay [style*="background"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+html body .toolbar [style*="background-color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar [style*="background"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+html body .sidebar [style*="background-color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar [style*="background"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+}
+
+html body .modal-overlay [style*="color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar [style*="color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar [style*="color"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* ========================================
+   FORCE ALL WHITE TEXT TO BLACK
+   ======================================== */
+/* Override all white text colors */
+html body .modal-overlay *[style*="color: white"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *[style*="color:#fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *[style*="color: #fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *[style*="color:#ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *[style*="color: #ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="color: white"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="color:#fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="color: #fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="color:#ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="color: #ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="color: white"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="color:#fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="color: #fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="color:#ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="color: #ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force close buttons to black */
+html body .close-btn,
+html body .close-btn[style],
+html body .quickfilter-close-btn,
+html body .quickfilter-close-btn[style],
+html body .modal-filter-tag-remove,
+html body .modal-filter-tag-remove[style],
+html body .ops-filter-popup-close,
+html body .ops-filter-popup-close[style],
+html body .modal-overlay .close-btn,
+html body .modal-overlay .close-btn[style],
+html body #filterModal .close-btn,
+html body #filterModal .close-btn[style] {
+  color: #15364A !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif !important;
+}
+
+html body .close-btn:hover,
+html body .close-btn:active,
+html body .quickfilter-close-btn:hover,
+html body .quickfilter-close-btn:active,
+html body .modal-filter-tag-remove:hover,
+html body .modal-filter-tag-remove:active,
+html body .ops-filter-popup-close:hover,
+html body .ops-filter-popup-close:active {
+  color: #000000 !important;
+}
+
+/* Force modal buttons to black text */
+html body .modal-btn,
+html body .modal-btn[style],
+html body .modal-btn.primary,
+html body .modal-btn.primary[style],
+html body .modal-btn.secondary,
+html body .modal-btn.secondary[style],
+html body .modal-overlay button:not(.close-btn),
+html body .modal-overlay button:not(.close-btn)[style] {
+  color: #000000 !important;
+}
+
+html body .modal-btn:hover,
+html body .modal-btn:active,
+html body .modal-btn.primary:hover,
+html body .modal-btn.secondary:hover {
+  color: #000000 !important;
+}
+
+/* Force all elements with white color class or style */
+html body .modal-overlay .white,
+html body .modal-overlay [class*="white"],
+html body .toolbar .white,
+html body .toolbar [class*="white"],
+html body .sidebar .white,
+html body .sidebar [class*="white"] {
+  color: #000000 !important;
+}
+
+/* Override CSS variables that set white text */
+html body .modal-overlay,
+html body .modal-overlay *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: #000000 !important;
+  --text-light: #000000 !important;
+  --text-secondary: #000000 !important;
+  --text-muted: #666666 !important;
+}
+
+html body .toolbar,
+html body .toolbar *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: #000000 !important;
+  --text-light: #000000 !important;
+  --text-secondary: #000000 !important;
+}
+
+html body .sidebar,
+html body .sidebar *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: #000000 !important;
+  --text-light: #000000 !important;
+  --text-secondary: #000000 !important;
+}
+
+/* Force app-container text */
+html body .app-container,
+html body .app-container *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+  --text-primary: #000000 !important;
+}
+
+/* Override any dark backgrounds in modals, toolbar, sidebar */
+html body .modal-overlay [style*="background: #1a2332"],
+html body .modal-overlay [style*="background-color: #1a2332"],
+html body .modal-overlay [style*="background:#1a2332"],
+html body .modal-overlay [style*="background-color:#1a2332"],
+html body .modal-overlay [style*="background: #05080c"],
+html body .modal-overlay [style*="background-color: #05080c"],
+html body .modal-overlay [style*="background:#05080c"],
+html body .modal-overlay [style*="background-color:#05080c"],
+html body .modal-overlay [style*="background: #00243D"],
+html body .modal-overlay [style*="background-color: #00243D"],
+html body .modal-overlay [style*="background:#00243D"],
+html body .modal-overlay [style*="background-color:#00243D"],
+html body .toolbar [style*="background: #1a2332"],
+html body .toolbar [style*="background-color: #1a2332"],
+html body .toolbar [style*="background:#1a2332"],
+html body .toolbar [style*="background-color:#1a2332"],
+html body .toolbar [style*="background: #05080c"],
+html body .toolbar [style*="background-color: #05080c"],
+html body .toolbar [style*="background:#05080c"],
+html body .toolbar [style*="background-color:#05080c"],
+html body .sidebar [style*="background: #1a2332"],
+html body .sidebar [style*="background-color: #1a2332"],
+html body .sidebar [style*="background:#1a2332"],
+html body .sidebar [style*="background-color:#1a2332"],
+html body .sidebar [style*="background: #05080c"],
+html body .sidebar [style*="background-color: #05080c"],
+html body .sidebar [style*="background:#05080c"],
+html body .sidebar [style*="background-color:#05080c"] {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+/* Force all p, span, div, label, h1-h6 in modals, toolbar, sidebar to black */
+html body .modal-overlay p:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay span:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay label:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h1:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h2:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h3:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h4:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h5:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay h6:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar p:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar span:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar label:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h1:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h2:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h3:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h4:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h5:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar h6:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar p:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar span:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar label:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h1:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h2:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h3:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h4:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h5:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar h6:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* ========================================
+   SPECIFIC CLASS OVERRIDES
+   ======================================== */
+/* Filter modal specific elements */
+html body #filterModal .filter-form,
+html body #filterModal .filter-form *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal .filter-group,
+html body #filterModal .filter-group *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal .filter-block,
+html body #filterModal .filter-block *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal .filter-panel,
+html body #filterModal .filter-panel *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal .filter-content,
+html body #filterModal .filter-content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #filterModal .filter-title,
+html body #filterModal .filter-group-title {
+  color: #000000 !important;
+}
+
+/* Modal buttons with specific classes */
+html body .modal-btn.primary,
+html body .modal-btn.secondary,
+html body .modal-btn.danger,
+html body .btn-primary,
+html body .btn-secondary,
+html body .btn-danger {
+  color: #000000 !important;
+}
+
+html body .modal-btn.primary:hover,
+html body .modal-btn.secondary:hover,
+html body .modal-btn.danger:hover {
+  color: #000000 !important;
+}
+
+/* View actions and button groups */
+html body .view-actions,
+html body .view-actions *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .button-group,
+html body .button-group *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Column manager and other specific modals */
+html body .column-manager-overlay,
+html body .column-manager-overlay *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #E3F2FD !important;
+  background-color: #E3F2FD !important;
+  color: #000000 !important;
+}
+
+/* Panel content */
+html body .panel-content,
+html body .panel-content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Filter tags */
+html body .filter-tag,
+html body .filter-tag *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-filter-tag,
+html body .modal-filter-tag *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Inputs and selects in modals, toolbar, sidebar */
+html body .modal-overlay input:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay select:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay textarea:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar input:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar select:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar input:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar select:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Links */
+html body .modal-overlay a:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar a:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar a:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+html body .modal-overlay a:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar a:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar a:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* Lists */
+html body .modal-overlay ul:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay ol:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay li:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar ul:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar ol:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar li:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar ul:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar ol:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar li:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force toolbar-left, toolbar-right, toolbar-center */
+html body .toolbar-left,
+html body .toolbar-left *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-right,
+html body .toolbar-right *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-center,
+html body .toolbar-center *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force toolbar-title */
+html body .toolbar-title,
+html body .toolbar-title *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Force any element using var(--text-primary), var(--text-light), etc */
+html body .modal-overlay *[style*="var(--text-primary)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-overlay *[style*="var(--text-light)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="var(--text-primary)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar *[style*="var(--text-light)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="var(--text-primary)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar *[style*="var(--text-light)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+

@@ -1,0 +1,82 @@
+/* ========================================
+   UNIFICACIÓN GLOBAL DE SCROLLBARS Y BOTONES
+   ======================================== */
+
+/* SCROLLBARS UNIFICADOS - TODOS LOS ELEMENTOS (excepto tabla) */
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *)::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *)::-webkit-scrollbar-track {
+  background: #E3F2FD !important;
+  border-radius: 10px !important;
+}
+
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *)::-webkit-scrollbar-thumb {
+  background: #47B2E5 !important;
+  border-radius: 10px !important;
+}
+
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *)::-webkit-scrollbar-thumb:hover {
+  background: #3b9bd1 !important;
+}
+
+/* Firefox Scrollbar */
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  scrollbar-width: thin !important;
+  scrollbar-color: #47B2E5 #E3F2FD !important;
+}
+
+/* BOTONES UNIFICADOS - TODOS LOS BOTONES (excepto tabla) */
+html body button:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-primary:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-secondary:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .tab-btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .filter-btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="btn"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="button"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body input[type="button"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body input[type="submit"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: #000000 !important;
+}
+
+/* Botones primarios */
+html body button:not(.close-btn):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn:not(.close-btn):not(.btn-secondary):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-primary:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-btn:not(.close-btn):not(.secondary):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .tab-btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .filter-btn:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #47B2E5 !important;
+  color: #000000 !important;
+  border: none !important;
+}
+
+html body button:hover:not(.close-btn):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn:hover:not(.close-btn):not(.btn-secondary):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-primary:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-btn:hover:not(.close-btn):not(.secondary):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .tab-btn:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .filter-btn:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: #3b9bd1 !important;
+  color: #000000 !important;
+}
+
+/* Botones secundarios */
+html body .btn-secondary:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-btn.secondary:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: #000000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+html body .btn-secondary:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-btn.secondary:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000000 !important;
+  border-color: #47B2E5 !important;
+}
+

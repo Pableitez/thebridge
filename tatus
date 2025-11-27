@@ -1,0 +1,10 @@
+[33m39dd5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m � FIX BACKEND STATUS - ONE DRIVE ONLY
+[33m67420[m � FORCE ONEDRIVE CONFIG BUTTON - VISIBLE IN MODAL
+[33mc23f3[m � DISABLE RENDER COMPLETELY - ONE DRIVE ONLY MODE
+[33mebe23[m � Fix: Activate OneDrive Registration for Existing Modal
+[33mc34cc[m ☁️ Complete OneDrive Integration with Custom Paths
+[33ma8d3d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add Azure AD authentication for OneDrive - professional enterprise authentication solution
+[33m52171[m Add OneDrive path consistency fix - ensures path persistence between sessions with validation and suggestions
+[33mb1269[m Add OneDrive consent error fix (AADSTS65002) - handles Microsoft authentication consent issues
+[33mef282[m Add OneDrive configuration improvements and registration modal fixes
+[33m39dd5[m � FIX BACKEND STATUS - ONE DRIVE ONLY

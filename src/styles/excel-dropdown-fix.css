@@ -1,0 +1,137 @@
+/* ARCHIVO ESPECÍFICO PARA FORZAR VISIBILIDAD EN DROPDOWNS DE FILTROS EXCEL */
+
+/* Resetear cualquier herencia de color */
+.excel-dropdown {
+  background: #fff !important;
+  color: #333 !important;
+}
+
+.excel-dropdown *,
+.excel-dropdown label,
+.excel-dropdown span,
+.excel-dropdown div,
+.excel-checkbox-list *,
+.excel-checkbox-list label,
+.excel-checkbox-list span,
+.excel-checkbox-list div {
+  color: #333 !important;
+  text-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Estilos específicos para elementos de texto */
+.excel-checkbox-list label {
+  color: #333 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.4 !important;
+}
+
+.excel-checkbox-list label span {
+  color: #333 !important;
+}
+
+/* Botones */
+.excel-dropdown button {
+  color: #333 !important;
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 0.25rem 0.5rem !important;
+  border-radius: 8px !important;
+  font-size: 0.85rem !important;
+}
+
+.excel-dropdown button:hover {
+  background: #e2e8f0 !important;
+  color: #111 !important;
+}
+
+/* Botón Apply */
+.excel-dropdown .apply-btn,
+.excel-dropdown .filter-apply-btn,
+.excel-dropdown .excel-filter-apply-btn {
+  background: #10B981 !important;
+  color: #fff !important;
+  border-color: #10B981 !important;
+  border-radius: 8px !important;
+}
+
+.excel-dropdown .apply-btn:hover,
+.excel-dropdown .filter-apply-btn:hover {
+  background: #059669 !important;
+  color: #fff !important;
+}
+
+/* Input de búsqueda */
+.excel-dropdown input[type="text"],
+.excel-dropdown input[type="search"],
+.excel-dropdown .filter-input {
+  color: #333 !important;
+  background: #fff !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Checkboxes */
+.excel-checkbox-list input[type="checkbox"] {
+  accent-color: #6b7280 !important;
+}
+
+/* Estilos para elementos dentro de th */
+th .excel-dropdown,
+th .excel-dropdown *,
+th .excel-checkbox-list,
+th .excel-checkbox-list * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+table th .excel-dropdown,
+table th .excel-dropdown *,
+table th .excel-checkbox-list,
+table th .excel-checkbox-list * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+.data-table th .excel-dropdown,
+.data-table th .excel-dropdown *,
+.data-table th .excel-checkbox-list,
+.data-table th .excel-checkbox-list * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* Override absoluto */
+[class*="excel-dropdown"] {
+  color: #333 !important;
+}
+
+[class*="excel-dropdown"] * {
+  color: #333 !important;
+}
+
+[class*="excel-checkbox-list"] {
+  color: #333 !important;
+}
+
+[class*="excel-checkbox-list"] * {
+  color: #333 !important;
+}
+
+/* Override para cualquier elemento con estas clases, sin importar jerarquía */
+*[class*="excel-dropdown"],
+*[class*="excel-dropdown"] *,
+*[class*="excel-checkbox-list"],
+*[class*="excel-checkbox-list"] * {
+  color: #333 !important;
+  text-shadow: none !important;
+}
+
+/* Excepciones para botones Apply */
+*[class*="excel-dropdown"] .apply-btn,
+*[class*="excel-dropdown"] .apply-btn *,
+*[class*="excel-dropdown"] .filter-apply-btn,
+*[class*="excel-dropdown"] .filter-apply-btn * {
+  color: #fff !important;
+} 
+ 
+ 

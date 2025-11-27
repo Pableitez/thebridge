@@ -1,0 +1,1471 @@
+/* ========================================
+   PALETA DE COLORES UNIFICADA
+   ======================================== */
+:root {
+  /* PALETA PRINCIPAL - AZUL CLARITO CON TEXTO NEGRO */
+  --unified-bg-primary: #E3F2FD;        /* Fondo principal azul clarito */
+  --unified-bg-secondary: #BBDEFB;      /* Fondo secundario más claro */
+  --unified-bg-tertiary: #90CAF9;       /* Fondo terciario */
+  --unified-bg-hover: rgba(255, 255, 255, 0.5);  /* Fondo hover */
+  --unified-bg-active: rgba(255, 255, 255, 0.7);  /* Fondo activo */
+  
+  /* TEXTOS - SIEMPRE NEGRO */
+  --unified-text-primary: #000000;      /* Texto principal negro */
+  --unified-text-secondary: #333333;    /* Texto secundario gris oscuro */
+  --unified-text-muted: #666666;       /* Texto muted gris medio */
+  --unified-text-disabled: #999999;     /* Texto deshabilitado */
+  
+  /* BORDES */
+  --unified-border-color: rgba(0, 0, 0, 0.1);     /* Borde principal */
+  --unified-border-hover: rgba(0, 0, 0, 0.2);     /* Borde hover */
+  --unified-border-active: rgba(0, 0, 0, 0.3);   /* Borde activo */
+  
+  /* BOTONES */
+  --unified-btn-bg: rgba(255, 255, 255, 0.5);     /* Fondo botón */
+  --unified-btn-bg-hover: rgba(255, 255, 255, 0.7); /* Fondo botón hover */
+  --unified-btn-text: #000000;                    /* Texto botón */
+  --unified-btn-border: rgba(0, 0, 0, 0.2);       /* Borde botón */
+  
+  /* INPUTS */
+  --unified-input-bg: rgba(255, 255, 255, 0.7);   /* Fondo input */
+  --unified-input-text: #000000;                 /* Texto input */
+  --unified-input-border: rgba(0, 0, 0, 0.2);     /* Borde input */
+  --unified-input-focus: rgba(0, 0, 0, 0.3);      /* Borde input focus */
+}
+
+/* ========================================
+   APLICACIÓN FORZADA EN TODA LA WEB
+   ======================================== */
+
+/* BODY Y CONTENEDOR PRINCIPAL - FORZAR CON MÁXIMA PRIORIDAD */
+html,
+html body,
+html body[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  background-image: none !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Sobrescribir cualquier background-image oscuro */
+html body[style*="background-image"] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  background-image: none !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .app-container,
+html body .app-container *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   TOOLBAR - FORZAR PALETA
+   ======================================== */
+html body .toolbar,
+html body .toolbar[style],
+html body header.toolbar,
+html body header.toolbar[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-bottom: 1px solid var(--unified-border-color) !important;
+}
+
+html body .toolbar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-left,
+html body .toolbar-left *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-right,
+html body .toolbar-right *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-center,
+html body .toolbar-center *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-title,
+html body .toolbar-title *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .toolbar-button,
+html body .toolbar-button *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+  background: transparent !important;
+}
+
+html body .toolbar-button {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body .toolbar-button:hover {
+  background: var(--unified-btn-bg-hover) !important;
+}
+
+/* ========================================
+   SIDEBAR - FORZAR PALETA
+   ======================================== */
+html body .sidebar,
+html body .sidebar[style],
+html body nav.sidebar,
+html body aside.sidebar {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-right: 1px solid var(--unified-border-color) !important;
+}
+
+html body .sidebar *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *),
+html body .sidebar-content,
+html body .sidebar-header,
+html body .sidebar-footer,
+html body .sidebar-scrollable,
+html body .sidebar-button,
+html body .sidebar-select,
+html body #teamInfo,
+html body #legalNoticeTrigger,
+html body #userSetUpBtn {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .sidebar-header {
+  border-bottom: 1px solid var(--unified-border-color) !important;
+}
+
+html body .sidebar-footer {
+  border-top: 1px solid var(--unified-border-color) !important;
+}
+
+html body .sidebar-button {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body .sidebar-button:hover {
+  background: var(--unified-btn-bg-hover) !important;
+}
+
+/* Asegurar que brand-btn en sidebar tenga el mismo estilo que los demás botones */
+html body .sidebar .brand-btn,
+html body .sidebar .sidebar-button.brand-btn,
+html body .sidebar button.sidebar-button.brand-btn {
+  background: rgba(255, 255, 255, 0.3) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: #000000 !important;
+}
+
+html body .sidebar .brand-btn:hover,
+html body .sidebar .sidebar-button.brand-btn:hover,
+html body .sidebar button.sidebar-button.brand-btn:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: #000000 !important;
+}
+
+html body .sidebar .brand-btn svg,
+html body .sidebar .sidebar-button.brand-btn svg,
+html body .sidebar button.sidebar-button.brand-btn svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+html body .sidebar-select {
+  background: var(--unified-input-bg) !important;
+  border: 1px solid var(--unified-input-border) !important;
+  color: var(--unified-input-text) !important;
+}
+
+html body .sidebar-select option {
+  background: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #teamInfo {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+/* ========================================
+   MODALES - FORZAR PALETA
+   ======================================== */
+html body .modal-overlay,
+html body .modal-overlay[style],
+html body .modal-panel,
+html body .modal-panel[style],
+html body #filterModal,
+html body #filterModal[style],
+html body #dashboardModal,
+html body #dashboardModal[style],
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body #reportOptionsModal,
+html body #removeDuplicatesModal,
+html body #manageViewsDialog,
+html body #backupModal,
+html body #snapshotManagerModal,
+html body #dataVersionModal,
+html body #userSetUpModal,
+html body #summaryModal,
+html body #manageSummariesModal,
+html body #copySummaryModal,
+html body #manageDashboardConfigModal,
+html body #csvComparisonModal,
+html body #comparisonResultsModal,
+html body #legalNoticeModal,
+html body #selectVersionModal {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .modal-overlay .modal-panel,
+html body .modal-overlay .modal-panel[style],
+html body .modal-overlay *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Modal headers */
+html body .modal-header,
+html body .modal-header[style],
+html body .panel-header,
+html body .panel-header[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-bottom: 1px solid var(--unified-border-color) !important;
+}
+
+html body .modal-header *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .modal-header h1,
+html body .modal-header h2,
+html body .modal-header h3,
+html body .modal-header h4,
+html body .modal-header h5,
+html body .modal-header h6,
+html body .panel-header-title {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Modal content */
+html body .modal-content,
+html body .modal-content[style],
+html body .panel-content,
+html body .panel-content[style] {
+  background: transparent !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Modal footer */
+html body .modal-footer,
+html body .modal-footer[style] {
+  background: var(--unified-bg-secondary) !important;
+  background-color: var(--unified-bg-secondary) !important;
+  color: var(--unified-text-primary) !important;
+  border-top: 1px solid var(--unified-border-color) !important;
+}
+
+/* ========================================
+   BOTONES - FORZAR PALETA
+   ======================================== */
+html body .btn,
+html body .btn[style],
+html body .modal-btn,
+html body .modal-btn[style],
+html body button:not(.close-btn):not(.row-color-swatch):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-primary,
+html body .btn-secondary,
+html body .btn-danger,
+html body .modal-btn.primary,
+html body .modal-btn.secondary,
+html body .modal-btn.danger {
+  background: var(--unified-btn-bg) !important;
+  background-color: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body .btn:hover,
+html body .btn:active,
+html body .modal-btn:hover,
+html body .modal-btn:active,
+html body button:hover:not(.close-btn):not(.row-color-swatch):not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .btn-primary:hover,
+html body .btn-secondary:hover,
+html body .modal-btn.primary:hover,
+html body .modal-btn.secondary:hover {
+  background: var(--unified-btn-bg-hover) !important;
+  background-color: var(--unified-btn-bg-hover) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+/* Close buttons */
+html body .close-btn,
+html body .close-btn[style],
+html body .quickfilter-close-btn,
+html body .modal-filter-tag-remove,
+html body .ops-filter-popup-close {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body .close-btn:hover,
+html body .close-btn:active,
+html body .quickfilter-close-btn:hover,
+html body .modal-filter-tag-remove:hover {
+  background: var(--unified-btn-bg-hover) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+/* ========================================
+   INPUTS Y SELECTS - FORZAR PALETA
+   ======================================== */
+html body input:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body select:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body textarea:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-input-bg) !important;
+  background-color: var(--unified-input-bg) !important;
+  border: 1px solid var(--unified-input-border) !important;
+  color: var(--unified-input-text) !important;
+}
+
+html body input:focus:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body select:focus:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body textarea:focus:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  border-color: var(--unified-input-focus) !important;
+  outline: 1px solid var(--unified-input-focus) !important;
+}
+
+html body select option {
+  background: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   TEXTO - FORZAR PALETA
+   ======================================== */
+html body *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+html body p:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body span:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body div:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body label:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h1:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h2:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h3:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h4:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h5:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body h6:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body a:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body li:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+html body a:hover:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-secondary) !important;
+  text-decoration: underline !important;
+}
+
+/* ========================================
+   TAGS Y CHIPS - FORZAR PALETA
+   ======================================== */
+html body .filter-tag,
+html body .filter-tag[style],
+html body .modal-filter-tag,
+html body .modal-filter-tag[style] {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .filter-tag:hover,
+html body .modal-filter-tag:hover {
+  background: var(--unified-btn-bg-hover) !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR VARIABLES CSS EXISTENTES
+   ======================================== */
+html body {
+  --text-primary: var(--unified-text-primary) !important;
+  --text-light: var(--unified-text-primary) !important;
+  --text-secondary: var(--unified-text-secondary) !important;
+  --text-muted: var(--unified-text-muted) !important;
+  --background-color: var(--unified-bg-primary) !important;
+  --border-color: var(--unified-border-color) !important;
+}
+
+html body .modal-overlay,
+html body .modal-overlay *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: var(--unified-text-primary) !important;
+  --text-light: var(--unified-text-primary) !important;
+  --text-secondary: var(--unified-text-secondary) !important;
+  --background-color: var(--unified-bg-primary) !important;
+}
+
+html body .toolbar,
+html body .toolbar *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: var(--unified-text-primary) !important;
+  --text-light: var(--unified-text-primary) !important;
+  --text-secondary: var(--unified-text-secondary) !important;
+  --background-color: var(--unified-bg-primary) !important;
+}
+
+html body .sidebar,
+html body .sidebar *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  --text-primary: var(--unified-text-primary) !important;
+  --text-light: var(--unified-text-primary) !important;
+  --text-secondary: var(--unified-text-secondary) !important;
+  --background-color: var(--unified-bg-primary) !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR ESTILOS INLINE
+   ======================================== */
+/* Sobrescribir cualquier fondo oscuro */
+html body *[style*="background: #1a2332"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color: #1a2332"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background:#1a2332"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color:#1a2332"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background: #05080c"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color: #05080c"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background:#05080c"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color:#05080c"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background: #00243D"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color: #00243D"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background:#00243D"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="background-color:#00243D"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Sobrescribir cualquier texto blanco */
+html body *[style*="color: white"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="color:#fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="color: #fff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="color:#ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="color: #ffffff"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   ELEMENTOS ESPECÍFICOS DEL DQ HUB
+   ======================================== */
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body #dqDashboardModal .modal-panel,
+html body #dqDashboardModal .modal-panel[style],
+html body #dqDashboardModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Cards y secciones dentro de modales */
+html body .card,
+html body .card[style],
+html body .section,
+html body .section[style],
+html body .panel,
+html body .panel[style] {
+  background: var(--unified-bg-secondary) !important;
+  background-color: var(--unified-bg-secondary) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR TODAS LAS VARIABLES CSS OSCURAS
+   ======================================== */
+html body {
+  --primary-color: var(--unified-bg-primary) !important;
+  --primary-dark: var(--unified-bg-primary) !important;
+  --secondary-color: var(--unified-bg-secondary) !important;
+  --background-color: var(--unified-bg-primary) !important;
+  --background-light: var(--unified-bg-secondary) !important;
+  --text-color: var(--unified-text-primary) !important;
+  --text-light: var(--unified-text-primary) !important;
+  --text-primary: var(--unified-text-primary) !important;
+  --text-secondary: var(--unified-text-secondary) !important;
+  --text-muted: var(--unified-text-muted) !important;
+  --border-color: var(--unified-border-color) !important;
+  --button-bg: var(--unified-btn-bg) !important;
+  --button-hover-bg: var(--unified-btn-bg-hover) !important;
+  --button-border: var(--unified-btn-border) !important;
+  --input-bg: var(--unified-input-bg) !important;
+  --dropdown-bg: var(--unified-input-bg) !important;
+  --hover-bg: var(--unified-bg-hover) !important;
+  --selected-bg: var(--unified-bg-active) !important;
+  --brand-blue: var(--unified-bg-primary) !important;
+  --brand-light-blue: var(--unified-bg-secondary) !important;
+  --brand-sky-blue: var(--unified-bg-tertiary) !important;
+  --brand-cyan: var(--unified-bg-primary) !important;
+  --toolbar-bg: var(--unified-bg-primary) !important;
+  --sidebar-bg: var(--unified-bg-primary) !important;
+}
+
+/* ========================================
+   FORZAR EN TODOS LOS ELEMENTOS POSIBLES
+   ======================================== */
+/* Cualquier elemento con clase que contenga "dark", "primary", "header" */
+html body *[class*="dark"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[class*="primary"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[class*="header"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Dropdowns y popups */
+html body .dropdown,
+html body .dropdown[style],
+html body .popup,
+html body .popup[style],
+html body .dropdown-menu,
+html body .dropdown-menu[style],
+html body .popover,
+html body .popover[style],
+html body .tooltip,
+html body .tooltip[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+html body .dropdown *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .popup *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .dropdown-menu *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .popover *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .tooltip *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Notificaciones y alerts */
+html body .notification,
+html body .notification[style],
+html body .alert,
+html body .alert[style],
+html body .toast,
+html body .toast[style],
+html body .message,
+html body .message[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+/* Tabs */
+html body .tabs,
+html body .tabs[style],
+html body .tab,
+html body .tab[style],
+html body .tab-list,
+html body .tab-list[style],
+html body .tab-panel,
+html body .tab-panel[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .tab.active,
+html body .tab.active[style] {
+  background: var(--unified-bg-secondary) !important;
+  color: var(--unified-text-primary) !important;
+  border-bottom: 2px solid var(--unified-text-primary) !important;
+}
+
+/* Pagination */
+html body .pagination,
+html body .pagination[style],
+html body .pagination *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .pagination button,
+html body .pagination a {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body .pagination button:hover,
+html body .pagination a:hover,
+html body .pagination button.active,
+html body .pagination a.active {
+  background: var(--unified-btn-bg-hover) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+/* Footer */
+html body footer,
+html body footer[style],
+html body .footer,
+html body .footer[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-top: 1px solid var(--unified-border-color) !important;
+}
+
+html body footer *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .footer *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Main content area */
+html body .main-content,
+html body .main-content[style],
+html body .content,
+html body .content[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .main-content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body .content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR RGBA OSCUROS
+   ======================================== */
+html body *[style*="rgba(26, 35, 50"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="rgba(5, 8, 12"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="rgba(0, 36, 61"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   RESPONSIVE - Asegurar que la paleta se mantiene
+   ======================================== */
+@media (max-width: 768px) {
+  html body {
+    background: var(--unified-bg-primary) !important;
+    background-color: var(--unified-bg-primary) !important;
+    color: var(--unified-text-primary) !important;
+  }
+  
+  html body .toolbar,
+  html body .sidebar,
+  html body .modal-overlay,
+  html body .modal-panel {
+    background: var(--unified-bg-primary) !important;
+    background-color: var(--unified-bg-primary) !important;
+    color: var(--unified-text-primary) !important;
+  }
+  
+  html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+    color: var(--unified-text-primary) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  html body {
+    background: var(--unified-bg-primary) !important;
+    background-color: var(--unified-bg-primary) !important;
+    color: var(--unified-text-primary) !important;
+  }
+  
+  html body .toolbar,
+  html body .sidebar,
+  html body .modal-overlay,
+  html body .modal-panel {
+    background: var(--unified-bg-primary) !important;
+    background-color: var(--unified-bg-primary) !important;
+    color: var(--unified-text-primary) !important;
+  }
+  
+  /* Dashboard modal responsive */
+  html body #dashboardModal,
+  html body #dashboardModal .modal-panel,
+  html body #dashboardModal .dashboard-body,
+  html body #dashboardModal .dashboard-section,
+  html body #opsSummaryModal,
+  html body #opsSummaryModal .modal-panel {
+    background: var(--unified-bg-primary) !important;
+    background-color: var(--unified-bg-primary) !important;
+    color: var(--unified-text-primary) !important;
+  }
+  
+  html body #dashboardModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+  html body #opsSummaryModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+    color: var(--unified-text-primary) !important;
+  }
+}
+
+/* ========================================
+   FORZAR EN ELEMENTOS DINÁMICOS
+   ======================================== */
+/* Elementos creados dinámicamente */
+html body [id*="Modal"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [id*="modal"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="modal"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="Modal"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [id*="Hub"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [id*="hub"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="Hub"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body [class*="hub"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   FORZAR EN TODOS LOS ELEMENTOS CON ESTILOS INLINE
+   ======================================== */
+/* Cualquier elemento con cualquier estilo de fondo oscuro */
+html body *[style*="background"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  /* Se aplicará la paleta a través de las reglas específicas arriba */
+}
+
+/* Forzar que cualquier elemento sin clase específica use la paleta */
+html body > *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *):not(script):not(style):not(link):not(meta) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   BANNER OFFLINE MODE
+   ======================================== */
+html body #offlineModeNotification,
+html body #offlineModeNotification[style],
+html body #offline-notification,
+html body #offline-notification[style],
+html body #offlineModeNotification *,
+html body #offline-notification * {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+/* Hidden Columns Dropdown - Force light theme */
+html body .hidden-columns-dropdown,
+html body .hidden-columns-dropdown * {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+html body .hidden-columns-title,
+html body .hidden-columns-name,
+html body .hidden-column-item {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Dashboard Modal Panel - Force light theme */
+html body #dashboardModal .modal-panel,
+html body #dashboardModal.modal-overlay .modal-panel,
+html body #dashboardModal .modal-panel *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Report Select Options */
+html body .report-select option {
+  background: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Sidebar elements - Force light theme */
+html body .sidebar,
+html body .sidebar-header,
+html body .sidebar-footer,
+html body .sidebar *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+/* Welcome Screen - Force light theme */
+html body .welcome-screen,
+html body #welcomeScreen,
+html body .welcome-screen *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body .welcome-content,
+html body .welcome-title,
+html body .welcome-subtitle,
+html body .welcome-hook,
+html body .welcome-copyright {
+  color: var(--unified-text-primary) !important;
+}
+
+/* UNIFICAR TODOS LOS BOTONES DE BIENVENIDA - MÁXIMA PRIORIDAD */
+html body #onedriveLoginBtn,
+html body #guestLoginBtn,
+html body .welcome-option-btn,
+html body .welcome-option-btn[class*="primary"],
+html body .welcome-option-btn[class*="secondary"],
+html body .welcome-option-btn.primary,
+html body .welcome-option-btn.secondary,
+html body button.welcome-option-btn,
+html body button.welcome-option-btn.primary,
+html body button.welcome-option-btn.secondary {
+  background: #47B2E5 !important;
+  background-color: #47B2E5 !important;
+  border: 2px solid #47B2E5 !important;
+  color: #000000 !important;
+  width: 100% !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 1.5rem 2rem !important;
+  border-radius: 12px !important;
+}
+
+html body #onedriveLoginBtn:hover,
+html body #guestLoginBtn:hover,
+html body .welcome-option-btn:hover,
+html body .welcome-option-btn.primary:hover,
+html body .welcome-option-btn.secondary:hover,
+html body button.welcome-option-btn:hover,
+html body button.welcome-option-btn.primary:hover,
+html body button.welcome-option-btn.secondary:hover {
+  background: #1976d2 !important;
+  background-color: #1976d2 !important;
+  border-color: #1976d2 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+html body #onedriveLoginBtn .option-text,
+html body #guestLoginBtn .option-text,
+html body .welcome-option-btn .option-text,
+html body .welcome-option-btn.primary .option-text,
+html body .welcome-option-btn.secondary .option-text,
+html body button.welcome-option-btn .option-text {
+  background: rgba(255, 255, 255, 0.95) !important;
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px !important;
+  padding: 1rem 1.5rem !important;
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  margin-left: 1rem !important;
+}
+
+/* Los estilos de welcome-option-btn están unificados arriba */
+
+html body .welcome-option-btn.primary .option-title,
+html body .welcome-option-btn.secondary .option-title,
+html body .welcome-option-btn.primary svg,
+html body .welcome-option-btn.secondary svg {
+  color: #000000 !important;
+  fill: #000000 !important;
+}
+
+/* Select Version Modal - Force light theme */
+html body #selectVersionModal,
+html body #selectVersionModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #selectVersionModal .modal-panel,
+html body #selectVersionModal .panel-header-title,
+html body #selectVersionModal .version-date,
+html body #selectVersionModal .no-versions-message {
+  color: var(--unified-text-primary) !important;
+}
+
+html body #selectVersionModal .versions-list {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+html body #selectVersionModal .version-item {
+  border-bottom-color: var(--unified-border-color) !important;
+}
+
+html body #selectVersionModal #versionSearchInput {
+  background: rgba(255, 255, 255, 0.7) !important;
+  color: var(--unified-text-primary) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+html body #selectVersionModal #versionSearchInput::placeholder {
+  color: var(--unified-text-muted) !important;
+}
+
+html body #offlineModeNotification button,
+html body #offline-notification button {
+  color: var(--unified-text-primary) !important;
+  background: transparent !important;
+}
+
+/* ========================================
+   OPERATIONS HUB - FORZAR PALETA CLARA
+   ======================================== */
+/* Dashboard Modal - Fondo y texto */
+html body #dashboardModal.modal-overlay .modal-panel,
+html body div#dashboardModal .modal-panel,
+html body div#dashboardModal.modal-overlay div.modal-panel,
+html body #dashboardModal .modal-panel,
+html body #dashboardModal.modal-overlay .modal-panel,
+html body div#dashboardModal .modal-panel,
+html body div#dashboardModal.modal-overlay div.modal-panel,
+html body .dashboard-panel {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+}
+
+/* Todos los elementos dentro del dashboard modal */
+html body #dashboardModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .modal-panel *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .modal-content *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .dashboard-body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .dashboard-section *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .quickfilter-container *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .quickfilters-grid *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body #dashboardModal .dashboard-quickfilters *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Chips del dashboard */
+html body #dashboardModal .dq-hub-chip,
+html body #dashboardModal .dashboard-body .dq-hub-chip,
+html body #dashboardModal .dq-hub-chips .dq-hub-chip {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #dashboardModal .dq-hub-chip:hover,
+html body #dashboardModal .dashboard-body .dq-hub-chip:hover,
+html body #dashboardModal .dq-hub-chips .dq-hub-chip:hover {
+  background: var(--unified-btn-bg-hover) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Chips con estados (Critical, Warning, Good) - mantener colores pero con fondo claro */
+html body #dashboardModal .dq-hub-chip[data-quality="Critical"],
+html body #dashboardModal .dashboard-body .dq-hub-chip[data-quality="Critical"],
+html body #dashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Critical"] {
+  background: rgba(220, 53, 69, 0.15) !important;
+  border-color: rgba(220, 53, 69, 0.4) !important;
+  color: #dc3545 !important;
+}
+
+html body #dashboardModal .dq-hub-chip[data-quality="Warning"],
+html body #dashboardModal .dashboard-body .dq-hub-chip[data-quality="Warning"],
+html body #dashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Warning"] {
+  background: rgba(255, 193, 7, 0.15) !important;
+  border-color: rgba(255, 193, 7, 0.4) !important;
+  color: #ffc107 !important;
+}
+
+html body #dashboardModal .dq-hub-chip[data-quality="Good"],
+html body #dashboardModal .dashboard-body .dq-hub-chip[data-quality="Good"],
+html body #dashboardModal .dq-hub-chips .dq-hub-chip[data-quality="Good"] {
+  background: rgba(40, 167, 69, 0.15) !important;
+  border-color: rgba(40, 167, 69, 0.4) !important;
+  color: #28a745 !important;
+}
+
+/* Cards y secciones del dashboard */
+html body #dashboardModal .kpi-card,
+html body #dashboardModal .quickfilter-btn,
+html body #dashboardModal .quickfilter-container,
+html body #dashboardModal .dashboard-section {
+  background: var(--unified-bg-secondary) !important;
+  background-color: var(--unified-bg-secondary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Títulos y textos del dashboard */
+html body #dashboardModal h1,
+html body #dashboardModal h2,
+html body #dashboardModal h3,
+html body #dashboardModal h4,
+html body #dashboardModal h5,
+html body #dashboardModal h6,
+html body #dashboardModal p,
+html body #dashboardModal span,
+html body #dashboardModal div,
+html body #dashboardModal label,
+html body #dashboardModal .panel-header-title,
+html body #dashboardModal .modal-header,
+html body #dashboardModal .modal-header * {
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   OPS SUMMARY MODAL - FORZAR PALETA CLARA
+   ======================================== */
+html body #opsSummaryModal,
+html body #opsSummaryModal[style],
+html body #opsSummaryModal .modal-panel,
+html body #opsSummaryModal .modal-panel[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  border: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #opsSummaryModal .modal-header,
+html body #opsSummaryModal .modal-header[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  border-bottom: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #opsSummaryModal .modal-header *,
+html body #opsSummaryModal .panel-header-title,
+html body #opsSummaryModal .panel-header-title[style] {
+  color: var(--unified-text-primary) !important;
+}
+
+html body #opsSummaryModal *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Dropdowns Choices.js en Ops Summary */
+html body #opsSummaryModal .choices,
+html body #opsSummaryModal .choices__inner,
+html body #opsSummaryModal .choices__list--dropdown,
+html body #opsSummaryModal .choices__item,
+html body #opsSummaryModal .choices__list--dropdown .choices__item {
+  background: var(--unified-input-bg) !important;
+  background-color: var(--unified-input-bg) !important;
+  color: var(--unified-text-primary) !important;
+  border-color: var(--unified-input-border) !important;
+}
+
+html body #opsSummaryModal .choices__item--selectable.is-highlighted,
+html body #opsSummaryModal .choices__item--selectable:hover {
+  background: var(--unified-bg-hover) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #opsSummaryModal .choices__placeholder {
+  color: var(--unified-text-muted) !important;
+}
+
+/* ========================================
+   DASHBOARD ELEMENTOS ESPECÍFICOS
+   ======================================== */
+/* Forzar que los elementos transparentes del dashboard tengan fondo claro */
+html body #dashboardModal .modal-content,
+html body #dashboardModal .dashboard-body {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Botones del dashboard */
+html body #dashboardModal button,
+html body #dashboardModal .btn,
+html body #opsSummaryModal button,
+html body #opsSummaryModal .btn {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+html body #dashboardModal button:hover,
+html body #dashboardModal .btn:hover,
+html body #opsSummaryModal button:hover,
+html body #opsSummaryModal .btn:hover {
+  background: var(--unified-btn-bg-hover) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+/* Inputs del dashboard */
+html body #dashboardModal input,
+html body #dashboardModal select,
+html body #dashboardModal textarea,
+html body #opsSummaryModal input,
+html body #opsSummaryModal select,
+html body #opsSummaryModal textarea {
+  background: var(--unified-input-bg) !important;
+  border: 1px solid var(--unified-input-border) !important;
+  color: var(--unified-input-text) !important;
+}
+
+html body #dashboardModal input:focus,
+html body #dashboardModal select:focus,
+html body #dashboardModal textarea:focus,
+html body #opsSummaryModal input:focus,
+html body #opsSummaryModal select:focus,
+html body #opsSummaryModal textarea:focus {
+  border-color: var(--unified-input-focus) !important;
+  outline: none !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR ESTILOS INLINE EN HTML
+   ======================================== */
+/* Sobrescribir estilos inline del dashboardModal en index.html */
+html body #dashboardModal[style*="background:#1a2332"],
+html body #dashboardModal[style*="background: #1a2332"],
+html body #dashboardModal[style*="background-color:#1a2332"],
+html body #dashboardModal[style*="background-color: #1a2332"],
+html body #dashboardModal .modal-panel[style*="background:#1a2332"],
+html body #dashboardModal .modal-panel[style*="background: #1a2332"],
+html body #dashboardModal .modal-panel[style*="background-color:#1a2332"],
+html body #dashboardModal .modal-panel[style*="background-color: #1a2332"] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* Sobrescribir estilos inline de texto blanco */
+html body #dashboardModal[style*="color:#E8F4F8"],
+html body #dashboardModal[style*="color: #E8F4F8"],
+html body #dashboardModal .panel-header-title[style*="color:#E8F4F8"],
+html body #dashboardModal .panel-header-title[style*="color: #E8F4F8"],
+html body #dashboardModal h3[style*="color:#E8F4F8"],
+html body #dashboardModal h3[style*="color: #E8F4F8"] {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Sobrescribir cualquier estilo inline con rgba oscuro */
+html body #dashboardModal[style*="rgba(255,255,255,0.05"],
+html body #dashboardModal[style*="rgba(255,255,255,0.08"],
+html body #dashboardModal[style*="rgba(255,255,255,0.1"],
+html body #dashboardModal[style*="rgba(255,255,255,0.12"],
+html body #dashboardModal[style*="rgba(255,255,255,0.15"] {
+  background: var(--unified-bg-secondary) !important;
+  background-color: var(--unified-bg-secondary) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+/* ========================================
+   SOBRESCRIBIR LAYOUT.CSS Y OTROS ARCHIVOS
+   ======================================== */
+/* Sobrescribir body de layout.css */
+html body[style*="background: #1a2332"],
+html body[style*="background-color: #1a2332"],
+html body[style*="#1a2332"],
+html body[style*="color: #ffffff"],
+html body[style*="color:#fff"],
+html body[style*="color: #fff"] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  background-image: none !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   ELEMENTOS ESPECÍFICOS DEL DASHBOARD CON ESTILOS INLINE
+   ======================================== */
+/* Títulos y textos específicos del dashboard */
+html body #dashboardModal .dashboard-section-title,
+html body #dashboardModal .dashboard-section-title[style],
+html body #dashboardModal .dashboard-title,
+html body #dashboardModal .dashboard-title[style],
+html body #dashboardModal h4[style*="color"],
+html body #dashboardModal h3[style*="color"],
+html body #dashboardModal h2[style*="color"],
+html body #dashboardModal h1[style*="color"] {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Contenedores con estilos inline */
+html body #dashboardModal div[style*="background:rgba(255,255,255,0.05"],
+html body #dashboardModal div[style*="background: rgba(255,255,255,0.05"],
+html body #dashboardModal div[style*="background:rgba(255,255,255,0.08"],
+html body #dashboardModal div[style*="background: rgba(255,255,255,0.08"],
+html body #dashboardModal div[style*="background:rgba(255,255,255,0.1"],
+html body #dashboardModal div[style*="background: rgba(255,255,255,0.1"],
+html body #dashboardModal div[style*="background:rgba(255,255,255,0.12"],
+html body #dashboardModal div[style*="background: rgba(255,255,255,0.12"],
+html body #dashboardModal div[style*="background:rgba(255,255,255,0.15"],
+html body #dashboardModal div[style*="background: rgba(255,255,255,0.15"] {
+  background: var(--unified-bg-secondary) !important;
+  background-color: var(--unified-bg-secondary) !important;
+  border-color: var(--unified-border-color) !important;
+}
+
+/* Bordes con rgba blanco */
+html body #dashboardModal[style*="border:1px solid rgba(255,255,255,0.12"],
+html body #dashboardModal[style*="border: 1px solid rgba(255,255,255,0.12"],
+html body #dashboardModal .modal-panel[style*="border:1px solid rgba(255,255,255,0.12"],
+html body #dashboardModal .modal-panel[style*="border: 1px solid rgba(255,255,255,0.12"] {
+  border-color: var(--unified-border-color) !important;
+}
+
+/* Urgency cards container */
+html body #dashboardModal .urgency-cards-container,
+html body #dashboardModal .urgency-cards-container[style],
+html body #dashboardModal .urgency-cards-container * {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Quick filters grid */
+html body #dashboardModal .quickfilters-grid,
+html body #dashboardModal .quickfilters-grid[style],
+html body #dashboardModal .quickfilters-grid * {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Dashboard header */
+html body #dashboardModal .dashboard-header,
+html body #dashboardModal .dashboard-header[style],
+html body #dashboardModal .modal-header.dashboard-header,
+html body #dashboardModal .modal-header.dashboard-header[style] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  border-bottom: 1px solid var(--unified-border-color) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+html body #dashboardModal .dashboard-header *,
+html body #dashboardModal .header-left *,
+html body #dashboardModal .close-btn,
+html body #dashboardModal .close-btn[style],
+html body #dashboardModal .modal-logo,
+html body #dashboardModal .modal-logo[style] {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Botón de cerrar del dashboard */
+html body #dashboardModal .close-btn,
+html body #dashboardModal #dashboardCloseBtn,
+html body #dashboardModal #dashboardCloseBtn[style] {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.15) !important;
+  border-radius: 10px !important;
+  color: #15364A !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  width: 36px !important;
+  height: 36px !important;
+  min-width: 36px !important;
+  min-height: 36px !important;
+}
+
+html body #dashboardModal .close-btn:hover,
+html body #dashboardModal #dashboardCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #15364A !important;
+  border: 1.5px solid rgba(21, 54, 74, 0.25) !important;
+  border-radius: 10px !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 8px rgba(21, 54, 74, 0.15) !important;
+}
+
+/* Generar Summary Report button */
+html body #dashboardModal button[style*="Generate"],
+html body #dashboardModal .btn[style*="Generate"],
+html body #dashboardModal button:contains("Generate Summary Report"),
+html body #dashboardModal .generate-report-btn {
+  background: var(--unified-btn-bg) !important;
+  border: 1px solid var(--unified-btn-border) !important;
+  color: var(--unified-btn-text) !important;
+}
+
+/* Sobrescribir app-container */
+html body .app-container[style],
+html body .app-container[style*="background"],
+html body .app-container[style*="color"] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* ========================================
+   REGLA UNIVERSAL - ÚLTIMA PRIORIDAD
+   ======================================== */
+/* Esta regla captura CUALQUIER elemento que no sea tabla */
+html body *:not(.table):not(.table *):not(thead):not(thead *):not(tbody):not(tbody *):not(tr):not(tr *):not(td):not(td *):not(th):not(th *):not(.table-toolbar):not(.table-toolbar *):not(script):not(style):not(link):not(meta):not(noscript) {
+  /* Aplicar color de texto si no tiene uno específico */
+}
+
+/* Forzar fondo en cualquier elemento con fondo oscuro */
+/* ========================================
+   UNIFICACIÓN TOTAL - MODALES Y BOTONES DE CIERRE
+   ======================================== */
+
+/* FORZAR TODOS LOS MODALES A FONDO CLARO - MÁXIMA PRIORIDAD */
+html body .modal-overlay,
+html body .modal-overlay[style],
+html body div.modal-overlay,
+html body #dashboardModal,
+html body #dashboardModal[style],
+html body #dqDashboardModal,
+html body #dqDashboardModal[style],
+html body .modal-panel,
+html body .modal-panel[style],
+html body #dashboardModal .modal-panel,
+html body #dashboardModal .modal-panel[style],
+html body #dqDashboardModal .modal-panel,
+html body #dqDashboardModal .modal-panel[style],
+html body .dashboard-panel,
+html body .dashboard-panel[style],
+html body *[style*="background: #1a2332"]:not(.table):not(.table *),
+html body *[style*="background-color: #1a2332"]:not(.table):not(.table *),
+html body *[style*="background:#1a2332"]:not(.table):not(.table *),
+html body *[style*="background-color:#1a2332"]:not(.table):not(.table *),
+html body *[style*="background: #0A1929"]:not(.table):not(.table *),
+html body *[style*="background-color: #0A1929"]:not(.table):not(.table *),
+html body *[style*="background:#0A1929"]:not(.table):not(.table *),
+html body *[style*="background-color:#0A1929"]:not(.table):not(.table *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR CONTENIDO DE MODALES A TEXTO NEGRO */
+html body .modal-overlay .modal-content,
+html body .modal-overlay .modal-content[style],
+html body .modal-overlay .modal-header,
+html body .modal-overlay .modal-header[style],
+html body .modal-overlay .modal-footer,
+html body .modal-overlay .modal-footer[style],
+html body .modal-overlay h1,
+html body .modal-overlay h2,
+html body .modal-overlay h3,
+html body .modal-overlay h4,
+html body .modal-overlay h5,
+html body .modal-overlay h6,
+html body .modal-overlay p,
+html body .modal-overlay span,
+html body .modal-overlay div:not(.table):not(.table *),
+html body #dashboardModal .modal-content,
+html body #dashboardModal .modal-header,
+html body #dashboardModal .dashboard-body,
+html body #dashboardModal .dashboard-section,
+html body #dashboardModal .dashboard-section-title,
+html body #dqDashboardModal .modal-content,
+html body #dqDashboardModal .modal-header {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Estilos de close-btn movidos a 99-master-override.css para unificación total */
+
+/* FORZAR HEADERS DE MODALES A FONDO CLARO */
+html body .modal-overlay .modal-header,
+html body .modal-overlay .modal-header[style],
+html body #dashboardModal .modal-header,
+html body #dashboardModal .modal-header[style],
+html body #dashboardModal .dashboard-header,
+html body #dashboardModal .dashboard-header[style],
+html body #dqDashboardModal .modal-header,
+html body #dqDashboardModal .modal-header[style] {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR FOOTERS DE MODALES A FONDO CLARO */
+html body .modal-overlay .modal-footer,
+html body .modal-overlay .modal-footer[style],
+html body #dashboardModal .modal-footer,
+html body #dashboardModal .modal-footer[style],
+html body #dqDashboardModal .modal-footer,
+html body #dqDashboardModal .modal-footer[style] {
+  background: rgba(255, 255, 255, 0.3) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR TODOS LOS ESTILOS INLINE CON COLORES OSCUROS */
+html body *[style*="#1a2332"]:not(.table):not(.table *),
+html body *[style*="#0A1929"]:not(.table):not(.table *),
+html body *[style*="#E8F4F8"]:not(.table):not(.table *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR TODOS LOS TEXTOS BLANCOS A NEGRO */
+html body *[style*="color:white"]:not(.table):not(.table *),
+html body *[style*="color:#fff"]:not(.table):not(.table *),
+html body *[style*="color:#ffffff"]:not(.table):not(.table *),
+html body *[style*="color:#E8F4F8"]:not(.table):not(.table *),
+html body *[style*="color: white"]:not(.table):not(.table *),
+html body *[style*="color: #fff"]:not(.table):not(.table *),
+html body *[style*="color: #ffffff"]:not(.table):not(.table *),
+html body *[style*="color: #E8F4F8"]:not(.table):not(.table *) {
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR TODOS LOS TÍTULOS Y HEADERS */
+html body h1[style*="#E8F4F8"],
+html body h2[style*="#E8F4F8"],
+html body h3[style*="#E8F4F8"],
+html body h4[style*="#E8F4F8"],
+html body h5[style*="#E8F4F8"],
+html body h6[style*="#E8F4F8"],
+html body .panel-header-title[style*="#E8F4F8"],
+html body .dashboard-title[style*="#E8F4F8"] {
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR SELECTS Y DROPDOWNS */
+html body select[style*="#1a2332"],
+html body select[style*="#0A1929"],
+html body option[style*="#1a2332"],
+html body option[style*="#0A1929"],
+html body .choices__inner[style*="#1a2332"],
+html body .choices__item[style*="#1a2332"] {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+/* FORZAR INPUTS */
+html body input[style*="#1a2332"],
+html body input[style*="#0A1929"],
+html body input[style*="#E8F4F8"],
+html body textarea[style*="#1a2332"],
+html body textarea[style*="#0A1929"],
+html body textarea[style*="#E8F4F8"] {
+  background: rgba(255, 255, 255, 0.7) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  color: var(--unified-text-primary) !important;
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+}
+
+/* FORZAR LABELS */
+html body label[style*="#E8F4F8"],
+html body label[style*="color:white"],
+html body label[style*="color:#fff"],
+html body label[style*="color:#ffffff"] {
+  color: var(--unified-text-primary) !important;
+}
+
+/* Regla específica para elementos con var(--table-header-bg) o similares */
+html body *:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  /* Sobrescribir cualquier uso de variables CSS oscuras */
+}
+
+/* Forzar en elementos que usen var(--primary-dark), var(--table-header-bg), etc */
+html body *[style*="var(--primary-dark)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="var(--table-header-bg)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *),
+html body *[style*="var(--primary-color)"]:not(.table):not(.table *):not(.table-toolbar):not(.table-toolbar *) {
+  background: var(--unified-bg-primary) !important;
+  background-color: var(--unified-bg-primary) !important;
+  color: var(--unified-text-primary) !important;
+}
+
+
