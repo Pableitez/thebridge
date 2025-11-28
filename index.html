@@ -6751,8 +6751,8 @@ async function performActualSave() {
              // Configuración del dashboard
              dashboard: JSON.parse(localStorage.getItem('dashboardConfig') || '{}'),
              
-             // Filtros y vistas
-             filters: JSON.parse(localStorage.getItem('myFilters') || '[]'),
+            // Filtros y vistas
+            filters: JSON.parse(localStorage.getItem('myFilters') || '{}'),
              quickFilters: JSON.parse(localStorage.getItem('quickFilters') || '{}'),
              tableViews: JSON.parse(localStorage.getItem('tableViews') || '{}'),
              
@@ -7089,6 +7089,29 @@ async function executeLoadFromBackend() {
         // Use the existing applyDashboardConfiguration function
         if (typeof window.applyDashboardConfiguration === 'function') {
             await window.applyDashboardConfiguration(config);
+            
+            // Asegurar que myFilters se guarda correctamente después de aplicar
+            if (config.filters) {
+                // Normalizar el formato: asegurar que sea un objeto, no un array
+                let filtersToSave = config.filters;
+                if (Array.isArray(config.filters)) {
+                    // Si es un array, convertirlo a objeto vacío (formato esperado)
+                    console.warn('⚠️ Filters are in array format, converting to object format');
+                    filtersToSave = {};
+                }
+                
+                localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
+                console.log('✅ MyFilters saved after applyDashboardConfiguration');
+                
+                // Refrescar la UI de myFilters
+                setTimeout(() => {
+                    if (typeof window.renderMyFiltersSection === 'function') {
+                        window.renderMyFiltersSection();
+                    } else if (typeof renderMyFiltersSection === 'function') {
+                        renderMyFiltersSection();
+                    }
+                }, 100);
+            }
         } else {
             // Fallback: apply basic settings manually
             if (config.dashboard) {
@@ -7097,13 +7120,38 @@ async function executeLoadFromBackend() {
             }
             
             if (config.filters) {
-                localStorage.setItem('myFilters', JSON.stringify(config.filters));
-                console.log('✅ Filters applied');
+                // Normalizar el formato: asegurar que sea un objeto, no un array
+                let filtersToSave = config.filters;
+                if (Array.isArray(config.filters)) {
+                    // Si es un array, convertirlo a objeto vacío (formato esperado)
+                    console.warn('⚠️ Filters are in array format, converting to object format');
+                    filtersToSave = {};
+                }
+                
+                localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
+                console.log('✅ Filters applied:', filtersToSave);
+                
+                // Refrescar la UI de myFilters si existe la función
+                // Usar setTimeout para asegurar que el DOM esté listo
+                setTimeout(() => {
+                    if (typeof window.renderMyFiltersSection === 'function') {
+                        window.renderMyFiltersSection();
+                    } else if (typeof renderMyFiltersSection === 'function') {
+                        renderMyFiltersSection();
+                    }
+                }, 100);
             }
             
             if (config.quickFilters) {
                 localStorage.setItem('quickFilters', JSON.stringify(config.quickFilters));
                 console.log('✅ Quick filters applied');
+                
+                // Refrescar quick filters si existe la función
+                if (typeof window.renderDashboardQuickFilters === 'function') {
+                    window.renderDashboardQuickFilters();
+                } else if (typeof renderDashboardQuickFilters === 'function') {
+                    renderDashboardQuickFilters();
+                }
             }
             
             if (config.tableViews) {
@@ -7935,15 +7983,26 @@ async function applyConfigurationFromFile(config) {
     try {
         // Aplicar configuración de filtros
         if (config.filters) {
-            localStorage.setItem('myFilters', JSON.stringify(config.filters));
-            console.log('✅ MyFilters loaded from JSON:', config.filters);
+            // Normalizar el formato: asegurar que sea un objeto, no un array
+            let filtersToSave = config.filters;
+            if (Array.isArray(config.filters)) {
+                // Si es un array, convertirlo a objeto vacío (formato esperado)
+                console.warn('⚠️ Filters are in array format, converting to object format');
+                filtersToSave = {};
+            }
+            
+            localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
+            console.log('✅ MyFilters loaded from JSON:', filtersToSave);
             
             // Intentar refrescar la UI de myFilters si existe la función
-            if (typeof window.renderMyFiltersSection === 'function') {
-                window.renderMyFiltersSection();
-            } else if (typeof renderMyFiltersSection === 'function') {
-                renderMyFiltersSection();
-            }
+            // Usar setTimeout para asegurar que el DOM esté listo
+            setTimeout(() => {
+                if (typeof window.renderMyFiltersSection === 'function') {
+                    window.renderMyFiltersSection();
+                } else if (typeof renderMyFiltersSection === 'function') {
+                    renderMyFiltersSection();
+                }
+            }, 100);
         }
         
         if (config.quickFilters) {
