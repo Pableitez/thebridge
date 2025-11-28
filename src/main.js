@@ -2715,6 +2715,12 @@ function setupFilterEvents() {
 
   const showFilterModal = () => {
     try {
+      // Asegurar que renderMyFiltersSection se llama al abrir el modal
+      if (typeof window.renderMyFiltersSection === 'function') {
+        setTimeout(() => {
+          window.renderMyFiltersSection();
+        }, 100);
+      }
       // Generate filter content if we have data
       if (filterManager) {
         const data = getOriginalData();
@@ -9462,6 +9468,8 @@ window.displayTable = displayTable;
 window.renderActiveFiltersSummaryChips = renderActiveFiltersSummaryChips;
 window.getOriginalData = getOriginalData;
 window.getCurrentHeaders = getCurrentHeaders;
+window.resetFilterManager = resetFilterManager;
+window.generateFilterSidebar = generateFilterSidebar;
 // ... existing code ...
 
 // Show Duplicates functionality

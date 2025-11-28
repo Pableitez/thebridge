@@ -2556,13 +2556,17 @@ function generateFilterSidebar(headers) {
     savedComparisons[key] = { ...fieldComparisons[key] };
   });
   
+  // Detectar el hub actual
+  const hubType = typeof window.getCurrentHubType === 'function' ? window.getCurrentHubType() : 'ops';
+  
   filters[name] = { 
     filterValues: { ...getModuleFilterValues() }, 
     filterExclude: savedExclude,
     fieldComparisons: savedComparisons,
     headerHash, 
     headers, 
-    linkedUrgencyCard: urgencyCard 
+    linkedUrgencyCard: urgencyCard,
+    hubType: hubType
   };
   
   console.log('💾 Saving filter:', name);
@@ -2813,13 +2817,115 @@ function generateFilterSidebar(headers) {
       }
       section.innerHTML = '<div class="my-filters-title">My Filters</div>';
       const filters = loadMyFilters();
+      console.log('🎨 Rendering My Filters with new design. Total filters:', Object.keys(filters).length);
       const headers = Object.keys(getOriginalData()[0] || {});
       const headerHash = getHeaderHash(headers);
+      
+      // Definir colores de hubs y orden (sin Operations)
+      const hubConfig = {
+        'dq': { 
+          color: '139, 92, 246', 
+          name: 'Data Quality', 
+          order: 1,
+          bgColor: 'rgba(139, 92, 246, 0.15)',
+          borderColor: 'rgba(139, 92, 246, 0.5)',
+          textColor: 'rgb(139, 92, 246)'
+        },
+        'orders': { 
+          color: '16, 185, 129', 
+          name: 'Orders', 
+          order: 2,
+          bgColor: 'rgba(16, 185, 129, 0.15)',
+          borderColor: 'rgba(16, 185, 129, 0.5)',
+          textColor: 'rgb(16, 185, 129)'
+        },
+        'booking': { 
+          color: '245, 158, 11', 
+          name: 'Booking', 
+          order: 3,
+          bgColor: 'rgba(245, 158, 11, 0.15)',
+          borderColor: 'rgba(245, 158, 11, 0.5)',
+          textColor: 'rgb(245, 158, 11)'
+        }
+      };
+      
+      // Separar filtros por hub y generales (ops)
+      const hubFilters = Object.entries(filters).filter(([name, obj]) => {
+        const hubType = obj.hubType || 'ops';
+        return hubType !== 'ops' && hubConfig[hubType];
+      });
+      
+      const generalFilters = Object.entries(filters).filter(([name, obj]) => {
+        const hubType = obj.hubType || 'ops';
+        return hubType === 'ops' || !hubConfig[hubType];
+      });
+      
+      // Ordenar filtros de hubs
+      const sortedHubFilters = hubFilters.sort(([nameA, objA], [nameB, objB]) => {
+        const hubA = objA.hubType || 'ops';
+        const hubB = objB.hubType || 'ops';
+        const orderA = hubConfig[hubA]?.order || 99;
+        const orderB = hubConfig[hubB]?.order || 99;
+        if (orderA !== orderB) return orderA - orderB;
+        return nameA.localeCompare(nameB);
+      });
+      
+      // Ordenar filtros generales
+      const sortedGeneralFilters = generalFilters.sort(([nameA], [nameB]) => {
+        return nameA.localeCompare(nameB);
+      });
+      
+      // Combinar: primero los de hubs, luego los generales
+      const sortedFilters = [...sortedHubFilters, ...sortedGeneralFilters];
+      
       const list = document.createElement('div');
       list.className = 'my-filters-list';
       let hasAny = false;
-      Object.entries(filters).forEach(([name, obj]) => {
+      let currentHub = null;
+      
+      sortedFilters.forEach(([name, obj]) => {
         hasAny = true;
+        const hubType = obj.hubType || 'ops';
+        const isGeneral = hubType === 'ops' || !hubConfig[hubType];
+        const hub = isGeneral ? null : (hubConfig[hubType] || null);
+        console.log(`🎨 Rendering filter "${name}" with hubType: ${hubType}, isGeneral: ${isGeneral}`);
+        
+        // Añadir separador de hub si cambió (o separador General si es el primero general)
+        const needsSeparator = isGeneral 
+          ? (currentHub !== 'general' && generalFilters.length > 0 && sortedHubFilters.length > 0)
+          : (currentHub !== hubType);
+          
+        if (needsSeparator) {
+          currentHub = isGeneral ? 'general' : hubType;
+          const hubSeparator = document.createElement('div');
+          hubSeparator.style.marginTop = list.children.length === 0 ? '0' : '2rem';
+          hubSeparator.style.marginBottom = '1rem';
+          hubSeparator.style.padding = '0.75rem 1rem';
+          
+          if (isGeneral) {
+            // Separador para filtros generales
+            hubSeparator.style.background = 'rgba(100, 116, 139, 0.12)';
+            hubSeparator.style.border = '2px solid rgba(100, 116, 139, 0.3)';
+            hubSeparator.style.color = 'rgb(100, 116, 139)';
+            hubSeparator.textContent = 'General';
+          } else {
+            hubSeparator.style.background = hub.bgColor;
+            hubSeparator.style.border = `2px solid ${hub.borderColor}`;
+            hubSeparator.style.color = hub.textColor;
+            hubSeparator.textContent = hub.name;
+          }
+          
+          hubSeparator.style.borderRadius = '8px';
+          hubSeparator.style.fontSize = '0.8rem';
+          hubSeparator.style.fontWeight = '700';
+          hubSeparator.style.textTransform = 'uppercase';
+          hubSeparator.style.letterSpacing = '1px';
+          if (!isGeneral) {
+            hubSeparator.style.boxShadow = `0 2px 4px rgba(${hub.color}, 0.2)`;
+          }
+          list.appendChild(hubSeparator);
+        }
+        
         const item = document.createElement('div');
         item.className = 'my-filter-item';
         
@@ -2827,6 +2933,58 @@ function generateFilterSidebar(headers) {
         const hasExclude = obj.filterExclude && Object.keys(obj.filterExclude).length > 0;
         // Verificar si tiene comparación activa
         const hasComparison = obj.fieldComparisons && Object.keys(obj.fieldComparisons).length > 0;
+        
+        // Determinar colores según tipo de filtro (más distintivos)
+        let borderColor, bgColor, hoverBorderColor, labelColor;
+        if (hasExclude) {
+          // Rojo para exclude - más intenso
+          borderColor = 'rgba(239, 68, 68, 0.6)';
+          bgColor = 'rgba(239, 68, 68, 0.12)';
+          hoverBorderColor = 'rgba(239, 68, 68, 0.8)';
+          labelColor = '#dc2626';
+        } else if (hasComparison) {
+          // Azul para compare - más intenso
+          borderColor = 'rgba(37, 99, 235, 0.6)';
+          bgColor = 'rgba(37, 99, 235, 0.12)';
+          hoverBorderColor = 'rgba(37, 99, 235, 0.8)';
+          labelColor = '#2563eb';
+        } else if (isGeneral) {
+          // Gris para filtros generales
+          borderColor = 'rgba(100, 116, 139, 0.3)';
+          bgColor = 'rgba(100, 116, 139, 0.08)';
+          hoverBorderColor = 'rgba(100, 116, 139, 0.5)';
+          labelColor = '#64748b';
+        } else {
+          // Color del hub - más intenso y distintivo
+          borderColor = hub.borderColor;
+          bgColor = hub.bgColor;
+          hoverBorderColor = `rgba(${hub.color}, 0.7)`;
+          labelColor = hub.textColor;
+        }
+        
+        // Estilos mejorados para las cards con colores más distintivos
+        item.style.padding = '1.15rem 1.35rem';
+        item.style.background = bgColor;
+        item.style.border = `3px solid ${borderColor}`;
+        item.style.borderRadius = '12px';
+        item.style.marginBottom = '1rem';
+        item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+        item.style.transition = 'all 0.25s ease';
+        item.style.cursor = 'default';
+        
+        // Efecto hover mejorado y más visible
+        item.addEventListener('mouseenter', () => {
+          item.style.boxShadow = `0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
+          item.style.borderColor = hoverBorderColor;
+          item.style.transform = 'translateY(-2px) scale(1.01)';
+          item.style.background = bgColor.replace('0.15', '0.2').replace('0.12', '0.18');
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+          item.style.borderColor = borderColor;
+          item.style.transform = 'translateY(0) scale(1)';
+          item.style.background = bgColor;
+        });
         
         if (hasExclude) {
           item.classList.add('has-exclude');
@@ -2854,10 +3012,29 @@ function generateFilterSidebar(headers) {
         const label = document.createElement('span');
         label.textContent = name;
         label.className = 'my-filter-name';
-        label.style.fontWeight = '500';
-        label.style.color = '#1a202c';
-        label.style.fontSize = '0.9rem';
+        label.style.fontWeight = '600';
+        label.style.color = labelColor || '#1a202c';
+        label.style.fontSize = '0.95rem';
+        label.style.letterSpacing = '0.2px';
         leftSection.appendChild(label);
+        
+        // Badge del hub (si no es exclude ni compare) - más visible
+        if (!hasExclude && !hasComparison && !isGeneral) {
+          const hubBadge = document.createElement('span');
+          hubBadge.textContent = hub.name.toUpperCase();
+          hubBadge.style.fontSize = '0.7rem';
+          hubBadge.style.color = hub.textColor;
+          hubBadge.style.background = `rgba(${hub.color}, 0.2)`;
+          hubBadge.style.padding = '0.4rem 0.75rem';
+          hubBadge.style.borderRadius = '6px';
+          hubBadge.style.fontWeight = '700';
+          hubBadge.style.textTransform = 'uppercase';
+          hubBadge.style.letterSpacing = '0.8px';
+          hubBadge.style.border = `2px solid ${hub.borderColor}`;
+          hubBadge.style.boxShadow = `0 1px 3px rgba(${hub.color}, 0.3)`;
+          hubBadge.title = `Saved in ${hub.name} hub`;
+          leftSection.appendChild(hubBadge);
+        }
         
         // Indicador de exclude mejorado
         if (hasExclude) {
@@ -2889,12 +3066,7 @@ function generateFilterSidebar(headers) {
           comparisonBadge.style.textTransform = 'uppercase';
           comparisonBadge.style.letterSpacing = '0.8px';
           comparisonBadge.style.border = '1px solid rgba(37, 99, 235, 0.2)';
-          
-          // Crear tooltip con información de la comparación
-          const comparisonInfo = Object.entries(obj.fieldComparisons).map(([col, comp]) => {
-            return `${col} ${comp.operator} ${comp.compareColumn}`;
-          }).join(', ');
-          comparisonBadge.title = `Field comparison: ${comparisonInfo}`;
+          comparisonBadge.title = 'This filter uses Compare mode. Use Reset Filters after applying to see other filters.';
           
           leftSection.appendChild(comparisonBadge);
         }
@@ -2964,10 +3136,14 @@ function generateFilterSidebar(headers) {
         list.appendChild(item);
       });
       
-      // Agregar mensaje informativo si hay filtros con exclude
+      // Agregar mensajes informativos si hay filtros con exclude o compare
       const hasExcludeFilters = Object.values(filters).some(obj => 
         obj.filterExclude && Object.keys(obj.filterExclude).length > 0
       );
+      const hasCompareFilters = Object.values(filters).some(obj => 
+        obj.fieldComparisons && Object.keys(obj.fieldComparisons).length > 0
+      );
+      
       if (hasExcludeFilters) {
         const infoMsg = document.createElement('div');
         infoMsg.className = 'exclude-info-message';
@@ -2980,6 +3156,21 @@ function generateFilterSidebar(headers) {
         infoMsg.style.color = '#dc2626';
         infoMsg.style.lineHeight = '1.5';
         infoMsg.innerHTML = '<strong style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #991b1b;">Important:</strong><span style="display: block;">After applying a filter with Exclude mode, use "Reset Filters" in the modal to clear it and view other filters.</span>';
+        section.appendChild(infoMsg);
+      }
+      
+      if (hasCompareFilters) {
+        const infoMsg = document.createElement('div');
+        infoMsg.className = 'compare-info-message';
+        infoMsg.style.marginTop = hasExcludeFilters ? '0.75rem' : '1rem';
+        infoMsg.style.padding = '0.875rem 1rem';
+        infoMsg.style.background = 'rgba(37, 99, 235, 0.08)';
+        infoMsg.style.border = '1px solid rgba(37, 99, 235, 0.25)';
+        infoMsg.style.borderRadius = '8px';
+        infoMsg.style.fontSize = '0.875rem';
+        infoMsg.style.color = '#2563eb';
+        infoMsg.style.lineHeight = '1.5';
+        infoMsg.innerHTML = '<strong style="font-weight: 600; display: block; margin-bottom: 0.35rem; color: #1e40af;">Important:</strong><span style="display: block;">After applying a filter with Compare mode, use "Reset Filters" in the modal to clear it and view other filters.</span>';
         section.appendChild(infoMsg);
       }
       if (!hasAny) {
@@ -3002,11 +3193,121 @@ function generateFilterSidebar(headers) {
       const quickList = document.createElement('div');
       quickList.className = 'my-filters-list';
       const quickFilters = loadQuickFilters();
+      console.log('🎨 Rendering Quick Filters with new design. Total filters:', Object.keys(quickFilters).length);
+      
+      // Separar quick filters por hub y generales (mismo sistema que My Filters)
+      const hubQuickFilters = Object.entries(quickFilters).filter(([name, obj]) => {
+        const hubType = obj.hubType || 'ops';
+        return hubType !== 'ops' && hubConfig[hubType];
+      });
+      
+      const generalQuickFilters = Object.entries(quickFilters).filter(([name, obj]) => {
+        const hubType = obj.hubType || 'ops';
+        return hubType === 'ops' || !hubConfig[hubType];
+      });
+      
+      const sortedHubQuickFilters = hubQuickFilters.sort(([nameA, objA], [nameB, objB]) => {
+        const hubA = objA.hubType || 'ops';
+        const hubB = objB.hubType || 'ops';
+        const orderA = hubConfig[hubA]?.order || 99;
+        const orderB = hubConfig[hubB]?.order || 99;
+        if (orderA !== orderB) return orderA - orderB;
+        return nameA.localeCompare(nameB);
+      });
+      
+      const sortedGeneralQuickFilters = generalQuickFilters.sort(([nameA], [nameB]) => {
+        return nameA.localeCompare(nameB);
+      });
+      
+      const sortedQuickFilters = [...sortedHubQuickFilters, ...sortedGeneralQuickFilters];
+      
       let hasQuick = false;
-      Object.entries(quickFilters).forEach(([name, obj]) => {
+      let currentQuickHub = null;
+      
+      sortedQuickFilters.forEach(([name, obj]) => {
         hasQuick = true;
+        const hubType = obj.hubType || 'ops';
+        const isGeneral = hubType === 'ops' || !hubConfig[hubType];
+        const hub = isGeneral ? null : (hubConfig[hubType] || null);
+        console.log(`🎨 Rendering quick filter "${name}" with hubType: ${hubType}, isGeneral: ${isGeneral}`);
+        
+        // Añadir separador de hub si cambió (o separador General si es el primero general)
+        const needsSeparator = isGeneral 
+          ? (currentQuickHub !== 'general' && generalQuickFilters.length > 0 && sortedHubQuickFilters.length > 0)
+          : (currentQuickHub !== hubType);
+          
+        if (needsSeparator) {
+          currentQuickHub = isGeneral ? 'general' : hubType;
+          const hubSeparator = document.createElement('div');
+          hubSeparator.style.marginTop = quickList.children.length === 0 ? '0' : '2rem';
+          hubSeparator.style.marginBottom = '1rem';
+          hubSeparator.style.padding = '0.75rem 1rem';
+          
+          if (isGeneral) {
+            // Separador para filtros generales
+            hubSeparator.style.background = 'rgba(100, 116, 139, 0.12)';
+            hubSeparator.style.border = '2px solid rgba(100, 116, 139, 0.3)';
+            hubSeparator.style.color = 'rgb(100, 116, 139)';
+            hubSeparator.textContent = 'General';
+          } else {
+            hubSeparator.style.background = hub.bgColor;
+            hubSeparator.style.border = `2px solid ${hub.borderColor}`;
+            hubSeparator.style.color = hub.textColor;
+            hubSeparator.textContent = hub.name;
+          }
+          
+          hubSeparator.style.borderRadius = '8px';
+          hubSeparator.style.fontSize = '0.8rem';
+          hubSeparator.style.fontWeight = '700';
+          hubSeparator.style.textTransform = 'uppercase';
+          hubSeparator.style.letterSpacing = '1px';
+          if (!isGeneral) {
+            hubSeparator.style.boxShadow = `0 2px 4px rgba(${hub.color}, 0.2)`;
+          }
+          quickList.appendChild(hubSeparator);
+        }
+        
         const item = document.createElement('div');
         item.className = 'my-filter-item';
+        
+        // Determinar colores según hub (más intensos y distintivos)
+        let borderColor, bgColor, hoverBorderColor, labelColor;
+        if (isGeneral) {
+          // Gris para filtros generales
+          borderColor = 'rgba(100, 116, 139, 0.3)';
+          bgColor = 'rgba(100, 116, 139, 0.08)';
+          hoverBorderColor = 'rgba(100, 116, 139, 0.5)';
+          labelColor = '#64748b';
+        } else {
+          borderColor = hub.borderColor;
+          bgColor = hub.bgColor;
+          hoverBorderColor = `rgba(${hub.color}, 0.7)`;
+          labelColor = hub.textColor;
+        }
+        
+        // Estilos mejorados para las cards con colores más distintivos
+        item.style.padding = '1.15rem 1.35rem';
+        item.style.background = bgColor;
+        item.style.border = `3px solid ${borderColor}`;
+        item.style.borderRadius = '12px';
+        item.style.marginBottom = '1rem';
+        item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+        item.style.transition = 'all 0.25s ease';
+        item.style.cursor = 'default';
+        
+        // Efecto hover mejorado y más visible
+        item.addEventListener('mouseenter', () => {
+          item.style.boxShadow = `0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
+          item.style.borderColor = hoverBorderColor;
+          item.style.transform = 'translateY(-2px) scale(1.01)';
+          item.style.background = bgColor.replace('0.15', '0.2');
+        });
+        item.addEventListener('mouseleave', () => {
+          item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
+          item.style.borderColor = borderColor;
+          item.style.transform = 'translateY(0) scale(1)';
+          item.style.background = bgColor;
+        });
         
         // Contenedor principal con mejor estructura
         const contentWrapper = document.createElement('div');
@@ -3019,37 +3320,35 @@ function generateFilterSidebar(headers) {
         const leftSection = document.createElement('div');
         leftSection.style.display = 'flex';
         leftSection.style.alignItems = 'center';
+        leftSection.style.gap = '0.75rem';
         leftSection.style.flex = '1';
         leftSection.style.minWidth = '0';
+        leftSection.style.flexWrap = 'wrap';
         
         const label = document.createElement('span');
         label.textContent = name;
         label.className = 'my-filter-name';
-        label.style.fontWeight = '500';
-        label.style.color = '#1a202c';
-        label.style.fontSize = '0.9rem';
+        label.style.fontWeight = '600';
+        label.style.color = labelColor;
+        label.style.fontSize = '0.95rem';
+        label.style.letterSpacing = '0.2px';
         leftSection.appendChild(label);
         
-        // Mostrar información del hub si existe
-        if (obj.hubType) {
+        // Badge del hub (solo si no es general) - más visible
+        if (!isGeneral) {
           const hubBadge = document.createElement('span');
-          const hubNames = {
-            'ops': 'OPS',
-            'dq': 'DQ',
-            'orders': 'ORDERS',
-            'booking': 'BOOKING'
-          };
-          hubBadge.textContent = hubNames[obj.hubType] || obj.hubType.toUpperCase();
-          hubBadge.style.fontSize = '0.65rem';
-          hubBadge.style.color = '#64748b';
-          hubBadge.style.background = 'rgba(100, 116, 139, 0.1)';
-          hubBadge.style.padding = '0.3rem 0.65rem';
-          hubBadge.style.borderRadius = '4px';
-          hubBadge.style.fontWeight = '600';
+          hubBadge.textContent = hub.name.toUpperCase();
+          hubBadge.style.fontSize = '0.7rem';
+          hubBadge.style.color = hub.textColor;
+          hubBadge.style.background = `rgba(${hub.color}, 0.2)`;
+          hubBadge.style.padding = '0.4rem 0.75rem';
+          hubBadge.style.borderRadius = '6px';
+          hubBadge.style.fontWeight = '700';
           hubBadge.style.textTransform = 'uppercase';
-          hubBadge.style.letterSpacing = '0.5px';
-          hubBadge.style.border = '1px solid rgba(100, 116, 139, 0.2)';
-          hubBadge.title = `Saved in ${hubNames[obj.hubType] || obj.hubType} hub`;
+          hubBadge.style.letterSpacing = '0.8px';
+          hubBadge.style.border = `2px solid ${hub.borderColor}`;
+          hubBadge.style.boxShadow = `0 1px 3px rgba(${hub.color}, 0.3)`;
+          hubBadge.title = `Saved in ${hub.name} hub`;
           leftSection.appendChild(hubBadge);
         }
         

@@ -8720,66 +8720,46 @@ html body .choices__inner {
             e.preventDefault();
             e.stopPropagation();
             
-            // Resetear todos los filtros - llamar a ambas funciones si están disponibles
+            // Resetear todos los filtros - mismo comportamiento que el botón del modal
             try {
-              // Primero resetear filtros del modal de filtros
+              // Resetear filtros del modal de filtros
               if (typeof resetFilterManager === 'function') {
                 resetFilterManager();
               }
               
-              // Luego resetear filtros de la tabla
-              if (typeof window.resetAllFilters === 'function') {
-                window.resetAllFilters();
-              } else {
-                // Fallback: limpiar manualmente
-                if (typeof setTableActiveFilters === 'function') {
-                  setTableActiveFilters({});
-                }
-                if (typeof setTableFilterValues === 'function') {
-                  setTableFilterValues({});
-                }
-                if (typeof applyFilters === 'function') {
-                  applyFilters();
-                }
+              // Regenerar el sidebar de filtros
+              if (typeof generateFilterSidebar === 'function' && typeof getCurrentHeaders === 'function') {
+                generateFilterSidebar(getCurrentHeaders());
+              } else if (typeof window.generateFilterSidebar === 'function' && typeof window.getCurrentHeaders === 'function') {
+                window.generateFilterSidebar(window.getCurrentHeaders());
               }
               
-              // También limpiar filtros del módulo si existen
-              if (typeof window.setModuleFilterValues === 'function') {
-                window.setModuleFilterValues({});
-              }
-              if (typeof window.setModuleActiveFilters === 'function') {
-                window.setModuleActiveFilters({});
-              }
-              // Limpiar estado de exclude
-              if (typeof window.setModuleFilterExclude === 'function') {
-                window.setModuleFilterExclude({});
+              // Mostrar notificación (igual que el modal)
+              if (typeof window.showUnifiedNotification === 'function') {
+                window.showUnifiedNotification('All filters cleared!', 'info');
               }
               
-              // Cerrar todos los dropdowns abiertos
-              document.querySelectorAll('.modal-filter-dropdown').forEach(dropdown => {
-                dropdown.classList.add('hidden');
-              });
-              
-              // Reset all exclude toggle buttons in dropdowns
-              document.querySelectorAll('.exclude-toggle-btn, .empty-toggle-btn').forEach(btn => {
-                btn.classList.remove('active');
-              });
-              
-              // Actualizar todos los inputs para remover "Exclude: " prefix
-              document.querySelectorAll('.filter-input').forEach(input => {
-                if (input.value && input.value.startsWith('Exclude: ')) {
-                  input.value = input.value.replace('Exclude: ', '');
+              // Actualizar la tabla después de resetear los filtros (igual que el modal)
+              if (typeof getOriginalData === 'function') {
+                const data = getOriginalData();
+                if (data && typeof displayTable === 'function') {
+                  displayTable(data);
+                } else if (data && typeof window.displayTable === 'function') {
+                  window.displayTable(data);
                 }
-              });
+              } else if (typeof window.getOriginalData === 'function') {
+                const data = window.getOriginalData();
+                if (data && typeof window.displayTable === 'function') {
+                  window.displayTable(data);
+                }
+              }
               
               console.log('✅ All filters reset successfully');
             } catch (error) {
               console.error('Error resetting filters:', error);
-            }
-            
-            // Mostrar notificación
-            if (typeof window.showUnifiedNotification === 'function') {
-              window.showUnifiedNotification('All filters have been reset', 'success');
+              if (typeof window.showUnifiedNotification === 'function') {
+                window.showUnifiedNotification('Error resetting filters. Please try again.', 'error');
+              }
             }
           });
           
