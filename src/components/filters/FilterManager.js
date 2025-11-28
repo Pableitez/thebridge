@@ -2969,16 +2969,7 @@ function generateFilterSidebar(headers) {
         item.style.borderRadius = '12px';
         item.style.marginBottom = '1rem';
         item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-        item.style.transition = 'all 0.25s ease';
         item.style.cursor = 'default';
-        
-        // Efecto hover sutil
-        item.addEventListener('mouseenter', () => {
-          item.style.boxShadow = `0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.12)`;
-        });
-        item.addEventListener('mouseleave', () => {
-          item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-        });
         
         if (hasExclude) {
           item.classList.add('has-exclude');
@@ -3286,16 +3277,7 @@ function generateFilterSidebar(headers) {
         item.style.borderRadius = '12px';
         item.style.marginBottom = '1rem';
         item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-        item.style.transition = 'all 0.25s ease';
         item.style.cursor = 'default';
-        
-        // Efecto hover sutil
-        item.addEventListener('mouseenter', () => {
-          item.style.boxShadow = `0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.12)`;
-        });
-        item.addEventListener('mouseleave', () => {
-          item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-        });
         
         // Contenedor principal con mejor estructura
         const contentWrapper = document.createElement('div');
