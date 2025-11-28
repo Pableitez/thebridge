@@ -7794,7 +7794,7 @@ async function executeSaveToFolder() {
             currentTeam: JSON.parse(localStorage.getItem('thebridge_current_team') || '{}'),
             
             // Configuración de filtros
-            filters: JSON.parse(localStorage.getItem('thebridge_filters') || '{}'),
+            filters: JSON.parse(localStorage.getItem('myFilters') || '[]'),
             quickFilters: JSON.parse(localStorage.getItem('quickFilters') || '{}'),
             
             // Configuración de vistas de tabla (usar la clave correcta)
@@ -7935,11 +7935,25 @@ async function applyConfigurationFromFile(config) {
     try {
         // Aplicar configuración de filtros
         if (config.filters) {
-            localStorage.setItem('thebridge_filters', JSON.stringify(config.filters));
+            localStorage.setItem('myFilters', JSON.stringify(config.filters));
+            console.log('✅ MyFilters loaded from JSON:', config.filters);
+            
+            // Intentar refrescar la UI de myFilters si existe la función
+            if (typeof window.renderMyFiltersSection === 'function') {
+                window.renderMyFiltersSection();
+            } else if (typeof renderMyFiltersSection === 'function') {
+                renderMyFiltersSection();
+            }
         }
         
         if (config.quickFilters) {
             localStorage.setItem('quickFilters', JSON.stringify(config.quickFilters));
+            // Intentar refrescar quick filters si existe la función
+            if (typeof window.renderDashboardQuickFilters === 'function') {
+                window.renderDashboardQuickFilters();
+            } else if (typeof renderDashboardQuickFilters === 'function') {
+                renderDashboardQuickFilters();
+            }
         }
         
         // Aplicar configuración de vistas de tabla
