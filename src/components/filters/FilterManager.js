@@ -2989,6 +2989,9 @@ function generateFilterSidebar(headers) {
         list.appendChild(emptyMsg);
       }
       section.appendChild(list);
+      
+      // Exponer renderMyFiltersSection globalmente para que pueda ser llamada desde otros lugares
+      window.renderMyFiltersSection = renderMyFiltersSection;
 
       // --- Quick Filters Section ---
       const quickFiltersTitle = document.createElement('div');

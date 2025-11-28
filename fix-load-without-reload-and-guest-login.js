@@ -13,9 +13,10 @@ function fixLoadWithoutReloadAndGuestLogin() {
             console.log('🔄 Applying configuration from file (NO RELOAD)...');
             
             try {
-                // Aplicar configuración de filtros
+                // Aplicar configuración de filtros - SIMPLIFICADO igual que quickFilters
                 if (config.filters) {
-                    localStorage.setItem('thebridge_filters', JSON.stringify(config.filters));
+                    localStorage.setItem('myFilters', JSON.stringify(config.filters));
+                    console.log('✅ MyFilters loaded (no reload):', Object.keys(config.filters).length, 'filters');
                 }
                 
                 if (config.quickFilters) {
@@ -89,9 +90,13 @@ function fixLoadWithoutReloadAndGuestLogin() {
                         applyLanguage(config.language);
                     }
                     
-                    // Recargar filtros si existen
-                    if (config.filters && typeof loadFilters === 'function') {
-                        loadFilters();
+                    // Recargar filtros si existen - SIMPLIFICADO igual que quickFilters
+                    if (config.filters) {
+                        if (typeof window.renderMyFiltersSection === 'function') {
+                            window.renderMyFiltersSection();
+                        } else if (typeof renderMyFiltersSection === 'function') {
+                            renderMyFiltersSection();
+                        }
                     }
                     
                     // Recargar vistas de tabla si existen

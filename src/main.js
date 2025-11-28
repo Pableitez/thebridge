@@ -5616,11 +5616,86 @@ function setupUserSetUpModal() {
           reader.onload = async (ev) => {
             try {
               const backup = JSON.parse(ev.target.result);
-              if (backup.filtrosGuardados) localStorage.setItem('myFilters', JSON.stringify(backup.filtrosGuardados));
-              if (backup.filtros) localStorage.setItem('myFilters', JSON.stringify(backup.filtros));
-              if (backup.filtros && typeof setModuleFilterValues === 'function' && typeof applyFilters === 'function') {
-                setModuleFilterValues(backup.filtros);
-                applyFilters();
+              
+              // Manejar múltiples formatos de filtros para compatibilidad
+              let filtersToLoad = null;
+              
+              // Prioridad: filters (formato nuevo) > filtrosGuardados > filtros (formato antiguo)
+              if (backup.filters !== undefined && backup.filters !== null) {
+                filtersToLoad = backup.filters;
+                console.log('✅ Found filters in new format (backup.filters)');
+              } else if (backup.filtrosGuardados !== undefined && backup.filtrosGuardados !== null) {
+                filtersToLoad = backup.filtrosGuardados;
+                console.log('✅ Found filters in filtrosGuardados format');
+              } else if (backup.filtros !== undefined && backup.filtros !== null) {
+                filtersToLoad = backup.filtros;
+                console.log('✅ Found filters in filtros format (old)');
+              }
+              
+              if (filtersToLoad !== null) {
+                // Normalizar el formato: asegurar que sea un objeto, no un array
+                let filtersToSave = filtersToLoad;
+                
+                if (Array.isArray(filtersToLoad)) {
+                  console.warn('⚠️ Filters are in array format, converting to object format');
+                  filtersToSave = {};
+                } else if (typeof filtersToLoad === 'object' && filtersToLoad !== null) {
+                  // Es un objeto, verificar estructura
+                  filtersToSave = filtersToLoad;
+                  console.log('✅ Filters format is correct (object):', Object.keys(filtersToSave).length, 'filters');
+                  
+                  // Verificar estructura de cada filtro
+                  Object.entries(filtersToSave).forEach(([name, filterObj]) => {
+                    if (!filterObj || typeof filterObj !== 'object') {
+                      console.warn(`⚠️ Filter "${name}" is not an object, removing`);
+                      delete filtersToSave[name];
+                      return;
+                    }
+                    if (!filterObj.filterValues) {
+                      console.warn(`⚠️ Filter "${name}" missing filterValues, adding empty object`);
+                      filterObj.filterValues = {};
+                    }
+                    if (!filterObj.filterExclude) {
+                      filterObj.filterExclude = {};
+                    }
+                    if (!filterObj.fieldComparisons) {
+                      filterObj.fieldComparisons = {};
+                    }
+                    // Verificar filtros de comparación
+                    if (filterObj.fieldComparisons && Object.keys(filterObj.fieldComparisons).length > 0) {
+                      console.log(`  🔄 Filter "${name}" has comparison:`, filterObj.fieldComparisons);
+                    }
+                  });
+                } else {
+                  console.warn('⚠️ Filters in unknown format, using empty object');
+                  filtersToSave = {};
+                }
+                
+                localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
+                console.log('✅ MyFilters saved to localStorage:', Object.keys(filtersToSave).length, 'filters');
+                console.log('📋 Filter names:', Object.keys(filtersToSave));
+                
+                // Refrescar la UI de myFilters
+                let attempts = 0;
+                const maxAttempts = 15;
+                const tryRefreshFilters = () => {
+                  attempts++;
+                  if (typeof window.renderMyFiltersSection === 'function') {
+                    console.log('🔄 Calling window.renderMyFiltersSection() - attempt', attempts);
+                    window.renderMyFiltersSection();
+                    return;
+                  } else if (typeof renderMyFiltersSection === 'function') {
+                    console.log('🔄 Calling renderMyFiltersSection() - attempt', attempts);
+                    renderMyFiltersSection();
+                    return;
+                  } else if (attempts < maxAttempts) {
+                    setTimeout(tryRefreshFilters, 300);
+                  } else {
+                    console.warn('⚠️ renderMyFiltersSection function not found after', maxAttempts, 'attempts');
+                    window.dispatchEvent(new CustomEvent('myFiltersUpdated'));
+                  }
+                };
+                setTimeout(tryRefreshFilters, 500);
               }
               if (backup.vistas) {
                 localStorage.setItem('tableViews', JSON.stringify(backup.vistas));

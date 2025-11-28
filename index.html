@@ -5497,6 +5497,39 @@ select[id*="Team"],
   <script>
     // Verificar que jsPDF se carga correctamente
     window.addEventListener('load', function() {
+      // Verificar si se acaban de cargar filtros y renderizarlos
+      const filtersJustLoaded = localStorage.getItem('filtersJustLoaded');
+      if (filtersJustLoaded === 'true') {
+        console.log('🔄 Detected filtersJustLoaded flag, will render filters after FilterManager initializes');
+        localStorage.removeItem('filtersJustLoaded'); // Limpiar el flag
+        
+        // Esperar a que FilterManager esté inicializado y luego renderizar
+        let attempts = 0;
+        const maxAttempts = 20;
+        const tryRenderFilters = () => {
+          attempts++;
+          const myFilters = JSON.parse(localStorage.getItem('myFilters') || '{}');
+          if (Object.keys(myFilters).length > 0) {
+            if (typeof window.renderMyFiltersSection === 'function') {
+              console.log('✅ Rendering myFilters after page load - attempt', attempts);
+              window.renderMyFiltersSection();
+              return;
+            } else if (typeof renderMyFiltersSection === 'function') {
+              console.log('✅ Rendering myFilters after page load - attempt', attempts);
+              renderMyFiltersSection();
+              return;
+            }
+          }
+          
+          if (attempts < maxAttempts) {
+            setTimeout(tryRenderFilters, 300);
+          } else {
+            console.warn('⚠️ Could not render filters after page load');
+          }
+        };
+        setTimeout(tryRenderFilters, 2000); // Esperar 2 segundos para que FilterManager se inicialice
+      }
+      
       setTimeout(() => {
         if (typeof window.jsPDF !== 'undefined') {
           console.log('✅ jsPDF loaded successfully');
@@ -6809,6 +6842,11 @@ async function performActualSave() {
         
         console.log('Saving configuration to backend...', filename);
         
+        // Verificar que backendUrl sea válido antes de intentar guardar
+        if (!window.backendUrl || window.backendUrl === 'offline' || window.backendUrl.includes('offline')) {
+            throw new Error('Backend not available - use Save to Folder instead');
+        }
+        
         // Save to backend using new dashboard API
         const response = await fetch(`${window.backendUrl}/api/dashboard/save`, {
             method: 'POST',
@@ -7090,27 +7128,17 @@ async function executeLoadFromBackend() {
         if (typeof window.applyDashboardConfiguration === 'function') {
             await window.applyDashboardConfiguration(config);
             
-            // Asegurar que myFilters se guarda correctamente después de aplicar
+            // Asegurar que myFilters se guarda correctamente después de aplicar - SIMPLIFICADO
             if (config.filters) {
-                // Normalizar el formato: asegurar que sea un objeto, no un array
-                let filtersToSave = config.filters;
-                if (Array.isArray(config.filters)) {
-                    // Si es un array, convertirlo a objeto vacío (formato esperado)
-                    console.warn('⚠️ Filters are in array format, converting to object format');
-                    filtersToSave = {};
+                localStorage.setItem('myFilters', JSON.stringify(config.filters));
+                console.log('✅ MyFilters saved after applyDashboardConfiguration:', Object.keys(config.filters).length, 'filters');
+                
+                // Refrescar la UI igual que quickFilters
+                if (typeof window.renderMyFiltersSection === 'function') {
+                    window.renderMyFiltersSection();
+                } else if (typeof renderMyFiltersSection === 'function') {
+                    renderMyFiltersSection();
                 }
-                
-                localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
-                console.log('✅ MyFilters saved after applyDashboardConfiguration');
-                
-                // Refrescar la UI de myFilters
-                setTimeout(() => {
-                    if (typeof window.renderMyFiltersSection === 'function') {
-                        window.renderMyFiltersSection();
-                    } else if (typeof renderMyFiltersSection === 'function') {
-                        renderMyFiltersSection();
-                    }
-                }, 100);
             }
         } else {
             // Fallback: apply basic settings manually
@@ -7119,27 +7147,17 @@ async function executeLoadFromBackend() {
                 console.log('✅ Dashboard config applied');
             }
             
+            // Aplicar filtros - SIMPLIFICADO igual que quickFilters
             if (config.filters) {
-                // Normalizar el formato: asegurar que sea un objeto, no un array
-                let filtersToSave = config.filters;
-                if (Array.isArray(config.filters)) {
-                    // Si es un array, convertirlo a objeto vacío (formato esperado)
-                    console.warn('⚠️ Filters are in array format, converting to object format');
-                    filtersToSave = {};
+                localStorage.setItem('myFilters', JSON.stringify(config.filters));
+                console.log('✅ MyFilters loaded from backend (fallback):', Object.keys(config.filters).length, 'filters');
+                
+                // Refrescar la UI igual que quickFilters
+                if (typeof window.renderMyFiltersSection === 'function') {
+                    window.renderMyFiltersSection();
+                } else if (typeof renderMyFiltersSection === 'function') {
+                    renderMyFiltersSection();
                 }
-                
-                localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
-                console.log('✅ Filters applied:', filtersToSave);
-                
-                // Refrescar la UI de myFilters si existe la función
-                // Usar setTimeout para asegurar que el DOM esté listo
-                setTimeout(() => {
-                    if (typeof window.renderMyFiltersSection === 'function') {
-                        window.renderMyFiltersSection();
-                    } else if (typeof renderMyFiltersSection === 'function') {
-                        renderMyFiltersSection();
-                    }
-                }, 100);
             }
             
             if (config.quickFilters) {
@@ -7842,7 +7860,19 @@ async function executeSaveToFolder() {
             currentTeam: JSON.parse(localStorage.getItem('thebridge_current_team') || '{}'),
             
             // Configuración de filtros
-            filters: JSON.parse(localStorage.getItem('myFilters') || '[]'),
+            filters: (() => {
+                const myFilters = JSON.parse(localStorage.getItem('myFilters') || '{}');
+                console.log('💾 Saving filters to JSON:', Object.keys(myFilters).length, 'filters');
+                console.log('📋 Filter names being saved:', Object.keys(myFilters));
+                // Verificar filtros de comparación
+                const comparisonFilters = Object.entries(myFilters).filter(([name, obj]) => 
+                    obj.fieldComparisons && Object.keys(obj.fieldComparisons).length > 0
+                );
+                if (comparisonFilters.length > 0) {
+                    console.log('🔄 Saving comparison filters:', comparisonFilters.map(([name]) => name));
+                }
+                return myFilters;
+            })(),
             quickFilters: JSON.parse(localStorage.getItem('quickFilters') || '{}'),
             
             // Configuración de vistas de tabla (usar la clave correcta)
@@ -7934,9 +7964,11 @@ async function executeLoadFromFolder() {
                 
                 console.log('📂 Loading configuration from file:', file.name);
                 
-                // Validar que es un archivo de configuración válido
-                if (!config.userInfo || !config.timestamp) {
-                    throw new Error('Invalid configuration file format');
+                // Validar que es un archivo de configuración válido (más flexible)
+                // Aceptar archivos con userInfo O con filters directamente (formato antiguo)
+                if (!config.userInfo && !config.filters && !config.filtros && !config.filtrosGuardados) {
+                    console.warn('⚠️ File may not be a valid configuration file, but attempting to load anyway');
+                    // No lanzar error, intentar cargar de todas formas
                 }
                 
                 // Aplicar la configuración
@@ -7981,28 +8013,17 @@ async function applyConfigurationFromFile(config) {
     console.log('🔄 Applying configuration from file...');
     
     try {
-        // Aplicar configuración de filtros
+        // Aplicar configuración de filtros - SIMPLIFICADO igual que quickFilters
         if (config.filters) {
-            // Normalizar el formato: asegurar que sea un objeto, no un array
-            let filtersToSave = config.filters;
-            if (Array.isArray(config.filters)) {
-                // Si es un array, convertirlo a objeto vacío (formato esperado)
-                console.warn('⚠️ Filters are in array format, converting to object format');
-                filtersToSave = {};
+            localStorage.setItem('myFilters', JSON.stringify(config.filters));
+            console.log('✅ MyFilters loaded from JSON:', Object.keys(config.filters).length, 'filters');
+            
+            // Refrescar la UI igual que quickFilters
+            if (typeof window.renderMyFiltersSection === 'function') {
+                window.renderMyFiltersSection();
+            } else if (typeof renderMyFiltersSection === 'function') {
+                renderMyFiltersSection();
             }
-            
-            localStorage.setItem('myFilters', JSON.stringify(filtersToSave));
-            console.log('✅ MyFilters loaded from JSON:', filtersToSave);
-            
-            // Intentar refrescar la UI de myFilters si existe la función
-            // Usar setTimeout para asegurar que el DOM esté listo
-            setTimeout(() => {
-                if (typeof window.renderMyFiltersSection === 'function') {
-                    window.renderMyFiltersSection();
-                } else if (typeof renderMyFiltersSection === 'function') {
-                    renderMyFiltersSection();
-                }
-            }, 100);
         }
         
         if (config.quickFilters) {
@@ -8069,7 +8090,13 @@ async function applyConfigurationFromFile(config) {
             window.backendUrl = config.backendUrl;
         }
         
-        // Recargar la página para aplicar todos los cambios
+        // Guardar un flag para indicar que se acaban de cargar filtros
+        // Esto permitirá que después de recargar, se rendericen automáticamente
+        if (config.filters && Object.keys(config.filters).length > 0) {
+            localStorage.setItem('filtersJustLoaded', 'true');
+            console.log('📋 Filters loaded, flag set for post-reload rendering');
+            console.log('📋 Filters saved before reload:', Object.keys(config.filters).length);
+        }
         console.log('🔄 Configuration applied, reloading page...');
         setTimeout(() => {
             window.location.reload();

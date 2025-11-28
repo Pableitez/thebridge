@@ -114,8 +114,8 @@ function fixFolderButtonsAndGuestAccess() {
                     teams: JSON.parse(localStorage.getItem('thebridge_teams') || '[]'),
                     currentTeam: JSON.parse(localStorage.getItem('thebridge_current_team') || '{}'),
                     
-                    // Configuración de filtros
-                    filters: JSON.parse(localStorage.getItem('thebridge_filters') || '{}'),
+                    // Configuración de filtros - CORREGIDO: usar myFilters
+                    filters: JSON.parse(localStorage.getItem('myFilters') || '{}'),
                     quickFilters: JSON.parse(localStorage.getItem('quickFilters') || '{}'),
                     
                     // Configuración de vistas de tabla
