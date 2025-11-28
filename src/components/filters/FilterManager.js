@@ -2972,18 +2972,12 @@ function generateFilterSidebar(headers) {
         item.style.transition = 'all 0.25s ease';
         item.style.cursor = 'default';
         
-        // Efecto hover mejorado y más visible
+        // Efecto hover sutil
         item.addEventListener('mouseenter', () => {
-          item.style.boxShadow = `0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
-          item.style.borderColor = hoverBorderColor;
-          item.style.transform = 'translateY(-2px) scale(1.01)';
-          item.style.background = bgColor.replace('0.15', '0.2').replace('0.12', '0.18');
+          item.style.boxShadow = `0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.12)`;
         });
         item.addEventListener('mouseleave', () => {
           item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-          item.style.borderColor = borderColor;
-          item.style.transform = 'translateY(0) scale(1)';
-          item.style.background = bgColor;
         });
         
         if (hasExclude) {
@@ -3295,18 +3289,12 @@ function generateFilterSidebar(headers) {
         item.style.transition = 'all 0.25s ease';
         item.style.cursor = 'default';
         
-        // Efecto hover mejorado y más visible
+        // Efecto hover sutil
         item.addEventListener('mouseenter', () => {
-          item.style.boxShadow = `0 6px 16px rgba(0, 0, 0, 0.12), 0 3px 6px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2)`;
-          item.style.borderColor = hoverBorderColor;
-          item.style.transform = 'translateY(-2px) scale(1.01)';
-          item.style.background = bgColor.replace('0.15', '0.2');
+          item.style.boxShadow = `0 3px 10px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0, 0, 0, 0.12)`;
         });
         item.addEventListener('mouseleave', () => {
           item.style.boxShadow = `0 2px 8px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1)`;
-          item.style.borderColor = borderColor;
-          item.style.transform = 'translateY(0) scale(1)';
-          item.style.background = bgColor;
         });
         
         // Contenedor principal con mejor estructura
